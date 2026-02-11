@@ -1,0 +1,35 @@
+# Agent OS Standards Index
+
+api:
+    auth-middleware:
+        description: AuthRequest, router.use(authMiddleware), public vs protected routes
+    centralised-imports:
+        description: Single imports.ts re-export for Deno; no direct npm imports in src
+    database-access:
+        description: query() helper, parameterized SQL only, cast rows in controller
+    error-responses:
+        description: HTTP status + { error } string; no error codes; dev-only stack
+    route-layout:
+        description: One router per domain under /api/<domain>; no versioning
+    validation:
+        description: Inline validation in controllers; 400 + { error }; add schema lib later if needed
+
+ui:
+    api-client:
+        description: Single fetchApi, Bearer from localStorage, throw on error; no interceptors yet
+    auth-token:
+        description: localStorage authToken; user store owns it; PWA-friendly
+    design-tokens:
+        description: All colour/radius/shadow via tokens; migrate hex when touching files
+    layout-bootstrap:
+        description: App-wide init and subscriptions in root layout onMount; cleanup in return
+    page-error-handling:
+        description: try/catch, local error state, err.message; global toast planned
+    pencil-design-source:
+        description: Use Pencil.dev MCP with docs/ui.pen when building or updating UI
+    services-structure:
+        description: Services stateless; use api and/or db; no UI state in services
+    svelte-runes:
+        description: Use $state, $effect, $props; guard auth effects with initialised
+    user-store-initialised:
+        description: Guard auth-dependent logic with initialised to avoid route flash
