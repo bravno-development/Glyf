@@ -1,0 +1,1 @@
+ALTER TABLE user_progress ADD COLUMN daily_goal INT NOT NULL DEFAULT 10;

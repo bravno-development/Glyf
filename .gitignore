@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.svelte-kit/
+.vite/
+
+# Environment
+.env
+.env.*
+!.env.example
+.envrc
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+postgres_data/
+
+# Deno
+.deno/
+
+# Testing
+coverage/
+
+# PWA
+dev-dist/
+
+# OS
+Thumbs.db

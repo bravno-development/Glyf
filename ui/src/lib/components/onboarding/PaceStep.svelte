@@ -1,0 +1,116 @@
+<script lang="ts">
+	import { Target } from "lucide-svelte";
+
+	let {
+		selectedScript,
+		dailyGoal,
+		onSelect
+	}: {
+		selectedScript: string;
+		dailyGoal: number;
+		onSelect: (goal: number) => void;
+	} = $props();
+
+	const TOTAL_CHARS = 92;
+
+	const paces = [
+		{
+			goal: 5,
+			label: "Relaxed",
+			get days() { return Math.ceil(TOTAL_CHARS / this.goal); },
+			get memo() { return "Start memorising in ~3 weeks"; },
+			recommended: false
+		},
+		{
+			goal: 10,
+			label: "Steady",
+			get days() { return Math.ceil(TOTAL_CHARS / this.goal); },
+			get memo() { return "Start memorising in ~2 weeks"; },
+			recommended: true
+		},
+		{
+			goal: 15,
+			label: "Intensive",
+			get days() { return Math.ceil(TOTAL_CHARS / this.goal); },
+			get memo() { return "Start memorising in ~1 week"; },
+			recommended: false
+		}
+	];
+
+	let scriptLabel = $derived(selectedScript === "hiragana" ? "Japanese" : selectedScript);
+</script>
+
+<!-- Hero -->
+<div class="flex w-full flex-col items-center gap-3 px-6 pt-6">
+	<div class="flex h-[72px] w-[72px] items-center justify-center rounded-[20px] bg-[var(--accent-light-green)]">
+		<Target size={36} strokeWidth={1.5} class="text-[var(--accent-green)]" />
+	</div>
+	<h1 class="text-[26px] font-semibold tracking-tight text-[#1A1918]">Set your pace</h1>
+	<p class="max-w-[320px] text-center text-[15px] leading-[1.4] text-[#6D6C6A]">
+		How many new characters do you want to learn each day? This sets when you start memorisation drills.
+	</p>
+
+	<!-- Script badge pill -->
+	<div class="flex items-center gap-1.5 rounded-full border border-[#E5E4E1] bg-white px-3.5 py-1.5">
+		<span class="font-['Noto_Sans_JP'] text-[14px] text-[var(--accent-green)]">あ</span>
+		<span class="text-[12px] font-medium text-[#6D6C6A]">{scriptLabel} · {TOTAL_CHARS} characters total</span>
+	</div>
+</div>
+
+<!-- Pace cards -->
+<div class="flex w-full flex-col gap-3 p-6">
+	{#each paces as pace (pace.goal)}
+		<button
+			type="button"
+			onclick={() => onSelect(pace.goal)}
+			class="flex w-full items-center gap-3.5 rounded-2xl border-[1.5px] bg-white p-[18px_20px] transition-colors
+				{dailyGoal === pace.goal
+					? 'border-[var(--accent-green)] shadow-[0_2px_12px_rgba(26,25,24,0.06)]'
+					: 'border-[#E5E4E1] shadow-[0_1px_6px_rgba(26,25,24,0.03)]'}"
+		>
+			<div
+				class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl
+					{dailyGoal === pace.goal ? 'bg-[var(--accent-light-green)]' : 'bg-[#FAFAF8]'}"
+			>
+				<span
+					class="text-[22px] font-bold
+						{dailyGoal === pace.goal ? 'text-[var(--accent-green)]' : 'text-[#6D6C6A]'}"
+				>
+					{pace.goal}
+				</span>
+			</div>
+
+			<div class="flex flex-1 flex-col gap-[3px] text-left">
+				<div class="flex items-center gap-2">
+					<span class="text-[16px] font-semibold text-[#1A1918]">{pace.label}</span>
+					{#if pace.recommended}
+						<span class="rounded-full bg-[var(--accent-light-green)] px-2 py-[2px] text-[10px] font-semibold text-[var(--accent-green)]">
+							Recommended
+						</span>
+					{/if}
+				</div>
+				<span class="text-[13px] text-[#6D6C6A]">
+					{pace.goal} characters/day · ~{pace.days} days
+				</span>
+				<span
+					class="text-[11px] font-medium
+						{dailyGoal === pace.goal ? 'text-[var(--accent-green)]' : 'text-[#9C9B99]'}"
+				>
+					{pace.memo}
+				</span>
+			</div>
+
+			<!-- Radio indicator -->
+			<div
+				class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full
+					{dailyGoal === pace.goal
+						? 'bg-[var(--accent-green)]'
+						: 'border-2 border-[#D1D0CD]'}"
+			>
+				{#if dailyGoal === pace.goal}
+					<div class="h-2 w-2 rounded-full bg-white"></div>
+				{/if}
+			</div>
+		</button>
+	{/each}
+</div>

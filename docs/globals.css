@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design Tokens — extracted from docs/ui.pen (halo design system)
+   Theme: Light / Dark (via "Mode" axis)
+   ========================================================================== */
+
+:root {
+  /* ── Colour: Core ─────────────────────────────────────────────────────── */
+  --background:           #FFFFFF;
+  --foreground:           #2A2933;
+  --card:                 #FFFFFF;
+  --card-foreground:      #2A2933;
+  --primary:              #5749F4;
+  --primary-foreground:   #FFFFFF;
+  --secondary:            #D9D9DB;
+  --secondary-foreground: #2A2933;
+  --destructive:          #CC3314;
+  --destructive-foreground: #FFFFFF;
+  --muted:                #F5F5F5;
+  --muted-foreground:     #616167;
+  --accent:               #F5F5F5;
+  --accent-foreground:    #2A2933;
+  --tile:                 #F5F5F5;
+  --input:                #C5C5CB;
+  --border:               #C5C5CB;
+  --ring:                 #E1E2E5;
+  --popover:              #FFFFFF;
+  --popover-foreground:   #2A2933;
+  --text-tertiary:        #9C9B99;
+  --black:                #000000;
+  --white:                #FFFFFF;
+
+  /* ── Colour: Accent specials ──────────────────────────────────────────── */
+  --accent-light-green:   #C8F0D8;
+  --accent-warm:          #D89575;
+
+  /* ── Colour: Semantic ─────────────────────────────────────────────────── */
+  --color-info:                 #C9D6F0;
+  --color-info-foreground:      #001133;
+  --color-success:              #A1E5A1;
+  --color-success-foreground:   #003300;
+  --color-warning:              #FFD9B2;
+  --color-warning-foreground:   #4D2700;
+  --color-error:                #FFBFB2;
+  --color-error-foreground:     #590F00;
+
+  /* ── Colour: Sidebar ──────────────────────────────────────────────────── */
+  --sidebar:                    #FFFFFF;
+  --sidebar-foreground:         #939399;
+  --sidebar-primary:            #F5F5F5;
+  --sidebar-primary-foreground: #2A2933;
+  --sidebar-accent:             #F5F5F5;
+  --sidebar-accent-foreground:  #2A2933;
+  --sidebar-border:             #D9D9DB;
+  --sidebar-ring:               #D9D9DB;
+
+  /* ── Radius ───────────────────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-xs:   6px;
+  --radius-m:    24px;
+  --radius-l:    40px;
+  --radius-pill: 999px;
+
+  /* ── Shadows ──────────────────────────────────────────────────────────── */
+  --shadow-card:    0 10px 8.75px -1px rgba(0, 0, 0, 0.04);
+  --shadow-tooltip: 0 2px 3.5px -1px rgba(0, 0, 0, 0.06);
+  --shadow-sidebar: 0 4px 5.25px -2px rgba(16, 24, 40, 0.03);
+}
+
+.dark {
+  --background:           #131124;
+  --foreground:           #E8E8EA;
+  --card:                 #1A182E;
+  --card-foreground:      #FFFFFF;
+  --primary:              #5749F4;
+  --primary-foreground:   #FFFFFF;
+  --secondary:            #403F51;
+  --secondary-foreground: #FFFFFF;
+  --destructive:          #CC3314;
+  --destructive-foreground: #FFFFFF;
+  --muted:                #2E2E2E;
+  --muted-foreground:     #888799;
+  --accent:               #131124;
+  --accent-foreground:    #F2F3F0;
+  --tile:                 #1A182E;
+  --input:                #2B283D;
+  --border:               #2B283D;
+  --ring:                 #666666;
+  --popover:              #1A182E;
+  --popover-foreground:   #FFFFFF;
+  --text-tertiary:        #6D6C6A;
+
+  --color-info:                 #404562;
+  --color-info-foreground:      #B2CCFF;
+  --color-success:              #3B4748;
+  --color-success-foreground:   #A1E5A1;
+  --color-warning:              #53484F;
+  --color-warning-foreground:   #FFD9B2;
+  --color-error:                #53424F;
+  --color-error-foreground:     #FFBFB2;
+
+  --sidebar:                    #1A182E;
+  --sidebar-foreground:         #ACABB2;
+  --sidebar-primary:            #0F5FFE;
+  --sidebar-primary-foreground: #E8E8EA;
+  --sidebar-accent:             #2B283D;
+  --sidebar-accent-foreground:  #E8E8EA;
+  --sidebar-border:             #2B283D;
+  --sidebar-ring:               #2B283D;
+}
+
+/* ==========================================================================
+   Base layer
+   ========================================================================== */
+
+@layer base {
+  html, body {
+    height: 100%;
+  }
+
+  /* ── Font families ────────────────────────────────────────────────────── */
+  .font-primary {
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-secondary {
+    font-family: "Inter", sans-serif;
+  }
+
+  /* ── Default body ─────────────────────────────────────────────────────── */
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}

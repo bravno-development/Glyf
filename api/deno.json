@@ -1,0 +1,25 @@
+{
+	"tasks": {
+		"dev": "deno run --allow-net --allow-read --allow-env --allow-write --watch src/main.ts",
+		"start": "deno run --allow-net --allow-read --allow-env --allow-write src/main.ts",
+		"migrate": "deno run --allow-net --allow-read --allow-env migrations/run.ts",
+		"test": "deno test --allow-net --allow-read --allow-env"
+	},
+	"imports": {
+		"express": "npm:express@^4.18.2",
+		"@types/express": "npm:@types/express@^4.17.21",
+		"postgres": "https://deno.land/x/postgres@v0.19.3/mod.ts",
+		"nodemailer": "npm:nodemailer@^6.9.0",
+		"djwt": "https://deno.land/x/djwt@v3.0.2/mod.ts",
+		"cors": "npm:cors@^2.8.5",
+		"@types/cors": "npm:@types/cors@^2.8.17"
+	},
+	"compilerOptions": {
+		"lib": [
+			"deno.window",
+			"deno.ns",
+			"esnext"
+		],
+		"strict": true
+	}
+}
