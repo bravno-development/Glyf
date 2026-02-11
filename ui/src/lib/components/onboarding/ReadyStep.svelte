@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Sparkles, Calendar } from "lucide-svelte";
+	import { onMount } from "svelte";
+	import { getScript } from "$lib/services/scripts";
 
 	let {
 		selectedScript,
@@ -9,10 +11,22 @@
 		dailyGoal: number;
 	} = $props();
 
-	const TOTAL_CHARS = 92;
-	let estimatedDays = $derived(Math.ceil(TOTAL_CHARS / dailyGoal));
+	let totalChars = $state(92);
+	let scriptLabel = $state("Japanese");
+	let scriptIcon = $state("あ");
 
-	let scriptLabel = $derived(selectedScript === "hiragana" ? "Japanese" : selectedScript);
+	onMount(async () => {
+		try {
+			const def = await getScript(selectedScript);
+			totalChars = def.totalCharacters;
+			scriptLabel = def.language;
+			scriptIcon = def.icon;
+		} catch {
+			// fallback to defaults
+		}
+	});
+
+	let estimatedDays = $derived(Math.ceil(totalChars / dailyGoal));
 
 	let paceLabel = $derived(
 		dailyGoal === 5 ? "Relaxed" : dailyGoal === 10 ? "Steady" : "Intensive"
@@ -26,7 +40,7 @@
 	</div>
 	<h1 class="text-[28px] font-bold tracking-tight text-[#1A1918]">You're all set!</h1>
 	<p class="max-w-[300px] text-center text-[15px] leading-[1.4] text-[#6D6C6A]">
-		Here's your learning plan. Your first lesson starts with the Japanese vowels.
+		Here's your learning plan. Your first lesson starts with the basics.
 	</p>
 </div>
 
@@ -40,8 +54,7 @@
 				<span class="text-[16px] font-semibold text-[#1A1918]">{scriptLabel}</span>
 			</div>
 			<div class="flex items-center gap-1.5">
-				<span class="font-['Noto_Sans_JP'] text-[18px] text-[var(--accent-green)]">あ</span>
-				<span class="font-['Noto_Sans_JP'] text-[18px] text-[var(--accent-warm)]">ア</span>
+				<span class="font-['Noto_Sans_JP'] text-[18px] text-[var(--accent-green)]">{scriptIcon}</span>
 			</div>
 		</div>
 
@@ -64,7 +77,7 @@
 		<div class="flex items-center justify-between">
 			<div class="flex flex-col gap-0.5">
 				<span class="text-[12px] font-medium text-[#9C9B99]">Estimated timeline</span>
-				<span class="text-[16px] font-semibold text-[#1A1918]">~{estimatedDays} days to learn all {TOTAL_CHARS}</span>
+				<span class="text-[16px] font-semibold text-[#1A1918]">~{estimatedDays} days to learn all {totalChars}</span>
 			</div>
 			<Calendar size={20} strokeWidth={1.5} class="text-[#9C9B99]" />
 		</div>

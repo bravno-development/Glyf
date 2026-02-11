@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Languages, Check } from "lucide-svelte";
+	import { onMount } from "svelte";
+	import { getAvailableScripts, type ScriptDefinition } from "$lib/services/scripts";
 
 	let {
 		selectedScript,
@@ -9,32 +11,19 @@
 		onSelect: (script: string) => void;
 	} = $props();
 
-	const scripts = [
-		{
-			id: "hiragana",
-			char: "あ",
+	let scripts: { id: string; char: string; charFont: string; name: string; desc: string; available: boolean }[] = $state([]);
+
+	onMount(async () => {
+		const defs = await getAvailableScripts();
+		scripts = defs.map(d => ({
+			id: d.id,
+			char: d.icon,
 			charFont: "font-['Noto_Sans_JP']",
-			name: "Japanese",
-			desc: "Hiragana & Katakana \u00b7 92 characters",
-			available: true
-		},
-		{
-			id: "hangul",
-			char: "\u3131",
-			charFont: "font-['Noto_Sans_KR']",
-			name: "Korean",
-			desc: "Hangul \u00b7 40 characters",
-			available: false
-		},
-		{
-			id: "arabic",
-			char: "\u0627",
-			charFont: "font-['Noto_Sans_Arabic']",
-			name: "Arabic",
-			desc: "Abjad \u00b7 28 characters",
-			available: false
-		}
-	];
+			name: d.language,
+			desc: `${d.name} \u00b7 ${d.totalCharacters} characters`,
+			available: d.available
+		}));
+	});
 </script>
 
 <!-- Hero -->

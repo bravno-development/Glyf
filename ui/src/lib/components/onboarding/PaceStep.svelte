@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Target } from "lucide-svelte";
+	import { onMount } from "svelte";
+	import { getScript } from "$lib/services/scripts";
 
 	let {
 		selectedScript,
@@ -11,33 +13,44 @@
 		onSelect: (goal: number) => void;
 	} = $props();
 
-	const TOTAL_CHARS = 92;
+	let totalChars = $state(92);
+	let scriptIcon = $state("あ");
+	let scriptLabel = $state("Japanese");
 
-	const paces = [
+	onMount(async () => {
+		try {
+			const def = await getScript(selectedScript);
+			totalChars = def.totalCharacters;
+			scriptIcon = def.icon;
+			scriptLabel = def.language;
+		} catch {
+			// fallback to defaults
+		}
+	});
+
+	const paces = $derived([
 		{
 			goal: 5,
 			label: "Relaxed",
-			get days() { return Math.ceil(TOTAL_CHARS / this.goal); },
-			get memo() { return "Start memorising in ~3 weeks"; },
+			days: Math.ceil(totalChars / 5),
+			memo: "Start memorising in ~3 weeks",
 			recommended: false
 		},
 		{
 			goal: 10,
 			label: "Steady",
-			get days() { return Math.ceil(TOTAL_CHARS / this.goal); },
-			get memo() { return "Start memorising in ~2 weeks"; },
+			days: Math.ceil(totalChars / 10),
+			memo: "Start memorising in ~2 weeks",
 			recommended: true
 		},
 		{
 			goal: 15,
 			label: "Intensive",
-			get days() { return Math.ceil(TOTAL_CHARS / this.goal); },
-			get memo() { return "Start memorising in ~1 week"; },
+			days: Math.ceil(totalChars / 15),
+			memo: "Start memorising in ~1 week",
 			recommended: false
 		}
-	];
-
-	let scriptLabel = $derived(selectedScript === "hiragana" ? "Japanese" : selectedScript);
+	]);
 </script>
 
 <!-- Hero -->
@@ -52,8 +65,8 @@
 
 	<!-- Script badge pill -->
 	<div class="flex items-center gap-1.5 rounded-full border border-[#E5E4E1] bg-white px-3.5 py-1.5">
-		<span class="font-['Noto_Sans_JP'] text-[14px] text-[var(--accent-green)]">あ</span>
-		<span class="text-[12px] font-medium text-[#6D6C6A]">{scriptLabel} · {TOTAL_CHARS} characters total</span>
+		<span class="font-['Noto_Sans_JP'] text-[14px] text-[var(--accent-green)]">{scriptIcon}</span>
+		<span class="text-[12px] font-medium text-[#6D6C6A]">{scriptLabel} · {totalChars} characters total</span>
 	</div>
 </div>
 
