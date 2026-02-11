@@ -3,7 +3,7 @@
 	import { ArrowRight, CalendarCheck, Brain, BarChart3, WifiOff } from "lucide-svelte";
 
 	let isLoggedIn = $derived($userStore.isAuthenticated);
-	let dashboardHref = "/learn";
+	let dashboardHref = "/dashboard";
 
 	const scripts = [
 		{
@@ -54,9 +54,9 @@
 		},
 		{
 			number: "2",
-			title: "Learn stroke order",
+			title: "Learn new glyphs",
 			description:
-				"Watch animated strokes, then trace each character yourself with guided feedback.",
+				"Each character is introduced with its reading, meaning & example words. Practise recognition through quizzes until it clicks.",
 		},
 		{
 			number: "3",
