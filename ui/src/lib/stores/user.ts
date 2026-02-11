@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import { trackEvent } from '$lib/services/analytics';
 
 interface User {
 	id: string;
@@ -27,6 +28,7 @@ function createUserStore() {
 			set({ user, token, isAuthenticated: true, initialised: true });
 		},
 		logout: () => {
+			trackEvent('user_logged_out');
 			localStorage.removeItem('authToken');
 			set({ user: null, token: null, isAuthenticated: false, initialised: true });
 		},

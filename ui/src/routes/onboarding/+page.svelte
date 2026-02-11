@@ -3,6 +3,7 @@
 	import { userStore } from "$lib/stores/user";
 	import { api } from "$lib/services/api";
 	import { ArrowLeft, ArrowRight, Lightbulb } from "lucide-svelte";
+	import { trackEvent } from "$lib/services/analytics";
 
 	import StepDots from "$lib/components/onboarding/StepDots.svelte";
 	import LanguageStep from "$lib/components/onboarding/LanguageStep.svelte";
@@ -29,7 +30,7 @@
 			api.onboarding.status()
 				.then(({ onboarded }) => {
 					if (onboarded) {
-						goto("/learn");
+						goto("/dashboard");
 					} else {
 						ready = true;
 					}
@@ -54,9 +55,9 @@
 		loading = true;
 		try {
 			await api.onboarding.complete("hiragana", 10);
-			goto("/learn");
+			goto("/dashboard");
 		} catch {
-			goto("/learn");
+			goto("/dashboard");
 		}
 	}
 
@@ -64,9 +65,10 @@
 		loading = true;
 		try {
 			await api.onboarding.complete(selectedScript, dailyGoal);
-			goto("/learn");
+			trackEvent("onboarding_completed", { script: selectedScript, daily_goal: dailyGoal });
+			goto("/dashboard");
 		} catch {
-			goto("/learn");
+			goto("/dashboard");
 		}
 	}
 </script>

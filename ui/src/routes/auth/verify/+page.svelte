@@ -4,6 +4,7 @@
 	import { onMount } from "svelte";
 	import { api } from "$lib/services/api";
 	import { userStore } from "$lib/stores/user";
+	import { trackEvent } from "$lib/services/analytics";
 
 	let error = $state("");
 	let verifying = $state(true);
@@ -20,7 +21,8 @@
 		try {
 			const result = await api.auth.verify({ token });
 			userStore.login(result.user, result.token);
-			goto("/");
+			trackEvent("user_logged_in");
+			goto("/dashboard");
 		} catch (err) {
 			error = err instanceof Error ? err.message : "Verification failed";
 			verifying = false;
