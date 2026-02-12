@@ -1,8 +1,13 @@
 <script lang="ts">
+	import { get } from "svelte/store";
 	import { onMount } from "svelte";
+	import { goto } from "$app/navigation";
+	import { getStores } from "$app/stores";
 	import { userStore } from "$lib/stores/user";
+	import { api } from "$lib/services/api";
 	import { syncFromServer, syncToServer } from "$lib/services/sync";
 	import { initPostHog, identifyUser, resetUser } from "$lib/services/analytics";
+	import ReminderBanner from "$lib/components/ReminderBanner.svelte";
 	import "../app.css";
 
 	let { children } = $props();
@@ -18,6 +23,13 @@
 				syncFromServer();
 				if (state.user) {
 					identifyUser(state.user.id, { email: state.user.email });
+				}
+				const { page } = getStores();
+				const pathname = get(page).url.pathname;
+				if (pathname !== "/onboarding" && !pathname.startsWith("/auth")) {
+					api.onboarding.status().then(({ onboarded }) => {
+						if (!onboarded) goto("/onboarding");
+					});
 				}
 			} else if (!state.isAuthenticated && wasAuthenticated) {
 				resetUser();
@@ -45,5 +57,6 @@
 <div
 	class="min-h-screen flex flex-col font-primary bg-[var(--background)] text-[var(--foreground)]"
 >
+	<ReminderBanner />
 	{@render children()}
 </div>

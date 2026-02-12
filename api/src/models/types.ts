@@ -2,6 +2,10 @@ export interface User {
 	id: string;
 	email: string;
 	createdAt: Date;
+	reminderEnabled?: boolean;
+	reminderTimeLocal?: string; // "HH:mm"
+	timezone?: string;
+	nextReminderAt?: string; // ISO
 }
 
 export interface ReviewState {
@@ -75,4 +79,13 @@ export interface DueItem {
 
 export interface ManifestVersionsResponse {
 	[script: string]: number;
+}
+
+export type NotificationType = "email" | "in_app";
+
+export interface Notification {
+	id: string;
+	type: NotificationType;
+	createdAt: string; // ISO
+	readAt: string | null; // ISO
 }

@@ -59,3 +59,37 @@ export async function sendMagicLinkEmail(
 		].join("\n"),
 	});
 }
+
+export async function sendStudyReminderEmail(
+	email: string,
+	appUrl: string = APP_URL,
+): Promise<void> {
+	const link = `${appUrl}/dashboard`;
+
+	if (!transporter) {
+		console.log("──────────────────────────────────");
+		console.log(`Study reminder for ${email}`);
+		console.log(`  Link: ${link}`);
+		console.log("──────────────────────────────────");
+		return;
+	}
+
+	await transporter.sendMail({
+		from: SMTP_FROM,
+		to: email,
+		subject: "Time to study — Glyf",
+		text: [
+			"It's time for your daily practice.",
+			"",
+			"Open the app and keep learning:",
+			link,
+		].join("\n"),
+		html: [
+			"<div style=\"font-family:sans-serif;max-width:480px;margin:0 auto\">",
+			"<h2>Time to study</h2>",
+			"<p>It's time for your daily practice. Open the app and keep learning.</p>",
+			`<p style="text-align:center;margin:24px 0"><a href="${link}" style="background:#5749F4;color:#fff;padding:12px 24px;border-radius:24px;text-decoration:none;font-weight:500">Open Glyf</a></p>`,
+			"</div>",
+		].join("\n"),
+	});
+}

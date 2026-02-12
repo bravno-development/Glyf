@@ -5,6 +5,8 @@ import { syncRoutes } from "./routes/sync.routes.ts";
 import { userRoutes } from "./routes/user.routes.ts";
 import { onboardingRoutes } from "./routes/onboarding.routes.ts";
 import { progressRoutes } from "./routes/progress.routes.ts";
+import { notificationsRoutes } from "./routes/notifications.routes.ts";
+import { startReminderProcessor } from "./services/reminderProcessor.ts";
 
 const app = express();
 const PORT = Deno.env.get("PORT") || 8000;
@@ -24,6 +26,7 @@ app.use("/api/sync", syncRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/onboarding", onboardingRoutes);
 app.use("/api/progress", progressRoutes);
+app.use("/api/notifications", notificationsRoutes);
 
 // Health check
 app.get("/health", (_req, res) => {
@@ -35,4 +38,5 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
 	console.log(`API server running on http://localhost:${PORT}`);
+	startReminderProcessor();
 });

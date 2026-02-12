@@ -90,6 +90,43 @@ export const api = {
 	},
 
 	user: {
+		getProfile: () =>
+			fetchApi<{
+				id: string;
+				email: string;
+				createdAt: string;
+				reminderEnabled?: boolean;
+				reminderTimeLocal?: string;
+				timezone?: string;
+				nextReminderAt?: string;
+			}>('/api/user/profile'),
+		updateReminder: (body: {
+			reminderEnabled: boolean;
+			reminderTimeLocal?: string;
+			timezone?: string;
+		}) =>
+			fetchApi<{
+				reminderEnabled: boolean;
+				reminderTimeLocal?: string;
+				timezone?: string;
+				nextReminderAt?: string;
+			}>('/api/user/reminder', {
+				method: 'PATCH',
+				body: JSON.stringify(body)
+			}),
 		getScripts: () => fetchApi<string[]>('/api/user/scripts')
+	},
+
+	notifications: {
+		list: () =>
+			fetchApi<Array<{ id: string; type: string; createdAt: string; readAt: string | null }>>(
+				'/api/notifications'
+			),
+		markRead: (id: string) =>
+			fetchApi<{ ok: boolean }>(`/api/notifications/${encodeURIComponent(id)}/read`, {
+				method: 'PATCH'
+			}),
+		markAllRead: () =>
+			fetchApi<{ ok: boolean }>('/api/notifications/read-all', { method: 'POST' })
 	}
 };
