@@ -4001,83 +4001,8 @@
     },
     {
       "type": "frame",
-      "id": "rYhmQ",
-      "x": 3800,
-      "y": 3841,
-      "name": "dashboard-football",
-      "theme": {
-        "Mode": "Light"
-      },
-      "clip": true,
-      "width": 1440,
-      "height": 933,
-      "fill": "$--background",
-      "layout": "vertical",
-      "gap": 24,
-      "padding": 32
-    },
-    {
-      "type": "frame",
-      "id": "OVVG0",
-      "x": 3800,
-      "y": 2085,
-      "name": "dashboard-revenue",
-      "theme": {
-        "Mode": "Light"
-      },
-      "clip": true,
-      "width": 1440,
-      "height": "fit_content(717)",
-      "fill": "$--background"
-    },
-    {
-      "type": "frame",
-      "id": "uL1xr",
-      "x": 3800,
-      "y": 374,
-      "name": "dashboard-utility",
-      "theme": {
-        "Mode": "Light"
-      },
-      "clip": true,
-      "width": 1440,
-      "height": "fit_content(900)",
-      "fill": "$--background"
-    },
-    {
-      "type": "prompt",
-      "id": "KZT7e",
-      "x": 3800,
-      "y": 1700,
-      "model": "cursor-composer",
-      "width": 400,
-      "height": 219,
-      "content": "Design a dashboard into \"dashboard-revenue\" frame for a revenue tracking app with a sidebar, showing revenue stats, history in the content."
-    },
-    {
-      "type": "prompt",
-      "id": "7cbgG",
-      "x": 3800,
-      "y": 0,
-      "model": "cursor-composer",
-      "width": 400,
-      "height": 219,
-      "content": "Design a dashboard for this language app and highlight the progress for one or more scripts that someone is learning, we are going to implement SM-2 Algorithm for spaced repetion learning so find a nice way to highlight how each character is going for them and maybe the grand total for a specific script."
-    },
-    {
-      "type": "prompt",
-      "id": "1xdoT",
-      "x": 3800,
-      "y": 3509,
-      "model": "cursor-composer",
-      "width": 400,
-      "height": 219,
-      "content": "Design a dashboard into \"dashboard-football\" frame with a table ranking UEFA teams. Show goal counts, captain name, etc. Put stats on the top."
-    },
-    {
-      "type": "frame",
       "id": "5mJji",
-      "x": 5340,
+      "x": 3950,
       "y": 0,
       "name": "Home - Script Learning",
       "clip": true,
@@ -4509,7 +4434,8 @@
                               "fill": "#9C9B99",
                               "content": "5 characters · Completed",
                               "fontFamily": "Outfit",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -4583,7 +4509,8 @@
                               "fill": "#3D8A5A",
                               "content": "3 of 5 characters",
                               "fontFamily": "Outfit",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -4663,7 +4590,8 @@
                               "fill": "#9C9B99",
                               "content": "5 characters · Not started",
                               "fontFamily": "Outfit",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -4840,7 +4768,7 @@
     {
       "type": "frame",
       "id": "mr2Hb",
-      "x": 5842,
+      "x": 4452,
       "y": 0,
       "name": "Practice - Quiz",
       "clip": true,
@@ -5037,7 +4965,8 @@
                   "fill": "#1A1918",
                   "content": "き",
                   "fontFamily": "Noto Sans JP",
-                  "fontSize": 80
+                  "fontSize": 80,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -5260,7 +5189,7 @@
     {
       "type": "frame",
       "id": "kcTjn",
-      "x": 6344,
+      "x": 4954,
       "y": 0,
       "name": "Character Reference",
       "clip": true,
@@ -5401,7 +5330,8 @@
                   "fill": "#9C9B99",
                   "content": "5 characters",
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -5442,7 +5372,8 @@
                       "fill": "#1A1918",
                       "content": "あ",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5486,7 +5417,8 @@
                       "fill": "#1A1918",
                       "content": "い",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5530,7 +5462,8 @@
                       "fill": "#1A1918",
                       "content": "う",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5574,7 +5507,8 @@
                       "fill": "#1A1918",
                       "content": "え",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5618,7 +5552,8 @@
                       "fill": "#1A1918",
                       "content": "お",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5659,7 +5594,8 @@
                   "fill": "#9C9B99",
                   "content": "5 characters",
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -5700,7 +5636,8 @@
                       "fill": "#1A1918",
                       "content": "か",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5744,7 +5681,8 @@
                       "fill": "#1A1918",
                       "content": "き",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5788,7 +5726,8 @@
                       "fill": "#1A1918",
                       "content": "く",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5832,7 +5771,8 @@
                       "fill": "#1A1918",
                       "content": "け",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5876,7 +5816,8 @@
                       "fill": "#1A1918",
                       "content": "こ",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -5917,7 +5858,8 @@
                   "fill": "#9C9B99",
                   "content": "5 characters",
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -5958,7 +5900,8 @@
                       "fill": "#1A1918",
                       "content": "さ",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -6002,7 +5945,8 @@
                       "fill": "#1A1918",
                       "content": "し",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -6046,7 +5990,8 @@
                       "fill": "#1A1918",
                       "content": "す",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -6090,7 +6035,8 @@
                       "fill": "#1A1918",
                       "content": "せ",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -6134,7 +6080,8 @@
                       "fill": "#1A1918",
                       "content": "そ",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 24
+                      "fontSize": 24,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -6317,7 +6264,7 @@
     {
       "type": "frame",
       "id": "csSws",
-      "x": 5340,
+      "x": 3950,
       "y": 974,
       "name": "Onboarding 1 - Language",
       "clip": true,
@@ -6445,7 +6392,8 @@
               "lineHeight": 1.4,
               "textAlign": "center",
               "fontFamily": "Outfit",
-              "fontSize": 15
+              "fontSize": 15,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -6509,7 +6457,8 @@
                       "fill": "#3D8A5A",
                       "content": "あ",
                       "fontFamily": "Noto Sans JP",
-                      "fontSize": 28
+                      "fontSize": 28,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -6538,7 +6487,8 @@
                       "fill": "#6D6C6A",
                       "content": "Hiragana & Katakana · 92 characters",
                       "fontFamily": "Outfit",
-                      "fontSize": 13
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -6616,7 +6566,8 @@
                       "fill": "#6D6C6A",
                       "content": "ㄱ",
                       "fontFamily": "Noto Sans KR",
-                      "fontSize": 28
+                      "fontSize": 28,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -6645,7 +6596,8 @@
                       "fill": "#6D6C6A",
                       "content": "Hangul · 40 characters",
                       "fontFamily": "Outfit",
-                      "fontSize": 13
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -6722,7 +6674,8 @@
                       "fill": "#6D6C6A",
                       "content": "ا",
                       "fontFamily": "Noto Sans Arabic",
-                      "fontSize": 28
+                      "fontSize": 28,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -6751,7 +6704,8 @@
                       "fill": "#6D6C6A",
                       "content": "Abjad · 28 characters",
                       "fontFamily": "Outfit",
-                      "fontSize": 13
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -6829,7 +6783,7 @@
     {
       "type": "frame",
       "id": "qKmxZ",
-      "x": 5842,
+      "x": 4452,
       "y": 974,
       "name": "Onboarding 2 - Study Goal",
       "clip": true,
@@ -6976,7 +6930,8 @@
               "lineHeight": 1.4,
               "textAlign": "center",
               "fontFamily": "Outfit",
-              "fontSize": 15
+              "fontSize": 15,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -7003,7 +6958,8 @@
                   "fill": "#3D8A5A",
                   "content": "あ",
                   "fontFamily": "Noto Sans JP",
-                  "fontSize": 14
+                  "fontSize": 14,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -7106,7 +7062,8 @@
                       "fill": "#6D6C6A",
                       "content": "5 characters/day · ~19 days",
                       "fontFamily": "Outfit",
-                      "fontSize": 13
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -7246,7 +7203,8 @@
                       "fill": "#6D6C6A",
                       "content": "10 characters/day · ~10 days",
                       "fontFamily": "Outfit",
-                      "fontSize": 13
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -7362,7 +7320,8 @@
                       "fill": "#6D6C6A",
                       "content": "15 characters/day · ~7 days",
                       "fontFamily": "Outfit",
-                      "fontSize": 13
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -7419,7 +7378,8 @@
               "content": "You can change this anytime in Settings",
               "textAlign": "center",
               "fontFamily": "Outfit",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -7451,7 +7411,7 @@
     {
       "type": "frame",
       "id": "GdBD4",
-      "x": 6344,
+      "x": 4954,
       "y": 974,
       "name": "Onboarding 3 - Ready",
       "clip": true,
@@ -7602,7 +7562,8 @@
               "lineHeight": 1.4,
               "textAlign": "center",
               "fontFamily": "Outfit",
-              "fontSize": 15
+              "fontSize": 15,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7689,7 +7650,8 @@
                           "fill": "#3D8A5A",
                           "content": "あ",
                           "fontFamily": "Noto Sans JP",
-                          "fontSize": 18
+                          "fontSize": 18,
+                          "fontWeight": "normal"
                         },
                         {
                           "type": "text",
@@ -7698,7 +7660,8 @@
                           "fill": "#D89575",
                           "content": "ア",
                           "fontFamily": "Noto Sans JP",
-                          "fontSize": 18
+                          "fontSize": 18,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -7886,7 +7849,8 @@
                   "content": "Tip: Short, daily sessions work better than long, irregular ones.",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 13
+                  "fontSize": 13,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -8094,7 +8058,8 @@
                       "content": "Track your script learning progress",
                       "lineHeight": 1.5,
                       "fontFamily": "$--font-secondary",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -8120,6 +8085,47 @@
                       }
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "id": "jcqC9",
+              "type": "ref",
+              "ref": "YJiio",
+              "name": "Script Tabs",
+              "width": "fit_content",
+              "x": 48,
+              "y": 131,
+              "children": [
+                {
+                  "id": "KFI9N",
+                  "type": "ref",
+                  "ref": "Axg1e",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Hiragana"
+                    }
+                  }
+                },
+                {
+                  "id": "L39up",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Katakana"
+                    }
+                  }
+                },
+                {
+                  "id": "eWtht",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Kanji"
+                    }
+                  }
                 }
               ]
             },
@@ -8163,7 +8169,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Characters Learnt",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -8229,7 +8236,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Review Accuracy",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -8295,7 +8303,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Due Today",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -10932,7 +10941,7 @@
             "Fpzpi": {
               "content": "Glyf",
               "x": 48,
-              "y": 9.54930803665712,
+              "y": 9.549308036657122,
               "rotation": 0.19459847834390867
             },
             "hYFpr": {
@@ -11081,7 +11090,8 @@
                       "content": "Track your Hangul learning progress",
                       "lineHeight": 1.5,
                       "fontFamily": "$--font-secondary",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -11107,6 +11117,45 @@
                       }
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "id": "zyYgK",
+              "type": "ref",
+              "ref": "YJiio",
+              "name": "Script Tabs",
+              "width": "fit_content",
+              "children": [
+                {
+                  "id": "RMrBX",
+                  "type": "ref",
+                  "ref": "Axg1e",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Hangul"
+                    }
+                  }
+                },
+                {
+                  "id": "T19nL",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Hiragana"
+                    }
+                  }
+                },
+                {
+                  "id": "GFWZ4",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Katakana"
+                    }
+                  }
                 }
               ]
             },
@@ -11150,7 +11199,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Characters Learnt",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -11216,7 +11266,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Review Accuracy",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -11282,7 +11333,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Due Today",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -13482,7 +13534,8 @@
                       "content": "Track your script learning progress",
                       "lineHeight": 1.5,
                       "fontFamily": "$--font-secondary",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -13508,6 +13561,45 @@
                       }
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "id": "57J6h",
+              "type": "ref",
+              "ref": "YJiio",
+              "name": "Script Tabs",
+              "width": "fit_content",
+              "children": [
+                {
+                  "id": "5FbFK",
+                  "type": "ref",
+                  "ref": "Axg1e",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Hiragana"
+                    }
+                  }
+                },
+                {
+                  "id": "kF9Aw",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Katakana"
+                    }
+                  }
+                },
+                {
+                  "id": "Kyxfj",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Kanji"
+                    }
+                  }
                 }
               ]
             },
@@ -13551,7 +13643,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Characters Learnt",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -13617,7 +13710,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Review Accuracy",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -13683,7 +13777,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Due Today",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -16469,7 +16564,8 @@
                       "content": "Track your Hangul learning progress",
                       "lineHeight": 1.5,
                       "fontFamily": "$--font-secondary",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -16495,6 +16591,47 @@
                       }
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "id": "khkOd",
+              "type": "ref",
+              "ref": "YJiio",
+              "name": "Script Tabs",
+              "width": "fit_content",
+              "children": [
+                {
+                  "id": "6IRXe",
+                  "type": "ref",
+                  "ref": "Axg1e",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Hangul"
+                    }
+                  }
+                },
+                {
+                  "id": "7dEH4",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Hiragana",
+                      "fill": "$--accent"
+                    }
+                  }
+                },
+                {
+                  "id": "uXqQU",
+                  "type": "ref",
+                  "ref": "H2eCV",
+                  "descendants": {
+                    "lsCeq": {
+                      "content": "Katakana",
+                      "fill": "$--accent"
+                    }
+                  }
                 }
               ]
             },
@@ -16538,7 +16675,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Characters Learnt",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -16604,7 +16742,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Review Accuracy",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -16670,7 +16809,8 @@
                               "fill": "$--muted-foreground",
                               "content": "Due Today",
                               "fontFamily": "$--font-secondary",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             },
                             {
                               "type": "icon_font",
@@ -16929,6 +17069,9 @@
                               "type": "frame",
                               "id": "QaZ0K",
                               "name": "Consonants Grid",
+                              "theme": {
+                                "Mode": "Light"
+                              },
                               "width": "fill_container",
                               "gap": 6,
                               "children": [
@@ -17092,6 +17235,9 @@
                               "type": "frame",
                               "id": "yqpKH",
                               "name": "Consonants Grid 2",
+                              "theme": {
+                                "Mode": "Light"
+                              },
                               "width": "fill_container",
                               "gap": 6,
                               "children": [
@@ -17572,6 +17718,9 @@
                               "type": "frame",
                               "id": "CfI5o",
                               "name": "Stacked Bar",
+                              "theme": {
+                                "Mode": "Light"
+                              },
                               "clip": true,
                               "width": "fill_container",
                               "height": 16,
@@ -18703,6 +18852,1845 @@
                       }
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "SnCuW",
+      "x": 0,
+      "y": 7600,
+      "name": "Landing Page",
+      "width": 1440,
+      "fill": "$--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "gnFph",
+          "name": "Header",
+          "width": "fill_container",
+          "padding": [
+            20,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "s3fDT",
+              "name": "logoText",
+              "fill": "$--foreground",
+              "content": "glyf",
+              "fontFamily": "Outfit",
+              "fontSize": 28,
+              "fontWeight": "700",
+              "letterSpacing": -1
+            },
+            {
+              "type": "frame",
+              "id": "43Uul",
+              "name": "navGroup",
+              "gap": 40,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZYLGh",
+                  "name": "nav1",
+                  "fill": "$--muted-foreground",
+                  "content": "Scripts",
+                  "fontFamily": "Outfit",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "E34mL",
+                  "name": "nav2",
+                  "fill": "$--muted-foreground",
+                  "content": "How it works",
+                  "fontFamily": "Outfit",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "rZM9j",
+                  "name": "nav3",
+                  "fill": "$--muted-foreground",
+                  "content": "Features",
+                  "fontFamily": "Outfit",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Kat3P",
+                  "name": "nav4",
+                  "fill": "$--muted-foreground",
+                  "content": "Pricing",
+                  "fontFamily": "Outfit",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "58IKH",
+              "name": "ctaGroup",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wGCyi",
+                  "name": "loginLink",
+                  "fill": "$--foreground",
+                  "content": "Log in",
+                  "fontFamily": "Outfit",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "xy6ka",
+                  "name": "ctaBtn",
+                  "fill": "$--primary",
+                  "cornerRadius": "$--radius-pill",
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vBqHJ",
+                      "name": "ctaBtnText",
+                      "fill": "$--primary-foreground",
+                      "content": "Start learning",
+                      "fontFamily": "Outfit",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pnWIt",
+          "name": "Hero",
+          "width": "fill_container",
+          "gap": 60,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Zmpok",
+              "name": "heroLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rf65h",
+                  "name": "badge",
+                  "fill": "$--accent-light-green",
+                  "cornerRadius": "$--radius-pill",
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "M7Cic",
+                      "name": "badgeDot",
+                      "fill": "$--primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "dUmkb",
+                      "name": "badgeText",
+                      "fill": "#2D6B45",
+                      "content": "Free to start — no credit card needed",
+                      "fontFamily": "Outfit",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "fofAl",
+                  "name": "heroHeadline",
+                  "fill": "$--foreground",
+                  "content": "Learn to read\n& write any script",
+                  "lineHeight": 1.05,
+                  "fontFamily": "Outfit",
+                  "fontSize": 64,
+                  "fontWeight": "700",
+                  "letterSpacing": -2
+                },
+                {
+                  "type": "text",
+                  "id": "MzBML",
+                  "name": "heroSub",
+                  "fill": "$--muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": 520,
+                  "content": "Master writing systems from around the world with guided lessons, spaced repetition & a practice routine that fits your life.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Outfit",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "E9Gdk",
+                  "name": "heroCtas",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "u6gbm",
+                      "name": "heroCtaPrimary",
+                      "fill": "$--primary",
+                      "cornerRadius": "$--radius-pill",
+                      "gap": 10,
+                      "padding": [
+                        18,
+                        36
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fL4AO",
+                          "name": "heroCtaPrimaryText",
+                          "fill": "$--primary-foreground",
+                          "content": "Start learning free",
+                          "fontFamily": "Outfit",
+                          "fontSize": 17,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "HyzbC",
+                          "name": "heroCtaPrimaryArrow",
+                          "width": 20,
+                          "height": 20,
+                          "iconFontName": "arrow-right",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--primary-foreground"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "pBraf",
+                      "name": "heroCtaSecondary",
+                      "cornerRadius": "$--radius-pill",
+                      "stroke": {
+                        "thickness": 1.5,
+                        "fill": "$--border"
+                      },
+                      "padding": [
+                        18,
+                        36
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "XVtkM",
+                          "name": "heroCtaSecondaryText",
+                          "fill": "$--foreground",
+                          "content": "See how it works",
+                          "fontFamily": "Outfit",
+                          "fontSize": 17,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ioaoa",
+              "name": "heroRight",
+              "width": 480,
+              "height": 480,
+              "fill": "$--tile",
+              "cornerRadius": 40,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Wzlnu",
+                  "x": 40,
+                  "y": 40,
+                  "name": "charA",
+                  "opacity": 0.9,
+                  "fill": "$--primary",
+                  "content": "あ",
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 120,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "ACtuo",
+                  "x": 300,
+                  "y": 30,
+                  "name": "charKa",
+                  "opacity": 0.6,
+                  "fill": "$--accent-warm",
+                  "content": "か",
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 72,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "vK1DY",
+                  "x": 280,
+                  "y": 200,
+                  "name": "charHa",
+                  "opacity": 0.4,
+                  "fill": "$--primary",
+                  "content": "ア",
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 96,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "2sKT3",
+                  "x": 60,
+                  "y": 240,
+                  "name": "charKo",
+                  "opacity": 0.7,
+                  "fill": "#3D8A5A",
+                  "content": "한",
+                  "fontFamily": "Noto Sans KR",
+                  "fontSize": 100,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "n33sY",
+                  "x": 200,
+                  "y": 120,
+                  "name": "charAr",
+                  "opacity": 0.5,
+                  "fill": "$--accent-warm",
+                  "content": "ب",
+                  "fontFamily": "Noto Sans Arabic",
+                  "fontSize": 80,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "2Y2GA",
+                  "x": 350,
+                  "y": 360,
+                  "name": "charSa",
+                  "opacity": 0.3,
+                  "fill": "$--muted-foreground",
+                  "content": "さ",
+                  "fontFamily": "Noto Sans JP",
+                  "fontSize": 56,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "dgyvu",
+                  "x": 160,
+                  "y": 380,
+                  "name": "charNi",
+                  "opacity": 0.35,
+                  "fill": "$--primary",
+                  "content": "ㅎ",
+                  "fontFamily": "Noto Sans KR",
+                  "fontSize": 64,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Cw86o",
+                  "x": 140,
+                  "y": 190,
+                  "name": "charDev",
+                  "opacity": 0.45,
+                  "fill": "#7B6B9E",
+                  "content": "क",
+                  "fontFamily": "Noto Sans Devanagari",
+                  "fontSize": 58,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "HnLSV",
+                  "x": 340,
+                  "y": 90,
+                  "name": "charKhmer",
+                  "opacity": 0.4,
+                  "fill": "$--accent-warm",
+                  "content": "ក",
+                  "fontFamily": "Noto Sans Khmer",
+                  "fontSize": 52,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Gn2AF",
+          "name": "Scripts Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "5lxQV",
+              "name": "scriptsHeader",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LZ9kc",
+                  "name": "scriptsLabel",
+                  "fill": "$--primary",
+                  "content": "GROWING LIBRARY",
+                  "fontFamily": "Outfit",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "HB19s",
+                  "name": "scriptsTitle",
+                  "fill": "$--foreground",
+                  "content": "One platform, every script",
+                  "fontFamily": "Outfit",
+                  "fontSize": 40,
+                  "fontWeight": "700",
+                  "letterSpacing": -1
+                },
+                {
+                  "type": "text",
+                  "id": "ERmFI",
+                  "name": "scriptsSub",
+                  "fill": "$--muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": 560,
+                  "content": "We started with Japanese & Korean, and we’re always adding more. Your next writing system is on its way.",
+                  "textAlign": "center",
+                  "fontFamily": "Outfit",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EXEEE",
+              "name": "scriptsGrid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EGRPQ",
+                  "name": "card1",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 24,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#1A191808",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 12
+                  },
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "8tfVT",
+                      "name": "card1Icon",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "$--accent-light-green",
+                      "cornerRadius": 16,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "e9oqS",
+                          "name": "card1Char",
+                          "fill": "$--primary",
+                          "content": "あ",
+                          "fontFamily": "Noto Sans JP",
+                          "fontSize": 28,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hjWSk",
+                      "name": "card1Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ccPg5",
+                          "name": "card1Title",
+                          "fill": "$--foreground",
+                          "content": "Japanese",
+                          "fontFamily": "Outfit",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "NXupz",
+                          "name": "card1Desc",
+                          "fill": "$--muted-foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Hiragana & Katakana — 92 characters across two syllabaries. Perfect for beginners starting their Japanese journey.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "o3zYw",
+                      "name": "card1Stats",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "74T4k",
+                          "name": "card1Stat1",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "39UAx",
+                              "name": "card1Stat1Val",
+                              "fill": "$--foreground",
+                              "content": "92",
+                              "fontFamily": "Outfit",
+                              "fontSize": 28,
+                              "fontWeight": "700",
+                              "letterSpacing": -1
+                            },
+                            {
+                              "type": "text",
+                              "id": "DySq0",
+                              "name": "card1Stat1Label",
+                              "fill": "$--muted-foreground",
+                              "content": "characters",
+                              "fontFamily": "Outfit",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IlqUj",
+                          "name": "card1Stat2",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "35p01",
+                              "name": "card1Stat2Val",
+                              "fill": "$--foreground",
+                              "content": "2",
+                              "fontFamily": "Outfit",
+                              "fontSize": 28,
+                              "fontWeight": "700",
+                              "letterSpacing": -1
+                            },
+                            {
+                              "type": "text",
+                              "id": "yXQ3a",
+                              "name": "card1Stat2Label",
+                              "fill": "$--muted-foreground",
+                              "content": "scripts",
+                              "fontFamily": "Outfit",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "6Kur3",
+                  "name": "card2",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 24,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#1A191808",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 12
+                  },
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "LkOrZ",
+                      "name": "card2Icon",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "#FDE8DB",
+                      "cornerRadius": 16,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "5hyXU",
+                          "name": "card2Char",
+                          "fill": "$--accent-warm",
+                          "content": "한",
+                          "fontFamily": "Noto Sans KR",
+                          "fontSize": 28,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7Iwir",
+                      "name": "card2Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "6Urph",
+                          "name": "card2Title",
+                          "fill": "$--foreground",
+                          "content": "Korean",
+                          "fontFamily": "Outfit",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "FzIfC",
+                          "name": "card2Desc",
+                          "fill": "$--muted-foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Hangul — 40 characters in one elegant, logical alphabet. Designed to be learnable in hours, not months.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "emstj",
+                      "name": "card2Stats",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bURIg",
+                          "name": "card2Stat1",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "jUQj8",
+                              "name": "card2Stat1Val",
+                              "fill": "$--foreground",
+                              "content": "40",
+                              "fontFamily": "Outfit",
+                              "fontSize": 28,
+                              "fontWeight": "700",
+                              "letterSpacing": -1
+                            },
+                            {
+                              "type": "text",
+                              "id": "DTitM",
+                              "name": "card2Stat1Lab",
+                              "fill": "$--muted-foreground",
+                              "content": "characters",
+                              "fontFamily": "Outfit",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "0hv5m",
+                          "name": "card2Stat2",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "IlLuc",
+                              "name": "card2Stat2Val",
+                              "fill": "$--foreground",
+                              "content": "1",
+                              "fontFamily": "Outfit",
+                              "fontSize": 28,
+                              "fontWeight": "700",
+                              "letterSpacing": -1
+                            },
+                            {
+                              "type": "text",
+                              "id": "aIzqU",
+                              "name": "card2Stat2Lab",
+                              "fill": "$--muted-foreground",
+                              "content": "script",
+                              "fontFamily": "Outfit",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a3MhP",
+                  "name": "card3",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 24,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#1A191808",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 12
+                  },
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qI0is",
+                      "name": "card3Icon",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "#E8E0F0",
+                      "cornerRadius": 16,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "W0LCu",
+                          "name": "card3Char",
+                          "fill": "#7B6B9E",
+                          "content": "ب",
+                          "fontFamily": "Noto Sans Arabic",
+                          "fontSize": 28,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eGSWf",
+                      "name": "card3Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GFwjo",
+                          "name": "card3Title",
+                          "fill": "$--foreground",
+                          "content": "Arabic",
+                          "fontFamily": "Outfit",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "s8qxr",
+                          "name": "card3Desc",
+                          "fill": "$--muted-foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Abjad — 28 characters with connected letter forms. Learn to read & write right-to-left with confidence.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jFwkr",
+                      "name": "card3Stats",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bvFTW",
+                          "name": "card3Stat1",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ZGLut",
+                              "name": "card3Stat1Val",
+                              "fill": "$--foreground",
+                              "content": "28",
+                              "fontFamily": "Outfit",
+                              "fontSize": 28,
+                              "fontWeight": "700",
+                              "letterSpacing": -1
+                            },
+                            {
+                              "type": "text",
+                              "id": "kA6Wx",
+                              "name": "card3Stat1Lab",
+                              "fill": "$--muted-foreground",
+                              "content": "characters",
+                              "fontFamily": "Outfit",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "jedOR",
+                          "name": "card3Stat2",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Xof5k",
+                              "name": "card3Stat2Val",
+                              "fill": "$--foreground",
+                              "content": "1",
+                              "fontFamily": "Outfit",
+                              "fontSize": 28,
+                              "fontWeight": "700",
+                              "letterSpacing": -1
+                            },
+                            {
+                              "type": "text",
+                              "id": "yGW5M",
+                              "name": "card3Stat2Lab",
+                              "fill": "$--muted-foreground",
+                              "content": "script",
+                              "fontFamily": "Outfit",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "csNfV",
+                      "name": "card3Badge",
+                      "fill": "#FDE8DB",
+                      "cornerRadius": "$--radius-pill",
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Z0MZ4",
+                          "name": "card3BadgeText",
+                          "fill": "$--accent-warm",
+                          "content": "Coming soon",
+                          "fontFamily": "Outfit",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "16URE",
+          "name": "How It Works",
+          "width": "fill_container",
+          "fill": "$--tile",
+          "layout": "vertical",
+          "gap": 56,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "6ZEX9",
+              "name": "howHeader",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aUd1H",
+                  "name": "howLabel",
+                  "fill": "$--primary",
+                  "content": "HOW IT WORKS",
+                  "fontFamily": "Outfit",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "9jMKu",
+                  "name": "howTitle",
+                  "fill": "$--foreground",
+                  "content": "From zero to fluent in three steps",
+                  "fontFamily": "Outfit",
+                  "fontSize": 40,
+                  "fontWeight": "700",
+                  "letterSpacing": -1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "k7kE4",
+              "name": "howGrid",
+              "width": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "5X1TG",
+                  "name": "step1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "df6Kq",
+                      "name": "step1Num",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "$--primary",
+                      "cornerRadius": 100,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "qpBKQ",
+                          "name": "step1NumText",
+                          "fill": "$--primary-foreground",
+                          "content": "1",
+                          "fontFamily": "Outfit",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7DRyp",
+                      "name": "step1Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hmEm9",
+                          "name": "step1Title",
+                          "fill": "$--foreground",
+                          "content": "Pick your script",
+                          "textAlign": "center",
+                          "fontFamily": "Outfit",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "T6Idb",
+                          "name": "step1Desc",
+                          "fill": "$--muted-foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Choose from our growing library of scripts. Set a daily goal that fits your schedule — 5 or 20 characters a day, your call.",
+                          "lineHeight": 1.5,
+                          "textAlign": "center",
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lzYc9",
+                  "name": "step2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yVwG0",
+                      "name": "step2Num",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "$--primary",
+                      "cornerRadius": 100,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "18R5F",
+                          "name": "step2NumText",
+                          "fill": "$--primary-foreground",
+                          "content": "2",
+                          "fontFamily": "Outfit",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "giS2h",
+                      "name": "step2Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "objjX",
+                          "name": "step2Title",
+                          "fill": "$--foreground",
+                          "content": "Learn new glyphs",
+                          "textAlign": "center",
+                          "fontFamily": "Outfit",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "EdOj4",
+                          "name": "step2Desc",
+                          "fill": "$--muted-foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Each character is introduced with its reading, meaning & example words. Practise recognition through quizzes until it clicks.",
+                          "lineHeight": 1.5,
+                          "textAlign": "center",
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cBkaQ",
+                  "name": "step3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dL2Vy",
+                      "name": "step3Num",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "$--primary",
+                      "cornerRadius": 100,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "6IVBk",
+                          "name": "step3NumText",
+                          "fill": "$--primary-foreground",
+                          "content": "3",
+                          "fontFamily": "Outfit",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eQzdw",
+                      "name": "step3Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "96kZ5",
+                          "name": "step3Title",
+                          "fill": "$--foreground",
+                          "content": "Build lasting memory",
+                          "textAlign": "center",
+                          "fontFamily": "Outfit",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "KIZ0L",
+                          "name": "step3Desc",
+                          "fill": "$--muted-foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Spaced repetition quizzes surface characters right before you forget them. Short daily sessions, long-term retention.",
+                          "lineHeight": 1.5,
+                          "textAlign": "center",
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "akdom",
+          "name": "Features",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 56,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Wniuz",
+              "name": "featHeader",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "JzYp7",
+                  "name": "featLabel",
+                  "fill": "$--primary",
+                  "content": "FEATURES",
+                  "fontFamily": "Outfit",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "iBtXD",
+                  "name": "featTitle",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": 700,
+                  "content": "Everything you need to master a writing system",
+                  "textAlign": "center",
+                  "fontFamily": "Outfit",
+                  "fontSize": 40,
+                  "fontWeight": "700",
+                  "letterSpacing": -1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Iesmx",
+              "name": "featGrid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PcGsG",
+                  "name": "f1",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "DaoJp",
+                      "name": "f1Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$--accent-light-green",
+                      "cornerRadius": 14,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "dzbZU",
+                          "name": "f1IconI",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "calendar-check",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "XLH02",
+                      "name": "f1Title",
+                      "fill": "$--foreground",
+                      "content": "Daily practice goals",
+                      "fontFamily": "Outfit",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aOV8q",
+                      "name": "f1Desc",
+                      "fill": "$--muted-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Set a target that fits your schedule — 5 or 20 characters a day. Short, consistent sessions build real fluency.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "e3nrb",
+                  "name": "f2",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "U1LBl",
+                      "name": "f2Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#FDE8DB",
+                      "cornerRadius": 14,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "me3RS",
+                          "name": "f2IconI",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "brain",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--accent-warm"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "M6UGF",
+                      "name": "f2Title",
+                      "fill": "$--foreground",
+                      "content": "Spaced repetition",
+                      "fontFamily": "Outfit",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vNEPb",
+                      "name": "f2Desc",
+                      "fill": "$--muted-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Our algorithm adapts to your memory. Characters you struggle with appear more often; easy ones fade back.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bVZJr",
+                  "name": "f3",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ckkmM",
+                      "name": "f3Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#E8E0F0",
+                      "cornerRadius": 14,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "mintP",
+                          "name": "f3IconI",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "chart-bar",
+                          "iconFontFamily": "lucide",
+                          "fill": "#7B6B9E"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "hDqMu",
+                      "name": "f3Title",
+                      "fill": "$--foreground",
+                      "content": "Progress tracking",
+                      "fontFamily": "Outfit",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CMXeW",
+                      "name": "f3Desc",
+                      "fill": "$--muted-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Visual dashboards show mastery levels, streaks & character grids. Always know where you stand.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zSEiR",
+                  "name": "f4",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "YolDL",
+                      "name": "f4Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$--accent-light-green",
+                      "cornerRadius": 14,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "INwos",
+                          "name": "f4IconI",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "wifi-off",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "lB8Tf",
+                      "name": "f4Title",
+                      "fill": "$--foreground",
+                      "content": "Works offline",
+                      "fontFamily": "Outfit",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Rieov",
+                      "name": "f4Desc",
+                      "fill": "$--muted-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "All character data lives on your device. Learn on the train, in the park, or anywhere without a connection.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xZBoK",
+          "name": "Final CTA",
+          "width": "fill_container",
+          "fill": "$--primary",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "uIFMd",
+              "name": "ctaTitle",
+              "fill": "$--primary-foreground",
+              "textGrowth": "fixed-width",
+              "width": 700,
+              "content": "Start reading a new script today",
+              "textAlign": "center",
+              "fontFamily": "Outfit",
+              "fontSize": 44,
+              "fontWeight": "700",
+              "letterSpacing": -1
+            },
+            {
+              "type": "text",
+              "id": "w3fm0",
+              "name": "ctaSub",
+              "fill": "#FFFFFFCC",
+              "textGrowth": "fixed-width",
+              "width": 500,
+              "content": "Free to use. No account required to begin. Just pick a script & start learning.",
+              "textAlign": "center",
+              "fontFamily": "Outfit",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Hvv2W",
+              "name": "ctaBtnWrap",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k652I",
+                  "name": "ctaBtn2",
+                  "fill": "$--primary-foreground",
+                  "cornerRadius": "$--radius-pill",
+                  "gap": 10,
+                  "padding": [
+                    18,
+                    36
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ut9iL",
+                      "name": "ctaBtn2Text",
+                      "fill": "$--primary",
+                      "content": "Start learning free",
+                      "fontFamily": "Outfit",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "rkLkd",
+                      "name": "ctaBtn2Arrow",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "arrow-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--primary"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "RuZSX",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "$--foreground",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            56,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "IMbgA",
+              "name": "footerTop",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BxarD",
+                  "name": "footerBrand",
+                  "width": 300,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TaCT4",
+                      "name": "footerLogo",
+                      "fill": "$--primary-foreground",
+                      "content": "glyf",
+                      "fontFamily": "Outfit",
+                      "fontSize": 24,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "dwwof",
+                      "name": "footerTagline",
+                      "fill": "#FFFFFF88",
+                      "content": "Learn to read & write any script.\nMaster strokes, build memory, gain fluency.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pmwyX",
+                  "name": "footerCol1",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2s4Ye",
+                      "name": "footerCol1Title",
+                      "fill": "$--primary-foreground",
+                      "content": "Product",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NOV6w",
+                      "name": "footerCol1L1",
+                      "fill": "#FFFFFF88",
+                      "content": "Scripts",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lA73L",
+                      "name": "footerCol1L2",
+                      "fill": "#FFFFFF88",
+                      "content": "Features",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jylS1",
+                      "name": "footerCol1L3",
+                      "fill": "#FFFFFF88",
+                      "content": "Pricing",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XoY6A",
+                  "name": "footerCol2",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "g0MKz",
+                      "name": "footerCol2Title",
+                      "fill": "$--primary-foreground",
+                      "content": "Resources",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "4FL2J",
+                      "name": "footerCol2L1",
+                      "fill": "#FFFFFF88",
+                      "content": "Blog",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pbLWz",
+                      "name": "footerCol2L2",
+                      "fill": "#FFFFFF88",
+                      "content": "Character reference",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pXEHu",
+                      "name": "footerCol2L3",
+                      "fill": "#FFFFFF88",
+                      "content": "Help centre",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JTlWh",
+                  "name": "footerCol3",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2IxFE",
+                      "name": "footerCol3Title",
+                      "fill": "$--primary-foreground",
+                      "content": "Legal",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LQCj0",
+                      "name": "footerCol3L1",
+                      "fill": "#FFFFFF88",
+                      "content": "Privacy",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "S82U3",
+                      "name": "footerCol3L2",
+                      "fill": "#FFFFFF88",
+                      "content": "Terms",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "7hUqa",
+              "name": "footerDivider",
+              "fill": "#FFFFFF1A",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "p2OXE",
+              "name": "footerBottom",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CbGAB",
+                  "name": "footerCopy",
+                  "fill": "#FFFFFF55",
+                  "content": "2026 glyf. All rights reserved.",
+                  "fontFamily": "Outfit",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "D9Y3N",
+                  "name": "footerMadeWith",
+                  "fill": "#FFFFFF55",
+                  "content": "Made with care for learners everywhere",
+                  "fontFamily": "Outfit",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
                 }
               ]
             }

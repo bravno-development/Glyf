@@ -9,6 +9,7 @@
   specs; implement in Svelte with Tailwind and design tokens from
   [design-tokens](design-tokens.md).
 - **Existing references:** Tokens and component patterns are documented in
-  `docs/style-guide.md` and `docs/globals.css`; tokens are copied into
-  `ui/src/app.css`. Use these for implementation details; use the MCP +
-  `docs/ui.pen` to pull the current design in when generating or updating code.
+  `docs/style-guide.md`; tokens live in `ui/src/app.css` and use `light-dark()`
+  for system-based light/dark switching. Use these for implementation details;
+  use the MCP + `docs/ui.pen` to pull the current design in when generating or
+  updating code.

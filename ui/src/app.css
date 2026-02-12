@@ -2,59 +2,61 @@
 
 /* ==========================================================================
    Design Tokens — extracted from docs/ui.pen (halo design system)
-   Theme: Light / Dark (via "Mode" axis)
+   Theme: Light / Dark via light-dark() (Hangul Learning Dashboard palette)
    ========================================================================== */
 
 :root {
+  color-scheme: light dark;
+
   /* -- Colour: Core -------------------------------------------------------- */
-  --background:           #FFFFFF;
-  --foreground:           #2A2933;
-  --card:                 #FFFFFF;
-  --card-foreground:      #2A2933;
-  --primary:              #5749F4;
+  --background:           light-dark(#FFFFFF, #1A1918);
+  --foreground:           light-dark(#2A2933, #F5F4F1);
+  --card:                 light-dark(#FFFFFF, #2A2826);
+  --card-foreground:      light-dark(#2A2933, #F5F4F1);
+  --primary:              light-dark(#5749F4, #4D9B6A);
   --primary-foreground:   #FFFFFF;
-  --secondary:            #D9D9DB;
-  --secondary-foreground: #2A2933;
+  --secondary:            light-dark(#D9D9DB, #3A3836);
+  --secondary-foreground: light-dark(#2A2933, #F5F4F1);
   --destructive:          #CC3314;
   --destructive-foreground: #FFFFFF;
-  --muted:                #F5F5F5;
-  --muted-foreground:     #616167;
-  --accent:               #F5F5F5;
-  --accent-foreground:    #2A2933;
-  --tile:                 #F5F5F5;
-  --input:                #C5C5CB;
-  --border:               #C5C5CB;
-  --ring:                 #E1E2E5;
-  --popover:              #FFFFFF;
-  --popover-foreground:   #2A2933;
-  --text-tertiary:        #9C9B99;
+  --muted:                light-dark(#F5F5F5, #2A2826);
+  --muted-foreground:     light-dark(#616167, #9C9B99);
+  --accent:               light-dark(#F5F5F5, #2A2826);
+  --accent-foreground:    light-dark(#2A2933, #F5F4F1);
+  --tile:                 light-dark(#F5F5F5, #2A2826);
+  --input:                light-dark(#C5C5CB, #3A3836);
+  --border:               light-dark(#C5C5CB, #3A3836);
+  --ring:                 light-dark(#E1E2E5, #666666);
+  --popover:              light-dark(#FFFFFF, #2A2826);
+  --popover-foreground:   light-dark(#2A2933, #F5F4F1);
+  --text-tertiary:        light-dark(#9C9B99, #6D6C6A);
   --black:                #000000;
   --white:                #FFFFFF;
 
   /* -- Colour: Accent specials --------------------------------------------- */
-  --accent-green:         #3D8A5A;
+  --accent-green:         light-dark(#3D8A5A, #4D9B6A);
   --accent-light-green:   #C8F0D8;
   --accent-warm:          #D89575;
 
   /* -- Colour: Semantic ---------------------------------------------------- */
-  --color-info:                 #C9D6F0;
-  --color-info-foreground:      #001133;
-  --color-success:              #A1E5A1;
-  --color-success-foreground:   #003300;
-  --color-warning:              #FFD9B2;
-  --color-warning-foreground:   #4D2700;
-  --color-error:                #FFBFB2;
-  --color-error-foreground:     #590F00;
+  --color-info:                 light-dark(#C9D6F0, #404562);
+  --color-info-foreground:      light-dark(#001133, #B2CCFF);
+  --color-success:              light-dark(#A1E5A1, #3B4748);
+  --color-success-foreground:   light-dark(#003300, #A1E5A1);
+  --color-warning:              light-dark(#FFD9B2, #53484F);
+  --color-warning-foreground:   light-dark(#4D2700, #FFD9B2);
+  --color-error:                light-dark(#FFBFB2, #53424F);
+  --color-error-foreground:     light-dark(#590F00, #FFBFB2);
 
   /* -- Colour: Sidebar ----------------------------------------------------- */
-  --sidebar:                    #FFFFFF;
-  --sidebar-foreground:         #939399;
-  --sidebar-primary:            #F5F5F5;
-  --sidebar-primary-foreground: #2A2933;
-  --sidebar-accent:             #F5F5F5;
-  --sidebar-accent-foreground:  #2A2933;
-  --sidebar-border:             #D9D9DB;
-  --sidebar-ring:               #D9D9DB;
+  --sidebar:                    light-dark(#FFFFFF, #1A182E);
+  --sidebar-foreground:         light-dark(#939399, #ACABB2);
+  --sidebar-primary:            light-dark(#F5F5F5, #0F5FFE);
+  --sidebar-primary-foreground: light-dark(#2A2933, #E8E8EA);
+  --sidebar-accent:             light-dark(#F5F5F5, #2B283D);
+  --sidebar-accent-foreground:  light-dark(#2A2933, #E8E8EA);
+  --sidebar-border:             light-dark(#D9D9DB, #2B283D);
+  --sidebar-ring:               light-dark(#D9D9DB, #2B283D);
 
   /* -- Radius -------------------------------------------------------------- */
   --radius-none: 0px;
@@ -67,49 +69,6 @@
   --shadow-card:    0 10px 8.75px -1px rgba(0, 0, 0, 0.04);
   --shadow-tooltip: 0 2px 3.5px -1px rgba(0, 0, 0, 0.06);
   --shadow-sidebar: 0 4px 5.25px -2px rgba(16, 24, 40, 0.03);
-}
-
-.dark {
-  --background:           #131124;
-  --foreground:           #E8E8EA;
-  --card:                 #1A182E;
-  --card-foreground:      #FFFFFF;
-  --primary:              #5749F4;
-  --primary-foreground:   #FFFFFF;
-  --secondary:            #403F51;
-  --secondary-foreground: #FFFFFF;
-  --destructive:          #CC3314;
-  --destructive-foreground: #FFFFFF;
-  --muted:                #2E2E2E;
-  --muted-foreground:     #888799;
-  --accent:               #131124;
-  --accent-foreground:    #F2F3F0;
-  --tile:                 #1A182E;
-  --input:                #2B283D;
-  --border:               #2B283D;
-  --ring:                 #666666;
-  --popover:              #1A182E;
-  --popover-foreground:   #FFFFFF;
-  --text-tertiary:        #6D6C6A;
-  --accent-green:         #4A9E6A;
-
-  --color-info:                 #404562;
-  --color-info-foreground:      #B2CCFF;
-  --color-success:              #3B4748;
-  --color-success-foreground:   #A1E5A1;
-  --color-warning:              #53484F;
-  --color-warning-foreground:   #FFD9B2;
-  --color-error:                #53424F;
-  --color-error-foreground:     #FFBFB2;
-
-  --sidebar:                    #1A182E;
-  --sidebar-foreground:         #ACABB2;
-  --sidebar-primary:            #0F5FFE;
-  --sidebar-primary-foreground: #E8E8EA;
-  --sidebar-accent:             #2B283D;
-  --sidebar-accent-foreground:  #E8E8EA;
-  --sidebar-border:             #2B283D;
-  --sidebar-ring:               #2B283D;
 }
 
 /* ==========================================================================
