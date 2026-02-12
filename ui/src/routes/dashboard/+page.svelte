@@ -38,11 +38,11 @@
 	let loadingScript = $state(false);
 
 	const masteryLevels = [
-		{ key: "new" as const, label: "New" },
-		{ key: "difficult" as const, label: "Difficult" },
+		{ key: "mastered" as const, label: "Mastered" },
 		{ key: "good" as const, label: "Good" },
 		{ key: "learning" as const, label: "Learning" },
-		{ key: "mastered" as const, label: "Mastered" },
+		{ key: "difficult" as const, label: "Difficult" },
+		{ key: "new" as const, label: "New" },
 	];
 
 	async function loadActiveScriptData(scriptId: string): Promise<void> {
@@ -171,7 +171,7 @@
 					</p>
 				</div>
 				<a
-					href="/learn"
+					href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
 					class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
 				>
 					<Play size={16} fill="white" />
@@ -302,7 +302,7 @@
 									{#each col.chars as char, charIdx (col.label + colIdx + charIdx)}
 										{#if char}
 											<div
-												class="flex h-[52px] w-[52px] items-center justify-center rounded-lg text-[18px] font-medium"
+												class="flex h-[52px] w-[52px] items-center justify-center rounded-lg text-[18px] font-medium text-[var(--black)]"
 												style="background-color: {getGridCharMastery(char)};"
 												title={char}
 											>

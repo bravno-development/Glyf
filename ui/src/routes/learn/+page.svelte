@@ -1,12 +1,32 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
+	import { userStore } from "$lib/stores/user";
+	import { api } from "$lib/services/api";
 	import { getAvailableScripts, type ScriptDefinition } from "$lib/services/scripts";
 
 	let scripts: ScriptDefinition[] = $state([]);
 
+	$effect(() => {
+		if (!$userStore.initialised) return;
+		if (!$userStore.isAuthenticated) {
+			goto("/auth/login");
+		}
+	});
+
 	onMount(async () => {
-		scripts = await getAvailableScripts();
+		try {
+			const userScriptIds = await api.user.getScripts();
+			if (userScriptIds.length === 0) {
+				goto("/onboarding");
+				return;
+			}
+			const allScripts = await getAvailableScripts();
+			const idSet = new Set(userScriptIds);
+			scripts = allScripts.filter((s) => idSet.has(s.id));
+		} catch {
+			goto("/onboarding");
+		}
 	});
 </script>
 

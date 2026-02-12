@@ -30,7 +30,8 @@
 		try {
 			const result = await api.auth.verify({ email, code });
 			userStore.login(result.user, result.token);
-			goto("/");
+			const { onboarded } = await api.onboarding.status();
+			goto(onboarded ? "/dashboard" : "/onboarding");
 		} catch (err) {
 			error = err instanceof Error ? err.message : "Verification failed";
 		} finally {

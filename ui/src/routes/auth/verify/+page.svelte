@@ -22,7 +22,8 @@
 			const result = await api.auth.verify({ token });
 			userStore.login(result.user, result.token);
 			trackEvent("user_logged_in");
-			goto("/dashboard");
+			const { onboarded } = await api.onboarding.status();
+			goto(onboarded ? "/dashboard" : "/onboarding");
 		} catch (err) {
 			error = err instanceof Error ? err.message : "Verification failed";
 			verifying = false;
