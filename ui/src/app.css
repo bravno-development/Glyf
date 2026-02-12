@@ -39,14 +39,16 @@
   --accent-warm:          #D89575;
 
   /* -- Colour: Semantic ---------------------------------------------------- */
+  /* Mastery / status colours: same in light and dark for consistent dashboard legend and bars */
   --color-info:                 light-dark(#C9D6F0, #404562);
   --color-info-foreground:      light-dark(#001133, #B2CCFF);
-  --color-success:              light-dark(#A1E5A1, #3B4748);
+  --color-success:              #A1E5A1;
   --color-success-foreground:   light-dark(#003300, #A1E5A1);
-  --color-warning:              light-dark(#FFD9B2, #53484F);
+  --color-warning:              #FFD9B2;
   --color-warning-foreground:   light-dark(#4D2700, #FFD9B2);
-  --color-error:                light-dark(#FFBFB2, #53424F);
+  --color-error:                #FFBFB2;
   --color-error-foreground:     light-dark(#590F00, #FFBFB2);
+  --mastery-new:                #D9D9DB;
 
   /* -- Colour: Sidebar ----------------------------------------------------- */
   --sidebar:                    light-dark(#FFFFFF, #1A182E);

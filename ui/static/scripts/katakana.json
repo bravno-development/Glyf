@@ -1,0 +1,695 @@
+{
+	"id": "katakana",
+	"language": "ja",
+	"name": "Katakana",
+	"description": "Japanese syllabary used for loanwords, names, and emphasis. 46 basic characters plus ン, plus voiced (dakuten) and handakuten.",
+	"icon": "ア",
+	"available": true,
+	"totalCharacters": 72,
+	"grid": {
+		"columns": [
+			{
+				"label": "ア",
+				"chars": [
+					"ア",
+					"イ",
+					"ウ",
+					"エ",
+					"オ"
+				]
+			},
+			{
+				"label": "カ",
+				"chars": [
+					"カ",
+					"キ",
+					"ク",
+					"ケ",
+					"コ"
+				]
+			},
+			{
+				"label": "サ",
+				"chars": [
+					"サ",
+					"シ",
+					"ス",
+					"セ",
+					"ソ"
+				]
+			},
+			{
+				"label": "タ",
+				"chars": [
+					"タ",
+					"チ",
+					"ツ",
+					"テ",
+					"ト"
+				]
+			},
+			{
+				"label": "ナ",
+				"chars": [
+					"ナ",
+					"ニ",
+					"ヌ",
+					"ネ",
+					"ノ"
+				]
+			},
+			{
+				"label": "ハ",
+				"chars": [
+					"ハ",
+					"ヒ",
+					"フ",
+					"ヘ",
+					"ホ"
+				]
+			},
+			{
+				"label": "マ",
+				"chars": [
+					"マ",
+					"ミ",
+					"ム",
+					"メ",
+					"モ"
+				]
+			},
+			{
+				"label": "ヤ",
+				"chars": [
+					"ヤ",
+					"ユ",
+					"ヨ"
+				]
+			},
+			{
+				"label": "ラ",
+				"chars": [
+					"ラ",
+					"リ",
+					"ル",
+					"レ",
+					"ロ"
+				]
+			},
+			{
+				"label": "ワ",
+				"chars": [
+					"ワ",
+					"ヲ"
+				]
+			},
+			{
+				"label": "ン",
+				"chars": [
+					"ン"
+				]
+			}
+		]
+	},
+	"characters": [
+		{
+			"id": "katakana-a",
+			"character": "ア",
+			"meaning": "a",
+			"readings": [
+				"a"
+			]
+		},
+		{
+			"id": "katakana-i",
+			"character": "イ",
+			"meaning": "i",
+			"readings": [
+				"i"
+			]
+		},
+		{
+			"id": "katakana-u",
+			"character": "ウ",
+			"meaning": "u",
+			"readings": [
+				"u"
+			]
+		},
+		{
+			"id": "katakana-e",
+			"character": "エ",
+			"meaning": "e",
+			"readings": [
+				"e"
+			]
+		},
+		{
+			"id": "katakana-o",
+			"character": "オ",
+			"meaning": "o",
+			"readings": [
+				"o"
+			]
+		},
+		{
+			"id": "katakana-ka",
+			"character": "カ",
+			"meaning": "ka",
+			"readings": [
+				"ka"
+			]
+		},
+		{
+			"id": "katakana-ki",
+			"character": "キ",
+			"meaning": "ki",
+			"readings": [
+				"ki"
+			]
+		},
+		{
+			"id": "katakana-ku",
+			"character": "ク",
+			"meaning": "ku",
+			"readings": [
+				"ku"
+			]
+		},
+		{
+			"id": "katakana-ke",
+			"character": "ケ",
+			"meaning": "ke",
+			"readings": [
+				"ke"
+			]
+		},
+		{
+			"id": "katakana-ko",
+			"character": "コ",
+			"meaning": "ko",
+			"readings": [
+				"ko"
+			]
+		},
+		{
+			"id": "katakana-sa",
+			"character": "サ",
+			"meaning": "sa",
+			"readings": [
+				"sa"
+			]
+		},
+		{
+			"id": "katakana-shi",
+			"character": "シ",
+			"meaning": "shi",
+			"readings": [
+				"shi",
+				"si"
+			]
+		},
+		{
+			"id": "katakana-su",
+			"character": "ス",
+			"meaning": "su",
+			"readings": [
+				"su"
+			]
+		},
+		{
+			"id": "katakana-se",
+			"character": "セ",
+			"meaning": "se",
+			"readings": [
+				"se"
+			]
+		},
+		{
+			"id": "katakana-so",
+			"character": "ソ",
+			"meaning": "so",
+			"readings": [
+				"so"
+			]
+		},
+		{
+			"id": "katakana-ta",
+			"character": "タ",
+			"meaning": "ta",
+			"readings": [
+				"ta"
+			]
+		},
+		{
+			"id": "katakana-chi",
+			"character": "チ",
+			"meaning": "chi",
+			"readings": [
+				"chi",
+				"ti"
+			]
+		},
+		{
+			"id": "katakana-tsu",
+			"character": "ツ",
+			"meaning": "tsu",
+			"readings": [
+				"tsu",
+				"tu"
+			]
+		},
+		{
+			"id": "katakana-te",
+			"character": "テ",
+			"meaning": "te",
+			"readings": [
+				"te"
+			]
+		},
+		{
+			"id": "katakana-to",
+			"character": "ト",
+			"meaning": "to",
+			"readings": [
+				"to"
+			]
+		},
+		{
+			"id": "katakana-na",
+			"character": "ナ",
+			"meaning": "na",
+			"readings": [
+				"na"
+			]
+		},
+		{
+			"id": "katakana-ni",
+			"character": "ニ",
+			"meaning": "ni",
+			"readings": [
+				"ni"
+			]
+		},
+		{
+			"id": "katakana-nu",
+			"character": "ヌ",
+			"meaning": "nu",
+			"readings": [
+				"nu"
+			]
+		},
+		{
+			"id": "katakana-ne",
+			"character": "ネ",
+			"meaning": "ne",
+			"readings": [
+				"ne"
+			]
+		},
+		{
+			"id": "katakana-no",
+			"character": "ノ",
+			"meaning": "no",
+			"readings": [
+				"no"
+			]
+		},
+		{
+			"id": "katakana-ha",
+			"character": "ハ",
+			"meaning": "ha",
+			"readings": [
+				"ha",
+				"wa"
+			]
+		},
+		{
+			"id": "katakana-hi",
+			"character": "ヒ",
+			"meaning": "hi",
+			"readings": [
+				"hi"
+			]
+		},
+		{
+			"id": "katakana-fu",
+			"character": "フ",
+			"meaning": "fu",
+			"readings": [
+				"fu",
+				"hu"
+			]
+		},
+		{
+			"id": "katakana-he",
+			"character": "ヘ",
+			"meaning": "he",
+			"readings": [
+				"he",
+				"e"
+			]
+		},
+		{
+			"id": "katakana-ho",
+			"character": "ホ",
+			"meaning": "ho",
+			"readings": [
+				"ho"
+			]
+		},
+		{
+			"id": "katakana-ma",
+			"character": "マ",
+			"meaning": "ma",
+			"readings": [
+				"ma"
+			]
+		},
+		{
+			"id": "katakana-mi",
+			"character": "ミ",
+			"meaning": "mi",
+			"readings": [
+				"mi"
+			]
+		},
+		{
+			"id": "katakana-mu",
+			"character": "ム",
+			"meaning": "mu",
+			"readings": [
+				"mu"
+			]
+		},
+		{
+			"id": "katakana-me",
+			"character": "メ",
+			"meaning": "me",
+			"readings": [
+				"me"
+			]
+		},
+		{
+			"id": "katakana-mo",
+			"character": "モ",
+			"meaning": "mo",
+			"readings": [
+				"mo"
+			]
+		},
+		{
+			"id": "katakana-ya",
+			"character": "ヤ",
+			"meaning": "ya",
+			"readings": [
+				"ya"
+			]
+		},
+		{
+			"id": "katakana-yu",
+			"character": "ユ",
+			"meaning": "yu",
+			"readings": [
+				"yu"
+			]
+		},
+		{
+			"id": "katakana-yo",
+			"character": "ヨ",
+			"meaning": "yo",
+			"readings": [
+				"yo"
+			]
+		},
+		{
+			"id": "katakana-ra",
+			"character": "ラ",
+			"meaning": "ra",
+			"readings": [
+				"ra"
+			]
+		},
+		{
+			"id": "katakana-ri",
+			"character": "リ",
+			"meaning": "ri",
+			"readings": [
+				"ri"
+			]
+		},
+		{
+			"id": "katakana-ru",
+			"character": "ル",
+			"meaning": "ru",
+			"readings": [
+				"ru"
+			]
+		},
+		{
+			"id": "katakana-re",
+			"character": "レ",
+			"meaning": "re",
+			"readings": [
+				"re"
+			]
+		},
+		{
+			"id": "katakana-ro",
+			"character": "ロ",
+			"meaning": "ro",
+			"readings": [
+				"ro"
+			]
+		},
+		{
+			"id": "katakana-wa",
+			"character": "ワ",
+			"meaning": "wa",
+			"readings": [
+				"wa"
+			]
+		},
+		{
+			"id": "katakana-wo",
+			"character": "ヲ",
+			"meaning": "wo",
+			"readings": [
+				"wo",
+				"o"
+			]
+		},
+		{
+			"id": "katakana-n",
+			"character": "ン",
+			"meaning": "n",
+			"readings": [
+				"n",
+				"n'"
+			]
+		},
+		{
+			"id": "katakana-ga",
+			"character": "ガ",
+			"meaning": "ga",
+			"readings": [
+				"ga"
+			]
+		},
+		{
+			"id": "katakana-gi",
+			"character": "ギ",
+			"meaning": "gi",
+			"readings": [
+				"gi"
+			]
+		},
+		{
+			"id": "katakana-gu",
+			"character": "グ",
+			"meaning": "gu",
+			"readings": [
+				"gu"
+			]
+		},
+		{
+			"id": "katakana-ge",
+			"character": "ゲ",
+			"meaning": "ge",
+			"readings": [
+				"ge"
+			]
+		},
+		{
+			"id": "katakana-go",
+			"character": "ゴ",
+			"meaning": "go",
+			"readings": [
+				"go"
+			]
+		},
+		{
+			"id": "katakana-za",
+			"character": "ザ",
+			"meaning": "za",
+			"readings": [
+				"za"
+			]
+		},
+		{
+			"id": "katakana-ji",
+			"character": "ジ",
+			"meaning": "ji",
+			"readings": [
+				"ji",
+				"zi"
+			]
+		},
+		{
+			"id": "katakana-zu",
+			"character": "ズ",
+			"meaning": "zu",
+			"readings": [
+				"zu"
+			]
+		},
+		{
+			"id": "katakana-ze",
+			"character": "ゼ",
+			"meaning": "ze",
+			"readings": [
+				"ze"
+			]
+		},
+		{
+			"id": "katakana-zo",
+			"character": "ゾ",
+			"meaning": "zo",
+			"readings": [
+				"zo"
+			]
+		},
+		{
+			"id": "katakana-da",
+			"character": "ダ",
+			"meaning": "da",
+			"readings": [
+				"da"
+			]
+		},
+		{
+			"id": "katakana-di",
+			"character": "ヂ",
+			"meaning": "ji",
+			"readings": [
+				"ji",
+				"di"
+			]
+		},
+		{
+			"id": "katakana-du",
+			"character": "ヅ",
+			"meaning": "zu",
+			"readings": [
+				"zu",
+				"du"
+			]
+		},
+		{
+			"id": "katakana-de",
+			"character": "デ",
+			"meaning": "de",
+			"readings": [
+				"de"
+			]
+		},
+		{
+			"id": "katakana-do",
+			"character": "ド",
+			"meaning": "do",
+			"readings": [
+				"do"
+			]
+		},
+		{
+			"id": "katakana-ba",
+			"character": "バ",
+			"meaning": "ba",
+			"readings": [
+				"ba"
+			]
+		},
+		{
+			"id": "katakana-bi",
+			"character": "ビ",
+			"meaning": "bi",
+			"readings": [
+				"bi"
+			]
+		},
+		{
+			"id": "katakana-bu",
+			"character": "ブ",
+			"meaning": "bu",
+			"readings": [
+				"bu"
+			]
+		},
+		{
+			"id": "katakana-be",
+			"character": "ベ",
+			"meaning": "be",
+			"readings": [
+				"be"
+			]
+		},
+		{
+			"id": "katakana-bo",
+			"character": "ボ",
+			"meaning": "bo",
+			"readings": [
+				"bo"
+			]
+		},
+		{
+			"id": "katakana-pa",
+			"character": "パ",
+			"meaning": "pa",
+			"readings": [
+				"pa"
+			]
+		},
+		{
+			"id": "katakana-pi",
+			"character": "ピ",
+			"meaning": "pi",
+			"readings": [
+				"pi"
+			]
+		},
+		{
+			"id": "katakana-pu",
+			"character": "プ",
+			"meaning": "pu",
+			"readings": [
+				"pu"
+			]
+		},
+		{
+			"id": "katakana-pe",
+			"character": "ペ",
+			"meaning": "pe",
+			"readings": [
+				"pe"
+			]
+		},
+		{
+			"id": "katakana-po",
+			"character": "ポ",
+			"meaning": "po",
+			"readings": [
+				"po"
+			]
+		}
+	]
+}

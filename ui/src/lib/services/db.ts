@@ -6,8 +6,6 @@ export interface Character {
 	character: string;
 	meaning: string;
 	readings?: string[];
-	frequency: number;
-	strokes?: unknown[];
 }
 
 export interface Sentence {
@@ -56,7 +54,7 @@ export class GlyfDB extends Dexie {
 		super('GlyfDB');
 
 		this.version(1).stores({
-			characters: 'id, script, frequency',
+			characters: 'id, script',
 			sentences: 'id, script, difficulty',
 			reviews: '++id, itemId, script, [script+nextReview], nextReview',
 			sessions: '++id, script, date',

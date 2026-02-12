@@ -2,6 +2,7 @@
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { userStore } from "$lib/stores/user";
+	import { api } from "$lib/services/api";
 	import { Play, BookOpen, Target, Clock } from "lucide-svelte";
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import {
@@ -19,7 +20,9 @@
 		getWeeklyActivity,
 		getMasteryColour,
 	} from "$lib/services/dashboard";
-	import { getAvailableScripts, type ScriptDefinition } from "$lib/services/scripts";
+	import { getScript, type ScriptDefinition } from "$lib/services/scripts";
+
+	let userScripts: string[] = $state([]);
 
 	let stats: DashboardStats = $state({ learnt: 0, accuracy: 0, dueToday: 0 });
 	let grid: CharacterGridItem[] = $state([]);
@@ -30,15 +33,48 @@
 	let loaded = $state(false);
 
 	let scriptDef: ScriptDefinition | null = $state(null);
-	let activeScript = $state("hiragana");
+	let activeScript = $state("");
+	let studyingScripts: ScriptProgressItem[] = $state([]);
+	let loadingScript = $state(false);
 
 	const masteryLevels = [
-		{ key: "mastered" as const, label: "Mastered" },
+		{ key: "new" as const, label: "New" },
+		{ key: "difficult" as const, label: "Difficult" },
 		{ key: "good" as const, label: "Good" },
 		{ key: "learning" as const, label: "Learning" },
-		{ key: "difficult" as const, label: "Difficult" },
-		{ key: "new" as const, label: "New" },
+		{ key: "mastered" as const, label: "Mastered" },
 	];
+
+	async function loadActiveScriptData(scriptId: string): Promise<void> {
+		if (!scriptId) {
+			stats = { learnt: 0, accuracy: 0, dueToday: 0 };
+			grid = [];
+			breakdown = { mastered: 0, good: 0, learning: 0, difficult: 0, new: 0 };
+			upcomingReviews = [];
+			scriptDef = null;
+			loadingScript = false;
+			return;
+		}
+		loadingScript = true;
+		try {
+			const def = await getScript(scriptId);
+			if (activeScript !== scriptId) return;
+			scriptDef = def;
+			const [s, g, b, ur] = await Promise.all([
+				getDashboardStats(scriptId),
+				getCharacterGrid(scriptId),
+				getMasteryBreakdown(scriptId),
+				getUpcomingReviews(scriptId),
+			]);
+			if (activeScript !== scriptId) return;
+			stats = s;
+			grid = g;
+			breakdown = b;
+			upcomingReviews = ur;
+		} finally {
+			if (activeScript === scriptId) loadingScript = false;
+		}
+	}
 
 	$effect(() => {
 		if (!$userStore.initialised) return;
@@ -49,29 +85,58 @@
 
 	onMount(async () => {
 		try {
-			const scripts = await getAvailableScripts();
-			scriptDef = scripts[0] ?? null;
-			if (scriptDef) activeScript = scriptDef.id;
+			userScripts = await api.user.getScripts();
 
-			const [s, g, b, sp, ur, wa] = await Promise.all([
-				getDashboardStats(activeScript),
-				getCharacterGrid(activeScript),
-				getMasteryBreakdown(activeScript),
+			const [sp, wa] = await Promise.all([
 				getScriptProgress(),
-				getUpcomingReviews(activeScript),
 				getWeeklyActivity(),
 			]);
-			stats = s;
-			grid = g;
-			breakdown = b;
 			scriptProgress = sp;
-			upcomingReviews = ur;
 			weeklyActivity = wa;
+
+			// Build studyingScripts: progress for user scripts only, ordered by userScripts
+			const progressByScript = new Map(sp.map((s) => [s.script, s]));
+			const built: ScriptProgressItem[] = [];
+			for (const id of userScripts) {
+				const item = progressByScript.get(id);
+				if (item) {
+					built.push(item);
+				} else {
+					try {
+						const def = await getScript(id);
+						built.push({
+							script: id,
+							label: def.name,
+							percentage: 0,
+							total: def.totalCharacters ?? 0,
+							learnt: 0,
+						});
+					} catch {
+						built.push({
+							script: id,
+							label: id,
+							percentage: 0,
+							total: 0,
+							learnt: 0,
+						});
+					}
+				}
+			}
+			studyingScripts = built;
+
+			const initialScript = studyingScripts[0]?.script ?? "";
+			activeScript = initialScript;
+			await loadActiveScriptData(initialScript);
 		} catch {
 			// IndexedDB may not be populated yet — show zeroes
 		}
 		loaded = true;
 	});
+
+	async function setActiveScript(scriptId: string): Promise<void> {
+		activeScript = scriptId;
+		await loadActiveScriptData(scriptId);
+	}
 
 	function getGridCharMastery(char: string): string {
 		const item = grid.find(g => g.character === char);
@@ -114,43 +179,106 @@
 				</a>
 			</div>
 
-			<!-- Stats Row -->
-			<div class="grid grid-cols-3 gap-5">
-				<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
-					<div class="flex items-center justify-between">
-						<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Characters Learnt</span>
-						<BookOpen size={18} class="text-[var(--muted-foreground)]" />
-					</div>
-					<p class="mt-3 text-[32px] font-bold text-[var(--foreground)]">{stats.learnt}</p>
+			<!-- Language tabs + Stats for selected script (Script Tabs spec: pill container, active = secondary pill) -->
+			{#if studyingScripts.length > 0}
+			<div class="flex flex-col gap-4">
+				<div
+					class="flex h-14 w-fit items-center gap-2 rounded-[var(--radius-pill)] border border-[var(--input)] bg-[var(--card)] p-2"
+					role="tablist"
+				>
+					{#each studyingScripts as sp (sp.script)}
+						<button
+							type="button"
+							role="tab"
+							aria-selected={activeScript === sp.script}
+							class="rounded-[var(--radius-pill)] px-6 py-2.5 text-[14px] font-normal transition-colors {activeScript === sp.script
+								? 'bg-[var(--secondary)] text-[var(--secondary-foreground)] shadow-[0_1px_3.5px_-1px_rgba(0,0,0,0.06)]'
+								: 'bg-transparent text-[var(--accent-foreground)] hover:bg-[var(--tile)] hover:text-[var(--foreground)]'}"
+							onclick={() => setActiveScript(sp.script)}
+						>
+							{sp.label}
+						</button>
+					{/each}
 				</div>
 
-				<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
-					<div class="flex items-center justify-between">
-						<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Review Accuracy</span>
-						<Target size={18} class="text-[var(--muted-foreground)]" />
+				<!-- Stats Row (for active script) -->
+				<div
+					class="grid grid-cols-3 gap-5"
+					aria-busy={loadingScript}
+					aria-live="polite"
+				>
+					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+						<div class="flex items-center justify-between">
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Characters Learnt</span>
+							<BookOpen size={18} class="text-[var(--muted-foreground)]" />
+						</div>
+						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
+							{loadingScript ? '—' : stats.learnt}
+						</p>
 					</div>
-					<p class="mt-3 text-[32px] font-bold text-[var(--foreground)]">{stats.accuracy}%</p>
-				</div>
 
-				<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
-					<div class="flex items-center justify-between">
-						<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Due Today</span>
-						<Clock size={18} class="text-[var(--muted-foreground)]" />
+					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+						<div class="flex items-center justify-between">
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Review Accuracy</span>
+							<Target size={18} class="text-[var(--muted-foreground)]" />
+						</div>
+						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
+							{loadingScript ? '—' : `${stats.accuracy}%`}
+						</p>
 					</div>
-					<p class="mt-3 text-[32px] font-bold text-[var(--foreground)]">{stats.dueToday}</p>
+
+					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+						<div class="flex items-center justify-between">
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Due Today</span>
+							<Clock size={18} class="text-[var(--muted-foreground)]" />
+						</div>
+						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
+							{loadingScript ? '—' : stats.dueToday}
+						</p>
+					</div>
 				</div>
 			</div>
+			{:else}
+			<p class="text-[14px] text-[var(--muted-foreground)]">
+				You haven't started any script yet. <a href="/learn" class="font-medium text-[var(--accent-green)] no-underline hover:underline">Choose a script from Learn</a> to see your stats here.
+			</p>
+			{/if}
 
 			<!-- Main Columns -->
 			<div class="flex gap-6">
 				<!-- Left Column -->
 				<div class="flex flex-1 flex-col gap-6">
 					<!-- Character Grid Card -->
-					{#if scriptDef?.grid}
+					{#if studyingScripts.length === 0}
 					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+						<p class="text-[14px] text-[var(--muted-foreground)]">
+							You haven't started any script yet. <a href="/learn" class="font-medium text-[var(--accent-green)] no-underline hover:underline">Choose a script from Learn</a> to begin.
+						</p>
+					</div>
+					{:else if scriptDef?.grid}
+					<div
+						class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)] transition-opacity {loadingScript ? 'opacity-60' : ''}"
+						aria-busy={loadingScript}
+					>
 						<div class="mb-4 flex items-center justify-between">
 							<div>
+								{#if studyingScripts.length > 1}
+								<div class="flex flex-wrap items-center gap-2">
+									{#each studyingScripts as sp (sp.script)}
+										<button
+											type="button"
+											class="rounded-[var(--radius-pill)] px-3 py-1.5 text-[13px] font-medium transition-colors {activeScript === sp.script
+												? 'bg-[var(--accent-green)] text-white'
+												: 'bg-[var(--secondary)] text-[var(--muted-foreground)] hover:bg-[var(--tile)] hover:text-[var(--foreground)]'}"
+											onclick={() => setActiveScript(sp.script)}
+										>
+											{sp.label}
+										</button>
+									{/each}
+								</div>
+								{:else}
 								<h2 class="text-[16px] font-semibold text-[var(--foreground)]">{scriptDef.name}</h2>
+								{/if}
 								<p class="mt-0.5 text-[13px] text-[var(--muted-foreground)]">
 									{scriptDef.totalCharacters} characters &middot; {stats.learnt} learnt
 								</p>
@@ -191,7 +319,11 @@
 					{/if}
 
 					<!-- Mastery Breakdown Card -->
-					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+					{#if activeScript}
+					<div
+						class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)] transition-opacity {loadingScript ? 'opacity-60' : ''}"
+						aria-busy={loadingScript}
+					>
 						<h2 class="mb-4 text-[16px] font-semibold text-[var(--foreground)]">Mastery Breakdown</h2>
 
 						<!-- Stacked bar -->
@@ -220,6 +352,7 @@
 							{/each}
 						</div>
 					</div>
+					{/if}
 				</div>
 
 				<!-- Right Column -->
@@ -247,7 +380,10 @@
 					</div>
 
 					<!-- Upcoming Reviews Card -->
-					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+					<div
+						class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)] transition-opacity {loadingScript ? 'opacity-60' : ''}"
+						aria-busy={loadingScript}
+					>
 						<div class="mb-4 flex items-center justify-between">
 							<h2 class="text-[16px] font-semibold text-[var(--foreground)]">Upcoming Reviews</h2>
 							<a href="/learn" class="text-[12px] font-medium text-[var(--accent-green)] no-underline">View all</a>
@@ -281,7 +417,7 @@
 						</div>
 
 						<div class="flex items-end justify-between gap-2" style="height: 100px;">
-							{#each weeklyActivity as day (day.day)}
+							{#each weeklyActivity as day, i (i)}
 								<div class="flex flex-1 flex-col items-center gap-1.5">
 									<div
 										class="w-full rounded-t-md bg-[var(--accent-green)]"

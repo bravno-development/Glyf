@@ -1,0 +1,397 @@
+{
+	"id": "hangul",
+	"language": "ko",
+	"name": "Hangul",
+	"description": "Korean alphabet. 19 initial consonants (choseong) and 21 vowels (jungseong) that combine into syllables.",
+	"icon": "가",
+	"available": true,
+	"totalCharacters": 40,
+	"grid": {
+		"columns": [
+			{
+				"label": "ㄱ",
+				"chars": [
+					"ㄱ",
+					"ㄲ",
+					"ㄴ",
+					"ㄷ",
+					"ㄸ",
+					"ㄹ",
+					"ㅁ"
+				]
+			},
+			{
+				"label": "ㅂ",
+				"chars": [
+					"ㅂ",
+					"ㅃ",
+					"ㅅ",
+					"ㅆ",
+					"ㅇ",
+					"ㅈ",
+					"ㅉ",
+					"ㅊ",
+					"ㅋ",
+					"ㅌ",
+					"ㅍ",
+					"ㅎ"
+				]
+			},
+			{
+				"label": "ㅏ",
+				"chars": [
+					"ㅏ",
+					"ㅐ",
+					"ㅑ",
+					"ㅒ",
+					"ㅓ",
+					"ㅔ",
+					"ㅕ",
+					"ㅖ",
+					"ㅗ"
+				]
+			},
+			{
+				"label": "ㅛ",
+				"chars": [
+					"ㅛ",
+					"ㅜ",
+					"ㅝ",
+					"ㅞ",
+					"ㅟ",
+					"ㅠ",
+					"ㅡ",
+					"ㅢ",
+					"ㅣ"
+				]
+			}
+		]
+	},
+	"characters": [
+		{
+			"id": "hangul-g",
+			"character": "ㄱ",
+			"meaning": "g",
+			"readings": [
+				"g",
+				"k"
+			]
+		},
+		{
+			"id": "hangul-kk",
+			"character": "ㄲ",
+			"meaning": "kk",
+			"readings": [
+				"kk"
+			]
+		},
+		{
+			"id": "hangul-n",
+			"character": "ㄴ",
+			"meaning": "n",
+			"readings": [
+				"n"
+			]
+		},
+		{
+			"id": "hangul-d",
+			"character": "ㄷ",
+			"meaning": "d",
+			"readings": [
+				"d",
+				"t"
+			]
+		},
+		{
+			"id": "hangul-tt",
+			"character": "ㄸ",
+			"meaning": "tt",
+			"readings": [
+				"tt"
+			]
+		},
+		{
+			"id": "hangul-r",
+			"character": "ㄹ",
+			"meaning": "r",
+			"readings": [
+				"r",
+				"l"
+			]
+		},
+		{
+			"id": "hangul-m",
+			"character": "ㅁ",
+			"meaning": "m",
+			"readings": [
+				"m"
+			]
+		},
+		{
+			"id": "hangul-b",
+			"character": "ㅂ",
+			"meaning": "b",
+			"readings": [
+				"b",
+				"p"
+			]
+		},
+		{
+			"id": "hangul-pp",
+			"character": "ㅃ",
+			"meaning": "pp",
+			"readings": [
+				"pp"
+			]
+		},
+		{
+			"id": "hangul-s",
+			"character": "ㅅ",
+			"meaning": "s",
+			"readings": [
+				"s"
+			]
+		},
+		{
+			"id": "hangul-ss",
+			"character": "ㅆ",
+			"meaning": "ss",
+			"readings": [
+				"ss"
+			]
+		},
+		{
+			"id": "hangul-ng",
+			"character": "ㅇ",
+			"meaning": "ng",
+			"readings": [
+				"ng",
+				""
+			]
+		},
+		{
+			"id": "hangul-j",
+			"character": "ㅈ",
+			"meaning": "j",
+			"readings": [
+				"j"
+			]
+		},
+		{
+			"id": "hangul-jj",
+			"character": "ㅉ",
+			"meaning": "jj",
+			"readings": [
+				"jj"
+			]
+		},
+		{
+			"id": "hangul-ch",
+			"character": "ㅊ",
+			"meaning": "ch",
+			"readings": [
+				"ch"
+			]
+		},
+		{
+			"id": "hangul-k",
+			"character": "ㅋ",
+			"meaning": "k",
+			"readings": [
+				"k"
+			]
+		},
+		{
+			"id": "hangul-t",
+			"character": "ㅌ",
+			"meaning": "t",
+			"readings": [
+				"t"
+			]
+		},
+		{
+			"id": "hangul-p",
+			"character": "ㅍ",
+			"meaning": "p",
+			"readings": [
+				"p"
+			]
+		},
+		{
+			"id": "hangul-h",
+			"character": "ㅎ",
+			"meaning": "h",
+			"readings": [
+				"h"
+			]
+		},
+		{
+			"id": "hangul-a",
+			"character": "ㅏ",
+			"meaning": "a",
+			"readings": [
+				"a"
+			]
+		},
+		{
+			"id": "hangul-ae",
+			"character": "ㅐ",
+			"meaning": "ae",
+			"readings": [
+				"ae"
+			]
+		},
+		{
+			"id": "hangul-ya",
+			"character": "ㅑ",
+			"meaning": "ya",
+			"readings": [
+				"ya"
+			]
+		},
+		{
+			"id": "hangul-yae",
+			"character": "ㅒ",
+			"meaning": "yae",
+			"readings": [
+				"yae"
+			]
+		},
+		{
+			"id": "hangul-eo",
+			"character": "ㅓ",
+			"meaning": "eo",
+			"readings": [
+				"eo"
+			]
+		},
+		{
+			"id": "hangul-e",
+			"character": "ㅔ",
+			"meaning": "e",
+			"readings": [
+				"e"
+			]
+		},
+		{
+			"id": "hangul-yeo",
+			"character": "ㅕ",
+			"meaning": "yeo",
+			"readings": [
+				"yeo"
+			]
+		},
+		{
+			"id": "hangul-ye",
+			"character": "ㅖ",
+			"meaning": "ye",
+			"readings": [
+				"ye"
+			]
+		},
+		{
+			"id": "hangul-o",
+			"character": "ㅗ",
+			"meaning": "o",
+			"readings": [
+				"o"
+			]
+		},
+		{
+			"id": "hangul-wa",
+			"character": "ㅘ",
+			"meaning": "wa",
+			"readings": [
+				"wa"
+			]
+		},
+		{
+			"id": "hangul-wae",
+			"character": "ㅙ",
+			"meaning": "wae",
+			"readings": [
+				"wae"
+			]
+		},
+		{
+			"id": "hangul-oe",
+			"character": "ㅚ",
+			"meaning": "oe",
+			"readings": [
+				"oe"
+			]
+		},
+		{
+			"id": "hangul-yo",
+			"character": "ㅛ",
+			"meaning": "yo",
+			"readings": [
+				"yo"
+			]
+		},
+		{
+			"id": "hangul-u",
+			"character": "ㅜ",
+			"meaning": "u",
+			"readings": [
+				"u"
+			]
+		},
+		{
+			"id": "hangul-wo",
+			"character": "ㅝ",
+			"meaning": "wo",
+			"readings": [
+				"wo"
+			]
+		},
+		{
+			"id": "hangul-we",
+			"character": "ㅞ",
+			"meaning": "we",
+			"readings": [
+				"we"
+			]
+		},
+		{
+			"id": "hangul-wi",
+			"character": "ㅟ",
+			"meaning": "wi",
+			"readings": [
+				"wi"
+			]
+		},
+		{
+			"id": "hangul-yu",
+			"character": "ㅠ",
+			"meaning": "yu",
+			"readings": [
+				"yu"
+			]
+		},
+		{
+			"id": "hangul-eu",
+			"character": "ㅡ",
+			"meaning": "eu",
+			"readings": [
+				"eu"
+			]
+		},
+		{
+			"id": "hangul-ui",
+			"character": "ㅢ",
+			"meaning": "ui",
+			"readings": [
+				"ui"
+			]
+		},
+		{
+			"id": "hangul-i",
+			"character": "ㅣ",
+			"meaning": "i",
+			"readings": [
+				"i"
+			]
+		}
+	]
+}

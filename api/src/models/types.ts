@@ -23,7 +23,8 @@ export interface SyncPayload {
 
 export interface UserProgress {
 	script: string;
-	totalCardsLearned: number;
+	totalGlyphsLearned: number;
+	totalScriptsLearned: number;
 	totalReviews: number;
 	streakDays: number;
 	lastReviewDate: string;
@@ -43,4 +44,35 @@ export interface MagicLink {
 export interface AuthResponse {
 	token: string;
 	user: User;
+}
+
+// Progress tracker (character-only)
+export interface AttemptItem {
+	itemId: string;
+	script: string;
+	stepType: string;
+	correct: boolean;
+	responseTimeMs: number;
+	uuidLocal: string;
+	userResponse?: string;
+	correctAnswer?: string;
+}
+
+export interface SubmitAttemptsPayload {
+	sessionId: string;
+	attempts: AttemptItem[];
+}
+
+export interface SubmitAttemptsResponse {
+	success: boolean;
+	accepted: number;
+}
+
+export interface DueItem {
+	itemId: string;
+	nextReviewAt: string;
+}
+
+export interface ManifestVersionsResponse {
+	[script: string]: number;
 }

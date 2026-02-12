@@ -11,4 +11,8 @@
 
 ## Phase 2: Post-Launch
 
-- **Study reminders** — Notifications when it’s time to study (e.g. push or in-app).
+- **Study reminders** — Notifications when it's time to study (e.g. push or in-app).
+- **Script restart** — Reset all SM-2 progress for a script & start fresh.
+- **Script removal** — Remove a script from the user's learning list.
+- **Daily goal change** — Allow changing daily goal post-onboarding (settings page).
+- **Completion / mastery celebration** — Congratulations screen when all glyphs reach mastered level.

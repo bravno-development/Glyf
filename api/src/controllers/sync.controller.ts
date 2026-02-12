@@ -22,6 +22,40 @@ export async function syncUp(req: AuthRequest, res: Response) {
 			[userId, script, JSON.stringify(reviews)]
 		);
 
+		// Backfill item_progress from blob (characters only)
+		const characterReviews = Array.isArray(reviews)
+			? reviews.filter((r: { itemType?: string }) => r.itemType === "character")
+			: [];
+		for (const r of characterReviews as Array<{
+			itemId: string;
+			script: string;
+			easeFactor: number;
+			interval: number;
+			repetitions: number;
+			nextReview: string;
+			lastReview: string;
+		}>) {
+			await query(
+				`INSERT INTO item_progress (
+          user_id, script, item_id, ease_factor, interval, repetitions,
+          next_review_at, last_review_at, total_attempts, correct_attempts, consecutive_correct, updated_at
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7::timestamptz, $8::timestamptz, 0, 0, 0, $8::timestamptz)
+        ON CONFLICT (user_id, script, item_id) DO UPDATE SET
+          ease_factor = $4, interval = $5, repetitions = $6,
+          next_review_at = $7::timestamptz, last_review_at = $8::timestamptz, updated_at = $8::timestamptz`,
+				[
+					userId,
+					script,
+					r.itemId,
+					r.easeFactor ?? 2.5,
+					r.interval ?? 0,
+					r.repetitions ?? 0,
+					r.nextReview,
+					r.lastReview
+				]
+			);
+		}
+
 		await query(
 			`INSERT INTO user_progress (user_id, script, total_reviews)
        VALUES ($1, $2, $3)

@@ -4,6 +4,7 @@ import { authRoutes } from "./routes/auth.routes.ts";
 import { syncRoutes } from "./routes/sync.routes.ts";
 import { userRoutes } from "./routes/user.routes.ts";
 import { onboardingRoutes } from "./routes/onboarding.routes.ts";
+import { progressRoutes } from "./routes/progress.routes.ts";
 
 const app = express();
 const PORT = Deno.env.get("PORT") || 8000;
@@ -22,6 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/sync", syncRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/onboarding", onboardingRoutes);
+app.use("/api/progress", progressRoutes);
 
 // Health check
 app.get("/health", (_req, res) => {

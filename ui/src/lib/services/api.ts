@@ -61,5 +61,35 @@ export const api = {
 				method: 'POST',
 				body: JSON.stringify({ script, dailyGoal })
 			})
+	},
+
+	progress: {
+		submitAttempts: (payload: {
+			sessionId: string;
+			attempts: Array<{
+				itemId: string;
+				script: string;
+				stepType: string;
+				correct: boolean;
+				responseTimeMs: number;
+				uuidLocal: string;
+				userResponse?: string;
+				correctAnswer?: string;
+			}>;
+		}) =>
+			fetchApi<{ success: boolean; accepted: number }>('/api/progress/attempts', {
+				method: 'POST',
+				body: JSON.stringify(payload)
+			}),
+		getDue: (script: string, limit?: number) =>
+			fetchApi<Array<{ itemId: string; nextReviewAt: string }>>(
+				`/api/progress/due?script=${encodeURIComponent(script)}${limit != null ? `&limit=${limit}` : ''}`
+			),
+		getManifestVersions: () =>
+			fetchApi<Record<string, number>>('/api/progress/manifest-versions')
+	},
+
+	user: {
+		getScripts: () => fetchApi<string[]>('/api/user/scripts')
 	}
 };
