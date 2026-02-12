@@ -34,12 +34,19 @@ async function fetchManifest(): Promise<string[]> {
 	return manifestCache!;
 }
 
+/** Script ids that are stored in a different file (e.g. "japanese" for the combined option). */
+const SCRIPT_ID_TO_FILE: Record<string, string> = {
+	"japanese (hiragana & katakana)": "japanese",
+};
+
 async function fetchScript(id: string): Promise<ScriptDefinition> {
-	const cached = cache.get(id);
+	const fileId = SCRIPT_ID_TO_FILE[id] ?? id;
+	const cached = cache.get(id) ?? cache.get(fileId);
 	if (cached) return cached;
-	const res = await fetch(`/scripts/${id}.json`);
+	const res = await fetch(`/scripts/${fileId}.json`);
 	const def: ScriptDefinition = await res.json();
-	cache.set(id, def);
+	cache.set(fileId, def);
+	if (fileId !== id) cache.set(id, def);
 	return def;
 }
 
