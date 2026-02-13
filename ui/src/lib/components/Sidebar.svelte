@@ -6,13 +6,13 @@
 		Languages,
 		BarChart3,
 		Settings,
+		PanelLeft,
 	} from "lucide-svelte";
 
 	const learningLinks = [
 		{ href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
 		{ href: "/learn", label: "Practice", icon: PenTool },
-		{ href: "/learn", label: "Scripts", icon: Languages },
-		{ href: "/dashboard", label: "Statistics", icon: BarChart3 },
+		{ href: "/scripts", label: "Scripts", icon: Languages },
 	];
 
 	const accountLinks = [
@@ -25,22 +25,28 @@
 </script>
 
 <aside
-	class="flex w-[240px] shrink-0 flex-col border-r border-[var(--sidebar-border)] bg-[var(--sidebar)] min-h-screen"
-	style="box-shadow: var(--shadow-sidebar);"
+	class="flex w-[256px] shrink-0 flex-col rounded-r-[var(--radius-m)] border-r border-[var(--sidebar-border)] bg-[var(--sidebar)] shadow-[var(--shadow-sidebar)] min-h-screen"
 >
-	<div class="px-6 py-6">
+	<div class="flex items-center justify-between px-6 py-6">
 		<a
 			href="/"
 			class="text-[22px] font-bold text-[var(--foreground)] no-underline"
 		>
 			glyf
 		</a>
+		<button
+			type="button"
+			class="flex size-9 items-center justify-center rounded-[var(--radius-pill)] text-[var(--sidebar-foreground)] transition-colors hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-accent-foreground)]"
+			aria-label="Toggle sidebar"
+		>
+			<PanelLeft size={20} strokeWidth={1.5} />
+		</button>
 	</div>
 
-	<nav class="flex flex-1 flex-col gap-6 px-3 pt-2">
+	<nav class="flex flex-1 flex-col gap-6 px-4 pt-2">
 		<div>
 			<p
-				class="mb-2 px-3 text-[11px] font-semibold tracking-[1.5px] uppercase text-[var(--sidebar-foreground)]"
+				class="mb-2 p-2 text-[14px] font-semibold tracking-[1.5px] uppercase text-[var(--sidebar-foreground)]"
 			>
 				Learning
 			</p>
@@ -49,7 +55,7 @@
 					<li>
 						<a
 							href={link.href}
-							class="flex items-center gap-3 rounded-lg px-3 py-2 text-[14px] font-medium no-underline transition-colors
+							class="flex items-center gap-3 rounded-[var(--radius-m)] py-3 pl-6 pr-4 text-[14px] font-medium no-underline transition-colors
 								{isActive(link.href)
 								? 'bg-[var(--sidebar-accent)] text-[var(--sidebar-accent-foreground)]'
 								: 'text-[var(--sidebar-foreground)] hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-accent-foreground)]'}"
@@ -64,7 +70,7 @@
 
 		<div>
 			<p
-				class="mb-2 px-3 text-[11px] font-semibold tracking-[1.5px] uppercase text-[var(--sidebar-foreground)]"
+				class="mb-2 p-2 text-[14px] font-semibold tracking-[1.5px] uppercase text-[var(--sidebar-foreground)]"
 			>
 				Account
 			</p>
@@ -73,7 +79,7 @@
 					<li>
 						<a
 							href={link.href}
-							class="flex items-center gap-3 rounded-lg px-3 py-2 text-[14px] font-medium no-underline transition-colors
+							class="flex items-center gap-3 rounded-[var(--radius-m)] py-3 pl-6 pr-4 text-[14px] font-medium no-underline transition-colors
 								{isActive(link.href)
 								? 'bg-[var(--sidebar-accent)] text-[var(--sidebar-accent-foreground)]'
 								: 'text-[var(--sidebar-foreground)] hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-accent-foreground)]'}"
