@@ -2,6 +2,7 @@
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { userStore } from "$lib/stores/user";
+	import { learnStore } from "$lib/stores/learn";
 	import { api } from "$lib/services/api";
 	import { Info } from "lucide-svelte";
 	import Sidebar from "$lib/components/Sidebar.svelte";
@@ -52,6 +53,7 @@
 	let theme = $state("system");
 	let language = $state("en-GB");
 	let deleteDialogOpen = $state(false);
+	let reviewKeys = $state(["1", "2", "3", "4"]);
 
 	$effect(() => {
 		if (!$userStore.initialised) return;
@@ -71,7 +73,7 @@
 			if (storedGoal) dailyGoal = storedGoal;
 			const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("glyf-theme");
 			if (storedTheme && ["light", "dark", "system"].includes(storedTheme)) theme = storedTheme;
-			// applyTheme(theme);
+			reviewKeys = learnStore.getReviewOptionKeys();
 		} catch (e) {
 			error = e instanceof Error ? e.message : "Failed to load settings";
 		} finally {
@@ -123,6 +125,18 @@
 	function onReminderTimeChange(e: Event) {
 		reminderTimeLocal = (e.target as HTMLSelectElement).value;
 		saveReminder();
+	}
+
+	function onReviewKeyChange(index: number, value: string) {
+		const next = [...reviewKeys];
+		next[index] = value.slice(0, 1);
+		reviewKeys = next;
+		learnStore.setReviewOptionKeys(next);
+	}
+
+	function resetReviewKeys() {
+		reviewKeys = ["1", "2", "3", "4"];
+		learnStore.setReviewOptionKeys(reviewKeys);
 	}
 
 	function openDeleteDialog() {
@@ -251,6 +265,35 @@
 									<option value={opt.value}>{opt.label}</option>
 								{/each}
 							</select>
+						</div>
+						<div class="flex flex-col gap-1.5">
+							<label for="review-key-0" class="text-[14px] text-[var(--muted-foreground)]">
+								Review shortcut keys
+							</label>
+							<p class="text-[13px] text-[var(--muted-foreground)]">
+								Keys to select quiz answers (options 1–4). One character per key.
+							</p>
+							<div class="flex items-center gap-2">
+								{#each reviewKeys as key, i (i)}
+									<input
+										id={i === 0 ? "review-key-0" : undefined}
+										type="text"
+										inputmode="text"
+										maxlength="1"
+										value={key}
+										oninput={(e) => onReviewKeyChange(i, (e.target as HTMLInputElement).value)}
+										aria-label="Key for option {i + 1}"
+										class="h-12 w-12 rounded-[var(--radius-m)] border border-[var(--input)] bg-[var(--accent)] text-center text-[16px] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+									/>
+								{/each}
+								<button
+									type="button"
+									onclick={resetReviewKeys}
+									class="text-[13px] text-[var(--muted-foreground)] underline hover:text-[var(--foreground)]"
+								>
+									Reset to 1,2,3,4
+								</button>
+							</div>
 						</div>
 					</div>
 				</section>
