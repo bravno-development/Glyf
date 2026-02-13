@@ -1,4 +1,9 @@
 [
 	"japanese",
-	"hangul"
+	"hangul",
+	"kannada",
+	"greek",
+	"cyrillic",
+	"glagolitic",
+	"geez"
 ]

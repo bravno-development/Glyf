@@ -1,0 +1,258 @@
+{
+	"id": "greek",
+	"language": "el",
+	"name": "Greek",
+	"description": "Modern Greek alphabet. 24 letters used for Greek language and widely in science and mathematics.",
+	"icon": "α",
+	"available": true,
+	"totalCharacters": 24,
+	"grid": {
+		"columns": [
+			{
+				"label": "α",
+				"chars": [
+					"α",
+					"β",
+					"γ",
+					"δ",
+					"ε",
+					"ζ"
+				]
+			},
+			{
+				"label": "η",
+				"chars": [
+					"η",
+					"θ",
+					"ι",
+					"κ",
+					"λ",
+					"μ"
+				]
+			},
+			{
+				"label": "ν",
+				"chars": [
+					"ν",
+					"ξ",
+					"ο",
+					"π",
+					"ρ",
+					"σ"
+				]
+			},
+			{
+				"label": "τ",
+				"chars": [
+					"τ",
+					"υ",
+					"φ",
+					"χ",
+					"ψ",
+					"ω"
+				]
+			}
+		]
+	},
+	"characters": [
+		{
+			"id": "greek-alpha",
+			"character": "α",
+			"meaning": "a",
+			"readings": [
+				"a"
+			]
+		},
+		{
+			"id": "greek-beta",
+			"character": "β",
+			"meaning": "v",
+			"readings": [
+				"v",
+				"b"
+			]
+		},
+		{
+			"id": "greek-gamma",
+			"character": "γ",
+			"meaning": "g",
+			"readings": [
+				"g"
+			]
+		},
+		{
+			"id": "greek-delta",
+			"character": "δ",
+			"meaning": "d",
+			"readings": [
+				"d"
+			]
+		},
+		{
+			"id": "greek-epsilon",
+			"character": "ε",
+			"meaning": "e",
+			"readings": [
+				"e"
+			]
+		},
+		{
+			"id": "greek-zeta",
+			"character": "ζ",
+			"meaning": "z",
+			"readings": [
+				"z"
+			]
+		},
+		{
+			"id": "greek-eta",
+			"character": "η",
+			"meaning": "i",
+			"readings": [
+				"i",
+				"ē"
+			]
+		},
+		{
+			"id": "greek-theta",
+			"character": "θ",
+			"meaning": "th",
+			"readings": [
+				"th"
+			]
+		},
+		{
+			"id": "greek-iota",
+			"character": "ι",
+			"meaning": "i",
+			"readings": [
+				"i"
+			]
+		},
+		{
+			"id": "greek-kappa",
+			"character": "κ",
+			"meaning": "k",
+			"readings": [
+				"k"
+			]
+		},
+		{
+			"id": "greek-lambda",
+			"character": "λ",
+			"meaning": "l",
+			"readings": [
+				"l"
+			]
+		},
+		{
+			"id": "greek-mu",
+			"character": "μ",
+			"meaning": "m",
+			"readings": [
+				"m"
+			]
+		},
+		{
+			"id": "greek-nu",
+			"character": "ν",
+			"meaning": "n",
+			"readings": [
+				"n"
+			]
+		},
+		{
+			"id": "greek-xi",
+			"character": "ξ",
+			"meaning": "x",
+			"readings": [
+				"x",
+				"ks"
+			]
+		},
+		{
+			"id": "greek-omicron",
+			"character": "ο",
+			"meaning": "o",
+			"readings": [
+				"o"
+			]
+		},
+		{
+			"id": "greek-pi",
+			"character": "π",
+			"meaning": "p",
+			"readings": [
+				"p"
+			]
+		},
+		{
+			"id": "greek-rho",
+			"character": "ρ",
+			"meaning": "r",
+			"readings": [
+				"r"
+			]
+		},
+		{
+			"id": "greek-sigma",
+			"character": "σ",
+			"meaning": "s",
+			"readings": [
+				"s"
+			]
+		},
+		{
+			"id": "greek-tau",
+			"character": "τ",
+			"meaning": "t",
+			"readings": [
+				"t"
+			]
+		},
+		{
+			"id": "greek-upsilon",
+			"character": "υ",
+			"meaning": "y",
+			"readings": [
+				"y",
+				"u"
+			]
+		},
+		{
+			"id": "greek-phi",
+			"character": "φ",
+			"meaning": "f",
+			"readings": [
+				"f",
+				"ph"
+			]
+		},
+		{
+			"id": "greek-chi",
+			"character": "χ",
+			"meaning": "ch",
+			"readings": [
+				"ch",
+				"kh"
+			]
+		},
+		{
+			"id": "greek-psi",
+			"character": "ψ",
+			"meaning": "ps",
+			"readings": [
+				"ps"
+			]
+		},
+		{
+			"id": "greek-omega",
+			"character": "ω",
+			"meaning": "o",
+			"readings": [
+				"o",
+				"ō"
+			]
+		}
+	]
+}

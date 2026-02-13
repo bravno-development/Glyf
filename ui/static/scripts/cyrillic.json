@@ -1,0 +1,343 @@
+{
+	"id": "cyrillic",
+	"language": "ru",
+	"name": "Cyrillic",
+	"description": "Russian alphabet. 33 letters used for Russian and other Slavic and non-Slavic languages.",
+	"icon": "а",
+	"available": true,
+	"totalCharacters": 33,
+	"grid": {
+		"columns": [
+			{
+				"label": "а",
+				"chars": [
+					"а",
+					"б",
+					"в",
+					"г",
+					"д",
+					"е",
+					"ё"
+				]
+			},
+			{
+				"label": "ж",
+				"chars": [
+					"ж",
+					"з",
+					"и",
+					"й",
+					"к",
+					"л",
+					"м"
+				]
+			},
+			{
+				"label": "н",
+				"chars": [
+					"н",
+					"о",
+					"п",
+					"р",
+					"с",
+					"т",
+					"у"
+				]
+			},
+			{
+				"label": "ф",
+				"chars": [
+					"ф",
+					"х",
+					"ц",
+					"ч",
+					"ш",
+					"щ"
+				]
+			},
+			{
+				"label": "ъ",
+				"chars": [
+					"ъ",
+					"ы",
+					"ь",
+					"э",
+					"ю",
+					"я"
+				]
+			}
+		]
+	},
+	"characters": [
+		{
+			"id": "cyrillic-a",
+			"character": "а",
+			"meaning": "a",
+			"readings": [
+				"a"
+			]
+		},
+		{
+			"id": "cyrillic-b",
+			"character": "б",
+			"meaning": "b",
+			"readings": [
+				"b"
+			]
+		},
+		{
+			"id": "cyrillic-v",
+			"character": "в",
+			"meaning": "v",
+			"readings": [
+				"v"
+			]
+		},
+		{
+			"id": "cyrillic-g",
+			"character": "г",
+			"meaning": "g",
+			"readings": [
+				"g"
+			]
+		},
+		{
+			"id": "cyrillic-d",
+			"character": "д",
+			"meaning": "d",
+			"readings": [
+				"d"
+			]
+		},
+		{
+			"id": "cyrillic-e",
+			"character": "е",
+			"meaning": "ye",
+			"readings": [
+				"ye",
+				"e"
+			]
+		},
+		{
+			"id": "cyrillic-yo",
+			"character": "ё",
+			"meaning": "yo",
+			"readings": [
+				"yo"
+			]
+		},
+		{
+			"id": "cyrillic-zh",
+			"character": "ж",
+			"meaning": "zh",
+			"readings": [
+				"zh"
+			]
+		},
+		{
+			"id": "cyrillic-z",
+			"character": "з",
+			"meaning": "z",
+			"readings": [
+				"z"
+			]
+		},
+		{
+			"id": "cyrillic-i",
+			"character": "и",
+			"meaning": "i",
+			"readings": [
+				"i"
+			]
+		},
+		{
+			"id": "cyrillic-y-short",
+			"character": "й",
+			"meaning": "y",
+			"readings": [
+				"y"
+			]
+		},
+		{
+			"id": "cyrillic-k",
+			"character": "к",
+			"meaning": "k",
+			"readings": [
+				"k"
+			]
+		},
+		{
+			"id": "cyrillic-l",
+			"character": "л",
+			"meaning": "l",
+			"readings": [
+				"l"
+			]
+		},
+		{
+			"id": "cyrillic-m",
+			"character": "м",
+			"meaning": "m",
+			"readings": [
+				"m"
+			]
+		},
+		{
+			"id": "cyrillic-n",
+			"character": "н",
+			"meaning": "n",
+			"readings": [
+				"n"
+			]
+		},
+		{
+			"id": "cyrillic-o",
+			"character": "о",
+			"meaning": "o",
+			"readings": [
+				"o"
+			]
+		},
+		{
+			"id": "cyrillic-p",
+			"character": "п",
+			"meaning": "p",
+			"readings": [
+				"p"
+			]
+		},
+		{
+			"id": "cyrillic-r",
+			"character": "р",
+			"meaning": "r",
+			"readings": [
+				"r"
+			]
+		},
+		{
+			"id": "cyrillic-s",
+			"character": "с",
+			"meaning": "s",
+			"readings": [
+				"s"
+			]
+		},
+		{
+			"id": "cyrillic-t",
+			"character": "т",
+			"meaning": "t",
+			"readings": [
+				"t"
+			]
+		},
+		{
+			"id": "cyrillic-u",
+			"character": "у",
+			"meaning": "u",
+			"readings": [
+				"u"
+			]
+		},
+		{
+			"id": "cyrillic-f",
+			"character": "ф",
+			"meaning": "f",
+			"readings": [
+				"f"
+			]
+		},
+		{
+			"id": "cyrillic-kh",
+			"character": "х",
+			"meaning": "kh",
+			"readings": [
+				"kh",
+				"h"
+			]
+		},
+		{
+			"id": "cyrillic-ts",
+			"character": "ц",
+			"meaning": "ts",
+			"readings": [
+				"ts"
+			]
+		},
+		{
+			"id": "cyrillic-ch",
+			"character": "ч",
+			"meaning": "ch",
+			"readings": [
+				"ch"
+			]
+		},
+		{
+			"id": "cyrillic-sh",
+			"character": "ш",
+			"meaning": "sh",
+			"readings": [
+				"sh"
+			]
+		},
+		{
+			"id": "cyrillic-shch",
+			"character": "щ",
+			"meaning": "shch",
+			"readings": [
+				"shch",
+				"sch"
+			]
+		},
+		{
+			"id": "cyrillic-hard",
+			"character": "ъ",
+			"meaning": "hard sign",
+			"readings": [
+				"",
+				"ʺ"
+			]
+		},
+		{
+			"id": "cyrillic-y",
+			"character": "ы",
+			"meaning": "y",
+			"readings": [
+				"y",
+				"i"
+			]
+		},
+		{
+			"id": "cyrillic-soft",
+			"character": "ь",
+			"meaning": "soft sign",
+			"readings": [
+				"",
+				"ʹ"
+			]
+		},
+		{
+			"id": "cyrillic-e2",
+			"character": "э",
+			"meaning": "e",
+			"readings": [
+				"e"
+			]
+		},
+		{
+			"id": "cyrillic-yu",
+			"character": "ю",
+			"meaning": "yu",
+			"readings": [
+				"yu"
+			]
+		},
+		{
+			"id": "cyrillic-ya",
+			"character": "я",
+			"meaning": "ya",
+			"readings": [
+				"ya"
+			]
+		}
+	]
+}

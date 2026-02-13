@@ -1,0 +1,45 @@
+{
+	"id": "geez",
+	"language": "gez",
+	"name": "Ge'ez",
+	"description": "Ethiopic script used for Ge'ez, Amharic, and Tigrinya. 26 base consonants in the default (ä) form; expandable with vowel rows.",
+	"icon": "ሀ",
+	"available": true,
+	"totalCharacters": 26,
+	"grid": {
+		"columns": [
+			{ "label": "ሀ", "chars": ["ሀ", "ለ", "ሐ", "\u1218", "ሠ", "ረ", "ሰ"] },
+			{ "label": "ቀ", "chars": ["ቀ", "በ", "ተ", "ቸ", "ኀ", "ነ", "አ", "ከ"] },
+			{ "label": "ወ", "chars": ["ወ", "ዘ", "የ", "ደ", "ገ", "ጠ", "ጰ", "ጸ"] },
+			{ "label": "ፀ", "chars": ["ፀ", "ፈ", "ፐ"] }
+		]
+	},
+	"characters": [
+		{ "id": "geez-ha", "character": "ሀ", "meaning": "h", "readings": ["h", "hä"] },
+		{ "id": "geez-la", "character": "ለ", "meaning": "l", "readings": ["l", "lä"] },
+		{ "id": "geez-ha2", "character": "ሐ", "meaning": "h", "readings": ["h", "ḥ"] },
+		{ "id": "geez-ma", "character": "\u1218", "meaning": "m", "readings": ["m", "mä"] },
+		{ "id": "geez-sa", "character": "ሠ", "meaning": "s", "readings": ["s", "ś"] },
+		{ "id": "geez-ra", "character": "ረ", "meaning": "r", "readings": ["r", "rä"] },
+		{ "id": "geez-sa2", "character": "ሰ", "meaning": "s", "readings": ["s", "sä"] },
+		{ "id": "geez-qa", "character": "ቀ", "meaning": "q", "readings": ["q", "ḳ"] },
+		{ "id": "geez-ba", "character": "በ", "meaning": "b", "readings": ["b", "bä"] },
+		{ "id": "geez-ta", "character": "ተ", "meaning": "t", "readings": ["t", "tä"] },
+		{ "id": "geez-cha", "character": "ቸ", "meaning": "ch", "readings": ["ch", "č"] },
+		{ "id": "geez-ha3", "character": "ኀ", "meaning": "kh", "readings": ["kh", "ḫ", "h"] },
+		{ "id": "geez-na", "character": "ነ", "meaning": "n", "readings": ["n", "nä"] },
+		{ "id": "geez-alef", "character": "አ", "meaning": "a", "readings": ["a", "ʾ", ""] },
+		{ "id": "geez-ka", "character": "ከ", "meaning": "k", "readings": ["k", "kä"] },
+		{ "id": "geez-wa", "character": "ወ", "meaning": "w", "readings": ["w", "wä"] },
+		{ "id": "geez-za", "character": "ዘ", "meaning": "z", "readings": ["z", "zä"] },
+		{ "id": "geez-ya", "character": "የ", "meaning": "y", "readings": ["y", "yä"] },
+		{ "id": "geez-da", "character": "ደ", "meaning": "d", "readings": ["d", "dä"] },
+		{ "id": "geez-ga", "character": "ገ", "meaning": "g", "readings": ["g", "gä"] },
+		{ "id": "geez-ta2", "character": "ጠ", "meaning": "t", "readings": ["t", "ṭ"] },
+		{ "id": "geez-pa", "character": "ጰ", "meaning": "p", "readings": ["p", "pä"] },
+		{ "id": "geez-sa3", "character": "ጸ", "meaning": "s", "readings": ["s", "ṣ"] },
+		{ "id": "geez-sa4", "character": "ፀ", "meaning": "s", "readings": ["s", "ṣ́"] },
+		{ "id": "geez-fa", "character": "ፈ", "meaning": "f", "readings": ["f", "fä"] },
+		{ "id": "geez-pa2", "character": "ፐ", "meaning": "p", "readings": ["p", "pä"] }
+	]
+}
