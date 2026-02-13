@@ -31,6 +31,7 @@ export interface UserProgress {
 	totalScriptsLearned: number;
 	totalReviews: number;
 	streakDays: number;
+	dailyGoal: number;
 	lastReviewDate: string;
 }
 

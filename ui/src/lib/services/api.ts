@@ -114,7 +114,8 @@ export const api = {
 				method: 'PATCH',
 				body: JSON.stringify(body)
 			}),
-		getScripts: () => fetchApi<string[]>('/api/user/scripts')
+		getScripts: () =>
+			fetchApi<Array<{ script: string; dailyGoal: number }>>('/api/user/scripts')
 	},
 
 	notifications: {

@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { get } from "svelte/store";
 	import { onMount } from "svelte";
 	import { userStore } from "$lib/stores/user";
+	import { learnStore } from "$lib/stores/learn";
 	import Sidebar from "$lib/components/Sidebar.svelte";
-	import { api } from "$lib/services/api";
-	import { getScriptProgress, type ScriptProgressItem } from "$lib/services/dashboard";
-	import { getScript } from "$lib/services/scripts";
 
-	let studyingScripts: ScriptProgressItem[] = $state([]);
 	let loading = $state(true);
 
 	$effect(() => {
@@ -19,31 +17,12 @@
 
 	onMount(async () => {
 		try {
-			const userScriptIds = await api.user.getScripts();
-			if (userScriptIds.length === 0) {
+			await learnStore.load();
+			const state = get(learnStore);
+			if (state.studyingScripts.length === 0) {
 				goto("/onboarding");
 				return;
 			}
-			const progress = await getScriptProgress();
-			const idSet = new Set(userScriptIds);
-			studyingScripts = progress.filter((p) => idSet.has(p.script));
-			// Ensure every user script appears (getScriptProgress only returns scripts with characters)
-			for (const id of userScriptIds) {
-				if (!studyingScripts.some((p) => p.script === id)) {
-					try {
-						const def = await getScript(id);
-						studyingScripts = [
-							...studyingScripts,
-							{ script: id, label: def.name, percentage: 0, total: def.totalCharacters ?? 0, learnt: 0 },
-						];
-					} catch {
-						studyingScripts = [...studyingScripts, { script: id, label: id, percentage: 0, total: 0, learnt: 0 }];
-					}
-				}
-			}
-			// Preserve user script order
-			const order = new Map(userScriptIds.map((id, i) => [id, i]));
-			studyingScripts.sort((a, b) => (order.get(a.script) ?? 99) - (order.get(b.script) ?? 99));
 		} catch {
 			goto("/onboarding");
 		} finally {
@@ -69,7 +48,7 @@
 				<p class="text-[var(--muted-foreground)]">Loading…</p>
 			{:else}
 				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-					{#each studyingScripts as item (item.script)}
+					{#each $learnStore.studyingScripts as item (item.script)}
 						<a
 							href="/learn/{item.script}"
 							class="block rounded-[var(--radius-l)] border border-[var(--border)] bg-[var(--card)] p-6 text-left shadow-[var(--shadow-card)] no-underline transition-opacity hover:opacity-90"

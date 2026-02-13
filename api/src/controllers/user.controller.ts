@@ -110,7 +110,7 @@ export async function getUserScripts(req: AuthRequest, res: Response) {
 		const userId = req.userId!;
 
 		const result = await query(
-			"SELECT script FROM user_progress WHERE user_id = $1",
+			"SELECT script, daily_goal FROM user_progress WHERE user_id = $1",
 			[userId]
 		);
 
@@ -119,7 +119,12 @@ export async function getUserScripts(req: AuthRequest, res: Response) {
 		}
 
 		const userProgress = result.rows as Record<string, unknown>[];
-		res.json(userProgress.map((p) => p.script));
+		res.json(
+			userProgress.map((p) => ({
+				script: p.script as string,
+				dailyGoal: Number(p.daily_goal) || 10,
+			}))
+		);
 	} catch (error) {
 		console.error("User scripts error:", error);
 		res.status(500).json({ error: "Failed to fetch user's scripts" });

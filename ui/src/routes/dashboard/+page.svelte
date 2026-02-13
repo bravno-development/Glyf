@@ -21,6 +21,7 @@
 		getMasteryColour,
 	} from "$lib/services/dashboard";
 	import { getScript, type ScriptDefinition } from "$lib/services/scripts";
+	import { learnStore } from "$lib/stores/learn";
 
 	let userScripts: string[] = $state([]);
 
@@ -85,7 +86,9 @@
 
 	onMount(async () => {
 		try {
-			userScripts = await api.user.getScripts();
+			await learnStore.load();
+			const scriptsResponse = await api.user.getScripts();
+			userScripts = scriptsResponse.map((r) => r.script);
 
 			const [sp, wa] = await Promise.all([
 				getScriptProgress(),
@@ -155,6 +158,15 @@
 	function maxWeekly(): number {
 		return Math.max(...weeklyActivity.map(w => w.count), 1);
 	}
+
+	const activeScriptItem = $derived(studyingScripts.find((s) => s.script === activeScript));
+	const totalForActive = $derived(activeScriptItem?.total ?? 0);
+	const hasUnlearnedGlyphs = $derived(stats.learnt < totalForActive);
+	const isDailyGoalMet = $derived(
+		activeScript ? learnStore.isDailyGoalMet(activeScript) : false
+	);
+	const hasDueReviews = $derived(stats.dueToday > 0);
+	const startStudyingDisabled = $derived(!hasUnlearnedGlyphs || (hasUnlearnedGlyphs && isDailyGoalMet));
 </script>
 
 <div class="flex min-h-screen">
@@ -171,20 +183,40 @@
 					</p>
 				</div>
 				<div class="flex items-center gap-3">
-					<a
-						href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
-						class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
-					>
-						<Play size={16} class="text-white" />
-						Start Practice
-					</a>
-					<a
-						href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
-						class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] no-underline transition-opacity hover:opacity-90"
-					>
-						<RefreshCcw size={16} class="text-[var(--accent-review-foreground)]" />
-						Review
-					</a>
+					{#if startStudyingDisabled}
+						<span
+							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white opacity-50 cursor-not-allowed"
+							aria-disabled="true"
+						>
+							<Play size={16} class="text-white" />
+							Start Studying
+						</span>
+					{:else}
+						<a
+							href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
+							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
+						>
+							<Play size={16} class="text-white" />
+							Start Studying
+						</a>
+					{/if}
+					{#if hasDueReviews}
+						<a
+							href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}?mode=review` : '/onboarding'}
+							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] no-underline transition-opacity hover:opacity-90"
+						>
+							<RefreshCcw size={16} class="text-[var(--accent-review-foreground)]" />
+							Review
+						</a>
+					{:else}
+						<span
+							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] opacity-50 cursor-not-allowed"
+							aria-disabled="true"
+						>
+							<RefreshCcw size={16} class="text-[var(--accent-review-foreground)]" />
+							Review
+						</span>
+					{/if}
 				</div>
 			</div>
 

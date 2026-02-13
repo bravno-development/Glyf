@@ -49,16 +49,16 @@
 
 	onMount(async () => {
 		try {
-			const [scripts, ids, prog] = await Promise.all([
+			const [scripts, scriptsResponse, prog] = await Promise.all([
 				getAvailableScripts(),
 				api.user.getScripts(),
 				getScriptProgress(),
 			]);
 			availableScripts = scripts;
-			userScriptIds = ids;
+			userScriptIds = scriptsResponse.map((r) => r.script);
 			progress = prog;
 
-			if (ids.length === 0) {
+			if (scriptsResponse.length === 0) {
 				goto("/onboarding");
 				return;
 			}
@@ -178,7 +178,7 @@
 									>
 										<a
 											href="/learn/{item.script}"
-											class="rounded-[var(--radius-pill)] bg-[var(--accent)] px-4 py-2.5 text-[14px] font-medium text-[var(--foreground)] no-underline transition-colors hover:bg-[var(--tile)]"
+											class="rounded-[var(--radius-pill)] bg-[var(--border)] px-4 py-2.5 text-[14px] font-medium text-[var(--foreground)] no-underline transition-colors hover:opacity-90"
 										>
 											Continue
 										</a>
@@ -242,7 +242,9 @@
 									{/if}
 									<a
 										href="/learn/{row.def.id}"
-										class="shrink-0 rounded-[var(--radius-pill)] border border-[var(--border)] bg-transparent px-4 py-2.5 text-[13px] font-medium text-[var(--foreground)] no-underline transition-colors hover:bg-[var(--accent)]"
+										class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity {row.isStudying
+											? 'bg-[var(--border)] text-[var(--foreground)] hover:opacity-90'
+											: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90'}"
 									>
 										{row.buttonLabel}
 									</a>
