@@ -14,7 +14,7 @@ const PORT = Deno.env.get("PORT") || 8000;
 // Middleware
 app.use(cors({
 	origin: Deno.env.get("DENO_ENV") === "production"
-		? "https://yourapp.com"
+		? "https://glyf.bravno.com"
 		: "http://localhost:5173",
 	credentials: true
 }));
@@ -36,7 +36,7 @@ app.get("/health", (_req, res) => {
 // Error handling
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(Number(PORT), "0.0.0.0", () => {
 	console.log(`API server running on http://localhost:${PORT}`);
 	startReminderProcessor();
 });
