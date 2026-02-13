@@ -2,15 +2,15 @@ services:
   api:
     build:
       context: .
-      dockerfile: docker/api.Dockerfile
+      dockerfile: api/Dockerfile
     container_name: glyf-api
     environment:
-      DATABASE_URL: postgresql://glyf:dev_password@postgres:5432/glyf_dev
-      JWT_SECRET: dev_jwt_secret_change_in_production
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
       PORT: 8000
-      DENO_ENV: development
+      DENO_ENV: production
     ports:
-      - "8000:8000"
+      - "8500:8000"
     volumes:
       - ./api:/app
     depends_on:
@@ -18,17 +18,17 @@ services:
         condition: service_healthy
     command: deno task dev
 
-  ui:
+  web:
     build:
       context: .
-      dockerfile: docker/ui.Dockerfile
-    container_name: glyf-ui
+      dockerfile: ui/Dockerfile
+    container_name: glyf-web
     environment:
-      VITE_API_URL: http://localhost:8000
+      VITE_API_URL: http://glyf-api:8000
       VITE_POSTHOG_KEY: ${VITE_POSTHOG_KEY:-}
-      NODE_ENV: development
+      NODE_ENV: production
     ports:
-      - "5173:5173"
+      - "8600:5173"
     volumes:
       - ./ui:/app
       - /app/node_modules
