@@ -3,7 +3,7 @@
 	import { onMount } from "svelte";
 	import { userStore } from "$lib/stores/user";
 	import { api } from "$lib/services/api";
-	import { Play, BookOpen, Target, Clock } from "lucide-svelte";
+	import { Play, RefreshCcw, BookOpen, Target, Clock } from "lucide-svelte";
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import {
 		type DashboardStats,
@@ -170,13 +170,22 @@
 						Track your script learning progress
 					</p>
 				</div>
-				<a
-					href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
-					class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
-				>
-					<Play size={16} fill="white" />
-					Start Practice
-				</a>
+				<div class="flex items-center gap-3">
+					<a
+						href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
+						class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
+					>
+						<Play size={16} class="text-white" />
+						Start Practice
+					</a>
+					<a
+						href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
+						class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] no-underline transition-opacity hover:opacity-90"
+					>
+						<RefreshCcw size={16} class="text-[var(--accent-review-foreground)]" />
+						Review
+					</a>
+				</div>
 			</div>
 
 			<!-- Language tabs + Stats for selected script (Script Tabs spec: pill container, active = secondary pill) -->
@@ -261,41 +270,18 @@
 						aria-busy={loadingScript}
 					>
 						<div class="mb-4 flex items-center justify-between">
-							<div>
-								{#if studyingScripts.length > 1}
-								<div class="flex flex-wrap items-center gap-2">
-									{#each studyingScripts as sp (sp.script)}
-										<button
-											type="button"
-											class="rounded-[var(--radius-pill)] px-3 py-1.5 text-[13px] font-medium transition-colors {activeScript === sp.script
-												? 'bg-[var(--accent-green)] text-white'
-												: 'bg-[var(--secondary)] text-[var(--muted-foreground)] hover:bg-[var(--tile)] hover:text-[var(--foreground)]'}"
-											onclick={() => setActiveScript(sp.script)}
-										>
-											{sp.label}
-										</button>
-									{/each}
-								</div>
-								{:else}
-								<h2 class="text-[16px] font-semibold text-[var(--foreground)]">{scriptDef.name}</h2>
-								{/if}
-								<p class="mt-0.5 text-[13px] text-[var(--muted-foreground)]">
-									{scriptDef.totalCharacters} characters &middot; {stats.learnt} learnt
-								</p>
-							</div>
 							<div class="flex items-center gap-3">
 								{#each masteryLevels as level (level.key)}
 									<div class="flex items-center gap-1.5">
 										<span
 											class="inline-block h-2.5 w-2.5 rounded-full"
-											style="background-color: {getMasteryColour(level.key)};"
+											style="background-color: {getMasteryColour(level.key)}"
 										></span>
 										<span class="text-[11px] text-[var(--muted-foreground)]">{level.label}</span>
 									</div>
 								{/each}
 							</div>
 						</div>
-
 						<div class="flex gap-1.5">
 							{#each scriptDef.grid.columns as col, colIdx (col.label + col.chars[0] + colIdx)}
 								<div class="flex flex-col gap-1.5">
@@ -331,7 +317,7 @@
 							{#each masteryLevels as level (level.key)}
 								{#if breakdown[level.key] > 0}
 									<div
-										style="width: {barPercent(breakdown[level.key])}%; background-color: {getMasteryColour(level.key)};"
+										style="width: {barPercent(breakdown[level.key])}%; background-color: {getMasteryColour(level.key)}"
 									></div>
 								{/if}
 							{/each}
@@ -343,7 +329,7 @@
 								<div class="flex items-center gap-1.5">
 									<span
 										class="inline-block h-2.5 w-2.5 rounded-full"
-										style="background-color: {getMasteryColour(level.key)};"
+										style="background-color: {getMasteryColour(level.key)}"
 									></span>
 									<span class="text-[12px] text-[var(--muted-foreground)]">
 										{level.label}: {breakdown[level.key]}
