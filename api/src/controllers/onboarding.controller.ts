@@ -33,30 +33,13 @@ export async function complete(req: AuthRequest, res: Response) {
 			return res.status(400).json({ error: "dailyGoal must be 5, 10 or 15" });
 		}
 
-		if (script === "japanese (hiragana & katakana)") {
-			await query(
-				`INSERT INTO user_progress (user_id, script, daily_goal)
-				 VALUES ($1, $2, $3)
-				 ON CONFLICT (user_id, script)
-				 DO UPDATE SET daily_goal = $3, updated_at = NOW()`,
-				[userId, "hiragana", goal]
-			);
-			await query(
-				`INSERT INTO user_progress (user_id, script, daily_goal)
-				 VALUES ($1, $2, $3)
-				 ON CONFLICT (user_id, script)
-				 DO UPDATE SET daily_goal = $3, updated_at = NOW()`,
-				[userId, "katakana", goal]
-			);
-		} else {
-			await query(
-				`INSERT INTO user_progress (user_id, script, daily_goal)
-				 VALUES ($1, $2, $3)
-				 ON CONFLICT (user_id, script)
-				 DO UPDATE SET daily_goal = $3, updated_at = NOW()`,
-				[userId, script, goal]
-			);
-		}
+		await query(
+			`INSERT INTO user_progress (user_id, script, daily_goal)
+			 VALUES ($1, $2, $3)
+			 ON CONFLICT (user_id, script)
+			 DO UPDATE SET daily_goal = $3, updated_at = NOW()`,
+			[userId, script, goal]
+		);
 
 
 		res.json({ success: true });

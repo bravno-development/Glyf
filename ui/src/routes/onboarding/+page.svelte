@@ -2,7 +2,6 @@
 	import { goto } from "$app/navigation";
 	import { userStore } from "$lib/stores/user";
 	import { api } from "$lib/services/api";
-	import { seedCharacters } from "$lib/services/scripts";
 	import { ArrowLeft, ArrowRight, Lightbulb } from "lucide-svelte";
 	import { trackEvent } from "$lib/services/analytics";
 
@@ -67,9 +66,6 @@
 		try {
 			await api.onboarding.complete(selectedScript, dailyGoal);
 			trackEvent("onboarding_completed", { script: selectedScript, daily_goal: dailyGoal });
-			if (selectedScript === "japanese (hiragana & katakana)") {
-				await Promise.all([seedCharacters("hiragana"), seedCharacters("katakana")]);
-			}
 			goto("/dashboard");
 		} catch {
 			goto("/dashboard");
