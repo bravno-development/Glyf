@@ -151,7 +151,7 @@
 												</span>
 											</div>
 											<span
-												class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--color-success-foreground)]"
+												class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--color-black)]"
 											>
 												Studying
 											</span>
@@ -210,7 +210,7 @@
 						{#each allScriptRows as row (row.def.id)}
 							<li>
 								<div
-									class="flex flex-wrap items-center gap-4 px-6 py-4 sm:flex-nowrap"
+									class="flex flex-wrap items-center gap-4 px-6 py-4 sm:flex-nowrap text-[var(--card-foreground)]"
 								>
 									<div
 										class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--tile)] text-[20px] font-bold text-[var(--primary)]"
@@ -219,9 +219,12 @@
 										{row.def.icon}
 									</div>
 									<div class="min-w-0 flex-1">
-										<p class="text-[15px] font-medium text-[var(--foreground)]">
+										<a
+											href={row.detailHref}
+											class="text-[15px] font-medium text-[var(--card-foreground)] no-underline transition-colors hover:underline"
+										>
 											{row.def.name}
-										</p>
+										</a>
 										<p class="text-[13px] text-[var(--muted-foreground)]">
 											{row.def.language}
 										</p>
@@ -233,17 +236,21 @@
 									</span>
 									{#if row.isStudying}
 										<span
-											class="w-[90px] shrink-0 rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-center text-[12px] font-medium text-[var(--color-success-foreground)]"
+											class="w-[90px] shrink-0 rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-center text-[12px] font-medium text-[var(--color-black)]"
 										>
 											Studying
 										</span>
-									{:else}
-										<span class="w-[90px] shrink-0" aria-hidden="true"></span>
 									{/if}
 									<a
-										href="/learn/{row.def.id}"
+										href={row.detailHref}
+										class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90"
+									>
+										View Details
+									</a>
+									<a
+										href={row.learnHref}
 										class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity {row.isStudying
-											? 'bg-[var(--border)] text-[var(--foreground)] hover:opacity-90'
+											? 'bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90'
 											: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90'}"
 									>
 										{row.buttonLabel}

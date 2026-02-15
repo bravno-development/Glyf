@@ -256,7 +256,7 @@
 		</section>
 
 		<!-- Footer -->
-		<footer class="w-full bg-[var(--foreground)] px-20 py-16 max-md:px-6">
+		<footer class="w-full bg-[var(--tile)] px-20 py-16 max-md:px-6">
 			<div class="mx-auto max-w-7xl">
 				<div class="grid grid-cols-1 gap-12 md:grid-cols-4">
 					<div>

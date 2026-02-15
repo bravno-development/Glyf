@@ -31,8 +31,8 @@
 	<div class="flex h-[72px] w-[72px] items-center justify-center rounded-[20px] bg-[var(--accent-light-green)]">
 		<Languages size={36} strokeWidth={1.5} class="text-[var(--accent-green)]" />
 	</div>
-	<h1 class="text-[26px] font-semibold tracking-tight text-[#1A1918]">Choose your script</h1>
-	<p class="max-w-[320px] text-center text-[15px] leading-[1.4] text-[#6D6C6A]">
+	<h1 class="text-[26px] font-semibold tracking-tight text-[var(--foreground)]">Choose your script</h1>
+	<p class="max-w-[320px] text-center text-[15px] leading-[1.4] text-[var(--muted-foreground)]">
 		Which writing system would you like to learn first? You can always add more later.
 	</p>
 </div>
@@ -43,10 +43,10 @@
 		<button
 			type="button"
 			onclick={() => script.available && onSelect(script.id)}
-			class="flex w-full items-center gap-4 rounded-2xl border-[1.5px] bg-white p-[18px_20px] shadow-[0_2px_12px_rgba(26,25,24,0.03)] transition-colors
+			class="flex w-full items-center gap-4 rounded-2xl border-[1.5px] bg-[var(--card)] p-[18px_20px] shadow-[0_2px_12px_rgba(26,25,24,0.03)] transition-colors
 				{selectedScript === script.id
 					? 'border-[var(--accent-green)] shadow-[0_2px_12px_rgba(26,25,24,0.06)]'
-					: 'border-[#E5E4E1]'}
+					: 'border-[var(--border)]'}
 				{script.available ? 'cursor-pointer' : 'cursor-default opacity-70'}"
 			disabled={!script.available}
 		>
@@ -54,19 +54,19 @@
 				class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[14px]
 					{selectedScript === script.id
 						? 'bg-[var(--accent-light-green)]'
-						: 'bg-[#EDECEA]'}"
+						: 'bg-[var(--tile)]'}"
 			>
 				<span
 					class="text-[28px] {script.charFont}
-						{selectedScript === script.id ? 'text-[var(--accent-green)]' : 'text-[#6D6C6A]'}"
+						{selectedScript === script.id ? 'text-[var(--accent-green)]' : 'text-[var(--muted-foreground)]'}"
 				>
 					{script.char}
 				</span>
 			</div>
 
 			<div class="flex flex-1 flex-col gap-1 text-left">
-				<span class="text-[16px] font-semibold text-[#1A1918]">{script.name}</span>
-				<span class="text-[13px] text-[#6D6C6A]">{script.desc}</span>
+				<span class="text-[16px] font-semibold text-[var(--foreground)]">{script.name}</span>
+				<span class="text-[13px] text-[var(--muted-foreground)]">{script.desc}</span>
 			</div>
 
 			{#if selectedScript === script.id}
@@ -74,7 +74,7 @@
 					<Check size={14} strokeWidth={2.5} class="text-white" />
 				</div>
 			{:else if !script.available}
-				<span class="shrink-0 rounded-md bg-[#EDECEA] px-2 py-1 text-[10px] font-semibold text-[#9C9B99]">
+				<span class="shrink-0 rounded-md bg-[var(--tile)] px-2 py-1 text-[10px] font-semibold text-[var(--muted-foreground)]">
 					Soon
 				</span>
 			{/if}
