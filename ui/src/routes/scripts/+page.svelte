@@ -5,10 +5,7 @@
 	import { api } from "$lib/services/api";
 	import { db } from "$lib/services/db";
 	import { getAvailableScripts, type ScriptDefinition } from "$lib/services/scripts";
-	import {
-		getScriptProgress,
-		type ScriptProgressItem,
-	} from "$lib/services/dashboard";
+	import { getScriptProgress, type ScriptProgressItem } from "$lib/services/dashboard";
 	import Sidebar from "$lib/components/Sidebar.svelte";
 
 	let availableScripts: ScriptDefinition[] = $state([]);
@@ -29,15 +26,26 @@
 		progress: ScriptProgressItem | undefined;
 		isStudying: boolean;
 		buttonLabel: string;
+		learnHref: string;
+		detailHref: string;
 	};
 	const allScriptRows = $derived(
-		availableScripts.map((def) => {
-			const p = progressByScript.get(def.id);
-			const isStudying = p != null && p.percentage > 0 && p.percentage < 100;
-			const buttonLabel =
-				p != null && p.percentage > 0 ? "Continue" : "Start";
-			return { def, progress: p, isStudying, buttonLabel } satisfies AllScriptRow;
-		}),
+		availableScripts
+			.filter((def) => def.available)
+			.map((def) => {
+				const p = progressByScript.get(def.id);
+				const isStudying = p != null && p.percentage > 0 && p.percentage < 100;
+				const buttonLabel =
+					p != null && p.percentage > 0 ? "Continue" : "Start";
+				return {
+					def,
+					progress: p,
+					isStudying,
+					buttonLabel,
+					learnHref: `/learn/${def.id}`,
+					detailHref: `/scripts/${def.id}`,
+				} satisfies AllScriptRow;
+			}),
 	);
 
 	$effect(() => {
@@ -54,7 +62,7 @@
 				api.user.getScripts(),
 				getScriptProgress(),
 			]);
-			availableScripts = scripts;
+			availableScripts = scripts.filter((def) => def.available);
 			userScriptIds = scriptsResponse.map((r) => r.script);
 			progress = prog;
 
