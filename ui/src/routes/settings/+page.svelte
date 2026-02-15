@@ -14,9 +14,9 @@
 	];
 
 	const REMINDER_TIME_OPTIONS = [
-		{ value: "09:00", label: "9:00 AM (Morning)" },
-		{ value: "13:00", label: "1:00 PM (Afternoon)" },
-		{ value: "18:00", label: "6:00 PM (Evening)" },
+		{ value: "09:00", label: "09:00 (Morning)" },
+		{ value: "13:00", label: "13:00 (Afternoon)" },
+		{ value: "18:00", label: "18:00 (Evening)" },
 	];
 
 	const THEME_OPTIONS = [
