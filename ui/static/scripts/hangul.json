@@ -4,22 +4,14 @@
 	"name": "Hangul",
 	"description": "Korean alphabet. 19 initial consonants (choseong) and 21 vowels (jungseong) that combine into syllables.",
 	"icon": "가",
-	"available": false,
+	"available": true,
 	"totalCharacters": 40,
 	"lowercaseFriendly": false,
 	"grid": {
 		"columns": [
 			{
 				"label": "ㄱ",
-				"chars": [
-					"ㄱ",
-					"ㄲ",
-					"ㄴ",
-					"ㄷ",
-					"ㄸ",
-					"ㄹ",
-					"ㅁ"
-				]
+				"chars": ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ"]
 			},
 			{
 				"label": "ㅂ",
