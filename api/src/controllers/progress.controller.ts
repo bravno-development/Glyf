@@ -1,12 +1,7 @@
+import { query } from "../config/database.ts";
 import type { Response } from "../../imports.ts";
 import type { AuthRequest } from "../middleware/auth.ts";
-import { query } from "../config/database.ts";
-import type {
-	AttemptItem,
-	SubmitAttemptsPayload,
-	DueItem,
-	ManifestVersionsResponse
-} from "../models/types.ts";
+import type { SubmitAttemptsPayload, DueItem } from "../models/types.ts";
 
 // SM-2: same logic as ui/src/lib/services/srs.ts (grade 0-5; we use correct ? 5 : 0)
 function nextSm2State(
@@ -189,21 +184,5 @@ export async function getDue(req: AuthRequest, res: Response) {
 	} catch (error) {
 		console.error("Get due error:", error);
 		res.status(500).json({ error: "Failed to get due items" });
-	}
-}
-
-export async function getManifestVersions(req: AuthRequest, res: Response) {
-	try {
-		const result = await query(
-			`SELECT script, version FROM script_manifest_version`
-		);
-		const versions: ManifestVersionsResponse = {};
-		for (const row of result.rows as Record<string, unknown>[]) {
-			versions[row.script as string] = row.version as number;
-		}
-		res.json(versions);
-	} catch (error) {
-		console.error("Get manifest versions error:", error);
-		res.status(500).json({ error: "Failed to get manifest versions" });
 	}
 }

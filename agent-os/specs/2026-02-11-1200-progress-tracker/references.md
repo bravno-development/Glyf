@@ -46,7 +46,7 @@
 - **Relevance:** fetchApi, api.auth, api.sync, api.onboarding namespace; Bearer
   token, throw on error.
 - **Key patterns:** Add api.progress.submitAttempts(payload),
-  api.progress.getDue(script), api.progress.getManifestVersions().
+  api.progress.getDue(script).
 
 ### Dashboard page
 

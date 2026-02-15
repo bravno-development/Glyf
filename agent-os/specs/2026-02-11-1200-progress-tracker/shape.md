@@ -3,10 +3,9 @@
 ## Scope
 
 Progress tracker for each user: per-item (character/glyph only) SM-2 progress,
-attempt records, user–script stats (words_studied_today, last_study_date), and
-manifest versioning for cache invalidation. Offline-first unchanged; API
-receives attempt submissions and serves normalized progress for cross-device and
-analytics.
+attempt records, user–script stats (words_studied_today, last_study_date).
+Offline-first unchanged; API receives attempt submissions and serves normalized
+progress for cross-device and analytics.
 
 ## Decisions
 
@@ -20,8 +19,6 @@ analytics.
 - **user_progress** — Add `words_studied_today`; ensure `last_review_date`
   exists. Reset policy for words_studied_today (e.g. midnight or daily job) to
   be decided later.
-- **Manifest version** — Table and GET endpoint in scope; population (how
-  version gets set) is manual or separate task.
 
 ## Context
 

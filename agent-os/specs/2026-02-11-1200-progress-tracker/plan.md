@@ -15,9 +15,6 @@
 - **User–script stats** — Extend `user_progress` with words_studied_today (and
   last_study_date if not already sufficient); used for dashboard and streaks.
 
-- **Manifest versioning** — Table and API to track script/course manifest
-  version for cache invalidation when course data changes.
-
 - **Alignment** — Offline-first unchanged: IndexedDB remains source of truth for
   learn flow; API receives attempt submissions and serves normalized progress
   for cross-device and analytics.
@@ -31,7 +28,7 @@ shape.md, standards.md, references.md, visuals/.
 
 ---
 
-## Task 2: Database migration — progress tables and manifest version
+## Task 2: Database migration — progress tables
 
 Add migration `004_progress_tracker.sql`:
 
@@ -45,9 +42,6 @@ Add migration `004_progress_tracker.sql`:
   `step_type`, `correct`, `response_time_ms`, `attempted_at`, `user_response`,
   `correct_answer` (nullable), `session_id`, `uuid_local` (unique per user for
   idempotency). Index: `(user_id, uuid_local)` for dedup.
-
-- **script_manifest_version** — `script` (PK), `version` (int), `updated_at`;
-  optionally `data`/checksum for cache busting.
 
 - **user_progress** — Add `words_studied_today` (int, default 0) and ensure
   `last_review_date` exists; consider reset policy for words_studied_today (e.g.
@@ -75,10 +69,6 @@ Add migration `004_progress_tracker.sql`:
     item_progress rows) due for review for the user for given script; optional
     limit.
 
-  - **GET /api/progress/manifest-versions** — Return `{ [script]: version }`
-    from `script_manifest_version` for cache invalidation (optional; can be
-    Phase 2).
-
 - **Errors** — 400 validation, 401 auth, 500 with `{ error }`.
 
 - **Types** — Add request/response types in `api/src/models/types.ts` (e.g.
@@ -100,7 +90,7 @@ Add migration `004_progress_tracker.sql`:
 ## Task 5: UI — progress API client and learn flow integration
 
 - **api.ts** — Add `api.progress.submitAttempts(payload)` and optionally
-  `api.progress.getDue(script)`, `api.progress.getManifestVersions()`.
+  `api.progress.getDue(script)`.
 
 - **Learn flow** — Wherever a review answer is committed, add call to
   `api.progress.submitAttempts` with sessionId, single attempt (itemId, script,
@@ -117,7 +107,6 @@ Add migration `004_progress_tracker.sql`:
 - Changing SM-2 algorithm; server will mirror it or accept client result.
 - **Sentence/sample-sentence data** — Glyph focuses on character progression
   only.
-- Manifest version population — document as manual or separate task.
 - GDPR "forget me" / delete-account function — not in this spec; add later if
   needed. Use CASCADE on progress tables for referential integrity only.
 

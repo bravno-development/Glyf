@@ -42,13 +42,5 @@ CREATE TABLE IF NOT EXISTS attempt_records (
 
 CREATE INDEX IF NOT EXISTS idx_attempt_records_user_uuid ON attempt_records(user_id, uuid_local);
 
--- Script/course manifest version for cache invalidation
-CREATE TABLE IF NOT EXISTS script_manifest_version (
-  script VARCHAR(50) PRIMARY KEY,
-  version INT NOT NULL DEFAULT 1,
-  data JSONB NOT NULL DEFAULT '{}',
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
 -- Extend user_progress with words_studied_today (last_review_date already exists)
 ALTER TABLE user_progress ADD COLUMN IF NOT EXISTS words_studied_today INT NOT NULL DEFAULT 0;

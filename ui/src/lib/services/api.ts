@@ -85,8 +85,6 @@ export const api = {
 			fetchApi<Array<{ itemId: string; nextReviewAt: string }>>(
 				`/api/progress/due?script=${encodeURIComponent(script)}${limit != null ? `&limit=${limit}` : ''}`
 			),
-		getManifestVersions: () =>
-			fetchApi<Record<string, number>>('/api/progress/manifest-versions')
 	},
 
 	user: {

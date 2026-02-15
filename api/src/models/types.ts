@@ -78,10 +78,6 @@ export interface DueItem {
 	nextReviewAt: string;
 }
 
-export interface ManifestVersionsResponse {
-	[script: string]: number;
-}
-
 export type NotificationType = "email" | "in_app";
 
 export interface Notification {
