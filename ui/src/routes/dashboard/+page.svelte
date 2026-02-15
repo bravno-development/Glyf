@@ -325,6 +325,28 @@
 								</div>
 							{/each}
 						</div>
+
+						{#if scriptDef.extra?.length}
+							<div class="mt-6 border-t border-[var(--border)] pt-6">
+								<h3 class="mb-3 text-[14px] font-semibold text-[var(--muted-foreground)]">Extra</h3>
+								{#each scriptDef.extra as section (section.title)}
+									<div class="mb-4 last:mb-0">
+										<p class="mb-2 text-[12px] font-medium text-[var(--muted-foreground)]">{section.title}</p>
+										<div class="flex flex-wrap gap-1.5">
+											{#each section.characters as ec, i (section.title + ec.character + i)}
+												<div
+													class="flex h-[52px] w-[52px] items-center justify-center rounded-lg text-[18px] font-medium text-[var(--black)]"
+													style="background-color: {getGridCharMastery(ec.character)};"
+													title={ec.character}
+												>
+													{ec.character}
+												</div>
+											{/each}
+										</div>
+									</div>
+								{/each}
+							</div>
+						{/if}
 					</div>
 					{/if}
 
