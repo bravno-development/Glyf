@@ -1,0 +1,164 @@
+<script lang="ts">
+	import { goto } from "$app/navigation";
+	import { page } from "$app/stores";
+	import { onMount } from "svelte";
+	import { userStore } from "$lib/stores/user";
+	import {
+		getCharactersInOrder,
+		getLessonContent,
+		getScript,
+		type ScriptDefinition,
+	} from "$lib/services/scripts";
+	import { getProgressForScript } from "$lib/services/dashboard";
+	import Sidebar from "$lib/components/Sidebar.svelte";
+	import DetailSections from "$lib/components/DetailSections.svelte";
+	import { ArrowLeft } from "lucide-svelte";
+
+	const scriptId = $derived($page.params.scriptId ?? "");
+
+	interface ContentRow {
+		character: string;
+		meaning: string;
+		order: number;
+	}
+
+	let scriptDef = $state<ScriptDefinition | null>(null);
+	let rows = $state<Array<{ title: string; content: ContentRow[] }>>([]);
+	let learnHref = $state("/learn");
+	let learnLabel = $state("Start learning");
+	let loading = $state(true);
+	let error = $state<string | null>(null);
+
+	$effect(() => {
+		if (!$userStore.initialised) return;
+		if (!$userStore.isAuthenticated) {
+			goto("/auth/login");
+		}
+	});
+
+	onMount(async () => {
+		if (!scriptId) {
+			goto("/scripts");
+			return;
+		}
+		try {
+			const def = await getScript(scriptId);
+			scriptDef = def;
+			learnHref = `/learn/${def.id}`;
+			const prog = await getProgressForScript(def.id);
+			learnLabel = prog && prog.percentage > 0 ? "Continue" : "Start learning";
+
+			const sectionRows: Array<{ title: string; content: ContentRow[] }> = [];
+			if (def.description) {
+				sectionRows.push({ title: "Overview", content: [{ character: "", meaning: def.description, order: 0 }] });
+			}
+			if (def.course?.lessons?.length) {
+				for (const lesson of def.course.lessons) {
+					const content = getLessonContent(def, lesson);
+					if (content.length > 0) {
+						sectionRows.push({ title: lesson.title, content });
+					}
+				}
+			} else if (def.characters?.length || def.extra?.length) {
+				// Fallback when course is missing (e.g. legacy script)
+				if (def.characters?.length) {
+					const ordered = getCharactersInOrder(def);
+					sectionRows.push({
+						title: "Characters",
+						content: ordered.map((c) => ({
+							character: c.character,
+							meaning: c.meaning,
+							order: c.order ?? 0,
+						})),
+					});
+				}
+				if (def.extra?.length) {
+					for (const section of def.extra) {
+						sectionRows.push({
+							title: section.title,
+							content: section.characters.map((c, i) => ({
+								character: c.character,
+								meaning: c.meaning,
+								order: i,
+							})),
+						});
+					}
+				}
+			}
+			rows = sectionRows;
+		} catch {
+			error = "Script not found";
+		} finally {
+			loading = false;
+		}
+	});
+</script>
+
+<svelte:head>
+	<title>{scriptDef?.name ?? scriptId} — Script</title>
+</svelte:head>
+
+<div class="flex min-h-screen">
+	<Sidebar />
+
+	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
+		<div class="mx-auto max-w-4xl flex flex-col gap-8 py-10 px-12">
+			{#if loading}
+				<p class="text-[var(--muted-foreground)]">Loading…</p>
+			{:else if error}
+				<p class="text-[var(--color-error)]">{error}</p>
+				<a
+					href="/scripts"
+					class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-[var(--foreground)] no-underline hover:underline"
+				>
+					<ArrowLeft size={16} />
+					Back to scripts
+				</a>
+			{:else if scriptDef}
+				<div class="flex flex-col gap-8">
+					<div class="flex items-start justify-between gap-4">
+						<a
+							href="/scripts"
+							class="inline-flex shrink-0 items-center gap-2 text-[14px] font-medium text-[var(--muted-foreground)] no-underline transition-colors hover:text-[var(--foreground)]"
+						>
+							<ArrowLeft size={16} />
+							Back to scripts
+						</a>
+					</div>
+
+					<header class="flex flex-col gap-4">
+						<div class="flex items-center gap-4">
+							<span
+								class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[var(--radius-m)] bg-[var(--tile)] text-[28px] font-bold text-[var(--primary)]"
+								aria-hidden="true"
+							>
+								{scriptDef.icon}
+							</span>
+							<div class="min-w-0 flex-1">
+								<h1 class="text-[28px] font-semibold text-[var(--foreground)]">
+									{scriptDef.name}
+								</h1>
+								<p class="mt-1 text-[14px] text-[var(--muted-foreground)]">
+									{scriptDef.language}
+									{#if scriptDef.totalCharacters > 0}
+										· {scriptDef.totalCharacters} characters
+									{/if}
+								</p>
+							</div>
+						</div>
+						<div class="flex flex-wrap items-center gap-3">
+							<a
+								href={learnHref}
+								class="rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-2.5 text-[14px] font-medium text-[var(--primary-foreground)] no-underline transition-opacity hover:opacity-90"
+							>
+								{learnLabel}
+							</a>
+						</div>
+					</header>
+
+					<DetailSections rows={rows} lowercaseFriendly={scriptDef.lowercaseFriendly ?? false} />
+				</div>
+			{/if}
+		</div>
+	</main>
+</div>
