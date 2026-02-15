@@ -128,7 +128,10 @@
 				}))
 				.filter((x) => x.character);
 
-			const newCards = await getNewCards(scriptId, 20, db);
+			const dailyCap = $learnStore.dailyGoalByScript[scriptId] ?? 15;
+			const introduced = learnStore.getIntroducedTodayCount(scriptId);
+			const remaining = Math.max(0, dailyCap - introduced);
+			const newCards = await getNewCards(scriptId, remaining, db);
 			const newWithChar = newCards.map((c: Character) => ({ character: c, review: undefined }));
 
 			queue = [...dueWithChar, ...newWithChar];

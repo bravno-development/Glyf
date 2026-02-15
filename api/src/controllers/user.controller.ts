@@ -105,6 +105,39 @@ export async function updateReminder(req: AuthRequest, res: Response) {
 	}
 }
 
+const VALID_DAILY_GOALS = [5, 10, 15];
+
+export async function updateDailyGoal(req: AuthRequest, res: Response) {
+	try {
+		const userId = req.userId!;
+		const { script, dailyGoal } = req.body as {
+			script?: string;
+			dailyGoal?: number;
+		};
+
+		if (typeof script !== "string" || !script.trim()) {
+			return res.status(400).json({ error: "script is required" });
+		}
+		if (typeof dailyGoal !== "number" || !VALID_DAILY_GOALS.includes(dailyGoal)) {
+			return res.status(400).json({ error: `dailyGoal must be one of ${VALID_DAILY_GOALS.join(", ")}` });
+		}
+
+		const result = await query(
+			"UPDATE user_progress SET daily_goal = $1 WHERE user_id = $2 AND script = $3",
+			[dailyGoal, userId, script.trim()]
+		);
+
+		if (result.rowCount === 0) {
+			return res.status(404).json({ error: "Script not found for user" });
+		}
+
+		res.json({ success: true, script: script.trim(), dailyGoal });
+	} catch (error) {
+		console.error("Update daily goal error:", error);
+		res.status(500).json({ error: "Failed to update daily goal" });
+	}
+}
+
 export async function getUserScripts(req: AuthRequest, res: Response) {
 	try {
 		const userId = req.userId!;

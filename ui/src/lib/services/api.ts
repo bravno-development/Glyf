@@ -115,7 +115,12 @@ export const api = {
 				body: JSON.stringify(body)
 			}),
 		getScripts: () =>
-			fetchApi<Array<{ script: string; dailyGoal: number }>>('/api/user/scripts')
+			fetchApi<Array<{ script: string; dailyGoal: number }>>('/api/user/scripts'),
+		updateDailyGoal: (script: string, dailyGoal: number) =>
+			fetchApi<{ success: boolean; script: string; dailyGoal: number }>('/api/user/daily-goal', {
+				method: 'PUT',
+				body: JSON.stringify({ script, dailyGoal })
+			})
 	},
 
 	admin: {

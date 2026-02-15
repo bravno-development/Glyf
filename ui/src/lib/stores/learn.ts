@@ -150,9 +150,26 @@ function createLearnStore() {
 		return newCards.slice(0, batchSize);
 	}
 
+	function setDailyGoal(scriptId: string, goal: number): void {
+		update((s) => ({
+			...s,
+			dailyGoalByScript: { ...s.dailyGoalByScript, [scriptId]: goal },
+		}));
+	}
+
+	function reset(): void {
+		set({
+			studyingScripts: [],
+			dailyGoalByScript: {},
+			initialised: false,
+		});
+	}
+
 	return {
 		subscribe,
 		load,
+		reset,
+		setDailyGoal,
 		getIntroBatch,
 		incrementIntroducedToday,
 		getIntroducedTodayCount,

@@ -166,6 +166,9 @@
 		activeScript ? learnStore.isDailyGoalMet(activeScript) : false
 	);
 	const hasDueReviews = $derived(stats.dueToday > 0);
+	const dailyGoalForActive = $derived($learnStore.dailyGoalByScript[activeScript] ?? 15);
+	const introducedToday = $derived.by(() => activeScript ? learnStore.getIntroducedTodayCount(activeScript) : 0);
+	const charsLeftToday = $derived(Math.max(0, dailyGoalForActive - introducedToday));
 	const startStudyingDisabled = $derived(!hasUnlearnedGlyphs || (hasUnlearnedGlyphs && isDailyGoalMet));
 </script>
 
@@ -258,20 +261,20 @@
 						</p>
 					</div>
 
-					<!-- <div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
-						<div class="flex items-center justify-between">
-							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Difficult characters</span>
-							<Target size={18} class="text-[var(--muted-foreground)]" />
-						</div>
-						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
-							{loadingScript ? '—' : `${stats.accuracy}%`}
-						</p>
-					</div> -->
-
 					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
 						<div class="flex items-center justify-between">
 							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Characters left to learn today</span>
 							<Clock size={18} class="text-[var(--muted-foreground)]" />
+						</div>
+						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
+							{loadingScript ? '—' : charsLeftToday}
+						</p>
+					</div>
+
+					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+						<div class="flex items-center justify-between">
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Due for review</span>
+							<RefreshCcw size={18} class="text-[var(--muted-foreground)]" />
 						</div>
 						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
 							{loadingScript ? '—' : stats.dueToday}

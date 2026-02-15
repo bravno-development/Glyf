@@ -10,7 +10,7 @@
 	const DAILY_GOAL_OPTIONS = [
 		{ value: "5", label: "5 characters/day (Light)" },
 		{ value: "10", label: "10 characters/day (Steady)" },
-		{ value: "20", label: "20 characters/day (Intense)" },
+		{ value: "15", label: "15 characters/day (Intense)" },
 	];
 
 	const REMINDER_TIME_OPTIONS = [
@@ -62,15 +62,22 @@
 		}
 	});
 
+	let activeScript = $state("");
+
 	onMount(async () => {
 		try {
+			await learnStore.load();
 			const profile = await api.user.getProfile();
 			email = profile.email ?? "";
 			reminderEnabled = profile.reminderEnabled ?? false;
 			reminderTimeLocal = profile.reminderTimeLocal ?? "09:00";
 			timezone = profile.timezone ?? "UTC";
-			const storedGoal = typeof localStorage !== "undefined" && localStorage.getItem("glyf-daily-goal");
-			if (storedGoal) dailyGoal = storedGoal;
+			const scripts = $learnStore.studyingScripts;
+			if (scripts.length > 0) {
+				activeScript = scripts[0].script;
+				const serverGoal = $learnStore.dailyGoalByScript[activeScript];
+				if (serverGoal) dailyGoal = String(serverGoal);
+			}
 			const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("glyf-theme");
 			if (storedTheme && ["light", "dark", "system"].includes(storedTheme)) theme = storedTheme;
 			reviewKeys = learnStore.getReviewOptionKeys();
@@ -96,10 +103,16 @@
 	// 	applyTheme(value);
 	// }
 
-	function onDailyGoalChange(e: Event) {
+	async function onDailyGoalChange(e: Event) {
 		const value = (e.target as HTMLSelectElement).value;
 		dailyGoal = value;
-		if (typeof localStorage !== "undefined") localStorage.setItem("glyf-daily-goal", value);
+		if (!activeScript) return;
+		try {
+			await api.user.updateDailyGoal(activeScript, Number(value));
+			learnStore.setDailyGoal(activeScript, Number(value));
+		} catch (err) {
+			error = err instanceof Error ? err.message : "Failed to update daily goal";
+		}
 	}
 
 	async function saveReminder() {
