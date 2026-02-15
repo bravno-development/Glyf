@@ -13,10 +13,7 @@ services:
       - "8500:8000"
     volumes:
       - ./api:/app
-    depends_on:
-      postgres:
-        condition: service_healthy
-    command: deno task dev
+    command: deno task start
 
   web:
     build:
