@@ -4,7 +4,7 @@
 	"name": "Katakana",
 	"description": "Japanese syllabary used for loanwords, names, and emphasis. 46 basic characters plus ン, plus voiced (dakuten) and handakuten.",
 	"icon": "ア",
-	"available": true,
+	"available": false,
 	"totalCharacters": 72,
 	"grid": {
 		"columns": [
@@ -118,7 +118,8 @@
 			"meaning": "a",
 			"readings": [
 				"a"
-			]
+			],
+			"order": 1
 		},
 		{
 			"id": "katakana-i",
@@ -126,7 +127,8 @@
 			"meaning": "i",
 			"readings": [
 				"i"
-			]
+			],
+			"order": 2
 		},
 		{
 			"id": "katakana-u",
@@ -134,7 +136,8 @@
 			"meaning": "u",
 			"readings": [
 				"u"
-			]
+			],
+			"order": 3
 		},
 		{
 			"id": "katakana-e",
@@ -142,7 +145,8 @@
 			"meaning": "e",
 			"readings": [
 				"e"
-			]
+			],
+			"order": 4
 		},
 		{
 			"id": "katakana-o",
@@ -150,7 +154,8 @@
 			"meaning": "o",
 			"readings": [
 				"o"
-			]
+			],
+			"order": 5
 		},
 		{
 			"id": "katakana-ka",
@@ -158,7 +163,8 @@
 			"meaning": "ka",
 			"readings": [
 				"ka"
-			]
+			],
+			"order": 6
 		},
 		{
 			"id": "katakana-ki",
@@ -166,7 +172,8 @@
 			"meaning": "ki",
 			"readings": [
 				"ki"
-			]
+			],
+			"order": 7
 		},
 		{
 			"id": "katakana-ku",
@@ -174,7 +181,8 @@
 			"meaning": "ku",
 			"readings": [
 				"ku"
-			]
+			],
+			"order": 8
 		},
 		{
 			"id": "katakana-ke",
@@ -182,7 +190,8 @@
 			"meaning": "ke",
 			"readings": [
 				"ke"
-			]
+			],
+			"order": 9
 		},
 		{
 			"id": "katakana-ko",
@@ -190,7 +199,8 @@
 			"meaning": "ko",
 			"readings": [
 				"ko"
-			]
+			],
+			"order": 10
 		},
 		{
 			"id": "katakana-sa",
@@ -198,7 +208,8 @@
 			"meaning": "sa",
 			"readings": [
 				"sa"
-			]
+			],
+			"order": 11
 		},
 		{
 			"id": "katakana-shi",
@@ -207,7 +218,8 @@
 			"readings": [
 				"shi",
 				"si"
-			]
+			],
+			"order": 12
 		},
 		{
 			"id": "katakana-su",
@@ -215,7 +227,8 @@
 			"meaning": "su",
 			"readings": [
 				"su"
-			]
+			],
+			"order": 13
 		},
 		{
 			"id": "katakana-se",
@@ -223,7 +236,8 @@
 			"meaning": "se",
 			"readings": [
 				"se"
-			]
+			],
+			"order": 14
 		},
 		{
 			"id": "katakana-so",
@@ -231,7 +245,8 @@
 			"meaning": "so",
 			"readings": [
 				"so"
-			]
+			],
+			"order": 15
 		},
 		{
 			"id": "katakana-ta",
@@ -239,7 +254,8 @@
 			"meaning": "ta",
 			"readings": [
 				"ta"
-			]
+			],
+			"order": 16
 		},
 		{
 			"id": "katakana-chi",
@@ -248,7 +264,8 @@
 			"readings": [
 				"chi",
 				"ti"
-			]
+			],
+			"order": 17
 		},
 		{
 			"id": "katakana-tsu",
@@ -257,7 +274,8 @@
 			"readings": [
 				"tsu",
 				"tu"
-			]
+			],
+			"order": 18
 		},
 		{
 			"id": "katakana-te",
@@ -265,7 +283,8 @@
 			"meaning": "te",
 			"readings": [
 				"te"
-			]
+			],
+			"order": 19
 		},
 		{
 			"id": "katakana-to",
@@ -273,7 +292,8 @@
 			"meaning": "to",
 			"readings": [
 				"to"
-			]
+			],
+			"order": 20
 		},
 		{
 			"id": "katakana-na",
@@ -281,7 +301,8 @@
 			"meaning": "na",
 			"readings": [
 				"na"
-			]
+			],
+			"order": 21
 		},
 		{
 			"id": "katakana-ni",
@@ -289,7 +310,8 @@
 			"meaning": "ni",
 			"readings": [
 				"ni"
-			]
+			],
+			"order": 22
 		},
 		{
 			"id": "katakana-nu",
@@ -297,7 +319,8 @@
 			"meaning": "nu",
 			"readings": [
 				"nu"
-			]
+			],
+			"order": 23
 		},
 		{
 			"id": "katakana-ne",
@@ -305,7 +328,8 @@
 			"meaning": "ne",
 			"readings": [
 				"ne"
-			]
+			],
+			"order": 24
 		},
 		{
 			"id": "katakana-no",
@@ -313,7 +337,8 @@
 			"meaning": "no",
 			"readings": [
 				"no"
-			]
+			],
+			"order": 25
 		},
 		{
 			"id": "katakana-ha",
@@ -322,7 +347,8 @@
 			"readings": [
 				"ha",
 				"wa"
-			]
+			],
+			"order": 26
 		},
 		{
 			"id": "katakana-hi",
@@ -330,7 +356,8 @@
 			"meaning": "hi",
 			"readings": [
 				"hi"
-			]
+			],
+			"order": 27
 		},
 		{
 			"id": "katakana-fu",
@@ -339,7 +366,8 @@
 			"readings": [
 				"fu",
 				"hu"
-			]
+			],
+			"order": 28
 		},
 		{
 			"id": "katakana-he",
@@ -348,7 +376,8 @@
 			"readings": [
 				"he",
 				"e"
-			]
+			],
+			"order": 29
 		},
 		{
 			"id": "katakana-ho",
@@ -356,7 +385,8 @@
 			"meaning": "ho",
 			"readings": [
 				"ho"
-			]
+			],
+			"order": 30
 		},
 		{
 			"id": "katakana-ma",
@@ -364,7 +394,8 @@
 			"meaning": "ma",
 			"readings": [
 				"ma"
-			]
+			],
+			"order": 31
 		},
 		{
 			"id": "katakana-mi",
@@ -372,7 +403,8 @@
 			"meaning": "mi",
 			"readings": [
 				"mi"
-			]
+			],
+			"order": 32
 		},
 		{
 			"id": "katakana-mu",
@@ -380,7 +412,8 @@
 			"meaning": "mu",
 			"readings": [
 				"mu"
-			]
+			],
+			"order": 33
 		},
 		{
 			"id": "katakana-me",
@@ -388,7 +421,8 @@
 			"meaning": "me",
 			"readings": [
 				"me"
-			]
+			],
+			"order": 34
 		},
 		{
 			"id": "katakana-mo",
@@ -396,7 +430,8 @@
 			"meaning": "mo",
 			"readings": [
 				"mo"
-			]
+			],
+			"order": 35
 		},
 		{
 			"id": "katakana-ya",
@@ -404,7 +439,8 @@
 			"meaning": "ya",
 			"readings": [
 				"ya"
-			]
+			],
+			"order": 36
 		},
 		{
 			"id": "katakana-yu",
@@ -412,7 +448,8 @@
 			"meaning": "yu",
 			"readings": [
 				"yu"
-			]
+			],
+			"order": 37
 		},
 		{
 			"id": "katakana-yo",
@@ -420,7 +457,8 @@
 			"meaning": "yo",
 			"readings": [
 				"yo"
-			]
+			],
+			"order": 38
 		},
 		{
 			"id": "katakana-ra",
@@ -428,7 +466,8 @@
 			"meaning": "ra",
 			"readings": [
 				"ra"
-			]
+			],
+			"order": 39
 		},
 		{
 			"id": "katakana-ri",
@@ -436,7 +475,8 @@
 			"meaning": "ri",
 			"readings": [
 				"ri"
-			]
+			],
+			"order": 40
 		},
 		{
 			"id": "katakana-ru",
@@ -444,7 +484,8 @@
 			"meaning": "ru",
 			"readings": [
 				"ru"
-			]
+			],
+			"order": 41
 		},
 		{
 			"id": "katakana-re",
@@ -452,7 +493,8 @@
 			"meaning": "re",
 			"readings": [
 				"re"
-			]
+			],
+			"order": 42
 		},
 		{
 			"id": "katakana-ro",
@@ -460,7 +502,8 @@
 			"meaning": "ro",
 			"readings": [
 				"ro"
-			]
+			],
+			"order": 43
 		},
 		{
 			"id": "katakana-wa",
@@ -468,7 +511,8 @@
 			"meaning": "wa",
 			"readings": [
 				"wa"
-			]
+			],
+			"order": 44
 		},
 		{
 			"id": "katakana-wo",
@@ -477,7 +521,8 @@
 			"readings": [
 				"wo",
 				"o"
-			]
+			],
+			"order": 45
 		},
 		{
 			"id": "katakana-n",
@@ -486,7 +531,8 @@
 			"readings": [
 				"n",
 				"n'"
-			]
+			],
+			"order": 46
 		},
 		{
 			"id": "katakana-ga",
@@ -494,7 +540,8 @@
 			"meaning": "ga",
 			"readings": [
 				"ga"
-			]
+			],
+			"order": 47
 		},
 		{
 			"id": "katakana-gi",
@@ -502,7 +549,8 @@
 			"meaning": "gi",
 			"readings": [
 				"gi"
-			]
+			],
+			"order": 48
 		},
 		{
 			"id": "katakana-gu",
@@ -510,7 +558,8 @@
 			"meaning": "gu",
 			"readings": [
 				"gu"
-			]
+			],
+			"order": 49
 		},
 		{
 			"id": "katakana-ge",
@@ -518,7 +567,8 @@
 			"meaning": "ge",
 			"readings": [
 				"ge"
-			]
+			],
+			"order": 50
 		},
 		{
 			"id": "katakana-go",
@@ -526,7 +576,8 @@
 			"meaning": "go",
 			"readings": [
 				"go"
-			]
+			],
+			"order": 51
 		},
 		{
 			"id": "katakana-za",
@@ -534,7 +585,8 @@
 			"meaning": "za",
 			"readings": [
 				"za"
-			]
+			],
+			"order": 52
 		},
 		{
 			"id": "katakana-ji",
@@ -543,7 +595,8 @@
 			"readings": [
 				"ji",
 				"zi"
-			]
+			],
+			"order": 53
 		},
 		{
 			"id": "katakana-zu",
@@ -551,7 +604,8 @@
 			"meaning": "zu",
 			"readings": [
 				"zu"
-			]
+			],
+			"order": 54
 		},
 		{
 			"id": "katakana-ze",
@@ -559,7 +613,8 @@
 			"meaning": "ze",
 			"readings": [
 				"ze"
-			]
+			],
+			"order": 55
 		},
 		{
 			"id": "katakana-zo",
@@ -567,7 +622,8 @@
 			"meaning": "zo",
 			"readings": [
 				"zo"
-			]
+			],
+			"order": 56
 		},
 		{
 			"id": "katakana-da",
@@ -575,7 +631,8 @@
 			"meaning": "da",
 			"readings": [
 				"da"
-			]
+			],
+			"order": 57
 		},
 		{
 			"id": "katakana-di",
@@ -584,7 +641,8 @@
 			"readings": [
 				"ji",
 				"di"
-			]
+			],
+			"order": 58
 		},
 		{
 			"id": "katakana-du",
@@ -593,7 +651,8 @@
 			"readings": [
 				"zu",
 				"du"
-			]
+			],
+			"order": 59
 		},
 		{
 			"id": "katakana-de",
@@ -601,7 +660,8 @@
 			"meaning": "de",
 			"readings": [
 				"de"
-			]
+			],
+			"order": 60
 		},
 		{
 			"id": "katakana-do",
@@ -609,7 +669,8 @@
 			"meaning": "do",
 			"readings": [
 				"do"
-			]
+			],
+			"order": 61
 		},
 		{
 			"id": "katakana-ba",
@@ -617,7 +678,8 @@
 			"meaning": "ba",
 			"readings": [
 				"ba"
-			]
+			],
+			"order": 62
 		},
 		{
 			"id": "katakana-bi",
@@ -625,7 +687,8 @@
 			"meaning": "bi",
 			"readings": [
 				"bi"
-			]
+			],
+			"order": 63
 		},
 		{
 			"id": "katakana-bu",
@@ -633,7 +696,8 @@
 			"meaning": "bu",
 			"readings": [
 				"bu"
-			]
+			],
+			"order": 64
 		},
 		{
 			"id": "katakana-be",
@@ -641,7 +705,8 @@
 			"meaning": "be",
 			"readings": [
 				"be"
-			]
+			],
+			"order": 65
 		},
 		{
 			"id": "katakana-bo",
@@ -649,7 +714,8 @@
 			"meaning": "bo",
 			"readings": [
 				"bo"
-			]
+			],
+			"order": 66
 		},
 		{
 			"id": "katakana-pa",
@@ -657,7 +723,8 @@
 			"meaning": "pa",
 			"readings": [
 				"pa"
-			]
+			],
+			"order": 67
 		},
 		{
 			"id": "katakana-pi",
@@ -665,7 +732,8 @@
 			"meaning": "pi",
 			"readings": [
 				"pi"
-			]
+			],
+			"order": 68
 		},
 		{
 			"id": "katakana-pu",
@@ -673,7 +741,8 @@
 			"meaning": "pu",
 			"readings": [
 				"pu"
-			]
+			],
+			"order": 69
 		},
 		{
 			"id": "katakana-pe",
@@ -681,7 +750,8 @@
 			"meaning": "pe",
 			"readings": [
 				"pe"
-			]
+			],
+			"order": 70
 		},
 		{
 			"id": "katakana-po",
@@ -689,7 +759,90 @@
 			"meaning": "po",
 			"readings": [
 				"po"
-			]
+			],
+			"order": 71
 		}
-	]
+	],
+	"course": {
+		"lessons": [
+			{
+				"id": "katakana-lesson-1",
+				"title": "Lesson 1",
+				"characterIds": [
+					"katakana-a",
+					"katakana-i",
+					"katakana-u",
+					"katakana-e",
+					"katakana-o",
+					"katakana-ka",
+					"katakana-ki",
+					"katakana-ku",
+					"katakana-ke",
+					"katakana-ko",
+					"katakana-sa",
+					"katakana-shi",
+					"katakana-su",
+					"katakana-se",
+					"katakana-so",
+					"katakana-ta",
+					"katakana-chi",
+					"katakana-tsu",
+					"katakana-te",
+					"katakana-to",
+					"katakana-na",
+					"katakana-ni",
+					"katakana-nu",
+					"katakana-ne",
+					"katakana-no",
+					"katakana-ha",
+					"katakana-hi",
+					"katakana-fu",
+					"katakana-he",
+					"katakana-ho",
+					"katakana-ma",
+					"katakana-mi",
+					"katakana-mu",
+					"katakana-me",
+					"katakana-mo",
+					"katakana-ya",
+					"katakana-yu",
+					"katakana-yo",
+					"katakana-ra",
+					"katakana-ri",
+					"katakana-ru",
+					"katakana-re",
+					"katakana-ro",
+					"katakana-wa",
+					"katakana-wo",
+					"katakana-n",
+					"katakana-ga",
+					"katakana-gi",
+					"katakana-gu",
+					"katakana-ge",
+					"katakana-go",
+					"katakana-za",
+					"katakana-ji",
+					"katakana-zu",
+					"katakana-ze",
+					"katakana-zo",
+					"katakana-da",
+					"katakana-di",
+					"katakana-du",
+					"katakana-de",
+					"katakana-do",
+					"katakana-ba",
+					"katakana-bi",
+					"katakana-bu",
+					"katakana-be",
+					"katakana-bo",
+					"katakana-pa",
+					"katakana-pi",
+					"katakana-pu",
+					"katakana-pe",
+					"katakana-po"
+				]
+			}
+		]
+	},
+	"lowercaseFriendly": false
 }

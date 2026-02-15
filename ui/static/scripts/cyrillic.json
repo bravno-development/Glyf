@@ -4,7 +4,7 @@
 	"name": "Cyrillic",
 	"description": "Russian alphabet. 33 letters used for Russian and other Slavic and non-Slavic languages.",
 	"icon": "а",
-	"available": true,
+	"available": false,
 	"totalCharacters": 33,
 	"grid": {
 		"columns": [
@@ -75,7 +75,8 @@
 			"meaning": "a",
 			"readings": [
 				"a"
-			]
+			],
+			"order": 1
 		},
 		{
 			"id": "cyrillic-b",
@@ -83,7 +84,8 @@
 			"meaning": "b",
 			"readings": [
 				"b"
-			]
+			],
+			"order": 2
 		},
 		{
 			"id": "cyrillic-v",
@@ -91,7 +93,8 @@
 			"meaning": "v",
 			"readings": [
 				"v"
-			]
+			],
+			"order": 3
 		},
 		{
 			"id": "cyrillic-g",
@@ -99,7 +102,8 @@
 			"meaning": "g",
 			"readings": [
 				"g"
-			]
+			],
+			"order": 4
 		},
 		{
 			"id": "cyrillic-d",
@@ -107,7 +111,8 @@
 			"meaning": "d",
 			"readings": [
 				"d"
-			]
+			],
+			"order": 5
 		},
 		{
 			"id": "cyrillic-e",
@@ -116,7 +121,8 @@
 			"readings": [
 				"ye",
 				"e"
-			]
+			],
+			"order": 6
 		},
 		{
 			"id": "cyrillic-yo",
@@ -124,7 +130,8 @@
 			"meaning": "yo",
 			"readings": [
 				"yo"
-			]
+			],
+			"order": 7
 		},
 		{
 			"id": "cyrillic-zh",
@@ -132,7 +139,8 @@
 			"meaning": "zh",
 			"readings": [
 				"zh"
-			]
+			],
+			"order": 8
 		},
 		{
 			"id": "cyrillic-z",
@@ -140,7 +148,8 @@
 			"meaning": "z",
 			"readings": [
 				"z"
-			]
+			],
+			"order": 9
 		},
 		{
 			"id": "cyrillic-i",
@@ -148,7 +157,8 @@
 			"meaning": "i",
 			"readings": [
 				"i"
-			]
+			],
+			"order": 10
 		},
 		{
 			"id": "cyrillic-y-short",
@@ -156,7 +166,8 @@
 			"meaning": "y",
 			"readings": [
 				"y"
-			]
+			],
+			"order": 11
 		},
 		{
 			"id": "cyrillic-k",
@@ -164,7 +175,8 @@
 			"meaning": "k",
 			"readings": [
 				"k"
-			]
+			],
+			"order": 12
 		},
 		{
 			"id": "cyrillic-l",
@@ -172,7 +184,8 @@
 			"meaning": "l",
 			"readings": [
 				"l"
-			]
+			],
+			"order": 13
 		},
 		{
 			"id": "cyrillic-m",
@@ -180,7 +193,8 @@
 			"meaning": "m",
 			"readings": [
 				"m"
-			]
+			],
+			"order": 14
 		},
 		{
 			"id": "cyrillic-n",
@@ -188,7 +202,8 @@
 			"meaning": "n",
 			"readings": [
 				"n"
-			]
+			],
+			"order": 15
 		},
 		{
 			"id": "cyrillic-o",
@@ -196,7 +211,8 @@
 			"meaning": "o",
 			"readings": [
 				"o"
-			]
+			],
+			"order": 16
 		},
 		{
 			"id": "cyrillic-p",
@@ -204,7 +220,8 @@
 			"meaning": "p",
 			"readings": [
 				"p"
-			]
+			],
+			"order": 17
 		},
 		{
 			"id": "cyrillic-r",
@@ -212,7 +229,8 @@
 			"meaning": "r",
 			"readings": [
 				"r"
-			]
+			],
+			"order": 18
 		},
 		{
 			"id": "cyrillic-s",
@@ -220,7 +238,8 @@
 			"meaning": "s",
 			"readings": [
 				"s"
-			]
+			],
+			"order": 19
 		},
 		{
 			"id": "cyrillic-t",
@@ -228,7 +247,8 @@
 			"meaning": "t",
 			"readings": [
 				"t"
-			]
+			],
+			"order": 20
 		},
 		{
 			"id": "cyrillic-u",
@@ -236,7 +256,8 @@
 			"meaning": "u",
 			"readings": [
 				"u"
-			]
+			],
+			"order": 21
 		},
 		{
 			"id": "cyrillic-f",
@@ -244,7 +265,8 @@
 			"meaning": "f",
 			"readings": [
 				"f"
-			]
+			],
+			"order": 22
 		},
 		{
 			"id": "cyrillic-kh",
@@ -253,7 +275,8 @@
 			"readings": [
 				"kh",
 				"h"
-			]
+			],
+			"order": 23
 		},
 		{
 			"id": "cyrillic-ts",
@@ -261,7 +284,8 @@
 			"meaning": "ts",
 			"readings": [
 				"ts"
-			]
+			],
+			"order": 24
 		},
 		{
 			"id": "cyrillic-ch",
@@ -269,7 +293,8 @@
 			"meaning": "ch",
 			"readings": [
 				"ch"
-			]
+			],
+			"order": 25
 		},
 		{
 			"id": "cyrillic-sh",
@@ -277,7 +302,8 @@
 			"meaning": "sh",
 			"readings": [
 				"sh"
-			]
+			],
+			"order": 26
 		},
 		{
 			"id": "cyrillic-shch",
@@ -286,7 +312,8 @@
 			"readings": [
 				"shch",
 				"sch"
-			]
+			],
+			"order": 27
 		},
 		{
 			"id": "cyrillic-hard",
@@ -295,7 +322,8 @@
 			"readings": [
 				"",
 				"ʺ"
-			]
+			],
+			"order": 28
 		},
 		{
 			"id": "cyrillic-y",
@@ -304,7 +332,8 @@
 			"readings": [
 				"y",
 				"i"
-			]
+			],
+			"order": 29
 		},
 		{
 			"id": "cyrillic-soft",
@@ -313,7 +342,8 @@
 			"readings": [
 				"",
 				"ʹ"
-			]
+			],
+			"order": 30
 		},
 		{
 			"id": "cyrillic-e2",
@@ -321,7 +351,8 @@
 			"meaning": "e",
 			"readings": [
 				"e"
-			]
+			],
+			"order": 31
 		},
 		{
 			"id": "cyrillic-yu",
@@ -329,7 +360,8 @@
 			"meaning": "yu",
 			"readings": [
 				"yu"
-			]
+			],
+			"order": 32
 		},
 		{
 			"id": "cyrillic-ya",
@@ -337,7 +369,52 @@
 			"meaning": "ya",
 			"readings": [
 				"ya"
-			]
+			],
+			"order": 33
 		}
-	]
+	],
+	"course": {
+		"lessons": [
+			{
+				"id": "cyrillic-lesson-1",
+				"title": "Lesson 1",
+				"characterIds": [
+					"cyrillic-a",
+					"cyrillic-b",
+					"cyrillic-v",
+					"cyrillic-g",
+					"cyrillic-d",
+					"cyrillic-e",
+					"cyrillic-yo",
+					"cyrillic-zh",
+					"cyrillic-z",
+					"cyrillic-i",
+					"cyrillic-y-short",
+					"cyrillic-k",
+					"cyrillic-l",
+					"cyrillic-m",
+					"cyrillic-n",
+					"cyrillic-o",
+					"cyrillic-p",
+					"cyrillic-r",
+					"cyrillic-s",
+					"cyrillic-t",
+					"cyrillic-u",
+					"cyrillic-f",
+					"cyrillic-kh",
+					"cyrillic-ts",
+					"cyrillic-ch",
+					"cyrillic-sh",
+					"cyrillic-shch",
+					"cyrillic-hard",
+					"cyrillic-y",
+					"cyrillic-soft",
+					"cyrillic-e2",
+					"cyrillic-yu",
+					"cyrillic-ya"
+				]
+			}
+		]
+	},
+	"lowercaseFriendly": true
 }

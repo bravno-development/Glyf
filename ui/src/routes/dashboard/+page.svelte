@@ -20,7 +20,7 @@
 		getWeeklyActivity,
 		getMasteryColour,
 	} from "$lib/services/dashboard";
-	import { getScript, type ScriptDefinition } from "$lib/services/scripts";
+	import { getScript, getCharactersInOrder, type ScriptDefinition } from "$lib/services/scripts";
 	import { learnStore } from "$lib/stores/learn";
 
 	let userScripts: string[] = $state([]);
@@ -296,7 +296,7 @@
 							You haven't started any script yet. <a href="/learn" class="font-medium text-[var(--accent-green)] no-underline hover:underline">Choose a script from Learn</a> to begin.
 						</p>
 					</div>
-					{:else if scriptDef?.grid}
+					{:else if scriptDef?.characters?.length}
 					<div
 						class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)] transition-opacity {loadingScript ? 'opacity-60' : ''}"
 						aria-busy={loadingScript}
@@ -314,22 +314,14 @@
 								{/each}
 							</div>
 						</div>
-						<div class="flex gap-1.5">
-							{#each scriptDef.grid.columns as col, colIdx (col.label + col.chars[0] + colIdx)}
-								<div class="flex flex-col gap-1.5">
-									{#each col.chars as char, charIdx (col.label + colIdx + charIdx)}
-										{#if char}
-											<div
-												class="flex h-[52px] w-[52px] items-center justify-center rounded-lg text-[18px] font-medium text-[var(--black)]"
-												style="background-color: {getGridCharMastery(char)};"
-												title={char}
-											>
-												{char}
-											</div>
-										{:else}
-											<div class="h-[52px] w-[52px]"></div>
-										{/if}
-									{/each}
+						<div class="flex flex-wrap gap-1.5">
+							{#each getCharactersInOrder(scriptDef) as c (c.id)}
+								<div
+									class="flex h-[52px] w-[52px] items-center justify-center rounded-lg text-[18px] font-medium text-[var(--black)]"
+									style="background-color: {getGridCharMastery(c.character)};"
+									title={c.character}
+								>
+									{c.character}
 								</div>
 							{/each}
 						</div>

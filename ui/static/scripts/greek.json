@@ -2,62 +2,17 @@
 	"id": "greek",
 	"language": "el",
 	"name": "Greek",
-	"description": "Modern Greek alphabet. 24 letters used for Greek language and widely in science and mathematics.",
+	"description": "Modern Greek alphabet. 24 letters used for Greek language and widely in science and mathematics. Note that Σ is pronounced 'z' after voiced consonants.",
 	"icon": "α",
 	"available": true,
 	"totalCharacters": 24,
-	"grid": {
-		"columns": [
-			{
-				"label": "α",
-				"chars": [
-					"α",
-					"β",
-					"γ",
-					"δ",
-					"ε",
-					"ζ"
-				]
-			},
-			{
-				"label": "η",
-				"chars": [
-					"η",
-					"θ",
-					"ι",
-					"κ",
-					"λ",
-					"μ"
-				]
-			},
-			{
-				"label": "ν",
-				"chars": [
-					"ν",
-					"ξ",
-					"ο",
-					"π",
-					"ρ",
-					"σ"
-				]
-			},
-			{
-				"label": "τ",
-				"chars": [
-					"τ",
-					"υ",
-					"φ",
-					"χ",
-					"ψ",
-					"ω"
-				]
-			}
-		]
-	},
+	"lowercaseFriendly": true,
 	"characters": [
 		{
 			"id": "greek-alpha",
+			"order": 1,
 			"character": "α",
+			"class": "vowel",
 			"meaning": "a",
 			"readings": [
 				"a"
@@ -65,16 +20,19 @@
 		},
 		{
 			"id": "greek-beta",
+			"order": 2,
 			"character": "β",
-			"meaning": "v",
+			"class": "consonant",
+			"meaning": "b",
 			"readings": [
-				"v",
 				"b"
 			]
 		},
 		{
 			"id": "greek-gamma",
+			"order": 3,
 			"character": "γ",
+			"class": "consonant",
 			"meaning": "g",
 			"readings": [
 				"g"
@@ -82,7 +40,9 @@
 		},
 		{
 			"id": "greek-delta",
+			"order": 4,
 			"character": "δ",
+			"class": "consonant",
 			"meaning": "d",
 			"readings": [
 				"d"
@@ -90,7 +50,9 @@
 		},
 		{
 			"id": "greek-epsilon",
+			"order": 5,
 			"character": "ε",
+			"class": "vowel",
 			"meaning": "e",
 			"readings": [
 				"e"
@@ -98,7 +60,9 @@
 		},
 		{
 			"id": "greek-zeta",
+			"order": 6,
 			"character": "ζ",
+			"class": "consonant",
 			"meaning": "z",
 			"readings": [
 				"z"
@@ -106,16 +70,19 @@
 		},
 		{
 			"id": "greek-eta",
+			"order": 7,
 			"character": "η",
-			"meaning": "i",
+			"class": "vowel",
+			"meaning": "e",
 			"readings": [
-				"i",
 				"ē"
 			]
 		},
 		{
 			"id": "greek-theta",
+			"order": 8,
 			"character": "θ",
+			"class": "consonant",
 			"meaning": "th",
 			"readings": [
 				"th"
@@ -123,7 +90,9 @@
 		},
 		{
 			"id": "greek-iota",
+			"order": 9,
 			"character": "ι",
+			"class": "vowel",
 			"meaning": "i",
 			"readings": [
 				"i"
@@ -131,7 +100,9 @@
 		},
 		{
 			"id": "greek-kappa",
+			"order": 10,
 			"character": "κ",
+			"class": "consonant",
 			"meaning": "k",
 			"readings": [
 				"k"
@@ -139,7 +110,9 @@
 		},
 		{
 			"id": "greek-lambda",
+			"order": 11,
 			"character": "λ",
+			"class": "consonant",
 			"meaning": "l",
 			"readings": [
 				"l"
@@ -147,7 +120,9 @@
 		},
 		{
 			"id": "greek-mu",
+			"order": 12,
 			"character": "μ",
+			"class": "consonant",
 			"meaning": "m",
 			"readings": [
 				"m"
@@ -155,7 +130,9 @@
 		},
 		{
 			"id": "greek-nu",
+			"order": 13,
 			"character": "ν",
+			"class": "consonant",
 			"meaning": "n",
 			"readings": [
 				"n"
@@ -163,7 +140,9 @@
 		},
 		{
 			"id": "greek-xi",
+			"order": 14,
 			"character": "ξ",
+			"class": "consonant",
 			"meaning": "x",
 			"readings": [
 				"x",
@@ -172,7 +151,9 @@
 		},
 		{
 			"id": "greek-omicron",
+			"order": 15,
 			"character": "ο",
+			"class": "vowel",
 			"meaning": "o",
 			"readings": [
 				"o"
@@ -180,7 +161,9 @@
 		},
 		{
 			"id": "greek-pi",
+			"order": 16,
 			"character": "π",
+			"class": "consonant",
 			"meaning": "p",
 			"readings": [
 				"p"
@@ -188,7 +171,9 @@
 		},
 		{
 			"id": "greek-rho",
+			"order": 17,
 			"character": "ρ",
+			"class": "consonant",
 			"meaning": "r",
 			"readings": [
 				"r"
@@ -196,7 +181,9 @@
 		},
 		{
 			"id": "greek-sigma",
+			"order": 18,
 			"character": "σ",
+			"class": "consonant",
 			"meaning": "s",
 			"readings": [
 				"s"
@@ -204,7 +191,9 @@
 		},
 		{
 			"id": "greek-tau",
+			"order": 19,
 			"character": "τ",
+			"class": "consonant",
 			"meaning": "t",
 			"readings": [
 				"t"
@@ -212,7 +201,9 @@
 		},
 		{
 			"id": "greek-upsilon",
+			"order": 20,
 			"character": "υ",
+			"class": "vowel",
 			"meaning": "y",
 			"readings": [
 				"y",
@@ -221,7 +212,9 @@
 		},
 		{
 			"id": "greek-phi",
+			"order": 21,
 			"character": "φ",
+			"class": "consonant",
 			"meaning": "f",
 			"readings": [
 				"f",
@@ -230,7 +223,9 @@
 		},
 		{
 			"id": "greek-chi",
+			"order": 22,
 			"character": "χ",
+			"class": "consonant",
 			"meaning": "ch",
 			"readings": [
 				"ch",
@@ -239,7 +234,9 @@
 		},
 		{
 			"id": "greek-psi",
+			"order": 23,
 			"character": "ψ",
+			"class": "consonant",
 			"meaning": "ps",
 			"readings": [
 				"ps"
@@ -247,12 +244,188 @@
 		},
 		{
 			"id": "greek-omega",
+			"order": 24,
 			"character": "ω",
+			"class": "vowel",
 			"meaning": "o",
 			"readings": [
 				"o",
 				"ō"
 			]
 		}
-	]
+	],
+	"extra": [
+		{
+			"title": "Diphthongs",
+			"characters": [
+				{
+					"id": "greek-ai",
+					"character": "αι",
+					"meaning": "ai",
+					"readings": ["a:j"]
+				},
+				{
+					"id": "greek-aai",
+					"character": "ᾳ/αι",
+					"meaning": "ai",
+					"readings": ["aj"]
+				},
+				{
+					"id": "greek-ei",
+					"character": "ει",
+					"meaning": "ei",
+					"readings": ["e:"]
+				},
+				{
+					"id": "greek-eei",
+					"character": "η/ηι",
+					"meaning": "ēi",
+					"readings": ["ɛ:j"]
+				},
+				{
+					"id": "greek-oi",
+					"character": "οι",
+					"meaning": "oi",
+					"readings": ["oj"]
+				},
+				{
+					"id": "greek-ooi",
+					"character": "ω/ωι",
+					"meaning": "ōi",
+					"readings": ["ɔ:j"]
+				},
+				{
+					"id": "greek-yi",
+					"character": "υι",
+					"meaning": "ui/yi",
+					"readings": ["yj"]
+				},
+				{
+					"id": "greek-au",
+					"character": "αυ",
+					"meaning": "au",
+					"readings": ["aw", "a:w"]
+				},
+				{
+					"id": "greek-eu",
+					"character": "ευ",
+					"meaning": "eu",
+					"readings": ["ew"]
+				},
+				{
+					"id": "greek-eeu",
+					"character": "ηυ",
+					"meaning": "ēu",
+					"readings": ["ɛ:w"]
+				},
+				{
+					"id": "greek-ou",
+					"character": "ου",
+					"meaning": "ou",
+					"readings": ["o:", "u:"]
+				}
+			]
+		},
+		{
+			"title": "Consonant combinations",
+			"characters": [
+				{
+					"id": "greek-mp",
+					"character": "μπ",
+					"meaning": "mp",
+					"readings": ["b"]
+				},
+				{
+					"id": "greek-gk",
+					"character": "γκ",
+					"meaning": "gk",
+					"readings": ["g"]
+				},
+				{
+					"id": "greek-ts",
+					"character": "τσ",
+					"meaning": "ts",
+					"readings": ["ts"]
+				},
+				{
+					"id": "greek-nt",
+					"character": "ντ",
+					"meaning": "nt",
+					"readings": ["d"]
+				}
+			]
+		},
+		{
+			"title": "Special symbols",
+			"characters": [
+				{
+					"id": "greek-kai",
+					"character": "ϗ",
+					"meaning": "kai",
+					"readings": ["&"]
+				}
+			]
+		}
+	],
+	"course": {
+		"lessons": [
+			{
+				"id": "greek-lesson-1",
+				"title": "Lesson 1",
+				"characterIds": [
+					"greek-alpha",
+					"greek-beta",
+					"greek-gamma",
+					"greek-delta",
+					"greek-epsilon",
+					"greek-zeta",
+					"greek-eta",
+					"greek-theta",
+					"greek-iota",
+					"greek-kappa",
+					"greek-lambda",
+					"greek-mu",
+					"greek-nu",
+					"greek-xi",
+					"greek-omicron",
+					"greek-pi",
+					"greek-rho",
+					"greek-sigma",
+					"greek-tau",
+					"greek-upsilon",
+					"greek-phi",
+					"greek-chi",
+					"greek-psi",
+					"greek-omega"
+				]
+			},
+			{
+				"id": "greek-lesson-2",
+				"title": "Lesson 2",
+				"extraTitles": [
+					"Diphthongs",
+					"Consonant combinations",
+					"Special symbols"
+				],
+				"characterIds": [
+					"greek-ai",
+					"greek-aai",
+					"greek-ei",
+					"greek-eei",
+					"greek-oi",
+					"greek-ooi",
+					"greek-yi",
+					"greek-au",
+					"greek-eu",
+					"greek-eeu",
+					"greek-ou",
+					"greek-mp",
+					"greek-gk",
+					"greek-ts",
+					"greek-nt",
+					"greek-kai"
+				]
+			}
+		]
+	}
 }

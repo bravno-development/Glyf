@@ -2,14 +2,28 @@ import { db } from './db';
 
 export interface ScriptCharacter {
 	id: string;
+	order?: number;
 	character: string;
 	meaning: string;
 	readings: string[];
 }
 
-export interface GridColumn {
-	label: string;
-	chars: string[];
+export interface ScriptExtraCharacter {
+	character: string;
+	meaning: string;
+	readings?: string[];
+}
+
+export interface ScriptExtraSection {
+	title: string;
+	characters: ScriptExtraCharacter[];
+}
+
+export interface CourseLesson {
+	id: string;
+	title: string;
+	characterIds?: string[];
+	extraTitles?: string[];
 }
 
 export interface ScriptDefinition {
@@ -20,8 +34,50 @@ export interface ScriptDefinition {
 	icon: string;
 	available: boolean;
 	totalCharacters: number;
-	grid?: { columns: GridColumn[] };
+	lowercaseFriendly?: boolean;
 	characters: ScriptCharacter[];
+	extra?: ScriptExtraSection[];
+	course?: { lessons: CourseLesson[] };
+}
+
+export interface LessonContentRow {
+	character: string;
+	meaning: string;
+	order: number;
+}
+
+/** Resolve a lesson to content rows (characterIds → characters by id; extraTitles → extra sections by title). */
+export function getLessonContent(
+	def: ScriptDefinition,
+	lesson: CourseLesson
+): LessonContentRow[] {
+	const rows: LessonContentRow[] = [];
+	const charMap = new Map(def.characters.map((c) => [c.id, c]));
+	let order = 0;
+	if (lesson.characterIds?.length) {
+		for (const id of lesson.characterIds) {
+			const c = charMap.get(id);
+			if (c) rows.push({ character: c.character, meaning: c.meaning, order: order++ });
+		}
+	}
+	if (lesson.extraTitles?.length && def.extra?.length) {
+		const extraByTitle = new Map(def.extra.map((s) => [s.title, s]));
+		for (const title of lesson.extraTitles) {
+			const section = extraByTitle.get(title);
+			if (section) {
+				for (const c of section.characters) {
+					rows.push({ character: c.character, meaning: c.meaning, order: order++ });
+				}
+			}
+		}
+	}
+	return rows;
+}
+
+/** Return characters in display order (by `order` field, then array index). */
+export function getCharactersInOrder(def: ScriptDefinition): ScriptCharacter[] {
+	if (!def.characters?.length) return [];
+	return [...def.characters].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 }
 
 const cache = new Map<string, ScriptDefinition>();

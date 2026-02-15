@@ -4,8 +4,9 @@
 	"name": "Hangul",
 	"description": "Korean alphabet. 19 initial consonants (choseong) and 21 vowels (jungseong) that combine into syllables.",
 	"icon": "가",
-	"available": true,
+	"available": false,
 	"totalCharacters": 40,
+	"lowercaseFriendly": false,
 	"grid": {
 		"columns": [
 			{
@@ -75,7 +76,8 @@
 			"readings": [
 				"g",
 				"k"
-			]
+			],
+			"order": 1
 		},
 		{
 			"id": "hangul-kk",
@@ -83,7 +85,8 @@
 			"meaning": "kk",
 			"readings": [
 				"kk"
-			]
+			],
+			"order": 2
 		},
 		{
 			"id": "hangul-n",
@@ -91,7 +94,8 @@
 			"meaning": "n",
 			"readings": [
 				"n"
-			]
+			],
+			"order": 3
 		},
 		{
 			"id": "hangul-d",
@@ -100,7 +104,8 @@
 			"readings": [
 				"d",
 				"t"
-			]
+			],
+			"order": 4
 		},
 		{
 			"id": "hangul-tt",
@@ -108,7 +113,8 @@
 			"meaning": "tt",
 			"readings": [
 				"tt"
-			]
+			],
+			"order": 5
 		},
 		{
 			"id": "hangul-r",
@@ -117,7 +123,8 @@
 			"readings": [
 				"r",
 				"l"
-			]
+			],
+			"order": 6
 		},
 		{
 			"id": "hangul-m",
@@ -125,7 +132,8 @@
 			"meaning": "m",
 			"readings": [
 				"m"
-			]
+			],
+			"order": 7
 		},
 		{
 			"id": "hangul-b",
@@ -134,7 +142,8 @@
 			"readings": [
 				"b",
 				"p"
-			]
+			],
+			"order": 8
 		},
 		{
 			"id": "hangul-pp",
@@ -142,7 +151,8 @@
 			"meaning": "pp",
 			"readings": [
 				"pp"
-			]
+			],
+			"order": 9
 		},
 		{
 			"id": "hangul-s",
@@ -150,7 +160,8 @@
 			"meaning": "s",
 			"readings": [
 				"s"
-			]
+			],
+			"order": 10
 		},
 		{
 			"id": "hangul-ss",
@@ -158,7 +169,8 @@
 			"meaning": "ss",
 			"readings": [
 				"ss"
-			]
+			],
+			"order": 11
 		},
 		{
 			"id": "hangul-ng",
@@ -167,7 +179,8 @@
 			"readings": [
 				"ng",
 				""
-			]
+			],
+			"order": 12
 		},
 		{
 			"id": "hangul-j",
@@ -175,7 +188,8 @@
 			"meaning": "j",
 			"readings": [
 				"j"
-			]
+			],
+			"order": 13
 		},
 		{
 			"id": "hangul-jj",
@@ -183,7 +197,8 @@
 			"meaning": "jj",
 			"readings": [
 				"jj"
-			]
+			],
+			"order": 14
 		},
 		{
 			"id": "hangul-ch",
@@ -191,7 +206,8 @@
 			"meaning": "ch",
 			"readings": [
 				"ch"
-			]
+			],
+			"order": 15
 		},
 		{
 			"id": "hangul-k",
@@ -199,7 +215,8 @@
 			"meaning": "k",
 			"readings": [
 				"k"
-			]
+			],
+			"order": 16
 		},
 		{
 			"id": "hangul-t",
@@ -207,7 +224,8 @@
 			"meaning": "t",
 			"readings": [
 				"t"
-			]
+			],
+			"order": 17
 		},
 		{
 			"id": "hangul-p",
@@ -215,7 +233,8 @@
 			"meaning": "p",
 			"readings": [
 				"p"
-			]
+			],
+			"order": 18
 		},
 		{
 			"id": "hangul-h",
@@ -223,7 +242,8 @@
 			"meaning": "h",
 			"readings": [
 				"h"
-			]
+			],
+			"order": 19
 		},
 		{
 			"id": "hangul-a",
@@ -231,7 +251,8 @@
 			"meaning": "a",
 			"readings": [
 				"a"
-			]
+			],
+			"order": 20
 		},
 		{
 			"id": "hangul-ae",
@@ -239,7 +260,8 @@
 			"meaning": "ae",
 			"readings": [
 				"ae"
-			]
+			],
+			"order": 21
 		},
 		{
 			"id": "hangul-ya",
@@ -247,7 +269,8 @@
 			"meaning": "ya",
 			"readings": [
 				"ya"
-			]
+			],
+			"order": 22
 		},
 		{
 			"id": "hangul-yae",
@@ -255,7 +278,8 @@
 			"meaning": "yae",
 			"readings": [
 				"yae"
-			]
+			],
+			"order": 23
 		},
 		{
 			"id": "hangul-eo",
@@ -263,7 +287,8 @@
 			"meaning": "eo",
 			"readings": [
 				"eo"
-			]
+			],
+			"order": 24
 		},
 		{
 			"id": "hangul-e",
@@ -271,7 +296,8 @@
 			"meaning": "e",
 			"readings": [
 				"e"
-			]
+			],
+			"order": 25
 		},
 		{
 			"id": "hangul-yeo",
@@ -279,7 +305,8 @@
 			"meaning": "yeo",
 			"readings": [
 				"yeo"
-			]
+			],
+			"order": 26
 		},
 		{
 			"id": "hangul-ye",
@@ -287,7 +314,8 @@
 			"meaning": "ye",
 			"readings": [
 				"ye"
-			]
+			],
+			"order": 27
 		},
 		{
 			"id": "hangul-o",
@@ -295,7 +323,8 @@
 			"meaning": "o",
 			"readings": [
 				"o"
-			]
+			],
+			"order": 28
 		},
 		{
 			"id": "hangul-wa",
@@ -303,7 +332,8 @@
 			"meaning": "wa",
 			"readings": [
 				"wa"
-			]
+			],
+			"order": 29
 		},
 		{
 			"id": "hangul-wae",
@@ -311,7 +341,8 @@
 			"meaning": "wae",
 			"readings": [
 				"wae"
-			]
+			],
+			"order": 30
 		},
 		{
 			"id": "hangul-oe",
@@ -319,7 +350,8 @@
 			"meaning": "oe",
 			"readings": [
 				"oe"
-			]
+			],
+			"order": 31
 		},
 		{
 			"id": "hangul-yo",
@@ -327,7 +359,8 @@
 			"meaning": "yo",
 			"readings": [
 				"yo"
-			]
+			],
+			"order": 32
 		},
 		{
 			"id": "hangul-u",
@@ -335,7 +368,8 @@
 			"meaning": "u",
 			"readings": [
 				"u"
-			]
+			],
+			"order": 33
 		},
 		{
 			"id": "hangul-wo",
@@ -343,7 +377,8 @@
 			"meaning": "wo",
 			"readings": [
 				"wo"
-			]
+			],
+			"order": 34
 		},
 		{
 			"id": "hangul-we",
@@ -351,7 +386,8 @@
 			"meaning": "we",
 			"readings": [
 				"we"
-			]
+			],
+			"order": 35
 		},
 		{
 			"id": "hangul-wi",
@@ -359,7 +395,8 @@
 			"meaning": "wi",
 			"readings": [
 				"wi"
-			]
+			],
+			"order": 36
 		},
 		{
 			"id": "hangul-yu",
@@ -367,7 +404,8 @@
 			"meaning": "yu",
 			"readings": [
 				"yu"
-			]
+			],
+			"order": 37
 		},
 		{
 			"id": "hangul-eu",
@@ -375,7 +413,8 @@
 			"meaning": "eu",
 			"readings": [
 				"eu"
-			]
+			],
+			"order": 38
 		},
 		{
 			"id": "hangul-ui",
@@ -383,7 +422,8 @@
 			"meaning": "ui",
 			"readings": [
 				"ui"
-			]
+			],
+			"order": 39
 		},
 		{
 			"id": "hangul-i",
@@ -391,7 +431,58 @@
 			"meaning": "i",
 			"readings": [
 				"i"
-			]
+			],
+			"order": 40
 		}
-	]
+	],
+	"course": {
+		"lessons": [
+			{
+				"id": "hangul-lesson-1",
+				"title": "Lesson 1",
+				"characterIds": [
+					"hangul-g",
+					"hangul-kk",
+					"hangul-n",
+					"hangul-d",
+					"hangul-tt",
+					"hangul-r",
+					"hangul-m",
+					"hangul-b",
+					"hangul-pp",
+					"hangul-s",
+					"hangul-ss",
+					"hangul-ng",
+					"hangul-j",
+					"hangul-jj",
+					"hangul-ch",
+					"hangul-k",
+					"hangul-t",
+					"hangul-p",
+					"hangul-h",
+					"hangul-a",
+					"hangul-ae",
+					"hangul-ya",
+					"hangul-yae",
+					"hangul-eo",
+					"hangul-e",
+					"hangul-yeo",
+					"hangul-ye",
+					"hangul-o",
+					"hangul-wa",
+					"hangul-wae",
+					"hangul-oe",
+					"hangul-yo",
+					"hangul-u",
+					"hangul-wo",
+					"hangul-we",
+					"hangul-wi",
+					"hangul-yu",
+					"hangul-eu",
+					"hangul-ui",
+					"hangul-i"
+				]
+			}
+		]
+	}
 }

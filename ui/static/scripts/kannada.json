@@ -4,64 +4,587 @@
 	"name": "Kannada",
 	"description": "Kannada script used for Kannada and other South Indian languages. 13 vowel letters and 34 consonants (abugida).",
 	"icon": "ಅ",
-	"available": true,
+	"available": false,
 	"totalCharacters": 47,
 	"grid": {
 		"columns": [
-			{ "label": "Vowels", "chars": ["ಅ", "ಆ", "ಇ", "ಈ", "ಉ", "ಊ", "ಋ", "ಎ", "ಏ", "ಐ", "ಒ", "ಓ", "ಔ"] },
-			{ "label": "ಕ", "chars": ["ಕ", "ಖ", "ಗ", "ಘ", "ಙ", "ಚ", "ಛ", "ಜ", "ಝ", "ಞ"] },
-			{ "label": "ಟ", "chars": ["ಟ", "ಠ", "ಡ", "ಢ", "ಣ", "ತ", "ಥ", "ದ", "ಧ", "ನ"] },
-			{ "label": "ಪ", "chars": ["ಪ", "ಫ", "ಬ", "ಭ", "ಮ", "ಯ", "ರ", "ಱ", "ಲ", "ಳ", "ವ", "ಶ", "ಷ", "ಸ", "ಹ"] }
+			{
+				"label": "Vowels",
+				"chars": [
+					"ಅ",
+					"ಆ",
+					"ಇ",
+					"ಈ",
+					"ಉ",
+					"ಊ",
+					"ಋ",
+					"ಎ",
+					"ಏ",
+					"ಐ",
+					"ಒ",
+					"ಓ",
+					"ಔ"
+				]
+			},
+			{
+				"label": "ಕ",
+				"chars": [
+					"ಕ",
+					"ಖ",
+					"ಗ",
+					"ಘ",
+					"ಙ",
+					"ಚ",
+					"ಛ",
+					"ಜ",
+					"ಝ",
+					"ಞ"
+				]
+			},
+			{
+				"label": "ಟ",
+				"chars": [
+					"ಟ",
+					"ಠ",
+					"ಡ",
+					"ಢ",
+					"ಣ",
+					"ತ",
+					"ಥ",
+					"ದ",
+					"ಧ",
+					"ನ"
+				]
+			},
+			{
+				"label": "ಪ",
+				"chars": [
+					"ಪ",
+					"ಫ",
+					"ಬ",
+					"ಭ",
+					"ಮ",
+					"ಯ",
+					"ರ",
+					"ಱ",
+					"ಲ",
+					"ಳ",
+					"ವ",
+					"ಶ",
+					"ಷ",
+					"ಸ",
+					"ಹ"
+				]
+			}
 		]
 	},
 	"characters": [
-		{ "id": "kannada-a", "character": "ಅ", "meaning": "a", "readings": ["a"] },
-		{ "id": "kannada-aa", "character": "ಆ", "meaning": "aa", "readings": ["ā", "aa"] },
-		{ "id": "kannada-i", "character": "ಇ", "meaning": "i", "readings": ["i"] },
-		{ "id": "kannada-ii", "character": "ಈ", "meaning": "ii", "readings": ["ī", "ee"] },
-		{ "id": "kannada-u", "character": "ಉ", "meaning": "u", "readings": ["u"] },
-		{ "id": "kannada-uu", "character": "ಊ", "meaning": "uu", "readings": ["ū", "oo"] },
-		{ "id": "kannada-ru", "character": "ಋ", "meaning": "ru", "readings": ["r̥", "ru"] },
-		{ "id": "kannada-e", "character": "ಎ", "meaning": "e", "readings": ["e"] },
-		{ "id": "kannada-ee", "character": "ಏ", "meaning": "ee", "readings": ["ē", "ee"] },
-		{ "id": "kannada-ai", "character": "ಐ", "meaning": "ai", "readings": ["ai"] },
-		{ "id": "kannada-o", "character": "ಒ", "meaning": "o", "readings": ["o"] },
-		{ "id": "kannada-oo", "character": "ಓ", "meaning": "oo", "readings": ["ō", "oo"] },
-		{ "id": "kannada-au", "character": "ಔ", "meaning": "au", "readings": ["au"] },
-		{ "id": "kannada-ka", "character": "ಕ", "meaning": "ka", "readings": ["ka"] },
-		{ "id": "kannada-kha", "character": "ಖ", "meaning": "kha", "readings": ["kha"] },
-		{ "id": "kannada-ga", "character": "ಗ", "meaning": "ga", "readings": ["ga"] },
-		{ "id": "kannada-gha", "character": "ಘ", "meaning": "gha", "readings": ["gha"] },
-		{ "id": "kannada-nga", "character": "ಙ", "meaning": "nga", "readings": ["ṅa", "nga"] },
-		{ "id": "kannada-ca", "character": "ಚ", "meaning": "ca", "readings": ["ca", "cha"] },
-		{ "id": "kannada-cha", "character": "ಛ", "meaning": "cha", "readings": ["cha"] },
-		{ "id": "kannada-ja", "character": "ಜ", "meaning": "ja", "readings": ["ja"] },
-		{ "id": "kannada-jha", "character": "ಝ", "meaning": "jha", "readings": ["jha"] },
-		{ "id": "kannada-nya", "character": "ಞ", "meaning": "nya", "readings": ["ña", "nya"] },
-		{ "id": "kannada-tta", "character": "ಟ", "meaning": "tta", "readings": ["ṭa", "tta"] },
-		{ "id": "kannada-ttha", "character": "ಠ", "meaning": "ttha", "readings": ["ṭha"] },
-		{ "id": "kannada-dda", "character": "ಡ", "meaning": "dda", "readings": ["ḍa", "dda"] },
-		{ "id": "kannada-ddha", "character": "ಢ", "meaning": "ddha", "readings": ["ḍha"] },
-		{ "id": "kannada-nna", "character": "ಣ", "meaning": "nna", "readings": ["ṇa", "nna"] },
-		{ "id": "kannada-ta", "character": "ತ", "meaning": "ta", "readings": ["ta"] },
-		{ "id": "kannada-tha", "character": "ಥ", "meaning": "tha", "readings": ["tha"] },
-		{ "id": "kannada-da", "character": "ದ", "meaning": "da", "readings": ["da"] },
-		{ "id": "kannada-dha", "character": "ಧ", "meaning": "dha", "readings": ["dha"] },
-		{ "id": "kannada-na", "character": "ನ", "meaning": "na", "readings": ["na"] },
-		{ "id": "kannada-pa", "character": "ಪ", "meaning": "pa", "readings": ["pa"] },
-		{ "id": "kannada-pha", "character": "ಫ", "meaning": "pha", "readings": ["pha"] },
-		{ "id": "kannada-ba", "character": "ಬ", "meaning": "ba", "readings": ["ba"] },
-		{ "id": "kannada-bha", "character": "ಭ", "meaning": "bha", "readings": ["bha"] },
-		{ "id": "kannada-ma", "character": "ಮ", "meaning": "ma", "readings": ["ma"] },
-		{ "id": "kannada-ya", "character": "ಯ", "meaning": "ya", "readings": ["ya"] },
-		{ "id": "kannada-ra", "character": "ರ", "meaning": "ra", "readings": ["ra"] },
-		{ "id": "kannada-rra", "character": "ಱ", "meaning": "rra", "readings": ["ṟa", "rra"] },
-		{ "id": "kannada-la", "character": "ಲ", "meaning": "la", "readings": ["la"] },
-		{ "id": "kannada-lla", "character": "ಳ", "meaning": "lla", "readings": ["ḷa", "lla"] },
-		{ "id": "kannada-va", "character": "ವ", "meaning": "va", "readings": ["va"] },
-		{ "id": "kannada-sha", "character": "ಶ", "meaning": "sha", "readings": ["śa", "sha"] },
-		{ "id": "kannada-ssa", "character": "ಷ", "meaning": "ssa", "readings": ["ṣa", "ssa"] },
-		{ "id": "kannada-sa", "character": "ಸ", "meaning": "sa", "readings": ["sa"] },
-		{ "id": "kannada-ha", "character": "ಹ", "meaning": "ha", "readings": ["ha"] }
-	]
+		{
+			"id": "kannada-a",
+			"character": "ಅ",
+			"meaning": "a",
+			"readings": [
+				"a"
+			],
+			"order": 1
+		},
+		{
+			"id": "kannada-aa",
+			"character": "ಆ",
+			"meaning": "aa",
+			"readings": [
+				"ā",
+				"aa"
+			],
+			"order": 2
+		},
+		{
+			"id": "kannada-i",
+			"character": "ಇ",
+			"meaning": "i",
+			"readings": [
+				"i"
+			],
+			"order": 3
+		},
+		{
+			"id": "kannada-ii",
+			"character": "ಈ",
+			"meaning": "ii",
+			"readings": [
+				"ī",
+				"ee"
+			],
+			"order": 4
+		},
+		{
+			"id": "kannada-u",
+			"character": "ಉ",
+			"meaning": "u",
+			"readings": [
+				"u"
+			],
+			"order": 5
+		},
+		{
+			"id": "kannada-uu",
+			"character": "ಊ",
+			"meaning": "uu",
+			"readings": [
+				"ū",
+				"oo"
+			],
+			"order": 6
+		},
+		{
+			"id": "kannada-ru",
+			"character": "ಋ",
+			"meaning": "ru",
+			"readings": [
+				"r̥",
+				"ru"
+			],
+			"order": 7
+		},
+		{
+			"id": "kannada-e",
+			"character": "ಎ",
+			"meaning": "e",
+			"readings": [
+				"e"
+			],
+			"order": 8
+		},
+		{
+			"id": "kannada-ee",
+			"character": "ಏ",
+			"meaning": "ee",
+			"readings": [
+				"ē",
+				"ee"
+			],
+			"order": 9
+		},
+		{
+			"id": "kannada-ai",
+			"character": "ಐ",
+			"meaning": "ai",
+			"readings": [
+				"ai"
+			],
+			"order": 10
+		},
+		{
+			"id": "kannada-o",
+			"character": "ಒ",
+			"meaning": "o",
+			"readings": [
+				"o"
+			],
+			"order": 11
+		},
+		{
+			"id": "kannada-oo",
+			"character": "ಓ",
+			"meaning": "oo",
+			"readings": [
+				"ō",
+				"oo"
+			],
+			"order": 12
+		},
+		{
+			"id": "kannada-au",
+			"character": "ಔ",
+			"meaning": "au",
+			"readings": [
+				"au"
+			],
+			"order": 13
+		},
+		{
+			"id": "kannada-ka",
+			"character": "ಕ",
+			"meaning": "ka",
+			"readings": [
+				"ka"
+			],
+			"order": 14
+		},
+		{
+			"id": "kannada-kha",
+			"character": "ಖ",
+			"meaning": "kha",
+			"readings": [
+				"kha"
+			],
+			"order": 15
+		},
+		{
+			"id": "kannada-ga",
+			"character": "ಗ",
+			"meaning": "ga",
+			"readings": [
+				"ga"
+			],
+			"order": 16
+		},
+		{
+			"id": "kannada-gha",
+			"character": "ಘ",
+			"meaning": "gha",
+			"readings": [
+				"gha"
+			],
+			"order": 17
+		},
+		{
+			"id": "kannada-nga",
+			"character": "ಙ",
+			"meaning": "nga",
+			"readings": [
+				"ṅa",
+				"nga"
+			],
+			"order": 18
+		},
+		{
+			"id": "kannada-ca",
+			"character": "ಚ",
+			"meaning": "ca",
+			"readings": [
+				"ca",
+				"cha"
+			],
+			"order": 19
+		},
+		{
+			"id": "kannada-cha",
+			"character": "ಛ",
+			"meaning": "cha",
+			"readings": [
+				"cha"
+			],
+			"order": 20
+		},
+		{
+			"id": "kannada-ja",
+			"character": "ಜ",
+			"meaning": "ja",
+			"readings": [
+				"ja"
+			],
+			"order": 21
+		},
+		{
+			"id": "kannada-jha",
+			"character": "ಝ",
+			"meaning": "jha",
+			"readings": [
+				"jha"
+			],
+			"order": 22
+		},
+		{
+			"id": "kannada-nya",
+			"character": "ಞ",
+			"meaning": "nya",
+			"readings": [
+				"ña",
+				"nya"
+			],
+			"order": 23
+		},
+		{
+			"id": "kannada-tta",
+			"character": "ಟ",
+			"meaning": "tta",
+			"readings": [
+				"ṭa",
+				"tta"
+			],
+			"order": 24
+		},
+		{
+			"id": "kannada-ttha",
+			"character": "ಠ",
+			"meaning": "ttha",
+			"readings": [
+				"ṭha"
+			],
+			"order": 25
+		},
+		{
+			"id": "kannada-dda",
+			"character": "ಡ",
+			"meaning": "dda",
+			"readings": [
+				"ḍa",
+				"dda"
+			],
+			"order": 26
+		},
+		{
+			"id": "kannada-ddha",
+			"character": "ಢ",
+			"meaning": "ddha",
+			"readings": [
+				"ḍha"
+			],
+			"order": 27
+		},
+		{
+			"id": "kannada-nna",
+			"character": "ಣ",
+			"meaning": "nna",
+			"readings": [
+				"ṇa",
+				"nna"
+			],
+			"order": 28
+		},
+		{
+			"id": "kannada-ta",
+			"character": "ತ",
+			"meaning": "ta",
+			"readings": [
+				"ta"
+			],
+			"order": 29
+		},
+		{
+			"id": "kannada-tha",
+			"character": "ಥ",
+			"meaning": "tha",
+			"readings": [
+				"tha"
+			],
+			"order": 30
+		},
+		{
+			"id": "kannada-da",
+			"character": "ದ",
+			"meaning": "da",
+			"readings": [
+				"da"
+			],
+			"order": 31
+		},
+		{
+			"id": "kannada-dha",
+			"character": "ಧ",
+			"meaning": "dha",
+			"readings": [
+				"dha"
+			],
+			"order": 32
+		},
+		{
+			"id": "kannada-na",
+			"character": "ನ",
+			"meaning": "na",
+			"readings": [
+				"na"
+			],
+			"order": 33
+		},
+		{
+			"id": "kannada-pa",
+			"character": "ಪ",
+			"meaning": "pa",
+			"readings": [
+				"pa"
+			],
+			"order": 34
+		},
+		{
+			"id": "kannada-pha",
+			"character": "ಫ",
+			"meaning": "pha",
+			"readings": [
+				"pha"
+			],
+			"order": 35
+		},
+		{
+			"id": "kannada-ba",
+			"character": "ಬ",
+			"meaning": "ba",
+			"readings": [
+				"ba"
+			],
+			"order": 36
+		},
+		{
+			"id": "kannada-bha",
+			"character": "ಭ",
+			"meaning": "bha",
+			"readings": [
+				"bha"
+			],
+			"order": 37
+		},
+		{
+			"id": "kannada-ma",
+			"character": "ಮ",
+			"meaning": "ma",
+			"readings": [
+				"ma"
+			],
+			"order": 38
+		},
+		{
+			"id": "kannada-ya",
+			"character": "ಯ",
+			"meaning": "ya",
+			"readings": [
+				"ya"
+			],
+			"order": 39
+		},
+		{
+			"id": "kannada-ra",
+			"character": "ರ",
+			"meaning": "ra",
+			"readings": [
+				"ra"
+			],
+			"order": 40
+		},
+		{
+			"id": "kannada-rra",
+			"character": "ಱ",
+			"meaning": "rra",
+			"readings": [
+				"ṟa",
+				"rra"
+			],
+			"order": 41
+		},
+		{
+			"id": "kannada-la",
+			"character": "ಲ",
+			"meaning": "la",
+			"readings": [
+				"la"
+			],
+			"order": 42
+		},
+		{
+			"id": "kannada-lla",
+			"character": "ಳ",
+			"meaning": "lla",
+			"readings": [
+				"ḷa",
+				"lla"
+			],
+			"order": 43
+		},
+		{
+			"id": "kannada-va",
+			"character": "ವ",
+			"meaning": "va",
+			"readings": [
+				"va"
+			],
+			"order": 44
+		},
+		{
+			"id": "kannada-sha",
+			"character": "ಶ",
+			"meaning": "sha",
+			"readings": [
+				"śa",
+				"sha"
+			],
+			"order": 45
+		},
+		{
+			"id": "kannada-ssa",
+			"character": "ಷ",
+			"meaning": "ssa",
+			"readings": [
+				"ṣa",
+				"ssa"
+			],
+			"order": 46
+		},
+		{
+			"id": "kannada-sa",
+			"character": "ಸ",
+			"meaning": "sa",
+			"readings": [
+				"sa"
+			],
+			"order": 47
+		},
+		{
+			"id": "kannada-ha",
+			"character": "ಹ",
+			"meaning": "ha",
+			"readings": [
+				"ha"
+			],
+			"order": 48
+		}
+	],
+	"course": {
+		"lessons": [
+			{
+				"id": "kannada-lesson-1",
+				"title": "Lesson 1",
+				"characterIds": [
+					"kannada-a",
+					"kannada-aa",
+					"kannada-i",
+					"kannada-ii",
+					"kannada-u",
+					"kannada-uu",
+					"kannada-ru",
+					"kannada-e",
+					"kannada-ee",
+					"kannada-ai",
+					"kannada-o",
+					"kannada-oo",
+					"kannada-au",
+					"kannada-ka",
+					"kannada-kha",
+					"kannada-ga",
+					"kannada-gha",
+					"kannada-nga",
+					"kannada-ca",
+					"kannada-cha",
+					"kannada-ja",
+					"kannada-jha",
+					"kannada-nya",
+					"kannada-tta",
+					"kannada-ttha",
+					"kannada-dda",
+					"kannada-ddha",
+					"kannada-nna",
+					"kannada-ta",
+					"kannada-tha",
+					"kannada-da",
+					"kannada-dha",
+					"kannada-na",
+					"kannada-pa",
+					"kannada-pha",
+					"kannada-ba",
+					"kannada-bha",
+					"kannada-ma",
+					"kannada-ya",
+					"kannada-ra",
+					"kannada-rra",
+					"kannada-la",
+					"kannada-lla",
+					"kannada-va",
+					"kannada-sha",
+					"kannada-ssa",
+					"kannada-sa",
+					"kannada-ha"
+				]
+			}
+		]
+	},
+	"lowercaseFriendly": false
 }

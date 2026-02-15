@@ -31,11 +31,10 @@
 	}
 
 	function getLessonLabel(def: ScriptDefinition | null, batch: Character[]): string {
-		if (!def?.grid || batch.length === 0) return def?.name ?? '';
-		const firstChar = batch[0].character;
-		const col = def.grid.columns.find((c) => c.chars.includes(firstChar));
-		if (col) return `${def.name} · ${col.label}-row characters`;
-		return def.name ?? '';
+		if (!def || batch.length === 0) return def?.name ?? '';
+		return batch.length === 1
+			? `${def.name} · ${batch[0].character}`
+			: `${def.name} · ${batch.length} characters`;
 	}
 
 	function buildOptions(

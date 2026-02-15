@@ -4,58 +4,511 @@
 	"name": "Glagolitic",
 	"description": "Historic Slavic script. 41 round Glagolitic letters used for Old Church Slavonic.",
 	"icon": "Ⰰ",
-	"available": true,
+	"available": false,
 	"totalCharacters": 41,
 	"grid": {
 		"columns": [
-			{ "label": "Ⰰ", "chars": ["Ⰰ", "Ⰱ", "Ⰲ", "Ⰳ", "Ⰴ", "Ⰵ", "Ⰶ", "Ⰷ", "Ⰸ"] },
-			{ "label": "Ⰹ", "chars": ["Ⰹ", "Ⰺ", "Ⰻ", "Ⰼ", "Ⰽ", "Ⰾ", "Ⰿ", "Ⱀ", "Ⱁ", "Ⱊ"] },
-			{ "label": "Ⱂ", "chars": ["Ⱂ", "Ⱃ", "Ⱄ", "Ⱅ", "Ⱆ", "Ⱇ", "Ⱈ", "Ⱉ", "Ⱋ"] },
-			{ "label": "Ⱌ", "chars": ["Ⱌ", "Ⱍ", "Ⱎ", "Ⱏ", "Ⱐ", "Ⱑ", "Ⱓ", "Ⱔ", "Ⱕ"] },
-			{ "label": "Ⱗ", "chars": ["Ⱗ", "Ⱘ", "Ⱙ", "Ⱚ"] }
+			{
+				"label": "Ⰰ",
+				"chars": [
+					"Ⰰ",
+					"Ⰱ",
+					"Ⰲ",
+					"Ⰳ",
+					"Ⰴ",
+					"Ⰵ",
+					"Ⰶ",
+					"Ⰷ",
+					"Ⰸ"
+				]
+			},
+			{
+				"label": "Ⰹ",
+				"chars": [
+					"Ⰹ",
+					"Ⰺ",
+					"Ⰻ",
+					"Ⰼ",
+					"Ⰽ",
+					"Ⰾ",
+					"Ⰿ",
+					"Ⱀ",
+					"Ⱁ",
+					"Ⱊ"
+				]
+			},
+			{
+				"label": "Ⱂ",
+				"chars": [
+					"Ⱂ",
+					"Ⱃ",
+					"Ⱄ",
+					"Ⱅ",
+					"Ⱆ",
+					"Ⱇ",
+					"Ⱈ",
+					"Ⱉ",
+					"Ⱋ"
+				]
+			},
+			{
+				"label": "Ⱌ",
+				"chars": [
+					"Ⱌ",
+					"Ⱍ",
+					"Ⱎ",
+					"Ⱏ",
+					"Ⱐ",
+					"Ⱑ",
+					"Ⱓ",
+					"Ⱔ",
+					"Ⱕ"
+				]
+			},
+			{
+				"label": "Ⱗ",
+				"chars": [
+					"Ⱗ",
+					"Ⱘ",
+					"Ⱙ",
+					"Ⱚ"
+				]
+			}
 		]
 	},
 	"characters": [
-		{ "id": "glagolitic-az", "character": "Ⰰ", "meaning": "a", "readings": ["a"] },
-		{ "id": "glagolitic-buki", "character": "Ⰱ", "meaning": "b", "readings": ["b"] },
-		{ "id": "glagolitic-vedi", "character": "Ⰲ", "meaning": "v", "readings": ["v"] },
-		{ "id": "glagolitic-glagoli", "character": "Ⰳ", "meaning": "g", "readings": ["g"] },
-		{ "id": "glagolitic-dobro", "character": "Ⰴ", "meaning": "d", "readings": ["d"] },
-		{ "id": "glagolitic-yest", "character": "Ⰵ", "meaning": "e", "readings": ["e"] },
-		{ "id": "glagolitic-zhivete", "character": "Ⰶ", "meaning": "zh", "readings": ["zh"] },
-		{ "id": "glagolitic-dzelo", "character": "Ⰷ", "meaning": "dz", "readings": ["dz"] },
-		{ "id": "glagolitic-zema", "character": "Ⰸ", "meaning": "z", "readings": ["z"] },
-		{ "id": "glagolitic-izhe", "character": "Ⰹ", "meaning": "i", "readings": ["i"] },
-		{ "id": "glagolitic-i", "character": "Ⰺ", "meaning": "i", "readings": ["i"] },
-		{ "id": "glagolitic-djervi", "character": "Ⰻ", "meaning": "djerv", "readings": ["djerv", "d"] },
-		{ "id": "glagolitic-kako", "character": "Ⰼ", "meaning": "k", "readings": ["k"] },
-		{ "id": "glagolitic-ljudije", "character": "Ⰽ", "meaning": "l", "readings": ["l"] },
-		{ "id": "glagolitic-myslite", "character": "Ⰾ", "meaning": "m", "readings": ["m"] },
-		{ "id": "glagolitic-nash", "character": "Ⰿ", "meaning": "n", "readings": ["n"] },
-		{ "id": "glagolitic-on", "character": "Ⱀ", "meaning": "o", "readings": ["o"] },
-		{ "id": "glagolitic-pokoj", "character": "Ⱁ", "meaning": "p", "readings": ["p"] },
-		{ "id": "glagolitic-pe", "character": "Ⱊ", "meaning": "p", "readings": ["p"] },
-		{ "id": "glagolitic-rtsi", "character": "Ⱂ", "meaning": "r", "readings": ["r"] },
-		{ "id": "glagolitic-slovo", "character": "Ⱃ", "meaning": "s", "readings": ["s"] },
-		{ "id": "glagolitic-tvrdo", "character": "Ⱄ", "meaning": "t", "readings": ["t"] },
-		{ "id": "glagolitic-uk", "character": "Ⱅ", "meaning": "u", "readings": ["u"] },
-		{ "id": "glagolitic-fert", "character": "Ⱆ", "meaning": "f", "readings": ["f"] },
-		{ "id": "glagolitic-kher", "character": "Ⱇ", "meaning": "kh", "readings": ["kh", "x"] },
-		{ "id": "glagolitic-ot", "character": "Ⱈ", "meaning": "o", "readings": ["o"] },
-		{ "id": "glagolitic-shta", "character": "Ⱉ", "meaning": "sht", "readings": ["sht", "št"] },
-		{ "id": "glagolitic-tsi", "character": "Ⱋ", "meaning": "ts", "readings": ["ts", "c"] },
-		{ "id": "glagolitic-chrivi", "character": "Ⱌ", "meaning": "ch", "readings": ["ch"] },
-		{ "id": "glagolitic-sha", "character": "Ⱍ", "meaning": "sh", "readings": ["sh", "š"] },
-		{ "id": "glagolitic-yer", "character": "Ⱎ", "meaning": "yer", "readings": ["", "ъ"] },
-		{ "id": "glagolitic-yeru", "character": "Ⱏ", "meaning": "y", "readings": ["y", "ŭ"] },
-		{ "id": "glagolitic-yeri", "character": "Ⱐ", "meaning": "yeri", "readings": ["y", "ı"] },
-		{ "id": "glagolitic-yat", "character": "Ⱑ", "meaning": "yat", "readings": ["ě", "e"] },
-		{ "id": "glagolitic-yu", "character": "Ⱓ", "meaning": "yu", "readings": ["yu", "ju"] },
-		{ "id": "glagolitic-small-yus", "character": "Ⱔ", "meaning": "small yus", "readings": ["ę"] },
-		{ "id": "glagolitic-small-yus-tail", "character": "Ⱕ", "meaning": "small yus tail", "readings": ["ę"] },
-		{ "id": "glagolitic-yo", "character": "Ⱗ", "meaning": "yo", "readings": ["yo", "jo"] },
-		{ "id": "glagolitic-iotated-yus", "character": "Ⱘ", "meaning": "iotated yus", "readings": ["ję"] },
-		{ "id": "glagolitic-big-yus", "character": "Ⱙ", "meaning": "big yus", "readings": ["ǫ"] },
-		{ "id": "glagolitic-fita", "character": "Ⱚ", "meaning": "f", "readings": ["f", "fita"] }
-	]
+		{
+			"id": "glagolitic-az",
+			"character": "Ⰰ",
+			"meaning": "a",
+			"readings": [
+				"a"
+			],
+			"order": 1
+		},
+		{
+			"id": "glagolitic-buki",
+			"character": "Ⰱ",
+			"meaning": "b",
+			"readings": [
+				"b"
+			],
+			"order": 2
+		},
+		{
+			"id": "glagolitic-vedi",
+			"character": "Ⰲ",
+			"meaning": "v",
+			"readings": [
+				"v"
+			],
+			"order": 3
+		},
+		{
+			"id": "glagolitic-glagoli",
+			"character": "Ⰳ",
+			"meaning": "g",
+			"readings": [
+				"g"
+			],
+			"order": 4
+		},
+		{
+			"id": "glagolitic-dobro",
+			"character": "Ⰴ",
+			"meaning": "d",
+			"readings": [
+				"d"
+			],
+			"order": 5
+		},
+		{
+			"id": "glagolitic-yest",
+			"character": "Ⰵ",
+			"meaning": "e",
+			"readings": [
+				"e"
+			],
+			"order": 6
+		},
+		{
+			"id": "glagolitic-zhivete",
+			"character": "Ⰶ",
+			"meaning": "zh",
+			"readings": [
+				"zh"
+			],
+			"order": 7
+		},
+		{
+			"id": "glagolitic-dzelo",
+			"character": "Ⰷ",
+			"meaning": "dz",
+			"readings": [
+				"dz"
+			],
+			"order": 8
+		},
+		{
+			"id": "glagolitic-zema",
+			"character": "Ⰸ",
+			"meaning": "z",
+			"readings": [
+				"z"
+			],
+			"order": 9
+		},
+		{
+			"id": "glagolitic-izhe",
+			"character": "Ⰹ",
+			"meaning": "i",
+			"readings": [
+				"i"
+			],
+			"order": 10
+		},
+		{
+			"id": "glagolitic-i",
+			"character": "Ⰺ",
+			"meaning": "i",
+			"readings": [
+				"i"
+			],
+			"order": 11
+		},
+		{
+			"id": "glagolitic-djervi",
+			"character": "Ⰻ",
+			"meaning": "djerv",
+			"readings": [
+				"djerv",
+				"d"
+			],
+			"order": 12
+		},
+		{
+			"id": "glagolitic-kako",
+			"character": "Ⰼ",
+			"meaning": "k",
+			"readings": [
+				"k"
+			],
+			"order": 13
+		},
+		{
+			"id": "glagolitic-ljudije",
+			"character": "Ⰽ",
+			"meaning": "l",
+			"readings": [
+				"l"
+			],
+			"order": 14
+		},
+		{
+			"id": "glagolitic-myslite",
+			"character": "Ⰾ",
+			"meaning": "m",
+			"readings": [
+				"m"
+			],
+			"order": 15
+		},
+		{
+			"id": "glagolitic-nash",
+			"character": "Ⰿ",
+			"meaning": "n",
+			"readings": [
+				"n"
+			],
+			"order": 16
+		},
+		{
+			"id": "glagolitic-on",
+			"character": "Ⱀ",
+			"meaning": "o",
+			"readings": [
+				"o"
+			],
+			"order": 17
+		},
+		{
+			"id": "glagolitic-pokoj",
+			"character": "Ⱁ",
+			"meaning": "p",
+			"readings": [
+				"p"
+			],
+			"order": 18
+		},
+		{
+			"id": "glagolitic-pe",
+			"character": "Ⱊ",
+			"meaning": "p",
+			"readings": [
+				"p"
+			],
+			"order": 19
+		},
+		{
+			"id": "glagolitic-rtsi",
+			"character": "Ⱂ",
+			"meaning": "r",
+			"readings": [
+				"r"
+			],
+			"order": 20
+		},
+		{
+			"id": "glagolitic-slovo",
+			"character": "Ⱃ",
+			"meaning": "s",
+			"readings": [
+				"s"
+			],
+			"order": 21
+		},
+		{
+			"id": "glagolitic-tvrdo",
+			"character": "Ⱄ",
+			"meaning": "t",
+			"readings": [
+				"t"
+			],
+			"order": 22
+		},
+		{
+			"id": "glagolitic-uk",
+			"character": "Ⱅ",
+			"meaning": "u",
+			"readings": [
+				"u"
+			],
+			"order": 23
+		},
+		{
+			"id": "glagolitic-fert",
+			"character": "Ⱆ",
+			"meaning": "f",
+			"readings": [
+				"f"
+			],
+			"order": 24
+		},
+		{
+			"id": "glagolitic-kher",
+			"character": "Ⱇ",
+			"meaning": "kh",
+			"readings": [
+				"kh",
+				"x"
+			],
+			"order": 25
+		},
+		{
+			"id": "glagolitic-ot",
+			"character": "Ⱈ",
+			"meaning": "o",
+			"readings": [
+				"o"
+			],
+			"order": 26
+		},
+		{
+			"id": "glagolitic-shta",
+			"character": "Ⱉ",
+			"meaning": "sht",
+			"readings": [
+				"sht",
+				"št"
+			],
+			"order": 27
+		},
+		{
+			"id": "glagolitic-tsi",
+			"character": "Ⱋ",
+			"meaning": "ts",
+			"readings": [
+				"ts",
+				"c"
+			],
+			"order": 28
+		},
+		{
+			"id": "glagolitic-chrivi",
+			"character": "Ⱌ",
+			"meaning": "ch",
+			"readings": [
+				"ch"
+			],
+			"order": 29
+		},
+		{
+			"id": "glagolitic-sha",
+			"character": "Ⱍ",
+			"meaning": "sh",
+			"readings": [
+				"sh",
+				"š"
+			],
+			"order": 30
+		},
+		{
+			"id": "glagolitic-yer",
+			"character": "Ⱎ",
+			"meaning": "yer",
+			"readings": [
+				"",
+				"ъ"
+			],
+			"order": 31
+		},
+		{
+			"id": "glagolitic-yeru",
+			"character": "Ⱏ",
+			"meaning": "y",
+			"readings": [
+				"y",
+				"ŭ"
+			],
+			"order": 32
+		},
+		{
+			"id": "glagolitic-yeri",
+			"character": "Ⱐ",
+			"meaning": "yeri",
+			"readings": [
+				"y",
+				"ı"
+			],
+			"order": 33
+		},
+		{
+			"id": "glagolitic-yat",
+			"character": "Ⱑ",
+			"meaning": "yat",
+			"readings": [
+				"ě",
+				"e"
+			],
+			"order": 34
+		},
+		{
+			"id": "glagolitic-yu",
+			"character": "Ⱓ",
+			"meaning": "yu",
+			"readings": [
+				"yu",
+				"ju"
+			],
+			"order": 35
+		},
+		{
+			"id": "glagolitic-small-yus",
+			"character": "Ⱔ",
+			"meaning": "small yus",
+			"readings": [
+				"ę"
+			],
+			"order": 36
+		},
+		{
+			"id": "glagolitic-small-yus-tail",
+			"character": "Ⱕ",
+			"meaning": "small yus tail",
+			"readings": [
+				"ę"
+			],
+			"order": 37
+		},
+		{
+			"id": "glagolitic-yo",
+			"character": "Ⱗ",
+			"meaning": "yo",
+			"readings": [
+				"yo",
+				"jo"
+			],
+			"order": 38
+		},
+		{
+			"id": "glagolitic-iotated-yus",
+			"character": "Ⱘ",
+			"meaning": "iotated yus",
+			"readings": [
+				"ję"
+			],
+			"order": 39
+		},
+		{
+			"id": "glagolitic-big-yus",
+			"character": "Ⱙ",
+			"meaning": "big yus",
+			"readings": [
+				"ǫ"
+			],
+			"order": 40
+		},
+		{
+			"id": "glagolitic-fita",
+			"character": "Ⱚ",
+			"meaning": "f",
+			"readings": [
+				"f",
+				"fita"
+			],
+			"order": 41
+		}
+	],
+	"course": {
+		"lessons": [
+			{
+				"id": "glagolitic-lesson-1",
+				"title": "Lesson 1",
+				"characterIds": [
+					"glagolitic-az",
+					"glagolitic-buki",
+					"glagolitic-vedi",
+					"glagolitic-glagoli",
+					"glagolitic-dobro",
+					"glagolitic-yest",
+					"glagolitic-zhivete",
+					"glagolitic-dzelo",
+					"glagolitic-zema",
+					"glagolitic-izhe",
+					"glagolitic-i",
+					"glagolitic-djervi",
+					"glagolitic-kako",
+					"glagolitic-ljudije",
+					"glagolitic-myslite",
+					"glagolitic-nash",
+					"glagolitic-on",
+					"glagolitic-pokoj",
+					"glagolitic-pe",
+					"glagolitic-rtsi",
+					"glagolitic-slovo",
+					"glagolitic-tvrdo",
+					"glagolitic-uk",
+					"glagolitic-fert",
+					"glagolitic-kher",
+					"glagolitic-ot",
+					"glagolitic-shta",
+					"glagolitic-tsi",
+					"glagolitic-chrivi",
+					"glagolitic-sha",
+					"glagolitic-yer",
+					"glagolitic-yeru",
+					"glagolitic-yeri",
+					"glagolitic-yat",
+					"glagolitic-yu",
+					"glagolitic-small-yus",
+					"glagolitic-small-yus-tail",
+					"glagolitic-yo",
+					"glagolitic-iotated-yus",
+					"glagolitic-big-yus",
+					"glagolitic-fita"
+				]
+			}
+		]
+	},
+	"lowercaseFriendly": false
 }
