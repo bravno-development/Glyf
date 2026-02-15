@@ -8,11 +8,13 @@
 	import StepDots from "$lib/components/onboarding/StepDots.svelte";
 	import LanguageStep from "$lib/components/onboarding/LanguageStep.svelte";
 	import PaceStep from "$lib/components/onboarding/PaceStep.svelte";
+	import ReminderStep from "$lib/components/onboarding/ReminderStep.svelte";
 	import ReadyStep from "$lib/components/onboarding/ReadyStep.svelte";
 
 	let step = $state(1);
 	let selectedScript = $state("");
 	let dailyGoal = $state(10);
+	let reminderTime = $state<"09:00" | "13:00" | "18:00" | null>("13:00");
 	let loading = $state(false);
 	let ready = $state(false);
 	let statusChecked = false;
@@ -46,20 +48,46 @@
 	}
 
 	function handleContinue() {
-		if (step < 3) {
+		if (step < 4) {
 			step++;
 		}
 	}
 
-	async function handleSkip() {
+	async function handleSetReminder() {
 		loading = true;
 		try {
-			await api.onboarding.complete("hiragana", 10);
-			goto("/dashboard");
+			const timezone =
+				typeof Intl !== "undefined" && Intl.DateTimeFormat?.().resolvedOptions?.().timeZone
+					? Intl.DateTimeFormat().resolvedOptions().timeZone
+					: "UTC";
+			const time = reminderTime ?? "13:00";
+			await api.user.updateReminder({
+				reminderEnabled: true,
+				reminderTimeLocal: time,
+				timezone,
+			});
+			step = 4;
 		} catch {
-			goto("/dashboard");
+			// continue to step 4 anyway
+			step = 4;
+		} finally {
+			loading = false;
 		}
 	}
+
+	async function handleSkipReminder() {
+		loading = true;
+		try {
+			await api.user.updateReminder({ reminderEnabled: false });
+			step = 4;
+		} catch {
+			step = 4;
+		} finally {
+			loading = false;
+		}
+	}
+
+
 
 	async function handleFinish() {
 		loading = true;
@@ -74,25 +102,16 @@
 </script>
 
 {#if ready}
-<div class="flex min-h-screen w-full flex-col bg-[#F5F4F1]">
+<div class="flex min-h-screen w-full flex-col bg-[var(--background)]">
 	<!-- Top bar -->
-	<div class="flex h-14 w-full items-center justify-between px-6">
+	<div class="flex h-14 w-full items-center justify-between px-6 md:px-10">
 		<StepDots currentStep={step} />
 
-		{#if step === 1}
-			<button
-				type="button"
-				onclick={handleSkip}
-				disabled={loading}
-				class="text-[14px] font-medium text-[#9C9B99] transition-colors hover:text-[#6D6C6A]"
-			>
-				Skip
-			</button>
-		{:else}
+		{#if step !== 1}
 			<button
 				type="button"
 				onclick={handleBack}
-				class="flex items-center gap-1.5 text-[14px] font-medium text-[#6D6C6A] transition-colors hover:text-[#1A1918]"
+				class="flex items-center gap-1.5 text-[14px] font-medium text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
 			>
 				<ArrowLeft size={18} strokeWidth={1.5} />
 				Back
@@ -105,22 +124,41 @@
 		<LanguageStep {selectedScript} onSelect={(s) => (selectedScript = s)} />
 	{:else if step === 2}
 		<PaceStep {selectedScript} {dailyGoal} onSelect={(g) => (dailyGoal = g)} />
+	{:else if step === 3}
+		<ReminderStep selectedTime={reminderTime} onSelect={(t) => (reminderTime = t)} />
 	{:else}
 		<ReadyStep {selectedScript} {dailyGoal} />
 	{/if}
 
 	<!-- Bottom -->
-	<div class="mt-auto flex w-full flex-col items-center gap-3 px-6 pb-10">
+	<div class="mt-auto flex w-full flex-col items-center gap-3 px-6 py-10 md:px-10">
 		{#if step === 2}
-			<p class="text-center text-[12px] text-[#9C9B99]">
+			<p class="text-center text-[12px] text-[var(--muted-foreground)]">
 				You can change this anytime in Settings
 			</p>
 		{/if}
 
 		{#if step === 3}
-			<div class="flex w-full items-start gap-3 rounded-xl bg-[#FAFAF8] p-[14px_16px]">
+			<button
+				type="button"
+				onclick={handleSetReminder}
+				disabled={loading}
+				class="flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--accent-green)] text-[16px] font-semibold text-[var(--primary-foreground)] transition-opacity hover:opacity-90 disabled:opacity-50"
+			>
+				Set reminder
+			</button>
+			<button
+				type="button"
+				onclick={handleSkipReminder}
+				disabled={loading}
+				class="text-[13px] font-medium text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+			>
+				Skip for now
+			</button>
+		{:else if step === 4}
+			<div class="flex w-full items-start gap-3 rounded-xl bg-[var(--tile)] p-[14px_16px]">
 				<Lightbulb size={18} strokeWidth={1.5} class="shrink-0 text-[var(--accent-warm)]" />
-				<p class="text-[13px] leading-[1.4] text-[#6D6C6A]">
+				<p class="text-[13px] leading-[1.4] text-[var(--muted-foreground)]">
 					Tip: Short, daily sessions work better than long, irregular ones.
 				</p>
 			</div>
@@ -130,16 +168,16 @@
 			<button
 				type="button"
 				onclick={handleContinue}
-				class="flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--accent-green)] text-[16px] font-semibold text-white transition-opacity hover:opacity-90"
+				class="flex h-[52px] w-full items-center justify-center rounded-full bg-[var(--accent-green)] text-[16px] font-semibold text-[var(--primary-foreground)] transition-opacity hover:opacity-90"
 			>
 				Continue
 			</button>
-		{:else}
+		{:else if step === 4}
 			<button
 				type="button"
 				onclick={handleFinish}
 				disabled={loading}
-				class="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[var(--accent-green)] text-[16px] font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+				class="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[var(--accent-green)] text-[16px] font-semibold text-[var(--primary-foreground)] transition-opacity hover:opacity-90 disabled:opacity-50"
 			>
 				Start learning
 				<ArrowRight size={20} strokeWidth={2} />

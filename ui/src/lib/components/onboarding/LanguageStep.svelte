@@ -71,7 +71,7 @@
 
 			{#if selectedScript === script.id}
 				<div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--accent-green)]">
-					<Check size={14} strokeWidth={2.5} class="text-white" />
+					<Check size={14} strokeWidth={2.5} class="text-[var(--primary-foreground)]" />
 				</div>
 			{:else if !script.available}
 				<span class="shrink-0 rounded-md bg-[var(--tile)] px-2 py-1 text-[10px] font-semibold text-[var(--muted-foreground)]">
