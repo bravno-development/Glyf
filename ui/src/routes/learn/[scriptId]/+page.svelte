@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { db, type Character, type Review } from '$lib/services/db';
 	import { getScript, seedCharacters, type ScriptDefinition } from '$lib/services/scripts';
-	import { getDueCards, getNewCards, calculateNextReview } from '$lib/services/srs';
+	import { getDueCharacters, getNewCards, calculateNextReview } from '$lib/services/srs';
 	import { learnStore } from '$lib/stores/learn';
 	import { api } from '$lib/services/api';
 	import { userStore } from '$lib/stores/user';
@@ -117,7 +117,7 @@
 	async function loadQuiz(): Promise<void> {
 		phase = 'loading';
 		try {
-			const due = await getDueCards(scriptId, db);
+			const due = await getDueCharacters(scriptId, db);
 			const dueChars = await db.characters.where('script').equals(scriptId).toArray();
 			const charMap = new Map(dueChars.map((c: Character) => [c.id, c]));
 			const dueWithChar = due

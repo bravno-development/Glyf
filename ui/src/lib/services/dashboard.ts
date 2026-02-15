@@ -36,7 +36,7 @@ export async function getDashboardStats(script: string): Promise<DashboardStats>
 	const accurate = withReps.filter(r => r.easeFactor >= 2.5).length;
 	const accuracy = withReps.length > 0 ? Math.round((accurate / withReps.length) * 100) : 0;
 
-	const dueCards = await getDueCards(script, db);
+	const dueCards = await getDueCharacters(script, db);
 	const dueToday = dueCards.length;
 
 	return { learnt, accuracy, dueToday };

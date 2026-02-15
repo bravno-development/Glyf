@@ -250,27 +250,27 @@
 				>
 					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
 						<div class="flex items-center justify-between">
-							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Characters Learnt</span>
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Progress</span>
 							<BookOpen size={18} class="text-[var(--muted-foreground)]" />
 						</div>
 						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
-							{loadingScript ? '—' : stats.learnt}
+							{loadingScript ? '—' : (stats.learnt + "/" + scriptDef?.totalCharacters)}
 						</p>
 					</div>
 
-					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
+					<!-- <div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
 						<div class="flex items-center justify-between">
-							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Review Accuracy</span>
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Difficult characters</span>
 							<Target size={18} class="text-[var(--muted-foreground)]" />
 						</div>
 						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
 							{loadingScript ? '—' : `${stats.accuracy}%`}
 						</p>
-					</div>
+					</div> -->
 
 					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
 						<div class="flex items-center justify-between">
-							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Due Today</span>
+							<span class="text-[13px] font-medium text-[var(--muted-foreground)]">Characters left to learn today</span>
 							<Clock size={18} class="text-[var(--muted-foreground)]" />
 						</div>
 						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
@@ -280,9 +280,13 @@
 				</div>
 			</div>
 			{:else}
-			<p class="text-[14px] text-[var(--muted-foreground)]">
-				You haven't started any script yet. <a href="/learn" class="font-medium text-[var(--accent-green)] no-underline hover:underline">Choose a script from Learn</a> to see your stats here.
-			</p>
+				<p class="text-[14px] text-[var(--muted-foreground)]">
+					You haven't started any script yet.
+					<a href="/learn" class="font-medium text-[var(--accent-green)] no-underline hover:underline">
+						Choose a script from Learn
+					</a>
+					to see your stats here.
+				</p>
 			{/if}
 
 			<!-- Main Columns -->
