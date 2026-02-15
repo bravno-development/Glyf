@@ -4,6 +4,7 @@ import { db } from '$lib/services/db';
 import { getScript } from '$lib/services/scripts';
 import { getScriptProgress, type ScriptProgressItem } from '$lib/services/dashboard';
 import { getNewCards } from '$lib/services/srs';
+import { getNow } from '$lib/stores/adminTime';
 import type { Character } from '$lib/services/db';
 
 const BATCH_SIZE = 5;
@@ -26,7 +27,7 @@ function getInitialReviewKeys(): string[] {
 }
 
 function todayKey(scriptId: string): string {
-	const today = new Date().toISOString().slice(0, 10);
+	const today = getNow().toISOString().slice(0, 10);
 	return `${STORAGE_KEY_PREFIX}${scriptId}_${today}`;
 }
 

@@ -1,4 +1,5 @@
 import type { Review } from './db';
+import { getNow } from '$lib/stores/adminTime';
 
 export interface GradeResult {
 	easeFactor: number;
@@ -38,7 +39,8 @@ export function calculateNextReview(
 		easeFactor = Math.max(1.3, easeFactor);
 	}
 
-	const nextReview = new Date();
+	const now = getNow();
+	const nextReview = new Date(now);
 	nextReview.setDate(nextReview.getDate() + interval);
 
 	return {
@@ -46,15 +48,15 @@ export function calculateNextReview(
 		interval,
 		repetitions,
 		nextReview: nextReview.toISOString(),
-		lastReview: new Date().toISOString()
+		lastReview: now.toISOString()
 	};
 }
 
 /**
  * Get cards due for review
  */
-export async function getDueCards(script: string, database: GlyfDB): Promise<Review[]> {
-	const now = new Date().toISOString();
+export async function getDueCharacters(script: string, database: GlyfDB): Promise<Review[]> {
+	const now = getNow().toISOString();
 	return await database.reviews
 		.where('[script+nextReview]')
 		.below([script, now])

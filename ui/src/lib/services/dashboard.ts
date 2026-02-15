@@ -1,5 +1,6 @@
 import { db, type Review, type Character, type Session } from './db';
-import { getDueCards } from './srs';
+import { getDueCharacters } from './srs';
+import { getNow } from '$lib/stores/adminTime';
 
 export type MasteryLevel = 'mastered' | 'good' | 'learning' | 'difficult' | 'new';
 
@@ -136,7 +137,7 @@ export interface UpcomingReviewItem {
 }
 
 export async function getUpcomingReviews(script: string, limit = 4): Promise<UpcomingReviewItem[]> {
-	const now = new Date();
+	const now = getNow();
 	const reviews = await db.reviews.where('script').equals(script).toArray();
 	const upcoming = reviews
 		.filter(r => r.repetitions > 0)
@@ -180,7 +181,7 @@ export interface WeeklyActivityItem {
 
 export async function getWeeklyActivity(): Promise<WeeklyActivityItem[]> {
 	const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-	const now = new Date();
+	const now = getNow();
 	const today = now.getDay(); // 0=Sun, 1=Mon...
 	const mondayOffset = today === 0 ? 6 : today - 1;
 

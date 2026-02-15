@@ -118,6 +118,11 @@ export const api = {
 			fetchApi<Array<{ script: string; dailyGoal: number }>>('/api/user/scripts')
 	},
 
+	admin: {
+		reset: () =>
+			fetchApi<{ success: boolean }>('/api/admin/reset', { method: 'POST' })
+	},
+
 	notifications: {
 		list: () =>
 			fetchApi<Array<{ id: string; type: string; createdAt: string; readAt: string | null }>>(

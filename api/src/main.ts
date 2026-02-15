@@ -6,6 +6,7 @@ import { userRoutes } from "./routes/user.routes.ts";
 import { onboardingRoutes } from "./routes/onboarding.routes.ts";
 import { progressRoutes } from "./routes/progress.routes.ts";
 import { notificationsRoutes } from "./routes/notifications.routes.ts";
+import { adminRoutes } from "./routes/admin.routes.ts";
 import { startReminderProcessor } from "./services/reminderProcessor.ts";
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/onboarding", onboardingRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/notifications", notificationsRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Health check
 app.get("/health", (_req, res) => {
