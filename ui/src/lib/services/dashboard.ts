@@ -111,6 +111,23 @@ export async function getScriptProgress(): Promise<ScriptProgressItem[]> {
 	return results;
 }
 
+export async function getProgressForScript(scriptId: string): Promise<ScriptProgressItem | null> {
+	const total = await db.characters.where('script').equals(scriptId).count();
+	if (total === 0) return null;
+	const reviews = await db.reviews.where('script').equals(scriptId).toArray();
+	const learnt = reviews.filter(r => r.repetitions > 0).length;
+	const percentage = Math.round((learnt / total) * 100);
+	let label = scriptId;
+	try {
+		const { getScript } = await import('./scripts');
+		const def = await getScript(scriptId);
+		label = def.name;
+	} catch {
+		// keep scriptId as label
+	}
+	return { script: scriptId, label, percentage, total, learnt };
+}
+
 export interface UpcomingReviewItem {
 	character: string;
 	reading: string;
