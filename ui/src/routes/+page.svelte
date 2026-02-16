@@ -1,47 +1,71 @@
 <script lang="ts">
 	import { userStore } from "$lib/stores/user";
 	import { ArrowRight, CalendarCheck, Brain, BarChart3, WifiOff } from "lucide-svelte";
+	import Marquee from "svelte-fast-marquee";
 
 	let isLoggedIn = $derived($userStore.isAuthenticated);
 	let dashboardHref = "/dashboard";
 
 	const scripts = [
 		{
-			char: "あ",
-			colour: "bg-[var(--accent-green)]",
-			textColour: "text-white",
-			title: "Japanese",
-			description:
-				"Hiragana & Katakana with stroke-order animations, mnemonics & spaced repetition to lock them in.",
-			statValue: "92",
-			statLabel: "characters",
-			secondStatValue: "2",
-			secondStatLabel: "scripts",
+			title: "Hangul",
 		},
 		{
-			char: "한",
-			colour: "bg-[var(--accent-warm)]",
-			textColour: "text-white",
-			title: "Korean",
-			description:
-				"Learn Hangul block by block — consonants, vowels & combinations with guided stroke practice.",
-			statValue: "67",
-			statLabel: "characters",
-			secondStatValue: "1",
-			secondStatLabel: "script",
-		},
-		{
-			char: "ب",
-			colour: "bg-[#7B6B9E]",
-			textColour: "text-white",
 			title: "Arabic",
-			description:
-				"Right-to-left letter forms, connecting rules & pronunciation — coming to glyf soon.",
-			statValue: "28",
-			statLabel: "characters",
-			secondStatValue: "1",
-			secondStatLabel: "script",
-			comingSoon: true,
+		},
+		{
+			title: "Thai",
+		},
+		{
+			title: "Devanagari",
+		},
+		{
+			title: "Bengali",
+		},
+		{
+			title: "Tamil",
+		},
+		{
+			title: "Telugu",
+		},
+		{
+			title: "Gujarati",
+		},
+		{
+			title: "Gurmukhi",
+		},
+		{
+			title: "Kannada",
+		},
+		{
+			title: "Malayalam",
+		},
+		{
+			title: "Burmese",
+		},
+		{
+			title: "Khmer",
+		},
+		{
+			title: "Hebrew",
+		},
+		{
+			title: "Greek",
+		},
+		{
+			title: "Cyrillic",
+		},
+		{
+			title: "Armenian",
+		},
+		{
+			title: "Mkhedruli",
+		},
+		{
+			title: "Geʽez",
+		},
+		{
+			title: "Cherokee",
 		},
 	];
 
@@ -175,29 +199,12 @@
 					We started with Japanese & Korean, and we're adding new writing systems regularly. Your next script is just around the corner.
 				</p>
 			</div>
-			<div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-				{#each scripts as script (script.title)}
-					<div class="relative rounded-3xl border border-[#E5E4E1] bg-[var(--card)] p-8 shadow-[var(--shadow-card)]">
-						{#if script.comingSoon}
-							<span class="absolute top-6 right-6 rounded-[var(--radius-pill)] bg-[#F5E0D5] px-3 py-1 text-[12px] font-semibold text-[var(--accent-warm)]">Coming soon</span>
-						{/if}
-						<div class="flex h-14 w-14 items-center justify-center rounded-2xl {script.colour}">
-							<span class="text-[24px] font-bold {script.textColour}">{script.char}</span>
-						</div>
-						<h3 class="mt-5 text-[24px] font-bold text-[var(--foreground)]">{script.title}</h3>
-						<p class="mt-2 text-[15px] leading-[1.5] text-[var(--text-tertiary)]">{script.description}</p>
-						<div class="mt-6 flex gap-8">
-							<div>
-								<span class="block text-[28px] font-bold text-[var(--foreground)]">{script.statValue}</span>
-								<span class="text-[13px] font-medium text-[var(--text-tertiary)]">{script.statLabel}</span>
-							</div>
-							<div>
-								<span class="block text-[28px] font-bold text-[var(--foreground)]">{script.secondStatValue}</span>
-								<span class="text-[13px] font-medium text-[var(--text-tertiary)]">{script.secondStatLabel}</span>
-							</div>
-						</div>
-					</div>
-				{/each}
+			<div class="mt-14 flex flex-col gap-6 overflow-hidden">
+				<Marquee speed={50} direction="left" gap="24px">
+					{#each scripts as script (script.title)}
+						<span class="whitespace-nowrap text-[18px] font-semibold text-[var(--foreground)]">{script.title}</span>
+					{/each}
+				</Marquee>
 			</div>
 		</section>
 
@@ -260,23 +267,23 @@
 			<div class="mx-auto max-w-7xl">
 				<div class="grid grid-cols-1 gap-12 md:grid-cols-4">
 					<div>
-						<span class="text-[22px] font-bold text-white">glyf</span>
-						<p class="mt-3 text-[14px] leading-[1.5] text-white/55">Learn to read & write any script, anywhere.</p>
+						<span class="text-[22px] font-bold text-[var(--foreground)]">glyf</span>
+						<p class="mt-3 text-[14px] leading-[1.5] text-[var(--text-tertiary)]">Learn to read & write any script, anywhere.</p>
 					</div>
 					{#each Object.entries(footerLinks) as [heading, links] (heading)}
 						<div>
-							<h4 class="text-[13px] font-semibold tracking-[1px] text-white/50 uppercase">{heading}</h4>
+							<h4 class="text-[13px] font-semibold tracking-[1px] text-[var(--text-foreground)] uppercase">{heading}</h4>
 							<ul class="mt-4 flex flex-col gap-3">
 								{#each links as link (link)}
-									<li><a href="/{link.toLowerCase()}" class="text-[14px] text-white/70 no-underline transition-colors hover:text-white">{link}</a></li>
+									<li><a href="/{link.toLowerCase()}" class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{link}</a></li>
 								{/each}
 							</ul>
 						</div>
 					{/each}
 				</div>
 				<div class="mt-12 border-t border-white/10 pt-8 flex flex-col items-center gap-2 md:flex-row md:justify-between">
-					<span class="text-[13px] text-white/50">&copy; {new Date().getFullYear()} glyf. All rights reserved.</span>
-					<span class="text-[13px] text-white/50">Made with care for learners everywhere</span>
+					<span class="text-[13px] text-[var(--text-foreground)]">&copy; {new Date().getFullYear()} glyf. All rights reserved.</span>
+					<span class="text-[13px] text-[var(--text-foreground)]">Made with care for learners everywhere</span>
 				</div>
 			</div>
 		</footer>
