@@ -229,7 +229,7 @@
 			{#if studyingScripts.length > 0}
 			<div class="flex flex-col gap-4">
 				<div
-					class="flex h-14 w-full min-w-0 max-w-full items-center gap-2 overflow-x-auto rounded-[var(--radius-pill)] border border-[var(--input)] bg-[var(--card)] p-2 md:w-fit"
+					class="flex h-14 w-full min-w-0 max-w-full items-center gap-2 overflow-x-auto rounded-[var(--radius-pill)] border border-[var(--input)] bg-[var(--card)] p-2 md:w-fit overflow-y-hidden"
 					role="tablist"
 				>
 					{#each studyingScripts as sp (sp.script)}
