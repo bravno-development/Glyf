@@ -6,7 +6,7 @@
 	import { db } from "$lib/services/db";
 	import { getAvailableScripts, type ScriptDefinition } from "$lib/services/scripts";
 	import { getScriptProgress, type ScriptProgressItem } from "$lib/services/dashboard";
-	import Sidebar from "$lib/components/Sidebar.svelte";
+	import AppShell from "$lib/components/AppShell.svelte";
 
 	let availableScripts: ScriptDefinition[] = $state([]);
 	let userScriptIds: string[] = $state([]);
@@ -100,13 +100,15 @@
 	}
 </script>
 
-<div class="flex min-h-screen">
-	<Sidebar />
+<svelte:head>
+	<title>Scripts — Glyf</title>
+</svelte:head>
 
+<AppShell>
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
-		<div class="flex flex-col gap-8 py-10 px-12">
+		<div class="flex flex-col gap-8 py-6 px-4 md:py-10 md:px-12">
 			<!-- Page header -->
-			<div class="flex items-end justify-between">
+			<div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
 				<div>
 					<h1 class="text-[28px] font-semibold text-[var(--foreground)]">
 						Scripts
@@ -136,12 +138,12 @@
 							{studyingCount} active
 						</span>
 					</div>
-					<div class="flex flex-wrap gap-5">
+					<div class="flex flex-wrap gap-5 w-full min-w-0">
 						{#each studying as item (item.script)}
 							{@const def = availableScripts.find((s) => s.id === item.script)}
 							{#if def}
 								<article
-									class="w-full min-w-0 max-w-[360px] rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
+									class="w-full min-w-0 max-w-[360px] flex-1 rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
 								>
 									<div class="flex flex-col gap-3 p-6">
 										<div class="flex items-center justify-between">
@@ -212,13 +214,13 @@
 					</span>
 				</div>
 				<div
-					class="overflow-hidden rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
+					class="overflow-x-auto overflow-y-hidden rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
 				>
 					<ul class="divide-y divide-[var(--border)]" role="list">
 						{#each allScriptRows as row (row.def.id)}
 							<li>
 								<div
-									class="flex flex-wrap items-center gap-4 px-6 py-4 sm:flex-nowrap text-[var(--card-foreground)]"
+									class="flex flex-wrap items-center gap-4 px-4 py-4 sm:flex-nowrap sm:px-6 text-[var(--card-foreground)]"
 								>
 									<div
 										class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--tile)] text-[20px] font-bold text-[var(--primary)]"
@@ -322,4 +324,4 @@
 			{/if}
 		</div>
 	</main>
-</div>
+</AppShell>

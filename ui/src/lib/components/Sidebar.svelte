@@ -25,7 +25,7 @@
 </script>
 
 <aside
-	class="flex w-[256px] shrink-0 flex-col rounded-r-[var(--radius-m)] border-r border-[var(--sidebar-border)] bg-[var(--sidebar)] shadow-[var(--shadow-sidebar)] min-h-screen"
+	class="hidden md:flex w-[256px] shrink-0 flex-col rounded-r-[var(--radius-m)] border-r border-[var(--sidebar-border)] bg-[var(--sidebar)] shadow-[var(--shadow-sidebar)] min-h-screen"
 >
 	<div class="flex items-center justify-between px-6 py-6">
 		<a

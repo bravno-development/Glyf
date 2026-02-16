@@ -4,7 +4,7 @@
 	import { userStore } from "$lib/stores/user";
 	import { api } from "$lib/services/api";
 	import { Play, RefreshCcw, BookOpen, Target, Clock } from "lucide-svelte";
-	import Sidebar from "$lib/components/Sidebar.svelte";
+	import AppShell from "$lib/components/AppShell.svelte";
 	import {
 		type DashboardStats,
 		type CharacterGridItem,
@@ -172,20 +172,22 @@
 	const startStudyingDisabled = $derived(!hasUnlearnedGlyphs || (hasUnlearnedGlyphs && isDailyGoalMet));
 </script>
 
-<div class="flex min-h-screen">
-	<Sidebar />
+<svelte:head>
+	<title>Dashboard — Glyf</title>
+</svelte:head>
 
+<AppShell>
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
-		<div class="flex flex-col gap-8 p-10 px-12">
+		<div class="flex flex-col gap-8 p-6 px-4 md:p-10 md:px-12">
 			<!-- Header -->
-			<div class="flex items-center justify-between">
-				<div>
+			<div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+				<div class="mb-4 md:mb-0">
 					<h1 class="text-[28px] font-semibold text-[var(--foreground)]">Dashboard</h1>
 					<p class="mt-1 text-[14px] text-[var(--muted-foreground)]">
 						Track your script learning progress
 					</p>
 				</div>
-				<div class="flex items-center gap-3">
+				<div class="flex flex-row gap-3">
 					{#if startStudyingDisabled}
 						<span
 							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white opacity-50 cursor-not-allowed"
@@ -227,7 +229,7 @@
 			{#if studyingScripts.length > 0}
 			<div class="flex flex-col gap-4">
 				<div
-					class="flex h-14 w-fit items-center gap-2 rounded-[var(--radius-pill)] border border-[var(--input)] bg-[var(--card)] p-2"
+					class="flex h-14 w-full min-w-0 max-w-full items-center gap-2 overflow-x-auto rounded-[var(--radius-pill)] border border-[var(--input)] bg-[var(--card)] p-2 md:w-fit"
 					role="tablist"
 				>
 					{#each studyingScripts as sp (sp.script)}
@@ -235,7 +237,7 @@
 							type="button"
 							role="tab"
 							aria-selected={activeScript === sp.script}
-							class="rounded-[var(--radius-pill)] px-6 py-2.5 text-[14px] font-normal transition-colors {activeScript === sp.script
+							class="shrink-0 rounded-[var(--radius-pill)] px-6 py-2.5 text-[14px] font-normal transition-colors {activeScript === sp.script
 								? 'bg-[var(--secondary)] text-[var(--secondary-foreground)] shadow-[0_1px_3.5px_-1px_rgba(0,0,0,0.06)]'
 								: 'bg-transparent text-[var(--accent-foreground)] hover:bg-[var(--tile)] hover:text-[var(--foreground)]'}"
 							onclick={() => setActiveScript(sp.script)}
@@ -247,7 +249,7 @@
 
 				<!-- Stats Row (for active script) -->
 				<div
-					class="grid grid-cols-3 gap-5"
+					class="grid grid-cols-1 gap-5 sm:grid-cols-3"
 					aria-busy={loadingScript}
 					aria-live="polite"
 				>
@@ -293,7 +295,7 @@
 			{/if}
 
 			<!-- Main Columns -->
-			<div class="flex gap-6">
+			<div class="flex flex-col gap-6 lg:flex-row">
 				<!-- Left Column -->
 				<div class="flex flex-1 flex-col gap-6">
 					<!-- Character Grid Card -->
@@ -395,7 +397,7 @@
 				</div>
 
 				<!-- Right Column -->
-				<div class="flex w-[340px] shrink-0 flex-col gap-6">
+				<div class="flex w-full shrink-0 flex-col gap-6 lg:w-[340px]">
 					<!-- Script Progress Card -->
 					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
 						<h2 class="mb-4 text-[16px] font-semibold text-[var(--foreground)]">Script Progress</h2>
@@ -471,4 +473,4 @@
 			</div>
 		</div>
 	</main>
-</div>
+</AppShell>

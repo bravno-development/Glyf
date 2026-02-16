@@ -5,7 +5,7 @@
 	import { learnStore } from "$lib/stores/learn";
 	import { api } from "$lib/services/api";
 	import { Info } from "lucide-svelte";
-	import Sidebar from "$lib/components/Sidebar.svelte";
+	import AppShell from "$lib/components/AppShell.svelte";
 
 	const DAILY_GOAL_OPTIONS = [
 		{ value: "5", label: "5 characters/day (Light)" },
@@ -166,9 +166,11 @@
 	}
 </script>
 
-<div class="flex min-h-screen">
-	<Sidebar />
+<svelte:head>
+	<title>Settings — Glyf</title>
+</svelte:head>
 
+<AppShell>
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
 		<div class="flex flex-col gap-10 py-10 px-12">
 			<!-- Page header -->
@@ -479,7 +481,7 @@
 			{/if}
 		</div>
 	</main>
-</div>
+</AppShell>
 
 <!-- Delete confirmation dialog -->
 {#if deleteDialogOpen}

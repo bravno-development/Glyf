@@ -8,7 +8,7 @@
 	import { learnStore } from '$lib/stores/learn';
 	import { api } from '$lib/services/api';
 	import { userStore } from '$lib/stores/user';
-	import Sidebar from '$lib/components/Sidebar.svelte';
+	import AppShell from '$lib/components/AppShell.svelte';
 	import { ArrowLeft, X, Lightbulb, ChevronRight, Play, ArrowRight } from 'lucide-svelte';
 	import { BookOpen } from 'lucide-svelte';
 
@@ -288,9 +288,7 @@
 	<title>{scriptDef?.name ?? scriptId} — Learn</title>
 </svelte:head>
 
-<div class="flex min-h-screen">
-	<Sidebar />
-
+<AppShell>
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
 		{#if phase === 'loading'}
 			<div class="flex flex-1 items-center justify-center p-8">
@@ -303,7 +301,7 @@
 			</div>
 		{:else if phase === 'intro'}
 			<!-- Intro phase: Character Introduction -->
-			<div class="flex flex-1 flex-col gap-8 p-10 px-12">
+			<div class="flex flex-1 flex-col gap-8 p-6 px-4 md:p-10 md:px-12">
 				<!-- Header -->
 				<div class="flex items-center justify-between">
 					<div class="flex flex-col gap-1">
@@ -346,10 +344,10 @@
 					<div class="flex flex-1 flex-col items-center justify-center gap-8">
 						{#if introChar}
 							<div
-								class="flex h-[320px] w-[320px] items-center justify-center rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
+								class="flex h-[240px] w-[240px] md:h-[320px] md:w-[320px] items-center justify-center rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
 							>
 								<span
-									class="text-[140px] font-normal text-[var(--foreground)]"
+									class="text-[100px] md:text-[140px] font-normal text-[var(--foreground)]"
 									lang="ja"
 								>
 									{introChar.character}
@@ -374,7 +372,7 @@
 					</div>
 
 					<!-- Right: Mnemonic, Examples, Lesson characters -->
-					<div class="flex w-full max-w-[420px] flex-col justify-center gap-6">
+					<div class="flex w-full max-w-[420px] flex-col justify-center gap-6 min-w-0">
 						<!-- Mnemonic card -->
 						<div
 							class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]"
@@ -502,8 +500,8 @@
 					</span>
 				</div>
 
-				<main class="flex flex-1 flex-col gap-10 px-6 pb-8 pt-2 md:px-8">
-					<div class="flex flex-col items-center gap-2">
+				<main class="flex flex-1 flex-col items-center gap-10 px-6 pb-8 pt-2 md:px-8 md:items-stretch">
+					<div class="flex flex-col items-center gap-2 w-full max-w-[320px] md:max-w-none">
 						<p class="text-[15px] font-medium text-[var(--muted-foreground)]">
 							What is this character?
 						</p>
@@ -523,7 +521,7 @@
 					</div>
 
 					{#if optionsForCurrent.options.length >= 4}
-						<div class="grid grid-cols-2 gap-3">
+						<div class="grid w-full max-w-[320px] grid-cols-2 gap-3 md:max-w-none">
 							{#each optionsForCurrent.options as option, i (i)}
 								<button
 									type="button"
@@ -545,7 +543,7 @@
 							{/each}
 						</div>
 					{:else}
-						<div class="grid grid-cols-2 gap-3">
+						<div class="grid w-full max-w-[320px] grid-cols-2 gap-3 md:max-w-none">
 							{#each optionsForCurrent.options as option, i (i)}
 								<button
 									type="button"
@@ -559,7 +557,7 @@
 						</div>
 					{/if}
 
-					<div class="mt-auto flex w-full items-center justify-between">
+					<div class="mt-auto flex w-full max-w-[320px] items-center justify-between md:max-w-none">
 						<button
 							type="button"
 							onclick={() => (hintShown = true)}
@@ -582,4 +580,4 @@
 			{/if}
 		{/if}
 	</main>
-</div>
+</AppShell>

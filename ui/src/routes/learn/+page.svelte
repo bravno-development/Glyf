@@ -4,7 +4,7 @@
 	import { onMount } from "svelte";
 	import { userStore } from "$lib/stores/user";
 	import { learnStore } from "$lib/stores/learn";
-	import Sidebar from "$lib/components/Sidebar.svelte";
+	import AppShell from "$lib/components/AppShell.svelte";
 
 	let loading = $state(true);
 
@@ -31,11 +31,13 @@
 	});
 </script>
 
-<div class="flex min-h-screen">
-	<Sidebar />
+<svelte:head>
+	<title>Practice — Glyf</title>
+</svelte:head>
 
+<AppShell>
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
-		<div class="max-w-[800px] mx-auto p-8 px-10">
+		<div class="max-w-[800px] mx-auto p-6 px-4 md:p-8 md:px-10">
 			<div class="mb-2">
 				<p class="text-[13px] font-medium text-[var(--muted-foreground)]">Welcome back</p>
 				<h1 class="text-[22px] font-semibold tracking-tight text-[var(--foreground)]">Your Scripts</h1>
@@ -66,4 +68,4 @@
 			{/if}
 		</div>
 	</main>
-</div>
+</AppShell>

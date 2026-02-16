@@ -10,7 +10,7 @@
 		type ScriptDefinition,
 	} from "$lib/services/scripts";
 	import { getProgressForScript } from "$lib/services/dashboard";
-	import Sidebar from "$lib/components/Sidebar.svelte";
+	import AppShell from "$lib/components/AppShell.svelte";
 	import DetailSections from "$lib/components/DetailSections.svelte";
 	import { ArrowLeft } from "lucide-svelte";
 
@@ -98,11 +98,9 @@
 	<title>{scriptDef?.name ?? scriptId} — Script</title>
 </svelte:head>
 
-<div class="flex min-h-screen">
-	<Sidebar />
-
+<AppShell>
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
-		<div class="mx-auto max-w-4xl flex flex-col gap-8 py-10 px-12">
+		<div class="mx-auto max-w-4xl flex flex-col gap-8 py-6 px-4 md:py-10 md:px-12">
 			{#if loading}
 				<p class="text-[var(--muted-foreground)]">Loading…</p>
 			{:else if error}
@@ -161,4 +159,4 @@
 			{/if}
 		</div>
 	</main>
-</div>
+</AppShell>
