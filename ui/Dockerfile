@@ -1,21 +1,20 @@
-FROM node:20-alpine
+FROM node:20-alpine AS builder
 
-# Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Copy package files
 COPY ui/package.json ui/pnpm-lock.yaml* ./
-
-# Install dependencies
 RUN pnpm install --frozen-lockfile || pnpm install
 
-# Copy source code
 COPY ui/ .
+RUN pnpm build
 
-# Expose Vite dev server port
-EXPOSE 5173
+FROM nginx:alpine
 
-# Default command (can be overridden in docker-compose)
-CMD ["pnpm", "dev", "--", "--host"]
+COPY ui/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

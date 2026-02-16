@@ -7,6 +7,10 @@ export default defineConfig({
 	server: {
 		allowedHosts: ['glyf.bravno.com']
 	},
+	build: {
+		minify: 'esbuild',
+		sourcemap: false
+	},
 	plugins: [
 		tailwindcss(),
 		sveltekit(),
