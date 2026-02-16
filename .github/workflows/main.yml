@@ -8,5 +8,11 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
-      - run: docker compose --env-file .env up -d --build
+      - name: Checkout the repo
+        uses: actions/checkout@v5
+
+      - name: Copy config file
+        run: cp /config/.env .env
+
+      - name: Deploy Project
+        run: docker compose --env-file .env up -d --build
