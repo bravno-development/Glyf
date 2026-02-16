@@ -7,6 +7,9 @@ WORKDIR /app
 COPY ui/package.json ui/pnpm-lock.yaml* ./
 RUN pnpm install --frozen-lockfile || pnpm install
 
+ENV VITE_API_URL=${VITE_API_URL}
+ENV VITE_POSTHOG_KEY=${VITE_POSTHOG_KEY}
+ENV NODE_ENV=${NODE_ENV}
 COPY ui/ .
 RUN pnpm build
 
