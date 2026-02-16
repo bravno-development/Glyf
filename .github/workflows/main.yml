@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Copy config file
-        run: cp /config/.env .env
+        run: cp /config/glyf/.env .env
 
       - name: Deploy Project
         run: docker compose --env-file .env up -d --build
