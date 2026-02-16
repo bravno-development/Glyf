@@ -1,9 +1,11 @@
 import { sgMail } from "../../imports.ts";
 
+const DENO_ENV = Deno.env.get("DENO_ENV") ?? "development";
 const SENDGRID_API_KEY = Deno.env.get("SENDGRID_API_KEY");
 const SMTP_FROM = Deno.env.get("SMTP_FROM") || "noreply@bravno.com";
 const APP_URL = Deno.env.get("APP_URL") || "http://localhost:5173";
 
+const isDevelopment = DENO_ENV === "development";
 const sendgridConfigured = Boolean(SENDGRID_API_KEY);
 
 if (SENDGRID_API_KEY) {
@@ -17,7 +19,7 @@ export async function sendMagicLinkEmail(
 ): Promise<void> {
 	const link = `${APP_URL}/auth/verify?token=${token}`;
 
-	if (!sendgridConfigured) {
+	if (!sendgridConfigured || isDevelopment) {
 		console.log("──────────────────────────────────");
 		console.log(`Magic link for ${email}`);
 		console.log(`  Code: ${code}`);
@@ -56,7 +58,7 @@ export async function sendStudyReminderEmail(
 ): Promise<void> {
 	const link = `${appUrl}/dashboard`;
 
-	if (!sendgridConfigured) {
+	if (!sendgridConfigured || isDevelopment) {
 		console.log("──────────────────────────────────");
 		console.log(`Study reminder for ${email}`);
 		console.log(`  Link: ${link}`);
