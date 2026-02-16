@@ -16,18 +16,18 @@ export default defineConfig({
 				name: 'Glyf',
 				short_name: 'Glyf',
 				description: 'Learn writing systems with spaced repetition',
-				theme_color: '#5749F4',
+				theme_color: '#2A5A3A',
 				background_color: '#ffffff',
 				display: 'standalone',
 				icons: [
 					{
-						src: '/glyf_icon.svg',
+						src: '/favicon/glyf_icon.svg',
 						sizes: 'any',
 						type: 'image/svg+xml',
 						purpose: 'any'
 					},
 					{
-						src: '/glyf_icon.svg',
+						src: '/favicon/glyf_icon.svg',
 						sizes: 'any',
 						type: 'image/svg+xml',
 						purpose: 'maskable'
