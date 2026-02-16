@@ -1,7 +1,7 @@
 -- Study reminders: pg_cron schedule, user reminder prefs, pending queue, notifications.
 -- All timestamps in UTC (TIMESTAMPTZ, NOW()).
 
-CREATE EXTENSION IF NOT EXISTS pg_cron;
+-- CREATE EXTENSION IF NOT EXISTS pg_cron;
 
 -- User reminder settings (local time + timezone; next_reminder_at stored in UTC)
 ALTER TABLE users ADD COLUMN IF NOT EXISTS reminder_enabled BOOLEAN NOT NULL DEFAULT false;

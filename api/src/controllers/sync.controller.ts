@@ -79,12 +79,12 @@ export async function syncDown(req: AuthRequest, res: Response) {
 
 		const result = await query(
 			`SELECT script, review_data, last_sync
-       FROM user_sync_state
-       WHERE user_id = $1`,
+			FROM user_sync_state
+			WHERE user_id = $1`,
 			[userId]
 		);
 
-		const syncData = result.rows.map((row: Record<string, unknown>) => ({
+		const syncData = (result.rows as Record<string, unknown>[]).map((row) => ({
 			script: row.script,
 			reviews: JSON.parse(row.review_data as string),
 			lastSync: row.last_sync

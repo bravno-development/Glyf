@@ -7,9 +7,9 @@
 	import { api } from "$lib/services/api";
 	import { syncFromServer, syncToServer } from "$lib/services/sync";
 	import { initPostHog, identifyUser, resetUser } from "$lib/services/analytics";
-import ReminderBanner from "$lib/components/ReminderBanner.svelte";
-import AdminBanner from "$lib/components/AdminBanner.svelte";
-import "../app.css";
+	import ReminderBanner from "$lib/components/ReminderBanner.svelte";
+	import AdminBanner from "$lib/components/AdminBanner.svelte";
+	import "../app.css";
 
 	let { children } = $props();
 
