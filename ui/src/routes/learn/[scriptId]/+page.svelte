@@ -416,7 +416,7 @@
 							<p class="text-[13px] font-medium text-[var(--muted-foreground)]">
 								Characters in this lesson
 							</p>
-							<div class="flex items-center gap-2">
+							<div class="flex justify-center gap-2 mb-4">
 								{#each introBatch as char, i (char.id)}
 									<button
 										type="button"
@@ -441,12 +441,15 @@
 								</button>
 								<button
 									type="button"
-									onclick={nextIntro}
-									disabled={introIndex >= introBatch.length - 1}
+									onclick={introIndex >= introBatch.length - 1 ? startQuiz : nextIntro}
 									class="flex flex-1 items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-[var(--primary)] px-4 py-2.5 text-[14px] font-medium text-[var(--primary-foreground)] transition-opacity hover:opacity-90 disabled:opacity-50"
 								>
-									Next character
-									<ArrowRight size={16} />
+									{introIndex >= introBatch.length - 1 ? 'Start quiz' : 'Next character'}
+									{#if introIndex >= introBatch.length - 1}
+										<Play size={16} />
+									{:else}
+										<ArrowRight size={16} />
+									{/if}
 								</button>
 							</div>
 						</div>
