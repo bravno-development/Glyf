@@ -9,7 +9,7 @@
 		"express": "npm:express@^4.18.2",
 		"@types/express": "npm:@types/express@^4.17.21",
 		"postgres": "https://deno.land/x/postgres@v0.19.3/mod.ts",
-		"nodemailer": "npm:nodemailer@^6.9.0",
+		"@sendgrid/mail": "npm:@sendgrid/mail@^8.1.0",
 		"djwt": "https://deno.land/x/djwt@v3.0.2/mod.ts",
 		"cors": "npm:cors@^2.8.5",
 		"@types/cors": "npm:@types/cors@^2.8.17"

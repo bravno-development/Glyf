@@ -1,23 +1,13 @@
-import { nodemailer } from "../../imports.ts";
+import { sgMail } from "../../imports.ts";
 
-const SMTP_HOST = Deno.env.get("SMTP_HOST");
-const SMTP_PORT = Number(Deno.env.get("SMTP_PORT") || "587");
-const SMTP_USER = Deno.env.get("SMTP_USER");
-const SMTP_PASS = Deno.env.get("SMTP_PASS");
-const SMTP_FROM = Deno.env.get("SMTP_FROM") || "noreply@glyf.app";
+const SENDGRID_API_KEY = Deno.env.get("SENDGRID_API_KEY");
+const SMTP_FROM = Deno.env.get("SMTP_FROM") || "noreply@bravno.com";
 const APP_URL = Deno.env.get("APP_URL") || "http://localhost:5173";
 
-const smtpConfigured = Boolean(SMTP_HOST && SMTP_USER && SMTP_PASS);
+const sendgridConfigured = Boolean(SENDGRID_API_KEY);
 
-let transporter: ReturnType<typeof nodemailer.createTransport> | null = null;
-
-if (smtpConfigured) {
-	transporter = nodemailer.createTransport({
-		host: SMTP_HOST,
-		port: SMTP_PORT,
-		secure: SMTP_PORT === 465,
-		auth: { user: SMTP_USER, pass: SMTP_PASS },
-	});
+if (SENDGRID_API_KEY) {
+	sgMail.setApiKey(SENDGRID_API_KEY);
 }
 
 export async function sendMagicLinkEmail(
@@ -27,7 +17,7 @@ export async function sendMagicLinkEmail(
 ): Promise<void> {
 	const link = `${APP_URL}/auth/verify?token=${token}`;
 
-	if (!transporter) {
+	if (!sendgridConfigured) {
 		console.log("──────────────────────────────────");
 		console.log(`Magic link for ${email}`);
 		console.log(`  Code: ${code}`);
@@ -36,7 +26,7 @@ export async function sendMagicLinkEmail(
 		return;
 	}
 
-	await transporter.sendMail({
+	await sgMail.send({
 		from: SMTP_FROM,
 		to: email,
 		subject: "Your Glyf login code",
@@ -66,7 +56,7 @@ export async function sendStudyReminderEmail(
 ): Promise<void> {
 	const link = `${appUrl}/dashboard`;
 
-	if (!transporter) {
+	if (!sendgridConfigured) {
 		console.log("──────────────────────────────────");
 		console.log(`Study reminder for ${email}`);
 		console.log(`  Link: ${link}`);
@@ -74,7 +64,7 @@ export async function sendStudyReminderEmail(
 		return;
 	}
 
-	await transporter.sendMail({
+	await sgMail.send({
 		from: SMTP_FROM,
 		to: email,
 		subject: "Time to study — Glyf",
