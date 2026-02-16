@@ -47,7 +47,7 @@
 
 	{#if error}
 		<div
-			class="mb-4 p-3 rounded-[var(--radius-m)] bg-[var(--color-error)] text-[var(--color-error-foreground)] text-sm"
+			class="mb-4 p-3 rounded-[var(--radius-m)] bg-[var(--color-error)] text-[var(--black)] text-sm"
 		>
 			{error}
 		</div>
