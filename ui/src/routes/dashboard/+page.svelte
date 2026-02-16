@@ -155,6 +155,19 @@
 		return total > 0 ? (count / total) * 100 : 0;
 	}
 
+	function donutGradient(): string {
+		const total = breakdownTotal();
+		if (total === 0) return "conic-gradient(var(--muted) 0 100%)";
+		let acc = 0;
+		const stops = masteryLevels.map((level) => {
+			const pct = (breakdown[level.key] / total) * 100;
+			const start = acc;
+			acc += pct;
+			return `${getMasteryColour(level.key)} ${start}% ${acc}%`;
+		});
+		return `conic-gradient(${stops.join(", ")})`;
+	}
+
 	function maxWeekly(): number {
 		return Math.max(...weeklyActivity.map(w => w.count), 1);
 	}
@@ -367,30 +380,64 @@
 					>
 						<h2 class="mb-4 text-[16px] font-semibold text-[var(--foreground)]">Mastery Breakdown</h2>
 
-						<!-- Stacked bar -->
-						<div class="flex h-4 w-full overflow-hidden rounded-[var(--radius-pill)]">
-							{#each masteryLevels as level (level.key)}
-								{#if breakdown[level.key] > 0}
+						<!-- Mobile: donut + compact legend -->
+						<div class="block sm:hidden">
+							<div class="flex flex-col items-center gap-4">
+								<div class="relative flex h-32 w-32 shrink-0 items-center justify-center">
 									<div
-										style="width: {barPercent(breakdown[level.key])}%; background-color: {getMasteryColour(level.key)}"
+										class="h-full w-full rounded-full"
+										style="background: {donutGradient()}"
+										aria-hidden="true"
 									></div>
-								{/if}
-							{/each}
+									<div
+										class="absolute inset-0 m-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--card)]"
+										aria-hidden="true"
+									>
+										<span class="text-[14px] font-semibold text-[var(--foreground)]">
+											{breakdownTotal()}
+										</span>
+									</div>
+								</div>
+								<div class="grid w-full grid-cols-2 gap-x-4 gap-y-2">
+									{#each masteryLevels as level (level.key)}
+										<div class="flex items-center gap-1.5">
+											<span
+												class="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
+												style="background-color: {getMasteryColour(level.key)}"
+											></span>
+											<span class="text-[12px] text-[var(--muted-foreground)]">
+												{level.label}: {breakdown[level.key]}
+											</span>
+										</div>
+									{/each}
+								</div>
+							</div>
 						</div>
 
-						<!-- Legend -->
-						<div class="mt-4 flex items-center gap-5">
-							{#each masteryLevels as level (level.key)}
-								<div class="flex items-center gap-1.5">
-									<span
-										class="inline-block h-2.5 w-2.5 rounded-full"
-										style="background-color: {getMasteryColour(level.key)}"
-									></span>
-									<span class="text-[12px] text-[var(--muted-foreground)]">
-										{level.label}: {breakdown[level.key]}
-									</span>
-								</div>
-							{/each}
+						<!-- Desktop: stacked bar + legend -->
+						<div class="hidden sm:block">
+							<div class="flex h-4 w-full overflow-hidden rounded-[var(--radius-pill)]">
+								{#each masteryLevels as level (level.key)}
+									{#if breakdown[level.key] > 0}
+										<div
+											style="width: {barPercent(breakdown[level.key])}%; background-color: {getMasteryColour(level.key)}"
+										></div>
+									{/if}
+								{/each}
+							</div>
+							<div class="mt-4 flex items-center gap-5">
+								{#each masteryLevels as level (level.key)}
+									<div class="flex items-center gap-1.5">
+										<span
+											class="inline-block h-2.5 w-2.5 rounded-full"
+											style="background-color: {getMasteryColour(level.key)}"
+										></span>
+										<span class="text-[12px] text-[var(--muted-foreground)]">
+											{level.label}: {breakdown[level.key]}
+										</span>
+									</div>
+								{/each}
+							</div>
 						</div>
 					</div>
 					{/if}
