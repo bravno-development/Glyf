@@ -251,20 +251,24 @@
 											Studying
 										</span>
 									{/if}
-									<a
-										href={row.detailHref}
-										class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90"
+									<div
+										class="flex w-full basis-full shrink-0 flex-wrap items-center gap-2 sm:basis-auto sm:w-auto justify-between"
 									>
-										View Details
-									</a>
-									<a
-										href={row.learnHref}
-										class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity {row.isStudying
-											? 'bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90'
-											: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90'}"
-									>
-										{row.buttonLabel}
-									</a>
+										<a
+											href={row.detailHref}
+											class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90"
+										>
+											View Details
+										</a>
+										<a
+											href={row.learnHref}
+											class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity {row.isStudying
+												? 'bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90'
+												: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90'}"
+										>
+											{row.buttonLabel}
+										</a>
+									</div>
 								</div>
 							</li>
 						{/each}
