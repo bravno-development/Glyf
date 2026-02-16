@@ -8,6 +8,11 @@
 	let error = $state("");
 	let loading = $state(false);
 	let step = $state<"email" | "code">("email");
+	let codeInputRef: HTMLInputElement | undefined = $state();
+
+	function syncCodeFromInput(el: HTMLInputElement) {
+		code = el.value.replace(/\D/g, "").slice(0, 6);
+	}
 
 	async function handleRequestLink() {
 		error = "";
@@ -25,10 +30,15 @@
 
 	async function handleVerifyCode() {
 		error = "";
+		const raw = (codeInputRef?.value ?? code).replace(/\D/g, "").slice(0, 6);
+		if (raw.length !== 6) {
+			error = "Please enter the 6-digit code";
+			return;
+		}
 		loading = true;
 
 		try {
-			const result = await api.auth.verify({ email, code });
+			const result = await api.auth.verify({ email, code: raw });
 			userStore.login(result.user, result.token);
 			const { onboarded } = await api.onboarding.status();
 			goto(onboarded ? "/dashboard" : "/onboarding");
@@ -102,10 +112,12 @@
 					id="code"
 					type="text"
 					inputmode="numeric"
-					pattern="[0-9]{6}"
 					maxlength={6}
 					autocomplete="one-time-code"
 					bind:value={code}
+					bind:this={codeInputRef}
+					oninput={(e) => syncCodeFromInput(e.currentTarget)}
+					onchange={(e) => syncCodeFromInput(e.currentTarget)}
 					required
 					class="rounded-full border border-[var(--input)] bg-[var(--accent)] px-6 py-4 text-base text-center tracking-[0.3em] font-mono"
 				/>
@@ -113,7 +125,7 @@
 
 			<button
 				type="submit"
-				disabled={loading || code.length !== 6}
+				disabled={loading}
 				class="rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] px-4 py-2.5 text-sm font-medium disabled:opacity-50"
 			>
 				{loading ? "Verifying..." : "Log in"}
