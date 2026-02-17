@@ -2,32 +2,7 @@ import { query } from "../config/database.ts";
 import type { Response } from "../../imports.ts";
 import type { AuthRequest } from "../middleware/auth.ts";
 import type { SubmitAttemptsPayload, DueItem } from "../models/types.ts";
-
-// SM-2: same logic as ui/src/lib/services/srs.ts (grade 0-5; we use correct ? 5 : 0)
-function nextSm2State(
-	easeFactor: number,
-	interval: number,
-	repetitions: number,
-	correct: boolean
-): { easeFactor: number; interval: number; repetitions: number } {
-	const grade = correct ? 5 : 0;
-	let ef = easeFactor;
-	let int = interval;
-	let rep = repetitions;
-
-	if (grade < 3) {
-		rep = 0;
-		int = 1;
-	} else {
-		if (rep === 0) int = 1;
-		else if (rep === 1) int = 6;
-		else int = Math.round(int * ef);
-		rep += 1;
-		ef = ef + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02));
-		ef = Math.max(1.3, ef);
-	}
-	return { easeFactor: ef, interval: int, repetitions: rep };
-}
+import { nextSm2State } from "../lib/srs.ts";
 
 function addDays(date: Date, days: number): Date {
 	const d = new Date(date);
