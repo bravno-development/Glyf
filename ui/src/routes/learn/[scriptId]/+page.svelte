@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { db, type Character, type Review } from '$lib/services/db';
 	import { getScript, seedCharacters, type ScriptDefinition } from '$lib/services/scripts';
-	import { getDueCharacters, getNewCards, calculateNextReview } from '$lib/services/srs';
+	import { getDueCharacters, calculateNextReview } from '$lib/services/srs';
 	import { learnStore } from '$lib/stores/learn';
 	import { api } from '$lib/services/api';
 	import { userStore } from '$lib/stores/user';
@@ -25,7 +25,7 @@
 	let shownAt = $state(0);
 	let hintShown = $state(false);
 	let selectedIndex = $state<number | null>(null);
-	let newCardsInQuiz = $state(0);
+
 
 	function getPrimaryOption(c: Character): string {
 		return c.readings?.[0] ?? c.meaning ?? '';
@@ -108,42 +108,24 @@
 				return;
 			}
 
-			await loadIntro();
+			await loadReview();
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load';
 			phase = 'quiz';
 		}
 	});
 
-	function loadReview(): Promise<void> {
-		return loadQuiz(true);
-	}
-
-	function loadIntro(): Promise<void> {
-		return loadQuiz();
-	}
-
-	async function loadQuiz(reviewOnly = false): Promise<void> {
+	async function loadReview(): Promise<void> {
 		phase = 'loading';
-		newCardsInQuiz = 0;
 		try {
-			if (reviewOnly) {
-				const due = await getDueCharacters(scriptId, db);
-				const dueChars = await db.characters.where('script').equals(scriptId).toArray();
-				const charMap = new Map(dueChars.map((c: Character) => [c.id, c]));
-				queue = due
-					.filter((r: Review) => r.itemType === 'character')
-					.map((r: Review) => ({ character: charMap.get(r.itemId)!, review: r }))
-					.filter((x) => x.character);
-			} else {
-				const dailyCap = $learnStore.dailyGoalByScript[scriptId] ?? 15;
-				const introduced = learnStore.getIntroducedTodayCount(scriptId);
-				const remaining = Math.max(0, dailyCap - introduced);
-				const newCards = await getNewCards(scriptId, remaining, db);
-				const newWithChar = newCards.map((c: Character) => ({ character: c, review: undefined }));
-				queue = newWithChar;
-				newCardsInQuiz = newWithChar.length;
-			}
+			const due = await getDueCharacters(scriptId, db);
+			const dueChars = await db.characters.where('script').equals(scriptId).toArray();
+			const charMap = new Map(dueChars.map((c: Character) => [c.id, c]));
+			queue = due
+				.filter((r: Review) => r.itemType === 'character')
+				.map((r: Review) => ({ character: charMap.get(r.itemId)!, review: r }))
+				.filter((x) => x.character);
+			currentIndex = 0;
 			sessionId = crypto.randomUUID();
 			phase = 'quiz';
 		} catch (e) {
@@ -152,9 +134,11 @@
 		}
 	}
 
-	async function startQuiz(): Promise<void> {
-		learnStore.incrementIntroducedToday(scriptId, introBatch.length);
-		await loadQuiz();
+	function startQuiz(): void {
+		queue = introBatch.map((c: Character) => ({ character: c, review: undefined }));
+		currentIndex = 0;
+		sessionId = crypto.randomUUID();
+		phase = 'quiz';
 	}
 
 	function prevIntro(): void {
@@ -217,9 +201,8 @@
 			currentIndex += 1;
 			shownAt = performance.now();
 		} else {
-			if (newCardsInQuiz > 0) {
-				learnStore.incrementIntroducedToday(scriptId, newCardsInQuiz);
-				newCardsInQuiz = 0;
+			if (introBatch.length > 0) {
+				learnStore.incrementIntroducedToday(scriptId, introBatch.length);
 			}
 			goto('/dashboard');
 		}
@@ -329,14 +312,14 @@
 						<span class="text-[14px] font-medium text-[var(--muted-foreground)]">
 							{introIndex + 1} of {introBatch.length} characters
 						</span>
-						<button
+						<!-- <button
 							type="button"
 							onclick={startQuiz}
 							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-2.5 text-[14px] font-semibold text-[var(--primary-foreground)] transition-opacity hover:opacity-90"
 						>
 							<Play size={16} />
 							Start quiz
-						</button>
+						</button> -->
 					</div>
 				</div>
 
@@ -352,7 +335,7 @@
 				</div>
 
 				<!-- Main content: two columns -->
-				<div class="flex flex-1 flex-col gap-10 lg:flex-row">
+				<div class="flex flex-1 flex-col gap-10">
 					<!-- Left: Character card + reading -->
 					<div class="flex flex-1 flex-col items-center justify-center gap-8">
 						{#if introChar}
@@ -385,9 +368,10 @@
 					</div>
 
 					<!-- Right: Mnemonic, Examples, Lesson characters -->
-					<div class="flex w-full max-w-[420px] flex-col justify-center gap-6 min-w-0">
+					<div class="flex w-full flex-col justify-center gap-6 min-w-0">
 						<!-- Mnemonic card -->
-						<div
+						<!-- @Todo: Figure out a good implementation for this -->
+						<!-- <div
 							class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]"
 						>
 							<div class="mb-3 flex items-center gap-2">
@@ -402,10 +386,11 @@
 									{introChar.character} represents this sound.
 								{/if}
 							</p>
-						</div>
+						</div> -->
 
 						<!-- Examples card -->
-						<div
+						<!-- @Todo: Figure out a good implementation for this -->
+						<!-- <div
 							class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]"
 						>
 							<div class="mb-3 flex items-center gap-2">
@@ -422,7 +407,7 @@
 									{/if}
 								</p>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Lesson characters + nav -->
 						<div class="flex flex-col gap-3">
