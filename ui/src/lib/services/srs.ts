@@ -58,8 +58,9 @@ export function calculateNextReview(
 export async function getDueCharacters(script: string, database: GlyfDB): Promise<Review[]> {
 	const now = getNow().toISOString();
 	return await database.reviews
-		.where('[script+nextReview]')
-		.below([script, now])
+		.where('script')
+		.equals(script)
+		.and((r: Review) => r.nextReview < now)
 		.toArray();
 }
 

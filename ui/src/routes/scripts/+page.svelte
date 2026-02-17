@@ -133,7 +133,7 @@
 							Currently Studying
 						</h2>
 						<span
-							class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--color-success-foreground)]"
+							class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--black)]"
 						>
 							{studyingCount} active
 						</span>
@@ -161,7 +161,7 @@
 												</span>
 											</div>
 											<span
-												class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--color-black)]"
+												class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--black)]"
 											>
 												Studying
 											</span>
