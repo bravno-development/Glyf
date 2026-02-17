@@ -37,6 +37,7 @@
 	let activeScript = $state("");
 	let studyingScripts: ScriptProgressItem[] = $state([]);
 	let loadingScript = $state(false);
+	let refreshing = $state(false);
 
 	const masteryLevels = [
 		{ key: "mastered" as const, label: "Mastered" },
@@ -84,7 +85,8 @@
 		}
 	});
 
-	onMount(async () => {
+	async function refreshDashboard(): Promise<void> {
+		refreshing = true;
 		try {
 			await learnStore.load();
 			const scriptsResponse = await api.user.getScripts();
@@ -97,7 +99,6 @@
 			scriptProgress = sp;
 			weeklyActivity = wa;
 
-			// Build studyingScripts: progress for user scripts only, ordered by userScripts
 			const progressByScript = new Map(sp.map((s) => [s.script, s]));
 			const built: ScriptProgressItem[] = [];
 			for (const id of userScripts) {
@@ -127,9 +128,21 @@
 			}
 			studyingScripts = built;
 
-			const initialScript = studyingScripts[0]?.script ?? "";
-			activeScript = initialScript;
-			await loadActiveScriptData(initialScript);
+			const currentScript = studyingScripts.some((s) => s.script === activeScript)
+				? activeScript
+				: studyingScripts[0]?.script ?? "";
+			activeScript = currentScript;
+			await loadActiveScriptData(currentScript);
+		} catch {
+			// IndexedDB may not be populated yet — show zeroes
+		} finally {
+			refreshing = false;
+		}
+	}
+
+	onMount(async () => {
+		try {
+			await refreshDashboard();
 		} catch {
 			// IndexedDB may not be populated yet — show zeroes
 		}
@@ -192,11 +205,23 @@
 		<div class="flex flex-col gap-8 p-6 px-4 md:p-10 md:px-12">
 			<!-- Header -->
 			<div class="flex flex-col md:flex-row items-start md:items-center justify-between">
-				<div class="mb-4 md:mb-0">
-					<h1 class="text-[28px] font-semibold text-[var(--foreground)]">Dashboard</h1>
-					<p class="mt-1 text-[14px] text-[var(--muted-foreground)]">
-						Track your script learning progress
-					</p>
+				<div class="mb-4 md:mb-0 flex w-full flex-row items-start justify-between gap-3 md:w-auto">
+					<div>
+						<h1 class="text-[28px] font-semibold text-[var(--foreground)]">Dashboard</h1>
+						<p class="mt-1 text-[14px] text-[var(--muted-foreground)]">
+							Track your script learning progress
+						</p>
+					</div>
+					<button
+						type="button"
+						class="shrink-0 rounded-[var(--radius-pill)] p-2.5 text-[var(--muted-foreground)] transition-colors hover:bg-[var(--tile)] hover:text-[var(--foreground)] disabled:cursor-not-allowed disabled:opacity-60 md:hidden"
+						aria-label="Refresh dashboard"
+						aria-busy={refreshing}
+						disabled={refreshing}
+						onclick={() => refreshDashboard()}
+					>
+						<RefreshCcw size={22} class={refreshing ? 'animate-spin' : ''} />
+					</button>
 				</div>
 				<div class="flex flex-row gap-3">
 					{#if startStudyingDisabled}
