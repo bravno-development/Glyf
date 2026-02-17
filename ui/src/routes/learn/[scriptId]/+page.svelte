@@ -25,6 +25,7 @@
 	let shownAt = $state(0);
 	let hintShown = $state(false);
 	let selectedIndex = $state<number | null>(null);
+	let newCardsInQuiz = $state(0);
 
 	function getPrimaryOption(c: Character): string {
 		return c.readings?.[0] ?? c.meaning ?? '';
@@ -116,6 +117,7 @@
 
 	async function loadQuiz(): Promise<void> {
 		phase = 'loading';
+		newCardsInQuiz = 0;
 		try {
 			const due = await getDueCharacters(scriptId, db);
 			const dueChars = await db.characters.where('script').equals(scriptId).toArray();
@@ -135,6 +137,7 @@
 			const newWithChar = newCards.map((c: Character) => ({ character: c, review: undefined }));
 
 			queue = [...dueWithChar, ...newWithChar];
+			newCardsInQuiz = newWithChar.length;
 			sessionId = crypto.randomUUID();
 			phase = 'quiz';
 		} catch (e) {
@@ -208,6 +211,10 @@
 			currentIndex += 1;
 			shownAt = performance.now();
 		} else {
+			if (newCardsInQuiz > 0) {
+				learnStore.incrementIntroducedToday(scriptId, newCardsInQuiz);
+				newCardsInQuiz = 0;
+			}
 			goto('/dashboard');
 		}
 	}

@@ -175,13 +175,11 @@
 	const activeScriptItem = $derived(studyingScripts.find((s) => s.script === activeScript));
 	const totalForActive = $derived(activeScriptItem?.total ?? 0);
 	const hasUnlearnedGlyphs = $derived(stats.learnt < totalForActive);
-	const isDailyGoalMet = $derived(
-		activeScript ? learnStore.isDailyGoalMet(activeScript) : false
-	);
 	const hasDueReviews = $derived(stats.dueToday > 0);
 	const dailyGoalForActive = $derived($learnStore.dailyGoalByScript[activeScript] ?? 15);
 	const introducedToday = $derived.by(() => activeScript ? learnStore.getIntroducedTodayCount(activeScript) : 0);
 	const charsLeftToday = $derived(Math.max(0, dailyGoalForActive - introducedToday));
+	const isDailyGoalMet = $derived(activeScript ? introducedToday >= dailyGoalForActive : false);
 	const startStudyingDisabled = $derived(!hasUnlearnedGlyphs || (hasUnlearnedGlyphs && isDailyGoalMet));
 </script>
 
