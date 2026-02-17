@@ -19,7 +19,7 @@
 			id: d.id,
 			char: d.icon,
 			charFont: "font-['Noto_Sans_JP']",
-			name: d.language,
+			name: d.name,
 			desc: `${d.name} \u00b7 ${d.totalCharacters} characters`,
 			available: d.available
 		}));
