@@ -96,7 +96,7 @@
 			await seedCharacters(scriptId);
 
 			if (modeReview) {
-				await loadQuiz();
+				await loadReview();
 				return;
 			}
 
@@ -108,36 +108,42 @@
 				return;
 			}
 
-			await loadQuiz();
+			await loadIntro();
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load';
 			phase = 'quiz';
 		}
 	});
 
-	async function loadQuiz(): Promise<void> {
+	function loadReview(): Promise<void> {
+		return loadQuiz(true);
+	}
+
+	function loadIntro(): Promise<void> {
+		return loadQuiz();
+	}
+
+	async function loadQuiz(reviewOnly = false): Promise<void> {
 		phase = 'loading';
 		newCardsInQuiz = 0;
 		try {
-			const due = await getDueCharacters(scriptId, db);
-			const dueChars = await db.characters.where('script').equals(scriptId).toArray();
-			const charMap = new Map(dueChars.map((c: Character) => [c.id, c]));
-			const dueWithChar = due
-				.filter((r: Review) => r.itemType === 'character')
-				.map((r: Review) => ({
-					character: charMap.get(r.itemId)!,
-					review: r,
-				}))
-				.filter((x) => x.character);
-
-			const dailyCap = $learnStore.dailyGoalByScript[scriptId] ?? 15;
-			const introduced = learnStore.getIntroducedTodayCount(scriptId);
-			const remaining = Math.max(0, dailyCap - introduced);
-			const newCards = await getNewCards(scriptId, remaining, db);
-			const newWithChar = newCards.map((c: Character) => ({ character: c, review: undefined }));
-
-			queue = [...dueWithChar, ...newWithChar];
-			newCardsInQuiz = newWithChar.length;
+			if (reviewOnly) {
+				const due = await getDueCharacters(scriptId, db);
+				const dueChars = await db.characters.where('script').equals(scriptId).toArray();
+				const charMap = new Map(dueChars.map((c: Character) => [c.id, c]));
+				queue = due
+					.filter((r: Review) => r.itemType === 'character')
+					.map((r: Review) => ({ character: charMap.get(r.itemId)!, review: r }))
+					.filter((x) => x.character);
+			} else {
+				const dailyCap = $learnStore.dailyGoalByScript[scriptId] ?? 15;
+				const introduced = learnStore.getIntroducedTodayCount(scriptId);
+				const remaining = Math.max(0, dailyCap - introduced);
+				const newCards = await getNewCards(scriptId, remaining, db);
+				const newWithChar = newCards.map((c: Character) => ({ character: c, review: undefined }));
+				queue = newWithChar;
+				newCardsInQuiz = newWithChar.length;
+			}
 			sessionId = crypto.randomUUID();
 			phase = 'quiz';
 		} catch (e) {
