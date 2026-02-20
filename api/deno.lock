@@ -1,11 +1,24 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@std/assert@1": "1.0.18",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
     "npm:@sendgrid/mail@^8.1.0": "8.1.6",
     "npm:@types/cors@^2.8.17": "2.8.19",
     "npm:@types/express@^4.17.21": "4.17.25",
     "npm:cors@^2.8.5": "2.8.6",
     "npm:express@^4.18.2": "4.22.1"
+  },
+  "jsr": {
+    "@std/assert@1.0.18": {
+      "integrity": "270245e9c2c13b446286de475131dc688ca9abcd94fc5db41d43a219b34d1c78",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    }
   },
   "npm": {
     "@sendgrid/client@8.1.6": {
@@ -689,6 +702,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@std/assert@1",
       "npm:@sendgrid/mail@^8.1.0",
       "npm:@types/cors@^2.8.17",
       "npm:@types/express@^4.17.21",
