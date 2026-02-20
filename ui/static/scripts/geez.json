@@ -1,5 +1,6 @@
 {
 	"id": "geez",
+	"version": 1,
 	"language": "gez",
 	"name": "Ge'ez",
 	"description": "Ethiopic script used for Ge'ez, Amharic, and Tigrinya. 26 base consonants in the default (ä) form; expandable with vowel rows.",
