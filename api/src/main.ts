@@ -16,7 +16,7 @@ const PORT = Deno.env.get("PORT") || 8000;
 app.use(cors({
 	origin: Deno.env.get("DENO_ENV") === "production"
 		? "https://glyf.bravno.com"
-		: "http://localhost:5173",
+		: "http://10.10.1.24:5173",
 	credentials: true
 }));
 app.use(express.json());
