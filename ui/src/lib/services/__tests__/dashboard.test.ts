@@ -11,7 +11,7 @@ const mockDb = vi.hoisted(() => ({
 }));
 
 // Prevent Dexie from instantiating — requires IndexedDB which isn't available in Node
-vi.mock('../db', () => ({ db: mockDb, GlyfDB: class {} }));
+vi.mock('../db', () => ({ db: mockDb, GlyfDB: class { } }));
 
 // srs.ts (imported by dashboard.ts) calls getNow(); provide a fixed date
 vi.mock('$lib/stores/adminTime', () => ({
@@ -112,8 +112,8 @@ describe('getMasteryLevel', () => {
 describe('Script isolation: getDashboardStats', () => {
 	// Mixed data: one hiragana review (mastered) and one katakana review (learning)
 	const mixedReviews: Row[] = [
-		{ itemId: 'あ', script: 'hiragana', repetitions: 5, easeFactor: 2.6, interval: 25 },
-		{ itemId: 'ア', script: 'katakana', repetitions: 1, easeFactor: 2.3, interval: 1 }
+		{ itemId: 'hiragana-a', script: 'hiragana', repetitions: 5, easeFactor: 2.6, interval: 25 },
+		{ itemId: 'katakana-a', script: 'katakana', repetitions: 1, easeFactor: 2.3, interval: 1 }
 	];
 
 	beforeEach(() => {
@@ -134,10 +134,10 @@ describe('Script isolation: getDashboardStats', () => {
 
 	it('Given hiragana reviews with all easeFactor >= 2.5, When getDashboardStats("hiragana") is called, Then accuracy is 100% for hiragana only', async () => {
 		const hiraganaOnlyReviews: Row[] = [
-			{ itemId: 'あ', script: 'hiragana', repetitions: 2, easeFactor: 2.6, interval: 6 },
-			{ itemId: 'い', script: 'hiragana', repetitions: 2, easeFactor: 2.5, interval: 6 },
+			{ itemId: 'hiragana-a', script: 'hiragana', repetitions: 2, easeFactor: 2.6, interval: 6 },
+			{ itemId: 'hiragana-i', script: 'hiragana', repetitions: 2, easeFactor: 2.5, interval: 6 },
 			// katakana card with poor ease factor — must not affect hiragana accuracy
-			{ itemId: 'ア', script: 'katakana', repetitions: 1, easeFactor: 1.5, interval: 1 }
+			{ itemId: 'katakana-a', script: 'katakana', repetitions: 1, easeFactor: 1.5, interval: 1 }
 		];
 		vi.mocked(mockDb.reviews.where).mockImplementation(
 			makeChain(hiraganaOnlyReviews).where as typeof mockDb.reviews.where
@@ -151,14 +151,14 @@ describe('Script isolation: getDashboardStats', () => {
 describe('Script isolation: getMasteryBreakdown', () => {
 	// Mixed characters and reviews across two scripts
 	const mixedCharacters: Row[] = [
-		{ id: 'あ', script: 'hiragana', character: 'あ' },
-		{ id: 'い', script: 'hiragana', character: 'い' },
-		{ id: 'ア', script: 'katakana', character: 'ア' }
+		{ id: 'hiragana-a', script: 'hiragana', character: 'あ' },
+		{ id: 'hiragana-i', script: 'hiragana', character: 'い' },
+		{ id: 'katakana-a', script: 'katakana', character: 'ア' }
 	];
 	const mixedReviews: Row[] = [
-		{ itemId: 'あ', script: 'hiragana', repetitions: 5, interval: 21 }, // mastered
-		{ itemId: 'い', script: 'hiragana', repetitions: 1, interval: 1 },  // learning
-		{ itemId: 'ア', script: 'katakana', repetitions: 2, interval: 6 }   // good
+		{ itemId: 'hiragana-a', script: 'hiragana', repetitions: 5, interval: 21 }, // mastered
+		{ itemId: 'hiragana-i', script: 'hiragana', repetitions: 1, interval: 1 },  // learning
+		{ itemId: 'katakana-a', script: 'katakana', repetitions: 2, interval: 6 }   // good
 	];
 
 	beforeEach(() => {
@@ -197,13 +197,13 @@ describe('Script isolation: getMasteryBreakdown', () => {
 	it('Given a character with no review record in its script, When getMasteryBreakdown is called, Then it counts as "new"', async () => {
 		// Add a third hiragana character with no review
 		const chars: Row[] = [
-			{ id: 'あ', script: 'hiragana', character: 'あ' },
-			{ id: 'い', script: 'hiragana', character: 'い' },
-			{ id: 'う', script: 'hiragana', character: 'う' } // no review → new
+			{ id: 'hiragana-a', script: 'hiragana', character: 'あ' },
+			{ id: 'hiragana-i', script: 'hiragana', character: 'い' },
+			{ id: 'hiragana-u', script: 'hiragana', character: 'う' } // no review → new
 		];
 		const reviews: Row[] = [
-			{ itemId: 'あ', script: 'hiragana', repetitions: 5, interval: 21 },
-			{ itemId: 'い', script: 'hiragana', repetitions: 1, interval: 1 }
+			{ itemId: 'hiragana-a', script: 'hiragana', repetitions: 5, interval: 21 },
+			{ itemId: 'hiragana-i', script: 'hiragana', repetitions: 1, interval: 1 }
 		];
 		vi.mocked(mockDb.characters.where).mockImplementation(
 			makeChain(chars).where as typeof mockDb.characters.where
