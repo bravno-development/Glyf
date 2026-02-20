@@ -1,7 +1,7 @@
 import { writable, get } from "svelte/store";
 import { api } from "$lib/services/api";
 import { db } from "$lib/services/db";
-import { getScript } from "$lib/services/scripts";
+import { getScript, type ScriptDefinition } from "$lib/services/scripts";
 import {
 	getScriptProgress,
 	getMasteryLevel,
@@ -51,11 +51,33 @@ export interface LearnState {
  */
 async function buildLessonOrderedIds(
 	scriptId: string,
-): Promise<{ ids: string[]; charMap: Map<string, Character> }> {
-	const [def, characters] = await Promise.all([
+): Promise<{
+	ids: string[];
+	charMap: Map<string, Character>;
+	def: ScriptDefinition;
+}> {
+	const [def, existing] = await Promise.all([
 		getScript(scriptId),
 		db.characters.where("script").equals(scriptId).toArray(),
 	]);
+
+	// Auto-seed characters on first dashboard load (before the learn page is ever visited)
+	let characters = existing;
+	if (characters.length === 0 && def.characters?.length) {
+		const records = def.characters.map((c) => ({
+			id: c.id,
+			script: def.id,
+			character: c.character,
+			meaning: c.meaning,
+			readings: c.readings,
+			order: c.order,
+		}));
+		await db.characters.bulkPut(records);
+		characters = await db.characters
+			.where("script")
+			.equals(scriptId)
+			.toArray();
+	}
 
 	const charMap = new Map(characters.map((c) => [c.id, c]));
 
@@ -85,7 +107,7 @@ async function buildLessonOrderedIds(
 			.map((c) => c.id);
 	}
 
-	return { ids, charMap };
+	return { ids, charMap, def };
 }
 
 function createLearnStore() {
@@ -234,12 +256,12 @@ function createLearnStore() {
 
 				const reviewMap = new Map(reviews.map((r) => [r.itemId, r]));
 
-				// glyfsToLearn: unreviewed glyphs in lesson order, capped to remaining daily quota
+				// glyfsToLearn: new glyphs (never seen) in lesson order, capped to remaining daily quota
 				const glyfsToLearn: string[] = [];
 				for (const id of orderedIds) {
 					if (glyfsToLearn.length >= remainingToday) break;
 					const review = reviewMap.get(id);
-					if (!review || review.repetitions === 0) {
+					if (!review) {
 						glyfsToLearn.push(id);
 					}
 				}
@@ -290,13 +312,37 @@ function createLearnStore() {
 			.toArray();
 		const reviewedIds = new Set(reviews.map((r) => r.itemId));
 
-		const { ids: orderedIds, charMap } =
-			await buildLessonOrderedIds(scriptId);
+		const {
+			ids: orderedIds,
+			charMap,
+			def,
+		} = await buildLessonOrderedIds(scriptId);
 
+		// Build charId → lessonIndex map (chars outside all lessons get index -1)
+		const charLesson = new Map<string, number>();
+		if (def.course?.lessons?.length) {
+			def.course.lessons.forEach((lesson, i) => {
+				for (const id of lesson.characterIds ?? []) {
+					if (!charLesson.has(id)) charLesson.set(id, i);
+				}
+			});
+		}
+
+		// Find the lesson of the first unseen char (-1 = outside all lessons)
+		let currentLesson = -1;
+		for (const id of orderedIds) {
+			if (!reviewedIds.has(id)) {
+				currentLesson = charLesson.get(id) ?? -1;
+				break;
+			}
+		}
+
+		// Collect unseen chars from the current lesson only, up to batchSize
 		const result: Character[] = [];
 		for (const id of orderedIds) {
 			if (result.length >= batchSize) break;
-			if (!reviewedIds.has(id)) {
+			const lesson = charLesson.get(id) ?? -1;
+			if (!reviewedIds.has(id) && lesson === currentLesson) {
 				const char = charMap.get(id);
 				if (char) result.push(char);
 			}

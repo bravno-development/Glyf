@@ -10,7 +10,8 @@ export type MasteryLevel =
 	| "new";
 
 export function getMasteryLevel(review: Review | undefined): MasteryLevel {
-	if (!review || review.repetitions === 0) return "new";
+	if (!review) return "new";
+	if (review.repetitions === 0) return "difficult";
 	if (review.interval >= 21) return "mastered";
 	if (review.interval >= 6) return "good";
 	if (review.interval >= 1) return "learning";

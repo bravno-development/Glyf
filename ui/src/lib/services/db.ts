@@ -6,6 +6,7 @@ export interface Character {
 	character: string;
 	meaning: string;
 	readings?: string[];
+	order?: number;
 }
 
 export interface Sentence {

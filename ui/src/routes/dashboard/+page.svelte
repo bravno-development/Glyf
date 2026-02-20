@@ -65,16 +65,13 @@
 	const dueToday = $derived(activeStudyState?.glyfsToReview.length ?? 0);
 	const charsLeftToday = $derived(activeStudyState?.glyfsToLearn.length ?? 0);
 	const hasUnlearnedGlyphs = $derived(
-		(activeStudyState?.masteryBreakdown.new ?? 0) > 0 || charsLeftToday > 0,
+		(activeStudyState?.masteryBreakdown.new ?? 0) > 0,
 	);
 	const isDailyGoalMet = $derived(hasUnlearnedGlyphs && charsLeftToday === 0);
 	const hasDueReviews = $derived(dueToday > 0);
 	const startStudyingDisabled = $derived(
 		!hasUnlearnedGlyphs || isDailyGoalMet,
 	);
-	$inspect("isDailyGoalMet", isDailyGoalMet);
-	$inspect("hasUnlearnedGlyphs", hasUnlearnedGlyphs);
-	$inspect("startStudyingDisabled", startStudyingDisabled);
 
 	// Script progress bars derived from study states — no separate DB call needed
 	const scriptProgress = $derived<ScriptProgressItem[]>(

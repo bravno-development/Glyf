@@ -231,7 +231,7 @@ device can hydrate its local IndexedDB.
 | `api/migrations/001_initial_schema.sql`                    | `users`, `user_sync_state`, `user_progress` base schema                              |
 | `api/migrations/003_onboarding.sql`                        | Adds `daily_goal` to `user_progress`                                                 |
 | `api/migrations/004_progress_tracker.sql`                  | `item_progress`, `attempt_records`, `words_studied_today`, `script_manifest_version` |
-| `ui/src/lib/services/srs.ts`                               | Client-side SM-2 algorithm (`calculateNextReview`, `getDueCards`, `getNewCards`)     |
+| `ui/src/lib/services/srs.ts`                               | Client-side SM-2 algorithm (`calculateNextReview`, `getDueCards`)                    |
 | `ui/src/lib/services/db.ts`                                | IndexedDB schema via Dexie (`GlyfDB`, `Review`, `Character`, etc.)                   |
 | `ui/src/lib/services/dashboard.ts`                         | Mastery levels, dashboard stats, character grid, weekly activity                     |
 | `api/src/controllers/progress.controller.ts`               | Server SM-2, attempt submission (`submitAttempts`), due queries (`getDue`)           |
