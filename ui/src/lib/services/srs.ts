@@ -64,29 +64,5 @@ export async function getDueCharacters(script: string, database: GlyfDB): Promis
 		.toArray();
 }
 
-/**
- * Get new cards that haven't been reviewed yet
- */
-export async function getNewCards(
-	script: string,
-	limit: number,
-	database: GlyfDB
-): Promise<Character[]> {
-	const characters = await database.characters
-		.where('script')
-		.equals(script)
-		.toArray();
-
-	const reviewedIds = new Set(
-		(await database.reviews.where('script').equals(script).toArray()).map(
-			(r: Review) => r.itemId
-		)
-	);
-
-	return characters
-		.filter((char) => !reviewedIds.has(char.id))
-		.slice(0, limit);
-}
-
 // Re-export types used by the functions above
 import type { GlyfDB, Character } from './db';

@@ -1,26 +1,34 @@
-import { writable, get } from 'svelte/store';
-import { api } from '$lib/services/api';
-import { db } from '$lib/services/db';
-import { getScript } from '$lib/services/scripts';
-import { getScriptProgress, type ScriptProgressItem } from '$lib/services/dashboard';
-import { getNewCards } from '$lib/services/srs';
-import { getNow } from '$lib/stores/adminTime';
-import type { Character } from '$lib/services/db';
+import { writable, get } from "svelte/store";
+import { api } from "$lib/services/api";
+import { db } from "$lib/services/db";
+import { getScript, type ScriptDefinition } from "$lib/services/scripts";
+import {
+	getScriptProgress,
+	getMasteryLevel,
+	type ScriptProgressItem,
+	type MasteryBreakdown,
+	type ScriptStudyState,
+} from "$lib/services/dashboard";
+import { getNow } from "$lib/stores/adminTime";
+import type { Character } from "$lib/services/db";
 
 const BATCH_SIZE = 5;
 const NEW_SCRIPT_LIMIT = 15;
-const STORAGE_KEY_PREFIX = 'glyf_intros_';
-const REVIEW_KEYS_STORAGE = 'glyf-review-option-keys';
-const DEFAULT_REVIEW_KEYS = ['1', '2', '3', '4'];
+const STORAGE_KEY_PREFIX = "glyf_intros_";
+const REVIEW_KEYS_STORAGE = "glyf-review-option-keys";
+const DEFAULT_REVIEW_KEYS = ["1", "2", "3", "4"];
 
 function getInitialReviewKeys(): string[] {
-	if (typeof localStorage === 'undefined') return [...DEFAULT_REVIEW_KEYS];
+	if (typeof localStorage === "undefined") return [...DEFAULT_REVIEW_KEYS];
 	try {
 		const raw = localStorage.getItem(REVIEW_KEYS_STORAGE);
 		if (!raw) return [...DEFAULT_REVIEW_KEYS];
 		const parsed = JSON.parse(raw) as unknown;
-		if (!Array.isArray(parsed) || parsed.length !== 4) return [...DEFAULT_REVIEW_KEYS];
-		return parsed.map((k) => (typeof k === 'string' ? k.slice(0, 1) : String(k).slice(0, 1)));
+		if (!Array.isArray(parsed) || parsed.length !== 4)
+			return [...DEFAULT_REVIEW_KEYS];
+		return parsed.map((k) =>
+			typeof k === "string" ? k.slice(0, 1) : String(k).slice(0, 1),
+		);
 	} catch {
 		return [...DEFAULT_REVIEW_KEYS];
 	}
@@ -35,6 +43,71 @@ export interface LearnState {
 	studyingScripts: ScriptProgressItem[];
 	dailyGoalByScript: Record<string, number>;
 	initialised: boolean;
+}
+
+/**
+ * Returns character IDs in lesson order for a script.
+ * Uses course.lessons if defined, otherwise falls back to the order field.
+ */
+async function buildLessonOrderedIds(
+	scriptId: string,
+): Promise<{
+	ids: string[];
+	charMap: Map<string, Character>;
+	def: ScriptDefinition;
+}> {
+	const [def, existing] = await Promise.all([
+		getScript(scriptId),
+		db.characters.where("script").equals(scriptId).toArray(),
+	]);
+
+	// Auto-seed characters on first dashboard load (before the learn page is ever visited)
+	let characters = existing;
+	if (characters.length === 0 && def.characters?.length) {
+		const records = def.characters.map((c) => ({
+			id: c.id,
+			script: def.id,
+			character: c.character,
+			meaning: c.meaning,
+			readings: c.readings,
+			order: c.order,
+		}));
+		await db.characters.bulkPut(records);
+		characters = await db.characters
+			.where("script")
+			.equals(scriptId)
+			.toArray();
+	}
+
+	const charMap = new Map(characters.map((c) => [c.id, c]));
+
+	let ids: string[];
+	if (def.course?.lessons?.length) {
+		const seen = new Set<string>();
+		const allIds = new Set(characters.map((c) => c.id));
+		ids = [];
+		for (const lesson of def.course.lessons) {
+			for (const id of lesson.characterIds ?? []) {
+				if (allIds.has(id) && !seen.has(id)) {
+					ids.push(id);
+					seen.add(id);
+				}
+			}
+		}
+		// Append any chars not covered by lessons, sorted by order
+		const byOrder = [...characters].sort(
+			(a, b) => (a.order ?? 999) - (b.order ?? 999),
+		);
+		for (const c of byOrder) {
+			if (!seen.has(c.id)) ids.push(c.id);
+		}
+	} else {
+		ids = [...characters]
+			.sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
+			.map((c) => c.id);
+	}
+
+	return { ids, charMap, def };
 }
 
 function createLearnStore() {
@@ -52,21 +125,26 @@ function createLearnStore() {
 
 	function setReviewOptionKeys(keys: string[]): void {
 		if (!Array.isArray(keys) || keys.length !== 4) return;
-		const normalized = keys.map((k) => (typeof k === 'string' ? k.slice(0, 1) : String(k).slice(0, 1)));
+		const normalized = keys.map((k) =>
+			typeof k === "string" ? k.slice(0, 1) : String(k).slice(0, 1),
+		);
 		reviewOptionKeysStore.set(normalized);
-		if (typeof localStorage !== 'undefined') {
-			localStorage.setItem(REVIEW_KEYS_STORAGE, JSON.stringify(normalized));
+		if (typeof localStorage !== "undefined") {
+			localStorage.setItem(
+				REVIEW_KEYS_STORAGE,
+				JSON.stringify(normalized),
+			);
 		}
 	}
 
 	function getIntroducedTodayCount(scriptId: string): number {
-		if (typeof localStorage === 'undefined') return 0;
+		if (typeof localStorage === "undefined") return 0;
 		const raw = localStorage.getItem(todayKey(scriptId));
 		return raw ? parseInt(raw, 10) || 0 : 0;
 	}
 
 	function incrementIntroducedToday(scriptId: string, count: number): void {
-		if (typeof localStorage === 'undefined') return;
+		if (typeof localStorage === "undefined") return;
 		const key = todayKey(scriptId);
 		const current = getIntroducedTodayCount(scriptId);
 		localStorage.setItem(key, String(current + count));
@@ -96,10 +174,16 @@ function createLearnStore() {
 				dailyGoalByScript[r.script] = r.dailyGoal;
 			}
 
-			let studyingScripts = progress.filter((p: ScriptProgressItem) => idSet.has(p.script));
+			let studyingScripts = progress.filter((p: ScriptProgressItem) =>
+				idSet.has(p.script),
+			);
 
 			for (const { script } of userScripts) {
-				if (!studyingScripts.some((p: ScriptProgressItem) => p.script === script)) {
+				if (
+					!studyingScripts.some(
+						(p: ScriptProgressItem) => p.script === script,
+					)
+				) {
 					try {
 						const def = await getScript(script);
 						studyingScripts = [
@@ -115,7 +199,13 @@ function createLearnStore() {
 					} catch {
 						studyingScripts = [
 							...studyingScripts,
-							{ script, label: script, percentage: 0, total: 0, learnt: 0 },
+							{
+								script,
+								label: script,
+								percentage: 0,
+								total: 0,
+								learnt: 0,
+							},
 						];
 					}
 				}
@@ -124,7 +214,7 @@ function createLearnStore() {
 			const order = new Map(userScripts.map((r, i) => [r.script, i]));
 			studyingScripts.sort(
 				(a: ScriptProgressItem, b: ScriptProgressItem) =>
-					(order.get(a.script) ?? 99) - (order.get(b.script) ?? 99)
+					(order.get(a.script) ?? 99) - (order.get(b.script) ?? 99),
 			);
 
 			update((s) => ({
@@ -138,6 +228,75 @@ function createLearnStore() {
 		}
 	}
 
+	/**
+	 * Returns a single source-of-truth for dashboard data across all studying scripts.
+	 * Each entry answers: can I study this script, and is it new learning or review?
+	 */
+	async function getDashboardData(): Promise<ScriptStudyState[]> {
+		const state = get({ subscribe });
+		if (!state.initialised) await load();
+		const currentState = get({ subscribe });
+
+		const now = getNow().toISOString();
+
+		const results = await Promise.all(
+			currentState.studyingScripts.map(async (scriptItem) => {
+				const scriptId = scriptItem.script;
+				const dailyCap =
+					currentState.dailyGoalByScript[scriptId] ??
+					NEW_SCRIPT_LIMIT;
+				const introducedToday = getIntroducedTodayCount(scriptId);
+				const remainingToday = Math.max(0, dailyCap - introducedToday);
+
+				const [def, reviews, { ids: orderedIds }] = await Promise.all([
+					getScript(scriptId),
+					db.reviews.where("script").equals(scriptId).toArray(),
+					buildLessonOrderedIds(scriptId),
+				]);
+
+				const reviewMap = new Map(reviews.map((r) => [r.itemId, r]));
+
+				// glyfsToLearn: new glyphs (never seen) in lesson order, capped to remaining daily quota
+				const glyfsToLearn: string[] = [];
+				for (const id of orderedIds) {
+					if (glyfsToLearn.length >= remainingToday) break;
+					const review = reviewMap.get(id);
+					if (!review) {
+						glyfsToLearn.push(id);
+					}
+				}
+
+				// glyfsToReview: glyphs with SRS records that are now due
+				const glyfsToReview = reviews
+					.filter((r) => r.repetitions > 0 && r.nextReview < now)
+					.map((r) => r.itemId);
+
+				// masteryBreakdown: single pass over all ordered glyphs
+				const masteryBreakdown: MasteryBreakdown = {
+					mastered: 0,
+					good: 0,
+					learning: 0,
+					difficult: 0,
+					new: 0,
+				};
+				for (const id of orderedIds) {
+					const level = getMasteryLevel(reviewMap.get(id));
+					masteryBreakdown[level]++;
+				}
+
+				return {
+					script: scriptId,
+					label: def.name,
+					glyfsToLearn: glyfsToLearn,
+					glyfsToReview: glyfsToReview,
+					masteryBreakdown,
+				} satisfies ScriptStudyState;
+			}),
+		);
+
+		return results;
+	}
+
 	async function getIntroBatch(scriptId: string): Promise<Character[]> {
 		const state = get({ subscribe });
 		const dailyCap = state.dailyGoalByScript[scriptId] ?? NEW_SCRIPT_LIMIT;
@@ -146,8 +305,49 @@ function createLearnStore() {
 		if (remaining === 0) return [];
 
 		const batchSize = Math.min(BATCH_SIZE, remaining);
-		const newCards = await getNewCards(scriptId, Math.min(dailyCap, remaining), db);
-		return newCards.slice(0, batchSize);
+
+		const reviews = await db.reviews
+			.where("script")
+			.equals(scriptId)
+			.toArray();
+		const reviewedIds = new Set(reviews.map((r) => r.itemId));
+
+		const {
+			ids: orderedIds,
+			charMap,
+			def,
+		} = await buildLessonOrderedIds(scriptId);
+
+		// Build charId → lessonIndex map (chars outside all lessons get index -1)
+		const charLesson = new Map<string, number>();
+		if (def.course?.lessons?.length) {
+			def.course.lessons.forEach((lesson, i) => {
+				for (const id of lesson.characterIds ?? []) {
+					if (!charLesson.has(id)) charLesson.set(id, i);
+				}
+			});
+		}
+
+		// Find the lesson of the first unseen char (-1 = outside all lessons)
+		let currentLesson = -1;
+		for (const id of orderedIds) {
+			if (!reviewedIds.has(id)) {
+				currentLesson = charLesson.get(id) ?? -1;
+				break;
+			}
+		}
+
+		// Collect unseen chars from the current lesson only, up to batchSize
+		const result: Character[] = [];
+		for (const id of orderedIds) {
+			if (result.length >= batchSize) break;
+			const lesson = charLesson.get(id) ?? -1;
+			if (!reviewedIds.has(id) && lesson === currentLesson) {
+				const char = charMap.get(id);
+				if (char) result.push(char);
+			}
+		}
+		return result;
 	}
 
 	function setDailyGoal(scriptId: string, goal: number): void {
@@ -170,6 +370,7 @@ function createLearnStore() {
 		load,
 		reset,
 		setDailyGoal,
+		getDashboardData,
 		getIntroBatch,
 		incrementIntroducedToday,
 		getIntroducedTodayCount,

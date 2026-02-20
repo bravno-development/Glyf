@@ -1,4 +1,4 @@
-import Dexie, { type Table } from 'dexie';
+import Dexie, { type Table } from "dexie";
 
 export interface Character {
 	id: string;
@@ -6,6 +6,7 @@ export interface Character {
 	character: string;
 	meaning: string;
 	readings?: string[];
+	order?: number;
 }
 
 export interface Sentence {
@@ -20,7 +21,7 @@ export interface Sentence {
 export interface Review {
 	id?: number;
 	itemId: string;
-	itemType: 'character' | 'sentence';
+	itemType: "character" | "sentence";
 	script: string;
 	easeFactor: number;
 	interval: number;
@@ -51,14 +52,14 @@ export class GlyfDB extends Dexie {
 	syncState!: Table<SyncState>;
 
 	constructor() {
-		super('GlyfDB');
+		super("GlyfDB");
 
 		this.version(1).stores({
-			characters: 'id, script',
-			sentences: 'id, script, difficulty',
-			reviews: '++id, itemId, script, [script+nextReview], nextReview',
-			sessions: '++id, script, date',
-			syncState: 'script'
+			characters: "id, script",
+			sentences: "id, script, difficulty",
+			reviews: "++id, itemId, script, [script+nextReview], nextReview",
+			sessions: "++id, script, date",
+			syncState: "script",
 		});
 	}
 }

@@ -14,9 +14,7 @@
 			"character": "α",
 			"class": "vowel",
 			"meaning": "a",
-			"readings": [
-				"a"
-			]
+			"readings": ["a"]
 		},
 		{
 			"id": "greek-beta",
@@ -24,9 +22,7 @@
 			"character": "β",
 			"class": "consonant",
 			"meaning": "b",
-			"readings": [
-				"b"
-			]
+			"readings": ["b"]
 		},
 		{
 			"id": "greek-gamma",
@@ -34,9 +30,7 @@
 			"character": "γ",
 			"class": "consonant",
 			"meaning": "g",
-			"readings": [
-				"g"
-			]
+			"readings": ["g"]
 		},
 		{
 			"id": "greek-delta",
@@ -44,9 +38,7 @@
 			"character": "δ",
 			"class": "consonant",
 			"meaning": "d",
-			"readings": [
-				"d"
-			]
+			"readings": ["d"]
 		},
 		{
 			"id": "greek-epsilon",
@@ -54,9 +46,7 @@
 			"character": "ε",
 			"class": "vowel",
 			"meaning": "e",
-			"readings": [
-				"e"
-			]
+			"readings": ["e"]
 		},
 		{
 			"id": "greek-zeta",
@@ -64,9 +54,7 @@
 			"character": "ζ",
 			"class": "consonant",
 			"meaning": "z",
-			"readings": [
-				"z"
-			]
+			"readings": ["z"]
 		},
 		{
 			"id": "greek-eta",
@@ -74,9 +62,7 @@
 			"character": "η",
 			"class": "vowel",
 			"meaning": "e",
-			"readings": [
-				"ē"
-			]
+			"readings": ["ē"]
 		},
 		{
 			"id": "greek-theta",
@@ -84,9 +70,7 @@
 			"character": "θ",
 			"class": "consonant",
 			"meaning": "th",
-			"readings": [
-				"th"
-			]
+			"readings": ["th"]
 		},
 		{
 			"id": "greek-iota",
@@ -94,9 +78,7 @@
 			"character": "ι",
 			"class": "vowel",
 			"meaning": "i",
-			"readings": [
-				"i"
-			]
+			"readings": ["i"]
 		},
 		{
 			"id": "greek-kappa",
@@ -104,9 +86,7 @@
 			"character": "κ",
 			"class": "consonant",
 			"meaning": "k",
-			"readings": [
-				"k"
-			]
+			"readings": ["k"]
 		},
 		{
 			"id": "greek-lambda",
@@ -114,9 +94,7 @@
 			"character": "λ",
 			"class": "consonant",
 			"meaning": "l",
-			"readings": [
-				"l"
-			]
+			"readings": ["l"]
 		},
 		{
 			"id": "greek-mu",
@@ -124,9 +102,7 @@
 			"character": "μ",
 			"class": "consonant",
 			"meaning": "m",
-			"readings": [
-				"m"
-			]
+			"readings": ["m"]
 		},
 		{
 			"id": "greek-nu",
@@ -134,9 +110,7 @@
 			"character": "ν",
 			"class": "consonant",
 			"meaning": "n",
-			"readings": [
-				"n"
-			]
+			"readings": ["n"]
 		},
 		{
 			"id": "greek-xi",
@@ -144,10 +118,7 @@
 			"character": "ξ",
 			"class": "consonant",
 			"meaning": "x",
-			"readings": [
-				"x",
-				"ks"
-			]
+			"readings": ["x", "ks"]
 		},
 		{
 			"id": "greek-omicron",
@@ -155,9 +126,7 @@
 			"character": "ο",
 			"class": "vowel",
 			"meaning": "o",
-			"readings": [
-				"o"
-			]
+			"readings": ["o"]
 		},
 		{
 			"id": "greek-pi",
@@ -165,9 +134,7 @@
 			"character": "π",
 			"class": "consonant",
 			"meaning": "p",
-			"readings": [
-				"p"
-			]
+			"readings": ["p"]
 		},
 		{
 			"id": "greek-rho",
@@ -175,9 +142,7 @@
 			"character": "ρ",
 			"class": "consonant",
 			"meaning": "r",
-			"readings": [
-				"r"
-			]
+			"readings": ["r"]
 		},
 		{
 			"id": "greek-sigma",
@@ -185,9 +150,7 @@
 			"character": "σ",
 			"class": "consonant",
 			"meaning": "s",
-			"readings": [
-				"s"
-			]
+			"readings": ["s"]
 		},
 		{
 			"id": "greek-tau",
@@ -195,9 +158,7 @@
 			"character": "τ",
 			"class": "consonant",
 			"meaning": "t",
-			"readings": [
-				"t"
-			]
+			"readings": ["t"]
 		},
 		{
 			"id": "greek-upsilon",
@@ -205,10 +166,7 @@
 			"character": "υ",
 			"class": "vowel",
 			"meaning": "y",
-			"readings": [
-				"y",
-				"u"
-			]
+			"readings": ["y", "u"]
 		},
 		{
 			"id": "greek-phi",
@@ -216,10 +174,7 @@
 			"character": "φ",
 			"class": "consonant",
 			"meaning": "f",
-			"readings": [
-				"f",
-				"ph"
-			]
+			"readings": ["f", "ph"]
 		},
 		{
 			"id": "greek-chi",
@@ -227,10 +182,7 @@
 			"character": "χ",
 			"class": "consonant",
 			"meaning": "ch",
-			"readings": [
-				"ch",
-				"kh"
-			]
+			"readings": ["ch", "kh"]
 		},
 		{
 			"id": "greek-psi",
@@ -238,9 +190,7 @@
 			"character": "ψ",
 			"class": "consonant",
 			"meaning": "ps",
-			"readings": [
-				"ps"
-			]
+			"readings": ["ps"]
 		},
 		{
 			"id": "greek-omega",
@@ -248,123 +198,103 @@
 			"character": "ω",
 			"class": "vowel",
 			"meaning": "o",
-			"readings": [
-				"o",
-				"ō"
-			]
-		}
-	],
-	"extra": [
-		{
-			"title": "Diphthongs",
-			"characters": [
-				{
-					"id": "greek-ai",
-					"character": "αι",
-					"meaning": "ai",
-					"readings": ["a:j"]
-				},
-				{
-					"id": "greek-aai",
-					"character": "ᾳ/αι",
-					"meaning": "ai",
-					"readings": ["aj"]
-				},
-				{
-					"id": "greek-ei",
-					"character": "ει",
-					"meaning": "ei",
-					"readings": ["e:"]
-				},
-				{
-					"id": "greek-eei",
-					"character": "η/ηι",
-					"meaning": "ēi",
-					"readings": ["ɛ:j"]
-				},
-				{
-					"id": "greek-oi",
-					"character": "οι",
-					"meaning": "oi",
-					"readings": ["oj"]
-				},
-				{
-					"id": "greek-ooi",
-					"character": "ω/ωι",
-					"meaning": "ōi",
-					"readings": ["ɔ:j"]
-				},
-				{
-					"id": "greek-yi",
-					"character": "υι",
-					"meaning": "ui/yi",
-					"readings": ["yj"]
-				},
-				{
-					"id": "greek-au",
-					"character": "αυ",
-					"meaning": "au",
-					"readings": ["aw", "a:w"]
-				},
-				{
-					"id": "greek-eu",
-					"character": "ευ",
-					"meaning": "eu",
-					"readings": ["ew"]
-				},
-				{
-					"id": "greek-eeu",
-					"character": "ηυ",
-					"meaning": "ēu",
-					"readings": ["ɛ:w"]
-				},
-				{
-					"id": "greek-ou",
-					"character": "ου",
-					"meaning": "ou",
-					"readings": ["o:", "u:"]
-				}
-			]
+			"readings": ["o", "ō"]
 		},
 		{
-			"title": "Consonant combinations",
-			"characters": [
-				{
-					"id": "greek-mp",
-					"character": "μπ",
-					"meaning": "mp",
-					"readings": ["b"]
-				},
-				{
-					"id": "greek-gk",
-					"character": "γκ",
-					"meaning": "gk",
-					"readings": ["g"]
-				},
-				{
-					"id": "greek-ts",
-					"character": "τσ",
-					"meaning": "ts",
-					"readings": ["ts"]
-				},
-				{
-					"id": "greek-nt",
-					"character": "ντ",
-					"meaning": "nt",
-					"readings": ["d"]
-				}
-			]
+			"id": "greek-ai",
+			"character": "αι",
+			"meaning": "ai",
+			"readings": ["a:j"]
 		},
 		{
-			"title": "Special symbols",
-			"characters": [
-				{
-					"id": "greek-kai",
-					"character": "ϗ",
-					"meaning": "kai",
-					"readings": ["&"]
-				}
-			]
+			"id": "greek-aai",
+			"character": "ᾳ/αι",
+			"meaning": "ai",
+			"readings": ["aj"]
+		},
+		{
+			"id": "greek-ei",
+			"character": "ει",
+			"meaning": "ei",
+			"readings": ["e:"]
+		},
+		{
+			"id": "greek-eei",
+			"character": "η/ηι",
+			"meaning": "ēi",
+			"readings": ["ɛ:j"]
+		},
+		{
+			"id": "greek-oi",
+			"character": "οι",
+			"meaning": "oi",
+			"readings": ["oj"]
+		},
+		{
+			"id": "greek-ooi",
+			"character": "ω/ωι",
+			"meaning": "ōi",
+			"readings": ["ɔ:j"]
+		},
+		{
+			"id": "greek-yi",
+			"character": "υι",
+			"meaning": "ui/yi",
+			"readings": ["yj"]
+		},
+		{
+			"id": "greek-au",
+			"character": "αυ",
+			"meaning": "au",
+			"readings": ["aw", "a:w"]
+		},
+		{
+			"id": "greek-eu",
+			"character": "ευ",
+			"meaning": "eu",
+			"readings": ["ew"]
+		},
+		{
+			"id": "greek-eeu",
+			"character": "ηυ",
+			"meaning": "ēu",
+			"readings": ["ɛ:w"]
+		},
+		{
+			"id": "greek-ou",
+			"character": "ου",
+			"meaning": "ou",
+			"readings": ["o:", "u:"]
+		},
+		{
+			"id": "greek-mp",
+			"character": "μπ",
+			"meaning": "mp",
+			"readings": ["b"]
+		},
+		{
+			"id": "greek-gk",
+			"character": "γκ",
+			"meaning": "gk",
+			"readings": ["g"]
+		},
+		{
+			"id": "greek-ts",
+			"character": "τσ",
+			"meaning": "ts",
+			"readings": ["ts"]
+		},
+		{
+			"id": "greek-nt",
+			"character": "ντ",
+			"meaning": "nt",
+			"readings": ["d"]
+		},
+		{
+			"id": "greek-kai",
+			"character": "ϗ",
+			"meaning": "kai",
+			"readings": ["&"]
 		}
 	],
 	"course": {

@@ -1,4 +1,4 @@
-import { db } from './db';
+import { db } from "./db";
 
 export interface ScriptCharacter {
 	id: string;
@@ -49,7 +49,7 @@ export interface LessonContentRow {
 /** Resolve a lesson to content rows (characterIds → characters by id; extraTitles → extra sections by title). */
 export function getLessonContent(
 	def: ScriptDefinition,
-	lesson: CourseLesson
+	lesson: CourseLesson,
 ): LessonContentRow[] {
 	const rows: LessonContentRow[] = [];
 	const charMap = new Map(def.characters.map((c) => [c.id, c]));
@@ -57,7 +57,12 @@ export function getLessonContent(
 	if (lesson.characterIds?.length) {
 		for (const id of lesson.characterIds) {
 			const c = charMap.get(id);
-			if (c) rows.push({ character: c.character, meaning: c.meaning, order: order++ });
+			if (c)
+				rows.push({
+					character: c.character,
+					meaning: c.meaning,
+					order: order++,
+				});
 		}
 	}
 	if (lesson.extraTitles?.length && def.extra?.length) {
@@ -66,7 +71,11 @@ export function getLessonContent(
 			const section = extraByTitle.get(title);
 			if (section) {
 				for (const c of section.characters) {
-					rows.push({ character: c.character, meaning: c.meaning, order: order++ });
+					rows.push({
+						character: c.character,
+						meaning: c.meaning,
+						order: order++,
+					});
 				}
 			}
 		}
@@ -77,7 +86,9 @@ export function getLessonContent(
 /** Return characters in display order (by `order` field, then array index). */
 export function getCharactersInOrder(def: ScriptDefinition): ScriptCharacter[] {
 	if (!def.characters?.length) return [];
-	return [...def.characters].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+	return [...def.characters].sort(
+		(a, b) => (a.order ?? 999) - (b.order ?? 999),
+	);
 }
 
 const cache = new Map<string, ScriptDefinition>();
@@ -85,7 +96,7 @@ let manifestCache: string[] | null = null;
 
 async function fetchManifest(): Promise<string[]> {
 	if (manifestCache) return manifestCache;
-	const res = await fetch('/scripts/index.json');
+	const res = await fetch("/scripts/index.json");
 	manifestCache = await res.json();
 	return manifestCache!;
 }
@@ -110,12 +121,12 @@ export async function getScript(id: string): Promise<ScriptDefinition> {
 
 export async function seedCharacters(scriptId: string): Promise<void> {
 	const def = await fetchScript(scriptId);
-	const records = def.characters.map(c => ({
+	const records = def.characters.map((c) => ({
 		id: c.id,
 		script: def.id,
 		character: c.character,
 		meaning: c.meaning,
-		readings: c.readings
+		readings: c.readings,
 	}));
 	await db.characters.bulkPut(records);
 }
