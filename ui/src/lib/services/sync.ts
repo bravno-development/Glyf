@@ -1,7 +1,17 @@
 import { db, type Review } from './db';
 import { api } from './api';
 
+export async function markPendingSync(scriptId: string): Promise<void> {
+	const existing = await db.syncState.get(scriptId);
+	await db.syncState.put({
+		script: scriptId,
+		lastSync: existing?.lastSync ?? '',
+		pendingChanges: true,
+	});
+}
+
 export async function syncToServer(): Promise<void> {
+	if (typeof navigator !== 'undefined' && !navigator.onLine) return;
 	try {
 		const syncStates = await db.syncState.toArray();
 
@@ -23,6 +33,7 @@ export async function syncToServer(): Promise<void> {
 }
 
 export async function syncFromServer(): Promise<void> {
+	if (typeof navigator !== 'undefined' && !navigator.onLine) return;
 	try {
 		const serverData = await api.sync.download() as Array<{
 			script: string;

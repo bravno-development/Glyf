@@ -71,6 +71,14 @@ export interface MasteryBreakdown {
 	new: number;
 }
 
+export interface ScriptStudyState {
+	script: string;
+	label: string;
+	itemsToLearn: string[];   // glyphIds — lesson-ordered, capped to remaining daily quota
+	itemsToReview: string[];  // glyphIds — due for review right now
+	masteryBreakdown: MasteryBreakdown;
+}
+
 export async function getMasteryBreakdown(script: string): Promise<MasteryBreakdown> {
 	const characters = await db.characters.where('script').equals(script).toArray();
 	const reviews = await db.reviews.where('script').equals(script).toArray();

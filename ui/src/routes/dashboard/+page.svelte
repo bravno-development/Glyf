@@ -2,40 +2,32 @@
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { userStore } from "$lib/stores/user";
-	import { api } from "$lib/services/api";
-	import { Play, RefreshCcw, BookOpen, Target, Clock } from "lucide-svelte";
+	import { Play, RefreshCcw, BookOpen, Clock } from "lucide-svelte";
 	import AppShell from "$lib/components/AppShell.svelte";
 	import {
-		type DashboardStats,
 		type CharacterGridItem,
 		type MasteryBreakdown,
 		type ScriptProgressItem,
+		type ScriptStudyState,
 		type UpcomingReviewItem,
 		type WeeklyActivityItem,
-		getDashboardStats,
 		getCharacterGrid,
-		getMasteryBreakdown,
-		getScriptProgress,
 		getUpcomingReviews,
 		getWeeklyActivity,
 		getMasteryColour,
 	} from "$lib/services/dashboard";
 	import { getScript, getCharactersInOrder, type ScriptDefinition } from "$lib/services/scripts";
 	import { learnStore } from "$lib/stores/learn";
+	import { syncToServer, syncFromServer } from "$lib/services/sync";
 
-	let userScripts: string[] = $state([]);
-
-	let stats: DashboardStats = $state({ learnt: 0, accuracy: 0, dueToday: 0 });
+	let studyStates: ScriptStudyState[] = $state([]);
 	let grid: CharacterGridItem[] = $state([]);
-	let breakdown: MasteryBreakdown = $state({ mastered: 0, good: 0, learning: 0, difficult: 0, new: 0 });
-	let scriptProgress: ScriptProgressItem[] = $state([]);
 	let upcomingReviews: UpcomingReviewItem[] = $state([]);
 	let weeklyActivity: WeeklyActivityItem[] = $state([]);
 	let loaded = $state(false);
 
 	let scriptDef: ScriptDefinition | null = $state(null);
 	let activeScript = $state("");
-	let studyingScripts: ScriptProgressItem[] = $state([]);
 	let loadingScript = $state(false);
 	let refreshing = $state(false);
 
@@ -47,11 +39,37 @@
 		{ key: "new" as const, label: "New" },
 	];
 
-	async function loadActiveScriptData(scriptId: string): Promise<void> {
+	// All dashboard stats derived from the active script's study state
+	const activeStudyState = $derived(studyStates.find((s) => s.script === activeScript));
+	const breakdown = $derived<MasteryBreakdown>(
+		activeStudyState?.masteryBreakdown ?? { mastered: 0, good: 0, learning: 0, difficult: 0, new: 0 }
+	);
+	const learnt = $derived(breakdown.mastered + breakdown.good + breakdown.learning + breakdown.difficult);
+	const dueToday = $derived(activeStudyState?.itemsToReview.length ?? 0);
+	const charsLeftToday = $derived(activeStudyState?.itemsToLearn.length ?? 0);
+	const hasUnlearnedGlyphs = $derived((activeStudyState?.masteryBreakdown.new ?? 0) > 0 || charsLeftToday > 0);
+	const isDailyGoalMet = $derived(hasUnlearnedGlyphs && charsLeftToday === 0);
+	const hasDueReviews = $derived(dueToday > 0);
+	const startStudyingDisabled = $derived(!hasUnlearnedGlyphs || isDailyGoalMet);
+
+	// Script progress bars derived from study states — no separate DB call needed
+	const scriptProgress = $derived<ScriptProgressItem[]>(
+		studyStates.map((s) => {
+			const total = Object.values(s.masteryBreakdown).reduce((a, b) => a + b, 0);
+			const learntCount = total - s.masteryBreakdown.new;
+			return {
+				script: s.script,
+				label: s.label,
+				percentage: total > 0 ? Math.round((learntCount / total) * 100) : 0,
+				total,
+				learnt: learntCount,
+			};
+		})
+	);
+
+	async function loadGridAndReviews(scriptId: string): Promise<void> {
 		if (!scriptId) {
-			stats = { learnt: 0, accuracy: 0, dueToday: 0 };
 			grid = [];
-			breakdown = { mastered: 0, good: 0, learning: 0, difficult: 0, new: 0 };
 			upcomingReviews = [];
 			scriptDef = null;
 			loadingScript = false;
@@ -62,16 +80,12 @@
 			const def = await getScript(scriptId);
 			if (activeScript !== scriptId) return;
 			scriptDef = def;
-			const [s, g, b, ur] = await Promise.all([
-				getDashboardStats(scriptId),
+			const [g, ur] = await Promise.all([
 				getCharacterGrid(scriptId),
-				getMasteryBreakdown(scriptId),
 				getUpcomingReviews(scriptId),
 			]);
 			if (activeScript !== scriptId) return;
-			stats = s;
 			grid = g;
-			breakdown = b;
 			upcomingReviews = ur;
 		} finally {
 			if (activeScript === scriptId) loadingScript = false;
@@ -88,51 +102,19 @@
 	async function refreshDashboard(): Promise<void> {
 		refreshing = true;
 		try {
+			// Push local changes first, then pull — ensures a clean baseline
+			await syncToServer();
+			await syncFromServer();
+
 			await learnStore.load();
-			const scriptsResponse = await api.user.getScripts();
-			userScripts = scriptsResponse.map((r) => r.script);
+			studyStates = await learnStore.getDashboardData();
+			weeklyActivity = await getWeeklyActivity();
 
-			const [sp, wa] = await Promise.all([
-				getScriptProgress(),
-				getWeeklyActivity(),
-			]);
-			scriptProgress = sp;
-			weeklyActivity = wa;
-
-			const progressByScript = new Map(sp.map((s) => [s.script, s]));
-			const built: ScriptProgressItem[] = [];
-			for (const id of userScripts) {
-				const item = progressByScript.get(id);
-				if (item) {
-					built.push(item);
-				} else {
-					try {
-						const def = await getScript(id);
-						built.push({
-							script: id,
-							label: def.name,
-							percentage: 0,
-							total: def.totalCharacters ?? 0,
-							learnt: 0,
-						});
-					} catch {
-						built.push({
-							script: id,
-							label: id,
-							percentage: 0,
-							total: 0,
-							learnt: 0,
-						});
-					}
-				}
-			}
-			studyingScripts = built;
-
-			const currentScript = studyingScripts.some((s) => s.script === activeScript)
+			const currentScript = studyStates.some((s) => s.script === activeScript)
 				? activeScript
-				: studyingScripts[0]?.script ?? "";
+				: studyStates[0]?.script ?? "";
 			activeScript = currentScript;
-			await loadActiveScriptData(currentScript);
+			await loadGridAndReviews(currentScript);
 		} catch {
 			// IndexedDB may not be populated yet — show zeroes
 		} finally {
@@ -151,7 +133,7 @@
 
 	async function setActiveScript(scriptId: string): Promise<void> {
 		activeScript = scriptId;
-		await loadActiveScriptData(scriptId);
+		await loadGridAndReviews(scriptId);
 	}
 
 	function getGridCharMastery(char: string): string {
@@ -184,16 +166,6 @@
 	function maxWeekly(): number {
 		return Math.max(...weeklyActivity.map(w => w.count), 1);
 	}
-
-	const activeScriptItem = $derived(studyingScripts.find((s) => s.script === activeScript));
-	const totalCharsCurrentScript = $derived(activeScriptItem?.total ?? 0);
-	const hasUnlearnedGlyphs = $derived(stats.learnt < totalCharsCurrentScript);
-	const hasDueReviews = $derived(stats.dueToday > 0);
-	const dailyGoalForActive = $derived($learnStore.dailyGoalByScript[activeScript] ?? 0);
-	const introducedToday = $derived.by(() => activeScript ? learnStore.getIntroducedTodayCount(activeScript) : 0);
-	const charsLeftToday = $derived(Math.max(0, dailyGoalForActive - introducedToday));
-	const isDailyGoalMet = $derived(activeScript ? introducedToday >= dailyGoalForActive : false);
-	const startStudyingDisabled = $derived(!hasUnlearnedGlyphs || (hasUnlearnedGlyphs && isDailyGoalMet));
 </script>
 
 <svelte:head>
@@ -234,7 +206,7 @@
 						</span>
 					{:else}
 						<a
-							href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}` : '/onboarding'}
+							href={studyStates.length > 0 ? `/learn/${activeScript || studyStates[0]?.script || ''}` : '/onboarding'}
 							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90"
 						>
 							<Play size={16} class="text-white" />
@@ -243,7 +215,7 @@
 					{/if}
 					{#if hasDueReviews}
 						<a
-							href={studyingScripts.length > 0 ? `/learn/${activeScript || studyingScripts[0]?.script || ''}?mode=review` : '/onboarding'}
+							href={studyStates.length > 0 ? `/learn/${activeScript || studyStates[0]?.script || ''}?mode=review` : '/onboarding'}
 							class="flex items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] no-underline transition-opacity hover:opacity-90"
 						>
 							<RefreshCcw size={16} class="text-[var(--accent-review-foreground)]" />
@@ -261,14 +233,14 @@
 				</div>
 			</div>
 
-			<!-- Language tabs + Stats for selected script (Script Tabs spec: pill container, active = secondary pill) -->
-			{#if studyingScripts.length > 0}
+			<!-- Language tabs + Stats for selected script -->
+			{#if studyStates.length > 0}
 			<div class="flex flex-col gap-4">
 				<div
 					class="flex h-14 w-full min-w-0 max-w-full items-center gap-2 overflow-x-auto rounded-[var(--radius-pill)] border border-[var(--input)] bg-[var(--card)] p-2 md:w-fit overflow-y-hidden"
 					role="tablist"
 				>
-					{#each studyingScripts as sp (sp.script)}
+					{#each studyStates as sp (sp.script)}
 						<button
 							type="button"
 							role="tab"
@@ -295,7 +267,7 @@
 							<BookOpen size={18} class="text-[var(--muted-foreground)]" />
 						</div>
 						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
-							{loadingScript ? '—' : (stats.learnt + "/" + scriptDef?.totalCharacters)}
+							{loadingScript ? '—' : (learnt + "/" + scriptDef?.totalCharacters)}
 						</p>
 					</div>
 
@@ -315,7 +287,7 @@
 							<RefreshCcw size={18} class="text-[var(--muted-foreground)]" />
 						</div>
 						<p class="mt-3 text-[32px] font-bold text-[var(--foreground)] {loadingScript ? 'animate-pulse opacity-60' : ''}">
-							{loadingScript ? '—' : stats.dueToday}
+							{loadingScript ? '—' : dueToday}
 						</p>
 					</div>
 				</div>
@@ -335,7 +307,7 @@
 				<!-- Left Column -->
 				<div class="flex flex-1 flex-col gap-6">
 					<!-- Character Grid Card -->
-					{#if studyingScripts.length === 0}
+					{#if studyStates.length === 0}
 					<div class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]">
 						<p class="text-[14px] text-[var(--muted-foreground)]">
 							You haven't started any script yet. <a href="/learn" class="font-medium text-[var(--accent-green)] no-underline hover:underline">Choose a script from Learn</a> to begin.

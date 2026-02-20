@@ -2,8 +2,7 @@ import { writable, get } from 'svelte/store';
 import { api } from '$lib/services/api';
 import { db } from '$lib/services/db';
 import { getScript } from '$lib/services/scripts';
-import { getScriptProgress, type ScriptProgressItem } from '$lib/services/dashboard';
-import { getNewCards } from '$lib/services/srs';
+import { getScriptProgress, getMasteryLevel, type ScriptProgressItem, type MasteryBreakdown, type ScriptStudyState } from '$lib/services/dashboard';
 import { getNow } from '$lib/stores/adminTime';
 import type { Character } from '$lib/services/db';
 
@@ -35,6 +34,45 @@ export interface LearnState {
 	studyingScripts: ScriptProgressItem[];
 	dailyGoalByScript: Record<string, number>;
 	initialised: boolean;
+}
+
+/**
+ * Returns character IDs in lesson order for a script.
+ * Uses course.lessons if defined, otherwise falls back to the order field.
+ */
+async function buildLessonOrderedIds(scriptId: string): Promise<{ ids: string[]; charMap: Map<string, Character> }> {
+	const [def, characters] = await Promise.all([
+		getScript(scriptId),
+		db.characters.where('script').equals(scriptId).toArray(),
+	]);
+
+	const charMap = new Map(characters.map((c) => [c.id, c]));
+
+	let ids: string[];
+	if (def.course?.lessons?.length) {
+		const seen = new Set<string>();
+		const allIds = new Set(characters.map((c) => c.id));
+		ids = [];
+		for (const lesson of def.course.lessons) {
+			for (const id of lesson.characterIds ?? []) {
+				if (allIds.has(id) && !seen.has(id)) {
+					ids.push(id);
+					seen.add(id);
+				}
+			}
+		}
+		// Append any chars not covered by lessons, sorted by order
+		const byOrder = [...characters].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+		for (const c of byOrder) {
+			if (!seen.has(c.id)) ids.push(c.id);
+		}
+	} else {
+		ids = [...characters]
+			.sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
+			.map((c) => c.id);
+	}
+
+	return { ids, charMap };
 }
 
 function createLearnStore() {
@@ -138,6 +176,69 @@ function createLearnStore() {
 		}
 	}
 
+	/**
+	 * Returns a single source-of-truth for dashboard data across all studying scripts.
+	 * Each entry answers: can I study this script, and is it new learning or review?
+	 */
+	async function getDashboardData(): Promise<ScriptStudyState[]> {
+		const state = get({ subscribe });
+		if (!state.initialised) await load();
+		const currentState = get({ subscribe });
+
+		const now = getNow().toISOString();
+
+		const results = await Promise.all(
+			currentState.studyingScripts.map(async (scriptItem) => {
+				const scriptId = scriptItem.script;
+				const dailyCap = currentState.dailyGoalByScript[scriptId] ?? NEW_SCRIPT_LIMIT;
+				const introducedToday = getIntroducedTodayCount(scriptId);
+				const remainingToday = Math.max(0, dailyCap - introducedToday);
+
+				const [def, reviews, { ids: orderedIds }] = await Promise.all([
+					getScript(scriptId),
+					db.reviews.where('script').equals(scriptId).toArray(),
+					buildLessonOrderedIds(scriptId),
+				]);
+
+				const reviewMap = new Map(reviews.map((r) => [r.itemId, r]));
+
+				// itemsToLearn: unreviewed glyphs in lesson order, capped to remaining daily quota
+				const itemsToLearn: string[] = [];
+				for (const id of orderedIds) {
+					if (itemsToLearn.length >= remainingToday) break;
+					const review = reviewMap.get(id);
+					if (!review || review.repetitions === 0) {
+						itemsToLearn.push(id);
+					}
+				}
+
+				// itemsToReview: glyphs with SRS records that are now due
+				const itemsToReview = reviews
+					.filter((r) => r.repetitions > 0 && r.nextReview < now)
+					.map((r) => r.itemId);
+
+				// masteryBreakdown: single pass over all ordered glyphs
+				const masteryBreakdown: MasteryBreakdown = {
+					mastered: 0, good: 0, learning: 0, difficult: 0, new: 0,
+				};
+				for (const id of orderedIds) {
+					const level = getMasteryLevel(reviewMap.get(id));
+					masteryBreakdown[level]++;
+				}
+
+				return {
+					script: scriptId,
+					label: def.name,
+					itemsToLearn,
+					itemsToReview,
+					masteryBreakdown,
+				} satisfies ScriptStudyState;
+			})
+		);
+
+		return results;
+	}
+
 	async function getIntroBatch(scriptId: string): Promise<Character[]> {
 		const state = get({ subscribe });
 		const dailyCap = state.dailyGoalByScript[scriptId] ?? NEW_SCRIPT_LIMIT;
@@ -146,8 +247,21 @@ function createLearnStore() {
 		if (remaining === 0) return [];
 
 		const batchSize = Math.min(BATCH_SIZE, remaining);
-		const newCards = await getNewCards(scriptId, Math.min(dailyCap, remaining), db);
-		return newCards.slice(0, batchSize);
+
+		const reviews = await db.reviews.where('script').equals(scriptId).toArray();
+		const reviewedIds = new Set(reviews.map((r) => r.itemId));
+
+		const { ids: orderedIds, charMap } = await buildLessonOrderedIds(scriptId);
+
+		const result: Character[] = [];
+		for (const id of orderedIds) {
+			if (result.length >= batchSize) break;
+			if (!reviewedIds.has(id)) {
+				const char = charMap.get(id);
+				if (char) result.push(char);
+			}
+		}
+		return result;
 	}
 
 	function setDailyGoal(scriptId: string, goal: number): void {
@@ -170,6 +284,7 @@ function createLearnStore() {
 		load,
 		reset,
 		setDailyGoal,
+		getDashboardData,
 		getIntroBatch,
 		incrementIntroducedToday,
 		getIntroducedTodayCount,

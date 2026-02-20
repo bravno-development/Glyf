@@ -6,6 +6,7 @@
 	import { getScript, seedCharacters, type ScriptDefinition } from '$lib/services/scripts';
 	import { getDueCharacters, calculateNextReview } from '$lib/services/srs';
 	import { learnStore } from '$lib/stores/learn';
+	import { markPendingSync, syncToServer } from '$lib/services/sync';
 	import { api } from '$lib/services/api';
 	import { userStore } from '$lib/stores/user';
 	import AppShell from '$lib/components/AppShell.svelte';
@@ -178,6 +179,7 @@
 			itemId: item.character.id,
 			script: scriptId,
 		} as Review);
+		await markPendingSync(scriptId);
 		try {
 			await api.progress.submitAttempts({
 				sessionId,
@@ -204,6 +206,7 @@
 			if (introBatch.length > 0) {
 				learnStore.incrementIntroducedToday(scriptId, introBatch.length);
 			}
+			syncToServer(); // fire-and-forget — push local changes before returning to dashboard
 			goto('/dashboard');
 		}
 	}
