@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import { LayoutDashboard, PenTool, Languages, Settings } from "lucide-svelte";
+	import { LayoutDashboard, Languages, Settings } from "lucide-svelte";
 
 	const navLinks = [
 		{ href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-		{ href: "/learn", label: "Practice", icon: PenTool },
 		{ href: "/scripts", label: "Scripts", icon: Languages },
 		{ href: "/settings", label: "Settings", icon: Settings },
 	];
@@ -12,7 +11,6 @@
 	function isActive(href: string): boolean {
 		const path = page.url.pathname;
 		if (href === "/dashboard") return path === "/dashboard";
-		if (href === "/learn") return path === "/learn" || path.startsWith("/learn/");
 		if (href === "/scripts") return path === "/scripts" || path.startsWith("/scripts/");
 		if (href === "/settings") return path === "/settings";
 		return path === href;

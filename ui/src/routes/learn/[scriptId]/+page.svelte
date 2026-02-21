@@ -296,7 +296,7 @@
 		{:else if error && phase === 'quiz'}
 			<div class="flex flex-1 flex-col items-start justify-center gap-4 p-8">
 				<p class="text-[var(--color-error)]">{error}</p>
-				<a href="/learn" class="text-[var(--accent-green)] underline">Back to scripts</a>
+				<a href="/scripts" class="text-[var(--accent-green)] underline">Back to scripts</a>
 			</div>
 		{:else if phase === 'intro'}
 			<!-- Intro phase: Character Introduction -->
@@ -477,14 +477,14 @@
 					class="flex h-14 shrink-0 items-center justify-between border-b border-[var(--border)] bg-[var(--card)] px-6"
 				>
 					<a
-						href="/learn"
+						href="/scripts"
 						class="flex items-center gap-2 text-[var(--foreground)] no-underline hover:opacity-80"
 					>
 						<ArrowLeft size={20} class="shrink-0" />
-						<span class="text-[18px] font-semibold tracking-tight">Practice</span>
+						<span class="text-[18px] font-semibold tracking-tight">Scripts</span>
 					</a>
 					<a
-						href="/learn"
+						href="/scripts"
 						class="flex items-center justify-center rounded-full p-2 text-[var(--muted-foreground)] hover:bg-[var(--secondary)] hover:text-[var(--foreground)]"
 						aria-label="Close"
 					>

@@ -24,7 +24,7 @@
 
 	let scriptDef = $state<ScriptDefinition | null>(null);
 	let rows = $state<Array<{ title: string; content: ContentRow[] }>>([]);
-	let learnHref = $state("/learn");
+	let learnHref = $state("/scripts");
 	let learnLabel = $state("Start learning");
 	let loading = $state(true);
 	let error = $state<string | null>(null);

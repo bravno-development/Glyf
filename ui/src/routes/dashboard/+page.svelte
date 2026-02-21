@@ -385,17 +385,17 @@
 				<p class="text-[14px] text-[var(--muted-foreground)]">
 					You haven't started any script yet.
 					<a
-						href="/learn"
+						href="/scripts"
 						class="font-medium text-[var(--accent-green)] no-underline hover:underline"
 					>
-						Choose a script from Learn
+						Choose a script from Scripts
 					</a>
 					to see your stats here.
 				</p>
 			{/if}
 
 			<!-- Main Columns -->
-			<div class="flex flex-col gap-6 lg:flex-row">
+			<div class="flex flex-col gap-6 lg:flex-row lg:items-start">
 				<!-- Left Column -->
 				<div class="flex flex-1 flex-col gap-6">
 					<!-- Character Grid Card -->
@@ -407,9 +407,9 @@
 								class="text-[14px] text-[var(--muted-foreground)]"
 							>
 								You haven't started any script yet. <a
-									href="/learn"
+									href="/scripts"
 									class="font-medium text-[var(--accent-green)] no-underline hover:underline"
-									>Choose a script from Learn</a
+									>Choose a script from Scripts</a
 								> to begin.
 							</p>
 						</div>

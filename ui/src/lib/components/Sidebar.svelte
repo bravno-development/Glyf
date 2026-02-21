@@ -2,7 +2,6 @@
 	import { page } from "$app/state";
 	import {
 		LayoutDashboard,
-		PenTool,
 		Languages,
 		BarChart3,
 		Settings,
@@ -11,7 +10,6 @@
 
 	const learningLinks = [
 		{ href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-		{ href: "/learn", label: "Practice", icon: PenTool },
 		{ href: "/scripts", label: "Scripts", icon: Languages },
 	];
 
