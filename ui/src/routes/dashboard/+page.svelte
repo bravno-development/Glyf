@@ -645,7 +645,7 @@
 								Upcoming Reviews
 							</h2>
 							<a
-								href="/learn"
+								href="/dashboard/reviews/{activeScript}"
 								class="text-[12px] font-medium text-[var(--accent-green)] no-underline"
 								>View all</a
 							>
