@@ -5,13 +5,22 @@
 	import { api } from "$lib/services/api";
 	import { db } from "$lib/services/db";
 	import { getAvailableScripts, type ScriptDefinition } from "$lib/services/scripts";
-	import { getScriptProgress, type ScriptProgressItem } from "$lib/services/dashboard";
+	import {
+		getScriptProgress,
+		getUpcomingReviews,
+		type ScriptProgressItem,
+	} from "$lib/services/dashboard";
+	import { Play, RefreshCcw } from "lucide-svelte";
 	import AppShell from "$lib/components/AppShell.svelte";
+	import { learnStore } from "$lib/stores/learn";
+	import type { ScriptStudyState } from "$lib/services/dashboard";
 
 	let availableScripts: ScriptDefinition[] = $state([]);
 	let userScriptIds: string[] = $state([]);
 	let progress: ScriptProgressItem[] = $state([]);
 	let completedDates: Record<string, string> = $state({});
+	let dueCountByScript: Record<string, number> = $state({});
+	let studyStates: ScriptStudyState[] = $state([]);
 
 	const progressByScript = $derived(new Map(progress.map((p) => [p.script, p])));
 	const studying = $derived(
@@ -20,6 +29,18 @@
 	const mastered = $derived(progress.filter((p) => p.percentage === 100));
 	const studyingCount = $derived(studying.length);
 	const masteredCount = $derived(mastered.length);
+
+	// Per-script: disable Start Studying when nothing to study (matches dashboard logic)
+	const startStudyingDisabledByScript = $derived.by(() => {
+		const map = new Map<string, boolean>();
+		for (const s of studyStates) {
+			const hasUnlearnedGlyphs = s.masteryBreakdown.new > 0;
+			const charsLeftToday = s.glyfsToLearn.length;
+			const isDailyGoalMet = hasUnlearnedGlyphs && charsLeftToday === 0;
+			map.set(s.script, !hasUnlearnedGlyphs || isDailyGoalMet);
+		}
+		return map;
+	});
 
 	type AllScriptRow = {
 		def: ScriptDefinition;
@@ -90,6 +111,20 @@
 				}
 			}
 			completedDates = dates;
+
+			// Dashboard study state for Start Studying disabled logic (nothing to study / daily goal met)
+			await learnStore.load();
+			studyStates = await learnStore.getDashboardData();
+
+			// Per-script due review counts for Review button state
+			const due: Record<string, number> = {};
+			await Promise.all(
+				userScriptIds.map(async (scriptId) => {
+					const reviews = await getUpcomingReviews(scriptId, 200);
+					due[scriptId] = reviews.filter((r) => r.dueIn === "Now").length;
+				}),
+			);
+			dueCountByScript = due;
 		} catch {
 			goto("/onboarding");
 		}
@@ -142,8 +177,8 @@
 						{#each studying as item (item.script)}
 							{@const def = availableScripts.find((s) => s.id === item.script)}
 							{#if def}
-								<article
-									class="w-full min-w-0 max-w-[360px] flex-1 rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
+								<div
+									class="w-full min-w-0 rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)] sm:max-w-[360px] sm:flex-1"
 								>
 									<div class="flex flex-col gap-3 p-6">
 										<div class="flex items-center justify-between">
@@ -160,11 +195,7 @@
 													{def.name}
 												</span>
 											</div>
-											<span
-												class="rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-[12px] font-medium text-[var(--black)]"
-											>
-												Studying
-											</span>
+
 										</div>
 										<div class="flex justify-between text-[13px] text-[var(--muted-foreground)]">
 											<span>{item.percentage}% mastered</span>
@@ -184,16 +215,50 @@
 										</div>
 									</div>
 									<div
-										class="flex justify-end border-t border-[var(--border)] px-6 py-4"
+										class="flex flex-col gap-3 border-t border-[var(--border)] px-6 py-4 sm:flex-row sm:justify-end"
 									>
-										<a
-											href="/learn/{item.script}"
-											class="rounded-[var(--radius-pill)] bg-[var(--border)] px-4 py-2.5 text-[14px] font-medium text-[var(--foreground)] no-underline transition-colors hover:opacity-90"
-										>
-											Continue
-										</a>
+										{#if startStudyingDisabledByScript.get(item.script)}
+											<span
+												class="flex min-w-0 items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white opacity-50 cursor-not-allowed sm:justify-center"
+												aria-disabled="true"
+											>
+												<Play size={16} class="shrink-0 text-white" />
+												Start Studying
+											</span>
+										{:else}
+											<a
+												href="/learn/{item.script}"
+												class="flex min-w-0 items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[14px] font-semibold text-white no-underline transition-opacity hover:opacity-90 sm:justify-center"
+											>
+												<Play size={16} class="shrink-0 text-white" />
+												Start Studying
+											</a>
+										{/if}
+										{#if (dueCountByScript[item.script] ?? 0) > 0}
+											<a
+												href="/learn/{item.script}?mode=review"
+												class="flex min-w-0 items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] no-underline transition-opacity hover:opacity-90 sm:justify-center"
+											>
+												<RefreshCcw
+													size={16}
+													class="shrink-0 text-[var(--accent-review-foreground)]"
+												/>
+												Review
+											</a>
+										{:else}
+											<span
+												class="flex min-w-0 items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-[var(--accent-review)] px-5 py-2.5 text-[14px] font-semibold text-[var(--accent-review-foreground)] opacity-50 cursor-not-allowed sm:justify-center"
+												aria-disabled="true"
+											>
+												<RefreshCcw
+													size={16}
+													class="shrink-0 text-[var(--accent-review-foreground)]"
+												/>
+												Review
+											</span>
+										{/if}
 									</div>
-								</article>
+								</div>
 							{/if}
 						{/each}
 					</div>
@@ -244,29 +309,14 @@
 									>
 										{row.def.totalCharacters} chars
 									</span>
-									{#if row.isStudying}
-										<span
-											class="w-[90px] shrink-0 rounded-[var(--radius-pill)] bg-[var(--color-success)] px-3 py-1.5 text-center text-[12px] font-medium text-[var(--color-black)]"
-										>
-											Studying
-										</span>
-									{/if}
 									<div
 										class="flex w-full basis-full shrink-0 flex-wrap items-center gap-2 sm:basis-auto sm:w-auto justify-between"
 									>
 										<a
 											href={row.detailHref}
-											class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90"
+											class="flex min-w-0 shrink-0 items-center justify-center rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90 w-full sm:w-auto"
 										>
 											View Details
-										</a>
-										<a
-											href={row.learnHref}
-											class="shrink-0 rounded-[var(--radius-pill)] px-4 py-2.5 text-[13px] font-medium no-underline transition-opacity {row.isStudying
-												? 'bg-[var(--border)] text-[var(--card-foreground)] hover:opacity-90'
-												: 'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90'}"
-										>
-											{row.buttonLabel}
 										</a>
 									</div>
 								</div>

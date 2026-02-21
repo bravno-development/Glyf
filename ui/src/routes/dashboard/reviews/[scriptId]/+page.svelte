@@ -24,9 +24,12 @@
 
 	function dueLabel(dueIn: string): string {
 		if (dueIn === "Now") return "Due now";
-		if (dueIn.endsWith("m")) return `In ${dueIn} minutes`;
-		if (dueIn.endsWith("h")) return `In ${dueIn} hours`;
-		return `In ${dueIn} days`;
+		if (dueIn.endsWith("mo")) return `In ${dueIn.slice(0, -2)} months`;
+		if (dueIn.endsWith("m")) return `In ${dueIn.slice(0, -1)} min`;
+		if (dueIn.endsWith("h")) return `In ${dueIn.slice(0, -1)} hours`;
+		if (dueIn.endsWith("d")) return `In ${dueIn.slice(0, -1)} days`;
+		if (dueIn.endsWith("w")) return `In ${dueIn.slice(0, -1)} weeks`;
+		return `In ${dueIn}`;
 	}
 
 	const grouped = $derived.by(() => {
@@ -44,7 +47,7 @@
 	<main class="flex-1 overflow-y-auto bg-[var(--background)]">
 		<div class="mx-auto max-w-2xl px-4 py-8 md:px-6 md:py-10">
 			<!-- Header -->
-			<div class="mb-8">
+			<div>
 				<a
 					href="/dashboard"
 					class="mb-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[var(--muted-foreground)] no-underline transition-colors hover:text-[var(--foreground)]"
@@ -100,7 +103,7 @@
 				<div class="flex flex-col gap-4">
 					{#each grouped as [dueIn, items]}
 						<div
-							class="overflow-hidden rounded-[var(--radius-l)] bg-[var(--card)] shadow-[var(--shadow-card)]"
+							class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-card)]"
 						>
 							<!-- Group header -->
 							<div

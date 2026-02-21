@@ -35,7 +35,7 @@
 					{#each row.content as item (item.character + item.order)}
 						<div class="flex flex-col items-center gap-1.5">
 							<div
-								class="flex min-h-8 min-w-8 md:min-h-10 md:min-w-10 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--tile)] px-2 py-2 text-[16px] md:text-[18px] font-medium text-[var(--foreground)]"
+								class="flex min-h-11 min-w-11 md:min-h-12 md:min-w-12 items-center justify-center rounded-[var(--radius-xs)] bg-[var(--tile)] px-2.5 py-2.5 text-[22px] md:text-[24px] font-medium text-[var(--foreground)]"
 							>
 								{#if item.character.length === 1 && lowercaseFriendly}
 									<span class="pr-0.5 uppercase">{item.character}</span>
@@ -44,7 +44,7 @@
 									<span>{item.character}</span>
 								{/if}
 							</div>
-							<span class="text-[11px] md:text-[12px] text-[var(--muted-foreground)] text-center">
+							<span class="text-[12px] md:text-[13px] text-[var(--muted-foreground)] text-center">
 								{item.meaning}
 							</span>
 						</div>
