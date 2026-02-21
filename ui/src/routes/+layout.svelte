@@ -9,6 +9,7 @@
 	import { initPostHog, identifyUser, resetUser } from "$lib/services/analytics";
 	import ReminderBanner from "$lib/components/ReminderBanner.svelte";
 	import AdminBanner from "$lib/components/AdminBanner.svelte";
+	import CookieBanner from "$lib/components/CookieBanner.svelte";
 	import "../app.css";
 
 	let { children } = $props();
@@ -66,3 +67,4 @@
 	<ReminderBanner />
 	{@render children()}
 </div>
+<CookieBanner />

@@ -196,7 +196,7 @@
 				<span class="text-[13px] font-semibold tracking-[2px] text-[var(--accent-green)] uppercase">Growing library</span>
 				<h2 class="mt-4 text-[40px] font-bold tracking-tight text-[var(--foreground)] max-md:text-[28px]">One platform, every script</h2>
 				<p class="mt-4 max-w-[560px] text-[18px] leading-[1.5] text-[var(--text-tertiary)]">
-					We started with Japanese & Korean, and we're adding new writing systems regularly. Your next script is just around the corner.
+					We started with Greek & Korean, and we're adding new writing systems regularly. Your next script is just around the corner.
 				</p>
 			</div>
 			<div class="mt-14 flex flex-col gap-6 overflow-hidden">
