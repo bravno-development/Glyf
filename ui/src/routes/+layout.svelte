@@ -28,9 +28,13 @@
 				const { page } = getStores();
 				const pathname = get(page).url.pathname;
 				if (pathname !== "/onboarding" && !pathname.startsWith("/auth")) {
-					api.onboarding.status().then(({ onboarded }) => {
-						if (!onboarded) goto("/onboarding");
-					});
+					api.onboarding.status()
+						.then(({ onboarded }) => {
+							if (!onboarded) goto("/onboarding");
+						})
+						.catch(() => {
+							// offline or API unavailable — stay on current page
+						});
 				}
 			} else if (!state.isAuthenticated && wasAuthenticated) {
 				resetUser();
