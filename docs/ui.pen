@@ -1,5 +1,5 @@
 {
-  "version": "2.7",
+  "version": "2.8",
   "children": [
     {
       "type": "frame",
@@ -10939,7 +10939,7 @@
             "Fpzpi": {
               "content": "Glyf",
               "x": 48,
-              "y": 9.549308036657122,
+              "y": 9.54930803665712,
               "rotation": 0.19459847834390867
             },
             "hYFpr": {
@@ -19092,7 +19092,8 @@
                   "content": "Master writing systems from around the world with guided lessons, spaced repetition & a practice routine that fits your life.",
                   "lineHeight": 1.5,
                   "fontFamily": "Outfit",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -19187,7 +19188,8 @@
                   "fill": "$--primary",
                   "content": "あ",
                   "fontFamily": "Noto Sans JP",
-                  "fontSize": 120
+                  "fontSize": 120,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19199,7 +19201,8 @@
                   "fill": "$--accent-warm",
                   "content": "か",
                   "fontFamily": "Noto Sans JP",
-                  "fontSize": 72
+                  "fontSize": 72,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19211,7 +19214,8 @@
                   "fill": "$--primary",
                   "content": "ア",
                   "fontFamily": "Noto Sans JP",
-                  "fontSize": 96
+                  "fontSize": 96,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19223,7 +19227,8 @@
                   "fill": "#3D8A5A",
                   "content": "한",
                   "fontFamily": "Noto Sans KR",
-                  "fontSize": 100
+                  "fontSize": 100,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19235,7 +19240,8 @@
                   "fill": "$--accent-warm",
                   "content": "ب",
                   "fontFamily": "Noto Sans Arabic",
-                  "fontSize": 80
+                  "fontSize": 80,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19247,7 +19253,8 @@
                   "fill": "$--muted-foreground",
                   "content": "さ",
                   "fontFamily": "Noto Sans JP",
-                  "fontSize": 56
+                  "fontSize": 56,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19259,7 +19266,8 @@
                   "fill": "$--primary",
                   "content": "ㅎ",
                   "fontFamily": "Noto Sans KR",
-                  "fontSize": 64
+                  "fontSize": 64,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19271,7 +19279,8 @@
                   "fill": "#7B6B9E",
                   "content": "क",
                   "fontFamily": "Noto Sans Devanagari",
-                  "fontSize": 58
+                  "fontSize": 58,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -19283,7 +19292,8 @@
                   "fill": "$--accent-warm",
                   "content": "ក",
                   "fontFamily": "Noto Sans Khmer",
-                  "fontSize": 52
+                  "fontSize": 52,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -19339,7 +19349,8 @@
                   "content": "We started with Japanese & Korean, and we’re always adding more. Your next writing system is on its way.",
                   "textAlign": "center",
                   "fontFamily": "Outfit",
-                  "fontSize": 18
+                  "fontSize": 18,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -19426,7 +19437,8 @@
                           "content": "Hiragana & Katakana — 92 characters across two syllabaries. Perfect for beginners starting their Japanese journey.",
                           "lineHeight": 1.5,
                           "fontFamily": "Outfit",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -19576,7 +19588,8 @@
                           "content": "Hangul — 40 characters in one elegant, logical alphabet. Designed to be learnable in hours, not months.",
                           "lineHeight": 1.5,
                           "fontFamily": "Outfit",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -19726,7 +19739,8 @@
                           "content": "Abjad — 28 characters with connected letter forms. Learn to read & write right-to-left with confidence.",
                           "lineHeight": 1.5,
                           "fontFamily": "Outfit",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -19940,7 +19954,8 @@
                           "lineHeight": 1.5,
                           "textAlign": "center",
                           "fontFamily": "Outfit",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -20009,7 +20024,8 @@
                           "lineHeight": 1.5,
                           "textAlign": "center",
                           "fontFamily": "Outfit",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -20078,7 +20094,8 @@
                           "lineHeight": 1.5,
                           "textAlign": "center",
                           "fontFamily": "Outfit",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -20198,7 +20215,8 @@
                       "content": "Set a target that fits your schedule — 5 or 20 characters a day. Short, consistent sessions build real fluency.",
                       "lineHeight": 1.5,
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -20260,7 +20278,8 @@
                       "content": "Our algorithm adapts to your memory. Characters you struggle with appear more often; easy ones fade back.",
                       "lineHeight": 1.5,
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -20322,7 +20341,8 @@
                       "content": "Visual dashboards show mastery levels, streaks & character grids. Always know where you stand.",
                       "lineHeight": 1.5,
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -20384,7 +20404,8 @@
                       "content": "All character data lives on your device. Learn on the train, in the park, or anywhere without a connection.",
                       "lineHeight": 1.5,
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -20430,7 +20451,8 @@
               "content": "Free to use. No account required to begin. Just pick a script & start learning.",
               "textAlign": "center",
               "fontFamily": "Outfit",
-              "fontSize": 18
+              "fontSize": 18,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -20524,7 +20546,8 @@
                       "content": "Learn to read & write any script.\nMaster strokes, build memory, gain fluency.",
                       "lineHeight": 1.5,
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -20552,7 +20575,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Scripts",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -20561,7 +20585,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Features",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -20570,7 +20595,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Pricing",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -20598,7 +20624,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Blog",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -20607,7 +20634,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Character reference",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -20616,7 +20644,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Help centre",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -20644,7 +20673,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Privacy",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -20653,7 +20683,8 @@
                       "fill": "#FFFFFF88",
                       "content": "Terms",
                       "fontFamily": "Outfit",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -20682,7 +20713,8 @@
                   "fill": "#FFFFFF55",
                   "content": "2026 glyf. All rights reserved.",
                   "fontFamily": "Outfit",
-                  "fontSize": 13
+                  "fontSize": 13,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -20691,7 +20723,8 @@
                   "fill": "#FFFFFF55",
                   "content": "Made with care for learners everywhere",
                   "fontFamily": "Outfit",
-                  "fontSize": 13
+                  "fontSize": 13,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -20977,18 +21010,6 @@
                                       "fontWeight": "600"
                                     }
                                   ]
-                                },
-                                {
-                                  "id": "fZv49",
-                                  "type": "ref",
-                                  "ref": "qHX3A",
-                                  "name": "card1label",
-                                  "descendants": {
-                                    "1qRIv": {
-                                      "content": "Studying",
-                                      "fontSize": 12
-                                    }
-                                  }
                                 }
                               ]
                             },
@@ -21168,18 +21189,6 @@
                                       ]
                                     }
                                   ]
-                                },
-                                {
-                                  "id": "SoWAV",
-                                  "type": "ref",
-                                  "ref": "qHX3A",
-                                  "name": "newLabel",
-                                  "descendants": {
-                                    "1qRIv": {
-                                      "content": "Studying",
-                                      "fontSize": 12
-                                    }
-                                  }
                                 }
                               ]
                             },
