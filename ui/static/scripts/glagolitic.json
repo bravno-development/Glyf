@@ -1,5 +1,6 @@
 {
 	"id": "glagolitic",
+	"version": 1,
 	"language": "cu",
 	"name": "Glagolitic",
 	"description": "Historic Slavic script. 41 round Glagolitic letters used for Old Church Slavonic.",

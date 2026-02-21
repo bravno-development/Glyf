@@ -1,5 +1,6 @@
 {
 	"id": "katakana",
+	"version": 1,
 	"language": "ja",
 	"name": "Katakana",
 	"description": "Japanese syllabary used for loanwords, names, and emphasis. 46 basic characters plus ン, plus voiced (dakuten) and handakuten.",
