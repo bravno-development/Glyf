@@ -86,7 +86,10 @@ export async function syncDown(req: AuthRequest, res: Response) {
 
 		const syncData = (result.rows as Record<string, unknown>[]).map((row) => ({
 			script: row.script,
-			reviews: JSON.parse(row.review_data as string),
+			reviews:
+				typeof row.review_data === "string"
+					? JSON.parse(row.review_data)
+					: row.review_data,
 			lastSync: row.last_sync
 		}));
 
