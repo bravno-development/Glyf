@@ -16,6 +16,7 @@ const BATCH_SIZE = 5;
 const NEW_SCRIPT_LIMIT = 15;
 const STORAGE_KEY_PREFIX = "glyf_intros_";
 const REVIEW_KEYS_STORAGE = "glyf-review-option-keys";
+const SCRIPTS_CACHE_KEY = "glyf_user_scripts";
 const DEFAULT_REVIEW_KEYS = ["1", "2", "3", "4"];
 
 function getInitialReviewKeys(): string[] {
@@ -110,6 +111,26 @@ async function buildLessonOrderedIds(
 	return { ids, charMap, def };
 }
 
+async function getUserScriptsCached(): Promise<Array<{ script: string; dailyGoal: number }>> {
+	try {
+		const result = await api.user.getScripts();
+		if (typeof localStorage !== "undefined") {
+			localStorage.setItem(SCRIPTS_CACHE_KEY, JSON.stringify(result));
+		}
+		return result;
+	} catch {
+		if (typeof localStorage !== "undefined") {
+			try {
+				const raw = localStorage.getItem(SCRIPTS_CACHE_KEY);
+				if (raw) return JSON.parse(raw) as Array<{ script: string; dailyGoal: number }>;
+			} catch {
+				// corrupted cache — ignore
+			}
+		}
+		return [];
+	}
+}
+
 function createLearnStore() {
 	const { subscribe, set, update } = writable<LearnState>({
 		studyingScripts: [],
@@ -161,7 +182,7 @@ function createLearnStore() {
 		if (state.initialised) return;
 
 		try {
-			const userScripts = await api.user.getScripts();
+			const userScripts = await getUserScriptsCached();
 			if (userScripts.length === 0) {
 				update((s) => ({ ...s, initialised: true }));
 				return;
