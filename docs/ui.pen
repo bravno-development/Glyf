@@ -10939,7 +10939,7 @@
             "Fpzpi": {
               "content": "Glyf",
               "x": 48,
-              "y": 9.549308036657122,
+              "y": 9.54930803665712,
               "rotation": 0.19459847834390867
             },
             "hYFpr": {
@@ -37523,7 +37523,7 @@
                       "id": "JXH4o",
                       "name": "bc1",
                       "fill": "$--primary",
-                      "content": "Scripts",
+                      "content": "Writing Systems",
                       "fontFamily": "Outfit",
                       "fontSize": 14,
                       "fontWeight": "500"
@@ -37703,42 +37703,52 @@
                           "children": [
                             {
                               "type": "frame",
-                              "id": "HUHIZ",
-                              "name": "badge",
-                              "gap": 4,
+                              "id": "8ysKh",
+                              "name": "topRow",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
-                                  "id": "juNUp",
-                                  "name": "badgeIcon",
-                                  "width": 11,
-                                  "height": 11,
-                                  "iconFontName": "star",
-                                  "iconFontFamily": "lucide",
-                                  "fill": "$--accent-warm"
+                                  "type": "text",
+                                  "id": "Fgiig",
+                                  "name": "titleTxt",
+                                  "fill": "$--foreground",
+                                  "content": "Intensive pace",
+                                  "fontFamily": "Outfit",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "x8M4j",
-                                  "name": "badgeText",
-                                  "fill": "$--accent-warm",
-                                  "content": "Recommended",
-                                  "fontFamily": "Outfit",
-                                  "fontSize": 11,
-                                  "fontWeight": "600"
+                                  "type": "frame",
+                                  "id": "QdWeO",
+                                  "name": "badge",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "LoqTg",
+                                      "name": "bIcon",
+                                      "width": 11,
+                                      "height": 11,
+                                      "iconFontName": "star",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--accent-warm"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "4W7Fb",
+                                      "name": "bText",
+                                      "fill": "$--accent-warm",
+                                      "content": "Recommended",
+                                      "fontFamily": "Outfit",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 }
                               ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "IJWGh",
-                              "name": "spTitle",
-                              "fill": "$--foreground",
-                              "content": "Intensive pace",
-                              "fontFamily": "Outfit",
-                              "fontSize": 13,
-                              "fontWeight": "600"
                             },
                             {
                               "type": "text",
@@ -37898,8 +37908,8 @@
                   "name": "charAlpha",
                   "opacity": 0.9,
                   "fill": "$--primary",
-                  "content": "Α",
-                  "fontFamily": "Noto Sans",
+                  "content": "한",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 120,
                   "fontWeight": "normal"
                 },
@@ -37911,8 +37921,8 @@
                   "name": "charBeta",
                   "opacity": 0.6,
                   "fill": "$--accent-warm",
-                  "content": "β",
-                  "fontFamily": "Noto Sans",
+                  "content": "글",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 80,
                   "fontWeight": "normal"
                 },
@@ -37924,8 +37934,8 @@
                   "name": "charGamma",
                   "opacity": 0.4,
                   "fill": "$--primary",
-                  "content": "γ",
-                  "fontFamily": "Noto Sans",
+                  "content": "ㅎ",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 96,
                   "fontWeight": "normal"
                 },
@@ -37937,8 +37947,8 @@
                   "name": "charDelta",
                   "opacity": 0.7,
                   "fill": "#3D8A5A",
-                  "content": "Δ",
-                  "fontFamily": "Noto Sans",
+                  "content": "ㄱ",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 100,
                   "fontWeight": "normal"
                 },
@@ -37950,8 +37960,8 @@
                   "name": "charSigma",
                   "opacity": 0.5,
                   "fill": "$--accent-warm",
-                  "content": "Σ",
-                  "fontFamily": "Noto Sans",
+                  "content": "ㅁ",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 72,
                   "fontWeight": "normal"
                 },
@@ -37963,8 +37973,8 @@
                   "name": "charOmega",
                   "opacity": 0.35,
                   "fill": "$--muted-foreground",
-                  "content": "Ω",
-                  "fontFamily": "Noto Sans",
+                  "content": "ㅅ",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 56,
                   "fontWeight": "normal"
                 },
@@ -37976,8 +37986,8 @@
                   "name": "charPhi",
                   "opacity": 0.45,
                   "fill": "#7B6B9E",
-                  "content": "Φ",
-                  "fontFamily": "Noto Sans",
+                  "content": "ㄴ",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 58,
                   "fontWeight": "normal"
                 },
@@ -37989,8 +37999,8 @@
                   "name": "charTheta",
                   "opacity": 0.4,
                   "fill": "$--primary",
-                  "content": "Θ",
-                  "fontFamily": "Noto Sans",
+                  "content": "ㅇ",
+                  "fontFamily": "Noto Sans KR",
                   "fontSize": 52,
                   "fontWeight": "normal"
                 }
@@ -38531,7 +38541,7 @@
                       "id": "WcQp6",
                       "name": "footerCol2Title",
                       "fill": "#FFFFFF99",
-                      "content": "Company",
+                      "content": "Resources",
                       "fontFamily": "Outfit",
                       "fontSize": 13,
                       "fontWeight": "600",
@@ -38542,7 +38552,7 @@
                       "id": "POf6X",
                       "name": "fc2l1",
                       "fill": "#FFFFFFBB",
-                      "content": "About",
+                      "content": "Writing Systems",
                       "fontFamily": "Outfit",
                       "fontSize": 14,
                       "fontWeight": "normal"
@@ -38552,7 +38562,7 @@
                       "id": "RfLuJ",
                       "name": "fc2l2",
                       "fill": "#FFFFFFBB",
-                      "content": "Blog",
+                      "content": "Documentation",
                       "fontFamily": "Outfit",
                       "fontSize": 14,
                       "fontWeight": "normal"
@@ -38562,7 +38572,7 @@
                       "id": "vFIAz",
                       "name": "fc2l3",
                       "fill": "#FFFFFFBB",
-                      "content": "Contact",
+                      "content": "Support",
                       "fontFamily": "Outfit",
                       "fontSize": 14,
                       "fontWeight": "normal"
@@ -38603,6 +38613,16 @@
                       "name": "fc3l2",
                       "fill": "#FFFFFFBB",
                       "content": "Terms",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "U9pDR",
+                      "name": "fc3l2",
+                      "fill": "#FFFFFFBB",
+                      "content": "Cookies",
                       "fontFamily": "Outfit",
                       "fontSize": 14,
                       "fontWeight": "normal"
