@@ -126,9 +126,22 @@
 	];
 
 	const footerLinks = {
-		Product: ["Scripts", "Features", "Pricing", "Changelog"],
-		Resources: ["Blog", "Documentation", "Community", "Support"],
-		Legal: ["Privacy", "Terms", "Cookies"],
+		Product: [
+			{ label: "Scripts", link: "#scripts" },
+			{ label: "Features", link: "#features" },
+			{ label: "Pricing", link: "/pricing" },
+			{ label: "Changelog", link: "/changelog" },
+		],
+		Resources: [
+			{ label: "Blog", link: "/blog" },
+			{ label: "Documentation", link: "/documentation" },
+			{ label: "Support", link: "/support" },
+		],
+		Legal: [
+			{ label: "Privacy", link: "/legal/privacy" },
+			{ label: "Terms", link: "/legal/terms" },
+			{ label: "Cookies", link: "/legal/cookies" },
+		],
 	};
 
 </script>
@@ -274,8 +287,8 @@
 						<div>
 							<h4 class="text-[13px] font-semibold tracking-[1px] text-[var(--text-foreground)] uppercase">{heading}</h4>
 							<ul class="mt-4 flex flex-col gap-3">
-								{#each links as link (link)}
-									<li><a href="/{link.toLowerCase()}" class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{link}</a></li>
+								{#each links as item (item.label)}
+									<li><a href={item.link} class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{item.label}</a></li>
 								{/each}
 							</ul>
 						</div>
