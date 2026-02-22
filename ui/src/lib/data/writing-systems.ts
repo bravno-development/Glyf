@@ -68,7 +68,7 @@ export const writingSystems: WritingSystem[] = [
 	},
 	{
 		slug: "greek",
-		title: "Greek",
+		title: "Greek alphabet",
 		description: "The Greek alphabet. Foundation for Modern and Ancient Greek.",
 		longDescription: "The Greek alphabet has been in continuous use since around 750 BC, making it one of the oldest writing systems still in everyday use. Internalise the 24 letters through active recall & master common diphthongs to unlock reading modern Greek text.",
 		picture: "/images/writing-systems/greek.png",

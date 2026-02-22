@@ -48,7 +48,7 @@
 		<a href="/" class="text-[28px] font-bold text-[var(--foreground)] no-underline">glyf</a>
 	</header>
 
-	<main class="mx-auto w-full max-w-4xl px-20 py-16 max-md:px-6">
+	<main class="mx-auto w-full min-h-screen max-w-4xl px-20 py-16 max-md:px-6">
 		<h1 class="text-[40px] font-bold tracking-tight text-[var(--foreground)] max-md:text-[28px]">Writing systems</h1>
 		<p class="mt-4 max-w-[560px] text-[18px] leading-[1.5] text-[var(--text-tertiary)]">
 			Explore alphabets and scripts from around the world. Each guide introduces a writing system and how you can learn it with Glyf.
