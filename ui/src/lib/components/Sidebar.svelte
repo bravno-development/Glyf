@@ -3,9 +3,7 @@
 	import {
 		LayoutDashboard,
 		Languages,
-		BarChart3,
 		Settings,
-		PanelLeft,
 	} from "lucide-svelte";
 
 	const learningLinks = [
@@ -32,13 +30,6 @@
 		>
 			glyf
 		</a>
-		<button
-			type="button"
-			class="flex size-9 items-center justify-center rounded-[var(--radius-pill)] text-[var(--sidebar-foreground)] transition-colors hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-accent-foreground)]"
-			aria-label="Toggle sidebar"
-		>
-			<PanelLeft size={20} strokeWidth={1.5} />
-		</button>
 	</div>
 
 	<nav class="flex flex-1 flex-col gap-6 px-4 pt-2">
