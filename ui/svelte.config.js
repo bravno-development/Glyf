@@ -10,6 +10,12 @@ export default {
 			fallback: 'index.html',
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				if (referrer?.includes('/writing-systems')) return;
+				throw new Error(message);
+			}
+		}
 	}
 };
