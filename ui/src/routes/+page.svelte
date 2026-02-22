@@ -133,9 +133,9 @@
 			{ label: "Changelog", link: "/changelog" },
 		],
 		Resources: [
-			{ label: "Blog", link: "/blog" },
+			{ label: "Writing systems", link: "/writing-systems" },
 			{ label: "Documentation", link: "/documentation" },
-			{ label: "Support", link: "/support" },
+			{ label: "Support", link: "/legal/privacy" },
 		],
 		Legal: [
 			{ label: "Privacy", link: "/legal/privacy" },
