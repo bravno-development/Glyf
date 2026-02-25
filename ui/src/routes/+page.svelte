@@ -179,7 +179,7 @@
 					Learn to read<br />& write any script
 				</h1>
 				<p class="mt-6 max-w-[520px] text-[20px] leading-[1.5] text-[var(--text-tertiary)] max-md:text-[17px]">
-					Master writing systems from around the world with guided lessons, spaced repetition & a practice routine that fits your life.
+					Master writing systems from around the world with guided phases, spaced repetition & a practice routine that fits your life.
 				</p>
 				<div class="mt-8 flex items-center gap-4">
 					{#if isLoggedIn}

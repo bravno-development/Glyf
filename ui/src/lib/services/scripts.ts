@@ -19,7 +19,7 @@ export interface ScriptExtraSection {
 	characters: ScriptExtraCharacter[];
 }
 
-export interface CourseLesson {
+export interface CoursePhase {
 	id: string;
 	title: string;
 	characterIds?: string[];
@@ -37,25 +37,25 @@ export interface ScriptDefinition {
 	lowercaseFriendly?: boolean;
 	characters: ScriptCharacter[];
 	extra?: ScriptExtraSection[];
-	course?: { lessons: CourseLesson[] };
+	course?: { phases: CoursePhase[] };
 }
 
-export interface LessonContentRow {
+export interface PhaseContentRow {
 	character: string;
 	meaning: string;
 	order: number;
 }
 
-/** Resolve a lesson to content rows (characterIds → characters by id; extraTitles → extra sections by title). */
-export function getLessonContent(
+/** Resolve a phase to content rows (characterIds → characters by id; extraTitles → extra sections by title). */
+export function getPhaseContent(
 	def: ScriptDefinition,
-	lesson: CourseLesson,
-): LessonContentRow[] {
-	const rows: LessonContentRow[] = [];
+	phase: CoursePhase,
+): PhaseContentRow[] {
+	const rows: PhaseContentRow[] = [];
 	const charMap = new Map(def.characters.map((c) => [c.id, c]));
 	let order = 0;
-	if (lesson.characterIds?.length) {
-		for (const id of lesson.characterIds) {
+	if (phase.characterIds?.length) {
+		for (const id of phase.characterIds) {
 			const c = charMap.get(id);
 			if (c)
 				rows.push({
@@ -65,9 +65,9 @@ export function getLessonContent(
 				});
 		}
 	}
-	if (lesson.extraTitles?.length && def.extra?.length) {
+	if (phase.extraTitles?.length && def.extra?.length) {
 		const extraByTitle = new Map(def.extra.map((s) => [s.title, s]));
-		for (const title of lesson.extraTitles) {
+		for (const title of phase.extraTitles) {
 			const section = extraByTitle.get(title);
 			if (section) {
 				for (const c of section.characters) {

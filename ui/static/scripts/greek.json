@@ -298,10 +298,10 @@
 		}
 	],
 	"course": {
-		"lessons": [
+		"phases": [
 			{
-				"id": "greek-lesson-1",
-				"title": "Lesson 1",
+				"id": "greek-phase-1",
+				"title": "Phase 1",
 				"characterIds": [
 					"greek-alpha",
 					"greek-beta",
@@ -330,8 +330,8 @@
 				]
 			},
 			{
-				"id": "greek-lesson-2",
-				"title": "Lesson 2",
+				"id": "greek-phase-2",
+				"title": "Phase 2",
 				"extraTitles": [
 					"Diphthongs",
 					"Consonant combinations",

@@ -1,10 +1,5 @@
 [
-	"hiragana",
-	"katakana",
 	"hangul",
-	"kannada",
 	"greek",
-	"cyrillic",
-	"glagolitic",
-	"geez"
+	"arabic_farsi"
 ]

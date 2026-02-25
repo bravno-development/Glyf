@@ -136,18 +136,18 @@
 						</p>
 					</div>
 
-					<!-- Right: lesson cards -->
+					<!-- Right: phases cards -->
 					<div class="flex flex-1 flex-col gap-4">
-						{#each script.approach.lessons as lesson, i (lesson.title)}
+						{#each script.approach.phases as phase, i (phase.title)}
 							<div class="rounded-[var(--radius-m)] bg-[var(--card)] px-6 py-5 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
 								<div class="flex items-start gap-4">
 									<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-light-green)]">
-										<span class="text-[15px] font-bold text-[var(--accent-green)]">{lesson.icon}</span>
+										<span class="text-[15px] font-bold text-[var(--accent-green)]">{phase.icon}</span>
 									</div>
 									<div>
-										<div class="mb-1 text-[12px] font-medium text-[var(--text-tertiary)]">Lesson {i + 1}</div>
-										<h3 class="text-[16px] font-semibold text-[var(--foreground)]">{lesson.title}</h3>
-										<p class="mt-1.5 text-[14px] leading-[1.55] text-[var(--text-tertiary)]">{lesson.description}</p>
+										<div class="mb-1 text-[12px] font-medium text-[var(--text-tertiary)]">Phase {i + 1}</div>
+										<h3 class="text-[16px] font-semibold text-[var(--foreground)]">{phase.title}</h3>
+										<p class="mt-1.5 text-[14px] leading-[1.55] text-[var(--text-tertiary)]">{phase.description}</p>
 									</div>
 								</div>
 							</div>

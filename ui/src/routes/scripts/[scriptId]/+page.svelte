@@ -5,7 +5,7 @@
 	import { userStore } from "$lib/stores/user";
 	import {
 		getCharactersInOrder,
-		getLessonContent,
+		getPhaseContent,
 		getScript,
 		type ScriptDefinition,
 	} from "$lib/services/scripts";
@@ -52,11 +52,11 @@
 			if (def.description) {
 				sectionRows.push({ title: "Overview", content: [{ character: "", meaning: def.description, order: 0 }] });
 			}
-			if (def.course?.lessons?.length) {
-				for (const lesson of def.course.lessons) {
-					const content = getLessonContent(def, lesson);
+			if (def.course?.phases?.length) {
+				for (const phase of def.course.phases) {
+					const content = getPhaseContent(def, phase);
 					if (content.length > 0) {
-						sectionRows.push({ title: lesson.title, content });
+						sectionRows.push({ title: phase.title, content });
 					}
 				}
 			} else if (def.characters?.length || def.extra?.length) {

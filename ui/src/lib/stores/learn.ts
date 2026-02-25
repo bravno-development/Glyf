@@ -48,9 +48,9 @@ export interface LearnState {
 
 /**
  * Returns character IDs in lesson order for a script.
- * Uses course.lessons if defined, otherwise falls back to the order field.
+ * Uses course.phases if defined, otherwise falls back to the order field.
  */
-async function buildLessonOrderedIds(
+async function buildPhaseOrderedIds(
 	scriptId: string,
 ): Promise<{
 	ids: string[];
@@ -83,19 +83,19 @@ async function buildLessonOrderedIds(
 	const charMap = new Map(characters.map((c) => [c.id, c]));
 
 	let ids: string[];
-	if (def.course?.lessons?.length) {
+	if (def.course?.phases?.length) {
 		const seen = new Set<string>();
 		const allIds = new Set(characters.map((c) => c.id));
 		ids = [];
-		for (const lesson of def.course.lessons) {
-			for (const id of lesson.characterIds ?? []) {
+		for (const phase of def.course.phases) {
+			for (const id of phase.characterIds ?? []) {
 				if (allIds.has(id) && !seen.has(id)) {
 					ids.push(id);
 					seen.add(id);
 				}
 			}
 		}
-		// Append any chars not covered by lessons, sorted by order
+		// Append any chars not covered by phases, sorted by order
 		const byOrder = [...characters].sort(
 			(a, b) => (a.order ?? 999) - (b.order ?? 999),
 		);
@@ -272,12 +272,12 @@ function createLearnStore() {
 				const [def, reviews, { ids: orderedIds }] = await Promise.all([
 					getScript(scriptId),
 					db.reviews.where("script").equals(scriptId).toArray(),
-					buildLessonOrderedIds(scriptId),
+					buildPhaseOrderedIds(scriptId),
 				]);
 
 				const reviewMap = new Map(reviews.map((r) => [r.itemId, r]));
 
-				// glyfsToLearn: new glyphs (never seen) in lesson order, capped to remaining daily quota
+				// glyfsToLearn: new glyphs (never seen) in phase order, capped to remaining daily quota
 				const glyfsToLearn: string[] = [];
 				for (const id of orderedIds) {
 					if (glyfsToLearn.length >= remainingToday) break;
@@ -337,33 +337,33 @@ function createLearnStore() {
 			ids: orderedIds,
 			charMap,
 			def,
-		} = await buildLessonOrderedIds(scriptId);
+		} = await buildPhaseOrderedIds(scriptId);
 
-		// Build charId → lessonIndex map (chars outside all lessons get index -1)
-		const charLesson = new Map<string, number>();
-		if (def.course?.lessons?.length) {
-			def.course.lessons.forEach((lesson, i) => {
-				for (const id of lesson.characterIds ?? []) {
-					if (!charLesson.has(id)) charLesson.set(id, i);
+		// Build charId → phaseIndex map (chars outside all phases get index -1)
+		const charPhase = new Map<string, number>();
+		if (def.course?.phases?.length) {
+			def.course.phases.forEach((phase, i) => {
+				for (const id of phase.characterIds ?? []) {
+					if (!charPhase.has(id)) charPhase.set(id, i);
 				}
 			});
 		}
 
-		// Find the lesson of the first unseen char (-1 = outside all lessons)
-		let currentLesson = -1;
+		// Find the phase of the first unseen char (-1 = outside all phases)
+		let currentPhase = -1;
 		for (const id of orderedIds) {
 			if (!reviewedIds.has(id)) {
-				currentLesson = charLesson.get(id) ?? -1;
+				currentPhase = charPhase.get(id) ?? -1;
 				break;
 			}
 		}
 
-		// Collect unseen chars from the current lesson only, up to batchSize
+		// Collect unseen chars from the current phase only, up to batchSize
 		const result: Character[] = [];
 		for (const id of orderedIds) {
 			if (result.length >= batchSize) break;
-			const lesson = charLesson.get(id) ?? -1;
-			if (!reviewedIds.has(id) && lesson === currentLesson) {
+			const phase = charPhase.get(id) ?? -1;
+			if (!reviewedIds.has(id) && phase === currentPhase) {
 				const char = charMap.get(id);
 				if (char) result.push(char);
 			}
