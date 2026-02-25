@@ -10939,7 +10939,7 @@
             "Fpzpi": {
               "content": "Glyf",
               "x": 48,
-              "y": 9.54930803665712,
+              "y": 9.549308036657122,
               "rotation": 0.19459847834390867
             },
             "hYFpr": {
@@ -38670,6 +38670,124 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wWeuo",
+      "x": 456,
+      "y": 12413,
+      "name": "farsi language script",
+      "width": 420,
+      "height": 420,
+      "fill": "$--tile",
+      "cornerRadius": 40,
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "JJaEV",
+          "x": 41,
+          "y": -19,
+          "name": "charAlpha",
+          "opacity": 0.9,
+          "fill": "$--primary",
+          "content": "ف",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 120,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "9fepU",
+          "x": 310,
+          "y": 15,
+          "name": "charBeta",
+          "opacity": 0.6,
+          "fill": "$--accent-warm",
+          "content": "ا",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 80,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "NyAN0",
+          "x": 250,
+          "y": 180,
+          "name": "charGamma",
+          "opacity": 0.4,
+          "fill": "$--primary",
+          "content": "ر",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 96,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "JYmnh",
+          "x": 52,
+          "y": 186,
+          "name": "charDelta",
+          "opacity": 0.7,
+          "fill": "#3D8A5A",
+          "content": "س",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 100,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "hVc5A",
+          "x": 231,
+          "y": 84,
+          "name": "charSigma",
+          "opacity": 0.5,
+          "fill": "$--accent-warm",
+          "content": "ی",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 72,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "SSQvp",
+          "x": 320,
+          "y": 320,
+          "name": "charOmega",
+          "opacity": 0.35,
+          "fill": "$--muted-foreground",
+          "content": "ش",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 56,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "SrjHg",
+          "x": 173,
+          "y": 149,
+          "name": "charPhi",
+          "opacity": 0.45,
+          "fill": "#7B6B9E",
+          "content": "پ",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 58,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "A7GNz",
+          "x": 77,
+          "y": 320,
+          "name": "charTheta",
+          "opacity": 0.4,
+          "fill": "$--primary",
+          "content": "گ",
+          "fontFamily": "Noto Sans Arabic",
+          "fontSize": 52,
+          "fontWeight": "normal"
         }
       ]
     }
