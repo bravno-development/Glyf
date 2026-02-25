@@ -11,6 +11,18 @@
 	const pageDescription = script.description;
 	const heroImageUrl = `${baseUrl}${script.picture}`;
 
+	// Grid placement for the 7 Perso-Arabic phases:
+	// col 1: phase 1 only | col 2: phases 2-4 | col 3: phases 5-7
+	const persoArabicGrid: Record<number, { col: number; row: number }> = {
+		0: { col: 1, row: 1 },
+		1: { col: 2, row: 1 },
+		2: { col: 2, row: 2 },
+		3: { col: 2, row: 3 },
+		4: { col: 3, row: 1 },
+		5: { col: 3, row: 2 },
+		6: { col: 3, row: 3 },
+	};
+
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'Article',
@@ -136,11 +148,15 @@
 						</p>
 					</div>
 
-					<!-- Right: phases cards -->
-					<div class="flex flex-1 flex-col gap-4">
+					<!-- Right: phases -->
+					<div class="{script.slug === 'perso_arabic' ? 'flex-[2] flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3' : 'flex flex-1 flex-col'} gap-4">
 						{#each script.approach.phases as phase, i (phase.title)}
-							<div class="rounded-[var(--radius-m)] bg-[var(--card)] px-6 py-5 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
-								<div class="flex items-start gap-4">
+							<div
+								style={script.slug === 'perso_arabic' && persoArabicGrid[i]
+									? `grid-column-start:${persoArabicGrid[i].col};grid-row-start:${persoArabicGrid[i].row}`
+									: ''}
+								class="rounded-[var(--radius-m)] bg-[var(--card)] px-6 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
+								<div class="flex flex-col items-start gap-4">
 									<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-light-green)]">
 										<span class="text-[15px] font-bold text-[var(--accent-green)]">{phase.icon}</span>
 									</div>

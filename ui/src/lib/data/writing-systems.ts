@@ -67,6 +67,63 @@ export const writingSystems: WritingSystem[] = [
 		},
 	},
 	{
+		slug: "perso_arabic",
+		title: "Perso-Arabic alphabet",
+		description: "The Persian alphabet. Read and write Farsi using the Perso-Arabic script.",
+		longDescription: "The Perso-Arabic script is written right-to-left and has been used to write Persian for over a thousand years. It builds on the Arabic alphabet with four extra letters unique to Persian (پ، چ، ژ، گ). Most letters change shape depending on their position in a word, and short vowels are usually omitted in everyday text — making it a rewarding system to decode once you know the patterns.",
+		picture: "/images/writing-systems/perso_arabic.png",
+		stats: [
+			{ value: 32, label: "letters" },
+			{ value: 3, label: "vowel marks" },
+		],
+		studyPlan: {
+			beginner: { perDay: 5, coreIn: "7 days" },
+			intensive: { perDay: 10, coreIn: "4 days" },
+			recommended: "beginner",
+		},
+		approach: {
+			title: "A structured approach to the Persian alphabet",
+			description: "Seven phases introduce letters in order of usefulness — high-frequency letters first, rare Arabic loanword letters last. Short vowel marks come first so you can read fully vocalised practice text from day one.",
+			phases: [
+				{
+					icon: "ـَ",
+					title: "Short vowel marks",
+					description: "Learn the three vowel marks (a, e, o) before any letters. Practice text uses them throughout, so you can decode words accurately from the very first phase.",
+				},
+				{
+					icon: "ب",
+					title: "Core consonants",
+					description: "Five of the most common letters: ب، ک، ن، م، ی. These building blocks appear in hundreds of everyday Persian words.",
+				},
+				{
+					icon: "ا",
+					title: "Non-connectors",
+					description: "Eight letters that only connect to the right, never to the following letter: ا، آ، و، ر، ز، ژ، د، ذ. Knowing which letters break the join is key to reading fluently.",
+				},
+				{
+					icon: "ع",
+					title: "Four-form letters",
+					description: "Three letters whose shape changes based on whether they connect on both sides, just one side, or neither: ع، غ، ه. The trickiest shapes in the script.",
+				},
+				{
+					icon: "ف",
+					title: "More connectors",
+					description: "Five more high-frequency letters: ف، ق، ل، ت، خ. With these done you can read the vast majority of everyday Persian text.",
+				},
+				{
+					icon: "پ",
+					title: "Persian-specific letters",
+					description: "The four letters unique to Persian — پ، چ، ژ، گ — plus two more common connectors: ج، س، ش. None of these exist in the Arabic alphabet.",
+				},
+				{
+					icon: "ص",
+					title: "Arabic loanword letters",
+					description: "Six letters borrowed from Arabic that share their sound with a letter you already know: ث، ح، ص، ض، ط، ظ. They appear mainly in Arabic loanwords and formal vocabulary.",
+				},
+			],
+		},
+	},
+	{
 		slug: "greek",
 		title: "Greek alphabet",
 		description: "The Greek alphabet. Foundation for Modern and Ancient Greek.",
