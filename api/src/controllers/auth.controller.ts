@@ -3,6 +3,7 @@ import { create } from "../../imports.ts";
 import { query } from "../config/database.ts";
 import { sendMagicLinkEmail } from "../services/email.ts";
 import type { AuthResponse } from "../models/types.ts";
+import { CookieName } from "../constants/cookieNames.ts";
 
 const JWT_SECRET = Deno.env.get("JWT_SECRET") || "change_me_in_production";
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
@@ -52,7 +53,7 @@ async function issueTokenPair(
 	);
 
 	const cookieOptions: string[] = [
-		`refreshToken=${refreshToken}`,
+		`${CookieName.RefreshToken}=${refreshToken}`,
 		"HttpOnly",
 		"SameSite=Strict",
 		"Path=/api/auth"
@@ -178,7 +179,7 @@ export async function verifyMagicLink(req: Request, res: Response) {
 export async function refreshTokens(req: Request, res: Response) {
 	try {
 		const cookieHeader = req.headers.cookie ?? "";
-		const match = cookieHeader.match(/(?:^|;\s*)refreshToken=([^;]+)/);
+		const match = cookieHeader.match(new RegExp(`(?:^|;\\s*)${CookieName.RefreshToken}=([^;]+)`));
 		const refreshToken = match?.[1];
 
 		if (!refreshToken) {
@@ -215,7 +216,7 @@ export async function refreshTokens(req: Request, res: Response) {
 
 export function logout(req: Request, res: Response) {
 	const cookieHeader = req.headers.cookie ?? "";
-	const match = cookieHeader.match(/(?:^|;\s*)refreshToken=([^;]+)/);
+	const match = cookieHeader.match(new RegExp(`(?:^|;\\s*)${CookieName.RefreshToken}=([^;]+)`));
 	const refreshToken = match?.[1];
 
 	if (refreshToken) {
@@ -231,6 +232,6 @@ export function logout(req: Request, res: Response) {
 function clearRefreshCookie(res: Response) {
 	res.setHeader(
 		"Set-Cookie",
-		"refreshToken=; HttpOnly; SameSite=Strict; Path=/api/auth; Max-Age=0"
+		`${CookieName.RefreshToken}=; HttpOnly; SameSite=Strict; Path=/api/auth; Max-Age=0`
 	);
 }
