@@ -124,24 +124,25 @@
 		}
 	});
 
+	async function loadDashboard(): Promise<void> {
+		await learnStore.load();
+		studyStates = await learnStore.getDashboardData();
+		weeklyActivity = await getWeeklyActivity();
+
+		const currentScript = studyStates.some((s) => s.script === activeScript)
+			? activeScript
+			: (studyStates[0]?.script ?? "");
+		activeScript = currentScript;
+		await loadGridAndReviews(currentScript);
+	}
+
 	async function refreshDashboard(): Promise<void> {
 		refreshing = true;
 		try {
 			// Push local changes first, then pull — ensures a clean baseline
 			await syncToServer();
 			await syncFromServer();
-
-			await learnStore.load();
-			studyStates = await learnStore.getDashboardData();
-			weeklyActivity = await getWeeklyActivity();
-
-			const currentScript = studyStates.some(
-				(s) => s.script === activeScript,
-			)
-				? activeScript
-				: (studyStates[0]?.script ?? "");
-			activeScript = currentScript;
-			await loadGridAndReviews(currentScript);
+			await loadDashboard();
 		} catch {
 			// IndexedDB may not be populated yet — show zeroes
 		} finally {
@@ -151,7 +152,7 @@
 
 	onMount(async () => {
 		try {
-			await refreshDashboard();
+			await loadDashboard();
 		} catch {
 			// IndexedDB may not be populated yet — show zeroes
 		}

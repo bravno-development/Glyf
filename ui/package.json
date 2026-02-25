@@ -24,6 +24,8 @@
 		"vite-plugin-pwa": "^1.0.0"
 	},
 	"dependencies": {
+		"axios": "^1.13.5",
+		"axios-auth-refresh": "^3.3.6",
 		"dexie": "^4.0.0",
 		"lucide-svelte": "^0.460.0",
 		"posthog-js": "^1.345.4",

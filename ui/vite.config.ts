@@ -6,6 +6,12 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
 	server: {
 		allowedHosts: ["glyf.bravno.com"],
+		proxy: {
+			"/api": {
+				target: process.env.VITE_API_URL || "http://localhost:8000",
+				changeOrigin: true,
+			},
+		},
 	},
 	build: {
 		minify: "esbuild",
