@@ -4,7 +4,9 @@
 		LayoutDashboard,
 		Languages,
 		Settings,
+		LogOut,
 	} from "lucide-svelte";
+	import { userStore } from "$lib/stores/user";
 
 	const learningLinks = [
 		{ href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -17,6 +19,11 @@
 
 	function isActive(href: string): boolean {
 		return page.url.pathname === href;
+	}
+
+	async function handleLogout() {
+		userStore.logout();
+		window.location.href = "/auth/login";
 	}
 </script>
 
@@ -78,6 +85,15 @@
 						</a>
 					</li>
 				{/each}
+				<li>
+					<button
+						on:click={handleLogout}
+						class="w-full flex items-center gap-3 rounded-[var(--radius-m)] py-3 pl-6 pr-4 text-[14px] font-medium transition-colors border-0 bg-transparent cursor-pointer text-[var(--sidebar-foreground)] hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-accent-foreground)]"
+					>
+						<LogOut size={18} strokeWidth={1.5} />
+						Logout
+					</button>
+				</li>
 			</ul>
 		</div>
 	</nav>

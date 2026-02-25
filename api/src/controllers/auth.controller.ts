@@ -6,8 +6,9 @@ import type { AuthResponse } from "../models/types.ts";
 
 const JWT_SECRET = Deno.env.get("JWT_SECRET") || "change_me_in_production";
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
+const REFRESH_TOKEN_TTL_DAYS = 14;
 
-async function generateToken(userId: string): Promise<string> {
+async function generateAccessToken(userId: string): Promise<string> {
 	const key = await crypto.subtle.importKey(
 		"raw",
 		new TextEncoder().encode(JWT_SECRET),
@@ -18,7 +19,7 @@ async function generateToken(userId: string): Promise<string> {
 
 	return await create(
 		{ alg: "HS256", typ: "JWT" },
-		{ sub: userId, exp: Date.now() / 1000 + 7 * 24 * 60 * 60 },
+		{ sub: userId, exp: Math.floor(Date.now() / 1000) + 60 * 60 },
 		key
 	);
 }
@@ -36,6 +37,35 @@ function generateCode(): string {
 	return num.toString().padStart(6, "0");
 }
 
+async function issueTokenPair(
+	userId: string,
+	rememberMe: boolean,
+	res: Response
+): Promise<string> {
+	const accessToken = await generateAccessToken(userId);
+	const refreshToken = generateRandomToken();
+	const expiresAt = new Date(Date.now() + REFRESH_TOKEN_TTL_DAYS * 24 * 60 * 60 * 1000);
+
+	await query(
+		`INSERT INTO refresh_tokens (user_id, token, expires_at) VALUES ($1, $2, $3)`,
+		[userId, refreshToken, expiresAt.toISOString()]
+	);
+
+	const cookieOptions: string[] = [
+		`refreshToken=${refreshToken}`,
+		"HttpOnly",
+		"SameSite=Strict",
+		"Path=/api/auth"
+	];
+
+	if (rememberMe) {
+		cookieOptions.push(`Max-Age=${REFRESH_TOKEN_TTL_DAYS * 24 * 60 * 60}`);
+	}
+
+	res.setHeader("Set-Cookie", cookieOptions.join("; "));
+	return accessToken;
+}
+
 export async function requestMagicLink(req: Request, res: Response) {
 	try {
 		const { email } = req.body;
@@ -46,7 +76,6 @@ export async function requestMagicLink(req: Request, res: Response) {
 
 		const normalised = email.trim().toLowerCase();
 
-		// Look up existing user (may be null for new users)
 		const existing = await query(
 			"SELECT id FROM users WHERE email = $1",
 			[normalised]
@@ -78,7 +107,7 @@ export async function requestMagicLink(req: Request, res: Response) {
 
 export async function verifyMagicLink(req: Request, res: Response) {
 	try {
-		const { token, email, code } = req.body;
+		const { token, email, code, rememberMe } = req.body;
 
 		if (!token && !(email && code)) {
 			return res.status(400).json({
@@ -110,13 +139,11 @@ export async function verifyMagicLink(req: Request, res: Response) {
 
 		const link = result.rows[0] as Record<string, unknown>;
 
-		// Mark as used
 		await query(
 			"UPDATE magic_links SET used_at = NOW() WHERE id = $1",
 			[link.id]
 		);
 
-		// Upsert user
 		let userId = link.user_id as string | null;
 
 		if (!userId) {
@@ -130,21 +157,80 @@ export async function verifyMagicLink(req: Request, res: Response) {
 			userId = user.id as string;
 		}
 
-		// Fetch full user for response
 		const userResult = await query(
 			"SELECT id, email, created_at FROM users WHERE id = $1",
 			[userId]
 		);
 		const user = userResult.rows[0] as Record<string, unknown>;
 
-		const jwt = await generateToken(userId!);
+		const accessToken = await issueTokenPair(userId!, !!rememberMe, res);
 
 		res.json({
-			token: jwt,
+			token: accessToken,
 			user: { id: user.id, email: user.email, createdAt: user.created_at },
 		} as AuthResponse);
 	} catch (error) {
 		console.error("Verify magic link error:", error);
 		res.status(500).json({ error: "Verification failed" });
 	}
+}
+
+export async function refreshTokens(req: Request, res: Response) {
+	try {
+		const cookieHeader = req.headers.cookie ?? "";
+		const match = cookieHeader.match(/(?:^|;\s*)refreshToken=([^;]+)/);
+		const refreshToken = match?.[1];
+
+		if (!refreshToken) {
+			return res.status(401).json({ error: "No refresh token" });
+		}
+
+		const result = await query(
+			`SELECT id, user_id FROM refresh_tokens
+			 WHERE token = $1 AND expires_at > NOW()`,
+			[refreshToken]
+		);
+
+		if (result.rows.length === 0) {
+			clearRefreshCookie(res);
+			return res.status(401).json({ error: "Invalid or expired refresh token" });
+		}
+
+		const row = result.rows[0] as Record<string, unknown>;
+
+		// Rotate: delete old token
+		await query("DELETE FROM refresh_tokens WHERE id = $1", [row.id]);
+
+		// Check if previous cookie had Max-Age (rememberMe) by looking at token age
+		// We re-issue with rememberMe=true to maintain persistent session if token existed in DB
+		const userId = row.user_id as string;
+		const accessToken = await issueTokenPair(userId, true, res);
+
+		res.json({ token: accessToken });
+	} catch (error) {
+		console.error("Refresh token error:", error);
+		res.status(500).json({ error: "Token refresh failed" });
+	}
+}
+
+export function logout(req: Request, res: Response) {
+	const cookieHeader = req.headers.cookie ?? "";
+	const match = cookieHeader.match(/(?:^|;\s*)refreshToken=([^;]+)/);
+	const refreshToken = match?.[1];
+
+	if (refreshToken) {
+		query("DELETE FROM refresh_tokens WHERE token = $1", [refreshToken]).catch(
+			(err) => console.error("Logout DB cleanup error:", err)
+		);
+	}
+
+	clearRefreshCookie(res);
+	res.json({ ok: true });
+}
+
+function clearRefreshCookie(res: Response) {
+	res.setHeader(
+		"Set-Cookie",
+		"refreshToken=; HttpOnly; SameSite=Strict; Path=/api/auth; Max-Age=0"
+	);
 }

@@ -4,20 +4,60 @@ interface ApiError {
 	error: string;
 }
 
+// Refresh lock — prevents multiple simultaneous refresh calls
+let refreshPromise: Promise<string | null> | null = null;
+
+async function refreshAccessToken(): Promise<string | null> {
+	try {
+		const response = await fetch(`${API_URL}/api/auth/refresh`, {
+			method: 'POST',
+			credentials: 'include'
+		});
+		if (!response.ok) return null;
+		const data = await response.json() as { token: string };
+		localStorage.setItem('authToken', data.token);
+		return data.token;
+	} catch {
+		return null;
+	}
+}
+
 async function fetchApi<T>(
 	endpoint: string,
-	options: RequestInit = {}
+	options: RequestInit = {},
+	retry = true
 ): Promise<T> {
 	const token = localStorage.getItem('authToken');
 
 	const response = await fetch(`${API_URL}${endpoint}`, {
 		...options,
+		credentials: 'include',
 		headers: {
 			'Content-Type': 'application/json',
 			...(token && { Authorization: `Bearer ${token}` }),
 			...options.headers
 		}
 	});
+
+	if (response.status === 401 && retry) {
+		if (!refreshPromise) {
+			refreshPromise = refreshAccessToken().finally(() => {
+				refreshPromise = null;
+			});
+		}
+
+		const newToken = await refreshPromise;
+
+		if (!newToken) {
+			// Refresh failed — force logout
+			const { userStore } = await import('$lib/stores/user');
+			userStore.logout();
+			throw new Error('Session expired. Please log in again.');
+		}
+
+		// Retry original request with new token
+		return fetchApi<T>(endpoint, options, false);
+	}
 
 	if (!response.ok) {
 		const error: ApiError = await response.json();
@@ -34,14 +74,16 @@ export const api = {
 				method: 'POST',
 				body: JSON.stringify({ email })
 			}),
-		verify: (payload: { token: string } | { email: string; code: string }) =>
+		verify: (payload: ({ token: string } | { email: string; code: string }) & { rememberMe?: boolean }) =>
 			fetchApi<{ token: string; user: { id: string; email: string } }>(
 				'/api/auth/verify',
 				{
 					method: 'POST',
 					body: JSON.stringify(payload)
 				}
-			)
+			),
+		logout: () =>
+			fetchApi<{ ok: boolean }>('/api/auth/logout', { method: 'POST' })
 	},
 
 	sync: {

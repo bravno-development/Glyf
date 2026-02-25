@@ -31,6 +31,8 @@ function createUserStore() {
 			trackEvent('user_logged_out');
 			localStorage.removeItem('authToken');
 			set({ user: null, token: null, isAuthenticated: false, initialised: true });
+			// Clear HttpOnly refresh token cookie server-side (fire & forget)
+			import('$lib/services/api').then(({ api }) => api.auth.logout()).catch(() => {});
 		},
 		init: () => {
 			const token = localStorage.getItem('authToken');
