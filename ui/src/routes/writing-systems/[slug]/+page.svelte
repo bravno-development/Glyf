@@ -44,7 +44,7 @@
 		<a href="/" class="text-[28px] font-bold text-[var(--foreground)] no-underline">glyf</a>
 		<nav class="flex items-center gap-8">
 			<a href="/writing-systems" class="text-[15px] font-medium text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">Writing systems</a>
-			<a href="/auth/login" class="rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[15px] font-semibold text-white no-underline transition-opacity hover:opacity-90">Start learning</a>
+			<a href="/dashboard" class="rounded-[var(--radius-pill)] bg-[var(--accent-green)] px-5 py-2.5 text-[15px] font-semibold text-white no-underline transition-opacity hover:opacity-90">Start learning</a>
 		</nav>
 	</header>
 

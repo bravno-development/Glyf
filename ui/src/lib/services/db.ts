@@ -7,6 +7,7 @@ export interface Character {
 	meaning: string;
 	readings?: string[];
 	order?: number;
+	description?: string;
 }
 
 export interface Sentence {

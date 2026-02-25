@@ -372,24 +372,20 @@
 
 					<!-- Right: Mnemonic, Examples, Lesson characters -->
 					<div class="flex w-full flex-col justify-center gap-6 min-w-0">
-						<!-- Mnemonic card -->
-						<!-- @Todo: Figure out a good implementation for this -->
-						<!-- <div
+					<!-- Note card: shown only when the character has a description -->
+					{#if introChar?.description}
+						<div
 							class="rounded-[var(--radius-m)] border border-[var(--border)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]"
 						>
 							<div class="mb-3 flex items-center gap-2">
 								<Lightbulb size={18} class="shrink-0 text-[var(--accent-warm)]" />
-								<span class="text-[15px] font-semibold text-[var(--foreground)]"
-									>Memory trick</span
-								>
+								<span class="text-[15px] font-semibold text-[var(--foreground)]">Note</span>
 							</div>
 							<p class="text-[14px] leading-[1.5] text-[var(--muted-foreground)]">
-								{#if introChar}
-									Think of the reading "{getPrimaryOption(introChar)}" — the character
-									{introChar.character} represents this sound.
-								{/if}
+								{introChar.description}
 							</p>
-						</div> -->
+						</div>
+					{/if}
 
 						<!-- Examples card -->
 						<!-- @Todo: Figure out a good implementation for this -->

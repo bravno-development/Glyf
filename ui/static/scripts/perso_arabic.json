@@ -1,0 +1,586 @@
+{
+	"id": "perso_arabic",
+	"language": "fa",
+	"name": "Perso-Arabic",
+	"description": "The Perso-Arabic alphabet used to write Farsi (Persian). It is written right-to-left and consists of 32 letters. Most letters change shape depending on their position in a word — beginning, middle, end, or standalone.",
+	"icon": "ب",
+	"available": true,
+	"totalCharacters": 33,
+	"lowercaseFriendly": false,
+	"characters": [
+		{
+			"id": "fa-ba",
+			"order": 1,
+			"character": "ب",
+			"forms": {
+				"isolated": "ب",
+				"initial": "بـ",
+				"medial": "ـبـ",
+				"final": "ـب"
+			},
+			"class": "consonant",
+			"meaning": "b",
+			"readings": ["b"]
+		},
+		{
+			"id": "fa-pa",
+			"order": 2,
+			"character": "پ",
+			"forms": {
+				"isolated": "پ",
+				"initial": "پـ",
+				"medial": "ـپـ",
+				"final": "ـپ"
+			},
+			"class": "consonant",
+			"meaning": "p",
+			"readings": ["p"],
+			"description": "A Persian-specific letter not found in Arabic. Sounds like the English 'p'."
+		},
+		{
+			"id": "fa-ta",
+			"order": 3,
+			"character": "ت",
+			"forms": {
+				"isolated": "ت",
+				"initial": "تـ",
+				"medial": "ـتـ",
+				"final": "ـت"
+			},
+			"class": "consonant",
+			"meaning": "t",
+			"readings": ["t"]
+		},
+		{
+			"id": "fa-tha",
+			"order": 4,
+			"character": "ث",
+			"forms": {
+				"isolated": "ث",
+				"initial": "ثـ",
+				"medial": "ـثـ",
+				"final": "ـث"
+			},
+			"class": "consonant",
+			"meaning": "s",
+			"readings": ["s"],
+			"description": "Sounds like س in Persian. Found almost exclusively in Arabic loanwords — in native Persian words and European loanwords, س is used instead."
+		},
+		{
+			"id": "fa-nun",
+			"order": 5,
+			"character": "ن",
+			"forms": {
+				"isolated": "ن",
+				"initial": "نـ",
+				"medial": "ـنـ",
+				"final": "ـن"
+			},
+			"class": "consonant",
+			"meaning": "n",
+			"readings": ["n"]
+		},
+		{
+			"id": "fa-ya",
+			"order": 6,
+			"character": "ی",
+			"forms": {
+				"isolated": "ی",
+				"initial": "یـ",
+				"medial": "ـیـ",
+				"final": "ـی"
+			},
+			"class": "consonant",
+			"meaning": "y",
+			"readings": ["y", "i"],
+			"description": "Acts as both the consonant y and the long vowel i, similar to the role of y in English."
+		},
+		{
+			"id": "fa-alef",
+			"order": 7,
+			"character": "ا",
+			"forms": {
+				"isolated": "ا",
+				"final": "ـا"
+			},
+			"class": "vowel",
+			"meaning": "â",
+			"readings": ["â", "a"],
+			"description": "Alef. Like the “a” in “father”. A non-connecting letter that primarily represents the long vowel â (/ɒː/) but also serves as a carrier for short vowels and forms part of the long vowels u (او) and i (ای). Does not connect to a following letter."
+		},
+		{
+			"id": "fa-alef-madda",
+			"order": 8,
+			"character": "آ",
+			"forms": {
+				"isolated": "آ",
+				"final": "ـآ"
+			},
+			"class": "vowel",
+			"meaning": "â",
+			"readings": ["â"],
+			"description": "Alef with madda. Pronounced like a long “ah”. Typically used to represent the long â vowel at the beginning of a word, as in آب (âb, 'water') and آمریکا (Āmrikā, 'America'). Usage is lexical rather than purely positional."
+		},
+		{
+			"id": "fa-waw",
+			"order": 9,
+			"character": "و",
+			"forms": {
+				"isolated": "و",
+				"final": "ـو"
+			},
+			"class": "consonant",
+			"meaning": "v",
+			"readings": ["v", "u", "o"],
+			"description": "Serves three roles: consonant v, long vowel u, and short vowel o. In word-initial position it is always v. When following خ before ا it is often silent — خواهر khāhar (sister), خواب khāb (sleep)."
+		},
+		{
+			"id": "fa-ra",
+			"order": 10,
+			"character": "ر",
+			"forms": {
+				"isolated": "ر",
+				"final": "ـر"
+			},
+			"class": "consonant",
+			"meaning": "r",
+			"readings": ["r"]
+		},
+		{
+			"id": "fa-za",
+			"order": 11,
+			"character": "ز",
+			"forms": {
+				"isolated": "ز",
+				"final": "ـز"
+			},
+			"class": "consonant",
+			"meaning": "z",
+			"readings": ["z"]
+		},
+		{
+			"id": "fa-zhe",
+			"order": 12,
+			"character": "ژ",
+			"forms": {
+				"isolated": "ژ",
+				"final": "ـژ"
+			},
+			"class": "consonant",
+			"meaning": "zh",
+			"readings": ["zh"],
+			"description": "A Persian-specific letter not found in Arabic. Sounds like the 's' in 'measure' or the 'j' in French déjà vu. Common in French loanwords — رژیم rézhim (regime), ژنو Zhenev (Geneva)."
+		},
+		{
+			"id": "fa-dal",
+			"order": 13,
+			"character": "د",
+			"forms": {
+				"isolated": "د",
+				"final": "ـد"
+			},
+			"class": "consonant",
+			"meaning": "d",
+			"readings": ["d"]
+		},
+		{
+			"id": "fa-zal",
+			"order": 14,
+			"character": "ذ",
+			"forms": {
+				"isolated": "ذ",
+				"final": "ـذ"
+			},
+			"class": "consonant",
+			"meaning": "z",
+			"readings": ["z"],
+			"description": "Sounds like ز in Persian. Less frequent than ز and found mostly in Arabic loanwords — in native Persian and European words, ز is used instead."
+		},
+		{
+			"id": "fa-sin",
+			"order": 15,
+			"character": "س",
+			"forms": {
+				"isolated": "س",
+				"initial": "سـ",
+				"medial": "ـسـ",
+				"final": "ـس"
+			},
+			"class": "consonant",
+			"meaning": "s",
+			"readings": ["s"]
+		},
+		{
+			"id": "fa-shin",
+			"order": 16,
+			"character": "ش",
+			"forms": {
+				"isolated": "ش",
+				"initial": "شـ",
+				"medial": "ـشـ",
+				"final": "ـش"
+			},
+			"class": "consonant",
+			"meaning": "sh",
+			"readings": ["sh"]
+		},
+		{
+			"id": "fa-eyn",
+			"order": 17,
+			"character": "ع",
+			"forms": {
+				"isolated": "ع",
+				"initial": "عـ",
+				"medial": "ـعـ",
+				"final": "ـع"
+			},
+			"class": "consonant",
+			"meaning": "a",
+			"readings": ["a", "'"],
+			"description": "A glottal stop. When word-initial it sounds like ا and can be hard to distinguish — almost all ع-initial words are Arabic loanwords and must be memorised individually."
+		},
+		{
+			"id": "fa-gheyn",
+			"order": 18,
+			"character": "غ",
+			"forms": {
+				"isolated": "غ",
+				"initial": "غـ",
+				"medial": "ـغـ",
+				"final": "ـغ"
+			},
+			"class": "consonant",
+			"meaning": "gh",
+			"readings": ["gh"],
+			"description": "Sounds exactly like ق in the Tehrani accent. A voiced guttural sound similar to the French 'r'."
+		},
+		{
+			"id": "fa-he",
+			"order": 19,
+			"character": "ح",
+			"forms": {
+				"isolated": "ح",
+				"initial": "حـ",
+				"medial": "ـحـ",
+				"final": "ـح"
+			},
+			"class": "consonant",
+			"meaning": "h",
+			"readings": ["h"],
+			"description": "Sounds like ه in Persian. Found almost exclusively in Arabic loanwords — in native Persian words, ه is used instead."
+		},
+		{
+			"id": "fa-khe",
+			"order": 20,
+			"character": "خ",
+			"forms": {
+				"isolated": "خ",
+				"initial": "خـ",
+				"medial": "ـخـ",
+				"final": "ـخ"
+			},
+			"class": "consonant",
+			"meaning": "kh",
+			"readings": ["kh"]
+		},
+		{
+			"id": "fa-jim",
+			"order": 21,
+			"character": "ج",
+			"forms": {
+				"isolated": "ج",
+				"initial": "جـ",
+				"medial": "ـجـ",
+				"final": "ـج"
+			},
+			"class": "consonant",
+			"meaning": "j",
+			"readings": ["j"]
+		},
+		{
+			"id": "fa-che",
+			"order": 22,
+			"character": "چ",
+			"forms": {
+				"isolated": "چ",
+				"initial": "چـ",
+				"medial": "ـچـ",
+				"final": "ـچ"
+			},
+			"class": "consonant",
+			"meaning": "ch",
+			"readings": ["ch"],
+			"description": "A Persian-specific letter not found in Arabic. Sounds like 'ch' in English 'chair'."
+		},
+		{
+			"id": "fa-sad",
+			"order": 23,
+			"character": "ص",
+			"forms": {
+				"isolated": "ص",
+				"initial": "صـ",
+				"medial": "ـصـ",
+				"final": "ـص"
+			},
+			"class": "consonant",
+			"meaning": "s",
+			"readings": ["s"],
+			"description": "Sounds like س in Persian. Found almost exclusively in Arabic loanwords — in native Persian words and European loanwords, س is used instead."
+		},
+		{
+			"id": "fa-zad",
+			"order": 24,
+			"character": "ض",
+			"forms": {
+				"isolated": "ض",
+				"initial": "ضـ",
+				"medial": "ـضـ",
+				"final": "ـض"
+			},
+			"class": "consonant",
+			"meaning": "z",
+			"readings": ["z"],
+			"description": "Sounds like ز in Persian. Found almost exclusively in Arabic loanwords — in native Persian words and European loanwords, ز is used instead."
+		},
+		{
+			"id": "fa-ta-arabic",
+			"order": 25,
+			"character": "ط",
+			"forms": {
+				"isolated": "ط",
+				"initial": "طـ",
+				"medial": "ـطـ",
+				"final": "ـط"
+			},
+			"class": "consonant",
+			"meaning": "t",
+			"readings": ["t"],
+			"description": "Sounds like ت in Persian. Found almost exclusively in Arabic loanwords — in native Persian words and European loanwords, ت is used instead."
+		},
+		{
+			"id": "fa-za-arabic",
+			"order": 26,
+			"character": "ظ",
+			"forms": {
+				"isolated": "ظ",
+				"initial": "ظـ",
+				"medial": "ـظـ",
+				"final": "ـظ"
+			},
+			"class": "consonant",
+			"meaning": "z",
+			"readings": ["z"],
+			"description": "Sounds like ز in Persian. Found almost exclusively in Arabic loanwords — in native Persian words and European loanwords, ز is used instead."
+		},
+		{
+			"id": "fa-fa",
+			"order": 27,
+			"character": "ف",
+			"forms": {
+				"isolated": "ف",
+				"initial": "فـ",
+				"medial": "ـفـ",
+				"final": "ـف"
+			},
+			"class": "consonant",
+			"meaning": "f",
+			"readings": ["f"]
+		},
+		{
+			"id": "fa-qaf",
+			"order": 28,
+			"character": "ق",
+			"forms": {
+				"isolated": "ق",
+				"initial": "قـ",
+				"medial": "ـقـ",
+				"final": "ـق"
+			},
+			"class": "consonant",
+			"meaning": "q",
+			"readings": ["q"],
+			"description": "Sounds exactly like غ in the Tehrani accent."
+		},
+		{
+			"id": "fa-kaf",
+			"order": 29,
+			"character": "ک",
+			"forms": {
+				"isolated": "ک",
+				"initial": "کـ",
+				"medial": "ـکـ",
+				"final": "ـک"
+			},
+			"class": "consonant",
+			"meaning": "k",
+			"readings": ["k"]
+		},
+		{
+			"id": "fa-gaf",
+			"order": 30,
+			"character": "گ",
+			"forms": {
+				"isolated": "گ",
+				"initial": "گـ",
+				"medial": "ـگـ",
+				"final": "ـگ"
+			},
+			"class": "consonant",
+			"meaning": "g",
+			"readings": ["g"],
+			"description": "A Persian-specific letter not found in Arabic. Sounds like 'g' in English 'give'."
+		},
+		{
+			"id": "fa-lam",
+			"order": 31,
+			"character": "ل",
+			"forms": {
+				"isolated": "ل",
+				"initial": "لـ",
+				"medial": "ـلـ",
+				"final": "ـل"
+			},
+			"class": "consonant",
+			"meaning": "l",
+			"readings": ["l"]
+		},
+		{
+			"id": "fa-mim",
+			"order": 32,
+			"character": "م",
+			"forms": {
+				"isolated": "م",
+				"initial": "مـ",
+				"medial": "ـمـ",
+				"final": "ـم"
+			},
+			"class": "consonant",
+			"meaning": "m",
+			"readings": ["m"]
+		},
+		{
+			"id": "fa-ha",
+			"order": 33,
+			"character": "ه",
+			"forms": {
+				"isolated": "ه",
+				"initial": "هـ",
+				"medial": "ـهـ",
+				"final": "ـه"
+			},
+			"class": "consonant",
+			"meaning": "h",
+			"readings": ["h"],
+			"description": "One of the letters with four forms — its shape depends on whether it connects on both sides, the right only, the left only, or stands alone. At the end of a word preceded by a consonant it usually sounds like e."
+		},
+		{
+			"id": "fa-fatha",
+			"order": 34,
+			"character": "ـَ",
+			"class": "vowel-mark",
+			"meaning": "a",
+			"readings": ["a"],
+			"description": "Short /a/ vowel mark. In everyday Farsi writing, vowel marks are almost always left out — you will mostly see them in the Quran, children's books, and language learning materials."
+		},
+		{
+			"id": "fa-kasra",
+			"order": 35,
+			"character": "ـِ",
+			"class": "vowel-mark",
+			"meaning": "e",
+			"readings": ["e"],
+			"description": "Short /e/ vowel mark. Like all vowel marks, it disappears in most everyday writing. Readers infer the correct vowel from context and familiarity with words."
+		},
+		{
+			"id": "fa-damma",
+			"order": 36,
+			"character": "ـُ",
+			"class": "vowel-mark",
+			"meaning": "o",
+			"readings": ["o"],
+			"description": "Short /o/ vowel mark. Omitted in everyday writing — its presence in a text is usually a sign that the material is intended for learners or formal religious use."
+		}
+	],
+	"course": {
+		"phases": [
+			{
+				"id": "fa-phase-1",
+				"title": "Phase 1 — Short vowel marks",
+				"characterIds": [
+					"fa-fatha",
+					"fa-kasra",
+					"fa-damma"
+				]
+			},
+			{
+				"id": "fa-phase-2",
+				"title": "Phase 2 — Core consonants",
+				"characterIds": [
+					"fa-ba",
+					"fa-kaf",
+					"fa-nun",
+					"fa-mim",
+					"fa-ya"
+				]
+			},
+			{
+				"id": "fa-phase-3",
+				"title": "Phase 3 — Non-connectors",
+				"characterIds": [
+					"fa-alef",
+					"fa-alef-madda",
+					"fa-waw",
+					"fa-ra",
+					"fa-za",
+					"fa-zhe",
+					"fa-dal",
+					"fa-zal"
+				]
+			},
+			{
+				"id": "fa-phase-4",
+				"title": "Phase 4 — Four-form letters",
+				"characterIds": [
+					"fa-eyn",
+					"fa-gheyn",
+					"fa-ha"
+				]
+			},
+			{
+				"id": "fa-phase-5",
+				"title": "Phase 5 — More connectors",
+				"characterIds": [
+					"fa-fa",
+					"fa-qaf",
+					"fa-lam",
+					"fa-ta",
+					"fa-khe"
+				]
+			},
+			{
+				"id": "fa-phase-6",
+				"title": "Phase 6 — Persian-specific letters",
+				"characterIds": [
+					"fa-pa",
+					"fa-jim",
+					"fa-che",
+					"fa-sin",
+					"fa-shin",
+					"fa-gaf"
+				]
+			},
+			{
+				"id": "fa-phase-7",
+				"title": "Phase 7 — Arabic loanword letters",
+				"characterIds": [
+					"fa-tha",
+					"fa-he",
+					"fa-sad",
+					"fa-zad",
+					"fa-ta-arabic",
+					"fa-za-arabic"
+				]
+			}
+		]
+	}
+}

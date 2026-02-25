@@ -1,9 +1,19 @@
 import { db } from "./db";
 
+export interface CharacterForms {
+	isolated?: string;
+	initial?: string;
+	medial?: string;
+	final?: string;
+}
+
 export interface ScriptCharacter {
 	id: string;
 	order?: number;
 	character: string;
+	forms?: CharacterForms;
+	description?: string;
+	class?: string;
 	meaning: string;
 	readings: string[];
 }
@@ -44,6 +54,8 @@ export interface PhaseContentRow {
 	character: string;
 	meaning: string;
 	order: number;
+	forms?: CharacterForms;
+	description?: string;
 }
 
 /** Resolve a phase to content rows (characterIds → characters by id; extraTitles → extra sections by title). */
@@ -62,6 +74,8 @@ export function getPhaseContent(
 					character: c.character,
 					meaning: c.meaning,
 					order: order++,
+					forms: c.forms,
+					description: c.description,
 				});
 		}
 	}
@@ -127,6 +141,8 @@ export async function seedCharacters(scriptId: string): Promise<void> {
 		character: c.character,
 		meaning: c.meaning,
 		readings: c.readings,
+		order: c.order,
+		description: c.description,
 	}));
 	await db.characters.bulkPut(records);
 }

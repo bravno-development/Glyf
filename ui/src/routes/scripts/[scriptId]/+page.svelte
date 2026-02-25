@@ -9,23 +9,19 @@
 		getScript,
 		type ScriptDefinition,
 	} from "$lib/services/scripts";
-	import { getProgressForScript } from "$lib/services/dashboard";
+	import type { ContentRow } from "$lib/components/DetailSections.svelte";
+	import { getProgressForScript, getDashboardStats } from "$lib/services/dashboard";
 	import AppShell from "$lib/components/AppShell.svelte";
 	import DetailSections from "$lib/components/DetailSections.svelte";
 	import { ArrowLeft } from "lucide-svelte";
 
 	const scriptId = $derived($page.params.scriptId ?? "");
 
-	interface ContentRow {
-		character: string;
-		meaning: string;
-		order: number;
-	}
-
 	let scriptDef = $state<ScriptDefinition | null>(null);
 	let rows = $state<Array<{ title: string; content: ContentRow[] }>>([]);
 	let learnHref = $state("/scripts");
 	let learnLabel = $state("Start learning");
+	let learnDisabled = $state(false);
 	let loading = $state(true);
 	let error = $state<string | null>(null);
 
@@ -45,8 +41,20 @@
 			const def = await getScript(scriptId);
 			scriptDef = def;
 			learnHref = `/learn/${def.id}`;
-			const prog = await getProgressForScript(def.id);
-			learnLabel = prog && prog.percentage > 0 ? "Continue" : "Start learning";
+			const [prog, stats] = await Promise.all([
+				getProgressForScript(def.id),
+				getDashboardStats(def.id),
+			]);
+			if (!prog || prog.learnt === 0) {
+				learnLabel = "Start learning";
+				learnDisabled = false;
+			} else if (stats.dueToday > 0 || prog.learnt < prog.total) {
+				learnLabel = "Continue";
+				learnDisabled = false;
+			} else {
+				learnLabel = "All caught up";
+				learnDisabled = true;
+			}
 
 			const sectionRows: Array<{ title: string; content: ContentRow[] }> = [];
 			if (def.description) {
@@ -65,11 +73,13 @@
 					const ordered = getCharactersInOrder(def);
 					sectionRows.push({
 						title: "Characters",
-						content: ordered.map((c) => ({
-							character: c.character,
-							meaning: c.meaning,
-							order: c.order ?? 0,
-						})),
+				content: ordered.map((c) => ({
+						character: c.character,
+						meaning: c.meaning,
+						order: c.order ?? 0,
+						forms: c.forms,
+						description: c.description,
+					})),
 					});
 				}
 				if (def.extra?.length) {
@@ -145,12 +155,21 @@
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center gap-3">
-							<a
-								href={learnHref}
-								class="rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-2.5 text-[14px] font-medium text-[var(--primary-foreground)] no-underline transition-opacity hover:opacity-90"
-							>
-								{learnLabel}
-							</a>
+							{#if learnDisabled}
+								<span
+									class="rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-2.5 text-[14px] font-medium text-[var(--primary-foreground)] opacity-50 cursor-not-allowed"
+									aria-disabled="true"
+								>
+									{learnLabel}
+								</span>
+							{:else}
+								<a
+									href={learnHref}
+									class="rounded-[var(--radius-pill)] bg-[var(--primary)] px-5 py-2.5 text-[14px] font-medium text-[var(--primary-foreground)] no-underline transition-opacity hover:opacity-90"
+								>
+									{learnLabel}
+								</a>
+							{/if}
 						</div>
 					</header>
 
