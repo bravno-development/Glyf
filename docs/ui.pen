@@ -10939,7 +10939,7 @@
             "Fpzpi": {
               "content": "Glyf",
               "x": 48,
-              "y": 9.549308036657122,
+              "y": 9.54930803665712,
               "rotation": 0.19459847834390867
             },
             "hYFpr": {
@@ -38786,6 +38786,124 @@
           "fill": "$--primary",
           "content": "گ",
           "fontFamily": "Noto Sans Arabic",
+          "fontSize": 52,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "qJoPE",
+      "x": 939,
+      "y": 12413,
+      "name": "hayastan language script",
+      "width": 420,
+      "height": 420,
+      "fill": "$--tile",
+      "cornerRadius": 40,
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "PWoBU",
+          "x": 63,
+          "y": -3,
+          "name": "charAlpha",
+          "opacity": 0.9,
+          "fill": "$--primary",
+          "content": "շ",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 120,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "qBA0p",
+          "x": 283,
+          "y": 24,
+          "name": "charBeta",
+          "opacity": 0.6,
+          "fill": "$--accent-warm",
+          "content": "ճ",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 80,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "ISUze",
+          "x": 271,
+          "y": 219,
+          "name": "charGamma",
+          "opacity": 0.4,
+          "fill": "$--primary",
+          "content": "ց",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 96,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "L3SEr",
+          "x": 76,
+          "y": 214,
+          "name": "charDelta",
+          "opacity": 0.7,
+          "fill": "#3D8A5A",
+          "content": "է",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 100,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "TBGQh",
+          "x": 217,
+          "y": 111,
+          "name": "charSigma",
+          "opacity": 0.5,
+          "fill": "$--accent-warm",
+          "content": " ա",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 72,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "ZIerL",
+          "x": 336,
+          "y": 313,
+          "name": "charOmega",
+          "opacity": 0.35,
+          "fill": "$--muted-foreground",
+          "content": "ք ",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 56,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "uhg6X",
+          "x": 190,
+          "y": 160,
+          "name": "charPhi",
+          "opacity": 0.9,
+          "fill": "#7B6B9E",
+          "content": "պ",
+          "fontFamily": "Noto Sans Armenian",
+          "fontSize": 58,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "HOitO",
+          "x": 58,
+          "y": 321,
+          "name": "charTheta",
+          "opacity": 0.4,
+          "fill": "$--primary",
+          "content": "հ",
+          "fontFamily": "Noto Sans Armenian",
           "fontSize": 52,
           "fontWeight": "normal"
         }
