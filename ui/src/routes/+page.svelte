@@ -211,6 +211,7 @@
 				<p class="mt-4 max-w-[560px] text-[18px] leading-[1.5] text-[var(--text-tertiary)]">
 					We started with Greek & Korean, and we're adding new writing systems regularly. Your next script is just around the corner.
 				</p>
+				<a href="/writing-systems" class="mt-4 text-[15px] font-medium text-[var(--foreground)] no-underline transition-colors hover:text-[var(--accent-green)]">See what we have as of now</a>
 			</div>
 			<div class="mt-14 flex flex-col gap-6 overflow-hidden">
 				<Marquee speed={50} direction="left" gap="24px">
@@ -288,7 +289,7 @@
 							<h4 class="text-[13px] font-semibold tracking-[1px] text-[var(--text-foreground)] uppercase">{heading}</h4>
 							<ul class="mt-4 flex flex-col gap-3">
 								{#each links as item (item.label)}
-									<li><a href={item.link} class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{item.label}</a></li>
+									<li><a target={item.label == 'Documentation' ? '_blank' : '_self'} href={item.link} class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{item.label}</a></li>
 								{/each}
 							</ul>
 						</div>
