@@ -52,7 +52,7 @@
 		</p>
 		<ul class="mb-4 flex flex-col gap-2 pl-6 text-[15px] leading-[1.6] text-[var(--text-tertiary)] list-disc">
 			<li><strong class="text-[var(--foreground)]">Cookie banner</strong> — the banner shown on your first visit lets you opt in or out. If you dismissed it, it will reappear if you clear your site data.</li>
-			<li><strong class="text-[var(--foreground)]">Clear site storage</strong> — clearing your browser's storage for glyf.app removes all locally stored data including your analytics consent, effectively opting you out.</li>
+			<li><strong class="text-[var(--foreground)]">Clear site storage</strong> — clearing your browser's storage for glyf.bravno.com removes all locally stored data including your analytics consent, effectively opting you out.</li>
 		</ul>
 		<p class="mb-4 text-[15px] leading-[1.6] text-[var(--text-tertiary)]">
 			For more detail on how we handle your personal data, see our <a href="/privacy" class="text-[var(--foreground)] underline">Privacy Policy</a>.

@@ -5,7 +5,7 @@
 	export let data: { script: WritingSystem };
 
 	const script = data.script;
-	const baseUrl = 'https://glyf.app';
+	const baseUrl = 'https://glyf.bravno.com';
 	const pageUrl = `${baseUrl}/writing-systems/${script.slug}`;
 	const pageTitle = `Learn the ${script.title} alphabet — Glyf`;
 	const pageDescription = script.description;
