@@ -289,7 +289,7 @@
 							<h4 class="text-[13px] font-semibold tracking-[1px] text-[var(--text-foreground)] uppercase">{heading}</h4>
 							<ul class="mt-4 flex flex-col gap-3">
 								{#each links as item (item.label)}
-									<li><a target={item.label == 'Documentation' ? '_blank' : '_self'} href={item.link} class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{item.label}</a></li>
+									<li><a target={item.label == 'Documentation' ? '_blank' : ''} href={item.link} class="text-[14px] text-[var(--text-tertiary)] no-underline transition-colors hover:text-[var(--foreground)]">{item.label}</a></li>
 								{/each}
 							</ul>
 						</div>
