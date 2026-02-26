@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { get } from "svelte/store";
 	import { onMount } from "svelte";
+	import { dev } from "$app/environment";
 	import { goto } from "$app/navigation";
 	import { getStores } from "$app/stores";
 	import { userStore } from "$lib/stores/user";
@@ -15,7 +16,9 @@
 	let { children } = $props();
 
 	onMount(() => {
-		initPostHog();
+		if (!dev) {
+			initPostHog();
+		}
 		userStore.init();
 
 		let wasAuthenticated = false;
@@ -29,7 +32,8 @@
 				const { page } = getStores();
 				const pathname = get(page).url.pathname;
 				if (pathname !== "/onboarding" && !pathname.startsWith("/auth")) {
-					api.onboarding.status()
+					api.onboarding
+						.status()
 						.then(({ onboarded }) => {
 							if (!onboarded) goto("/onboarding");
 						})
@@ -67,4 +71,6 @@
 	<ReminderBanner />
 	{@render children()}
 </div>
-<CookieBanner />
+{#if !dev}
+	<CookieBanner />
+{/if}
