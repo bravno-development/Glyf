@@ -29,7 +29,7 @@ export default defineConfig({
 				theme_color: "#2A5A3A",
 				background_color: "#ffffff",
 				display: "standalone",
-				start_url: "/index.html",
+				start_url: "/",
 				icons: [
 					{
 						src: "/favicon/glyf_icon.svg",
