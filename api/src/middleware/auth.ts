@@ -1,7 +1,6 @@
 import type { Request, Response, NextFunction } from "../../imports.ts";
 import { verify } from "../../imports.ts";
-
-const JWT_SECRET = Deno.env.get("JWT_SECRET") || "change_me_in_production";
+import { JWT_SECRET } from "../config/env.ts";
 
 export interface AuthRequest extends Request {
 	userId?: string;

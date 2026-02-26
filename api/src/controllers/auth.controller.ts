@@ -4,8 +4,7 @@ import { query } from "../config/database.ts";
 import { sendMagicLinkEmail } from "../services/email.ts";
 import type { AuthResponse } from "../models/types.ts";
 import { CookieName } from "../constants/cookieNames.ts";
-
-const JWT_SECRET = Deno.env.get("JWT_SECRET") || "change_me_in_production";
+import { JWT_SECRET } from "../config/env.ts";
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
 const REFRESH_TOKEN_TTL_DAYS = 14;
 
