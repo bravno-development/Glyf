@@ -4,6 +4,7 @@
 	import { userStore } from "$lib/stores/user";
 	import { Play, RefreshCcw, BookOpen, Clock } from "lucide-svelte";
 	import AppShell from "$lib/components/AppShell.svelte";
+	import InstallBanner from "$lib/components/InstallBanner.svelte";
 	import {
 		type CharacterGridItem,
 		type MasteryBreakdown,
@@ -283,6 +284,8 @@
 					{/if}
 				</div>
 			</div>
+
+			<InstallBanner />
 
 			<!-- Language tabs + Stats for selected script -->
 			{#if studyStates.length > 0}

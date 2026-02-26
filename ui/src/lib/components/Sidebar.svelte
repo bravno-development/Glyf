@@ -4,6 +4,7 @@
 		LayoutDashboard,
 		Languages,
 		Settings,
+		HelpCircle,
 		LogOut,
 	} from "lucide-svelte";
 	import { userStore } from "$lib/stores/user";
@@ -15,6 +16,7 @@
 
 	const accountLinks = [
 		{ href: "/settings", label: "Settings", icon: Settings },
+		{ href: "https://coda.io/d/Glyf_doNfF_A_A0f", label: "Help", icon: HelpCircle },
 	];
 
 	function isActive(href: string): boolean {

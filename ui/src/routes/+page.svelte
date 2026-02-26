@@ -134,7 +134,7 @@
 		],
 		Resources: [
 			{ label: "Writing systems", link: "/writing-systems" },
-			{ label: "Documentation", link: "/documentation" },
+			{ label: "Documentation", link: "https://coda.io/d/Glyf_doNfF_A_A0f" },
 			{ label: "Support", link: "/legal/privacy" },
 		],
 		Legal: [
