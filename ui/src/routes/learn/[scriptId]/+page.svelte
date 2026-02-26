@@ -207,6 +207,7 @@
 				learnStore.incrementIntroducedToday(scriptId, introBatch.length);
 			}
 			syncToServer(); // fire-and-forget — push local changes before returning to dashboard
+			learnStore.reset(); // force dashboard to re-fetch user scripts (new script must appear)
 			goto('/dashboard');
 		}
 	}
