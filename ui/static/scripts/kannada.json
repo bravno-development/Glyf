@@ -1,5 +1,6 @@
 {
 	"id": "kannada",
+	"version": 1,
 	"language": "kn",
 	"name": "Kannada",
 	"description": "Kannada script used for Kannada and other South Indian languages. 13 vowel letters and 34 consonants (abugida).",

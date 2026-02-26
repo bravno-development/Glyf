@@ -1,5 +1,6 @@
 {
 	"id": "hiragana",
+	"version": 1,
 	"language": "ja",
 	"name": "Hiragana",
 	"description": "Japanese syllabary used for native words and grammar. 46 basic characters plus ん, plus voiced (dakuten) and handakuten.",

@@ -38,6 +38,7 @@ export interface CoursePhase {
 
 export interface ScriptDefinition {
 	id: string;
+	version?: number;
 	language: string;
 	name: string;
 	description: string;
@@ -135,6 +136,11 @@ export async function getScript(id: string): Promise<ScriptDefinition> {
 
 export async function seedCharacters(scriptId: string): Promise<void> {
 	const def = await fetchScript(scriptId);
+	const currentVersion = def.version ?? 1;
+	const syncState = await db.syncState.get(scriptId);
+
+	if (syncState?.seededVersion === currentVersion) return;
+
 	const records = def.characters.map((c) => ({
 		id: c.id,
 		script: def.id,
@@ -145,6 +151,13 @@ export async function seedCharacters(scriptId: string): Promise<void> {
 		description: c.description,
 	}));
 	await db.characters.bulkPut(records);
+
+	await db.syncState.put({
+		script: scriptId,
+		lastSync: syncState?.lastSync ?? '',
+		pendingChanges: syncState?.pendingChanges ?? false,
+		seededVersion: currentVersion,
+	});
 }
 
 export async function seedAllCharacters(): Promise<void> {

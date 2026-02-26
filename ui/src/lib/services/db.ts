@@ -43,6 +43,7 @@ export interface SyncState {
 	script: string;
 	lastSync: string;
 	pendingChanges: boolean;
+	seededVersion?: number;
 }
 
 export class GlyfDB extends Dexie {

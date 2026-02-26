@@ -1,5 +1,6 @@
 {
 	"id": "greek",
+	"version": 1,
 	"language": "el",
 	"name": "Greek",
 	"description": "Modern Greek alphabet. 24 letters used for Greek language and widely in science and mathematics. Note that Σ is pronounced 'z' after voiced consonants.",

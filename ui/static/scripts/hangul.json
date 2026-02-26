@@ -1,5 +1,6 @@
 {
 	"id": "hangul",
+	"version": 1,
 	"language": "ko",
 	"name": "Hangul",
 	"description": "Korean alphabet. 19 initial consonants (choseong) and 21 vowels (jungseong) that combine into syllables.",

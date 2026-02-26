@@ -1,5 +1,6 @@
 {
 	"id": "cyrillic",
+	"version": 1,
 	"language": "ru",
 	"name": "Cyrillic",
 	"description": "Russian alphabet. 33 letters used for Russian and other Slavic and non-Slavic languages.",
