@@ -1,0 +1,381 @@
+{
+	"id": "hayastan",
+	"language": "hy",
+	"name": "Hayastan (Armenian)",
+	"description": "The Armenian alphabet (Հայոց այբուբեն) has 38 letters and is unique to the Armenian language. Eastern and Western Armenian differ on voiced/voiceless consonants — where Eastern uses a 'g', Western uses a 'k', and vice versa. Readings below show Eastern first.",
+	"icon": "Ա",
+	"available": true,
+	"totalCharacters": 38,
+	"lowercaseFriendly": true,
+	"characters": [
+		{
+			"id": "armenian-ayb",
+			"order": 1,
+			"character": "ա",
+			"class": "vowel",
+			"meaning": "a",
+			"readings": ["a"]
+		},
+		{
+			"id": "armenian-ben",
+			"order": 2,
+			"character": "բ",
+			"class": "consonant",
+			"meaning": "b",
+			"readings": ["b", "p"],
+			"description": "Eastern: b, Western: p"
+		},
+		{
+			"id": "armenian-gim",
+			"order": 3,
+			"character": "գ",
+			"class": "consonant",
+			"meaning": "g",
+			"readings": ["g", "k"],
+			"description": "Eastern: g, Western: k"
+		},
+		{
+			"id": "armenian-da",
+			"order": 4,
+			"character": "դ",
+			"class": "consonant",
+			"meaning": "d",
+			"readings": ["d", "t"],
+			"description": "Eastern: d, Western: t"
+		},
+		{
+			"id": "armenian-yeh",
+			"order": 5,
+			"character": "ե",
+			"class": "vowel",
+			"meaning": "ye",
+			"readings": ["ye", "e"]
+		},
+		{
+			"id": "armenian-za",
+			"order": 6,
+			"character": "զ",
+			"class": "consonant",
+			"meaning": "z",
+			"readings": ["z"]
+		},
+		{
+			"id": "armenian-eh",
+			"order": 7,
+			"character": "է",
+			"class": "vowel",
+			"meaning": "ē",
+			"readings": ["ē"]
+		},
+		{
+			"id": "armenian-et",
+			"order": 8,
+			"character": "ը",
+			"class": "vowel",
+			"meaning": "ə",
+			"readings": ["ə"]
+		},
+		{
+			"id": "armenian-to",
+			"order": 9,
+			"character": "թ",
+			"class": "consonant",
+			"meaning": "tʰ",
+			"readings": ["tʰ", "d"],
+			"description": "Eastern: aspirated tʰ, Western: d"
+		},
+		{
+			"id": "armenian-zhe",
+			"order": 10,
+			"character": "ժ",
+			"class": "consonant",
+			"meaning": "zh",
+			"readings": ["zh"]
+		},
+		{
+			"id": "armenian-ini",
+			"order": 11,
+			"character": "ի",
+			"class": "vowel",
+			"meaning": "i",
+			"readings": ["i"]
+		},
+		{
+			"id": "armenian-liwn",
+			"order": 12,
+			"character": "լ",
+			"class": "consonant",
+			"meaning": "l",
+			"readings": ["l"]
+		},
+		{
+			"id": "armenian-xeh",
+			"order": 13,
+			"character": "խ",
+			"class": "consonant",
+			"meaning": "kh",
+			"readings": ["kh"]
+		},
+		{
+			"id": "armenian-ca",
+			"order": 14,
+			"character": "ծ",
+			"class": "consonant",
+			"meaning": "ts",
+			"readings": ["ts", "dz"],
+			"description": "Eastern: ts, Western: dz"
+		},
+		{
+			"id": "armenian-ken",
+			"order": 15,
+			"character": "կ",
+			"class": "consonant",
+			"meaning": "k",
+			"readings": ["k", "g"],
+			"description": "Eastern: k, Western: g"
+		},
+		{
+			"id": "armenian-ho",
+			"order": 16,
+			"character": "հ",
+			"class": "consonant",
+			"meaning": "h",
+			"readings": ["h"]
+		},
+		{
+			"id": "armenian-ja",
+			"order": 17,
+			"character": "ձ",
+			"class": "consonant",
+			"meaning": "dz",
+			"readings": ["dz", "ts"],
+			"description": "Eastern: dz, Western: ts"
+		},
+		{
+			"id": "armenian-ghad",
+			"order": 18,
+			"character": "ղ",
+			"class": "consonant",
+			"meaning": "gh",
+			"readings": ["gh"]
+		},
+		{
+			"id": "armenian-che",
+			"order": 19,
+			"character": "ճ",
+			"class": "consonant",
+			"meaning": "ch",
+			"readings": ["ch", "j"],
+			"description": "Eastern: ch, Western: j"
+		},
+		{
+			"id": "armenian-men",
+			"order": 20,
+			"character": "մ",
+			"class": "consonant",
+			"meaning": "m",
+			"readings": ["m"]
+		},
+		{
+			"id": "armenian-yi",
+			"order": 21,
+			"character": "յ",
+			"class": "consonant",
+			"meaning": "y",
+			"readings": ["y"]
+		},
+		{
+			"id": "armenian-now",
+			"order": 22,
+			"character": "ն",
+			"class": "consonant",
+			"meaning": "n",
+			"readings": ["n"]
+		},
+		{
+			"id": "armenian-sha",
+			"order": 23,
+			"character": "շ",
+			"class": "consonant",
+			"meaning": "sh",
+			"readings": ["sh"]
+		},
+		{
+			"id": "armenian-vo",
+			"order": 24,
+			"character": "ո",
+			"class": "vowel",
+			"meaning": "vo",
+			"readings": ["vo", "o"]
+		},
+		{
+			"id": "armenian-cha",
+			"order": 25,
+			"character": "չ",
+			"class": "consonant",
+			"meaning": "chʰ",
+			"readings": ["chʰ"]
+		},
+		{
+			"id": "armenian-peh",
+			"order": 26,
+			"character": "պ",
+			"class": "consonant",
+			"meaning": "p",
+			"readings": ["p", "b"],
+			"description": "Eastern: p, Western: b"
+		},
+		{
+			"id": "armenian-jheh",
+			"order": 27,
+			"character": "ջ",
+			"class": "consonant",
+			"meaning": "j",
+			"readings": ["j", "ch"],
+			"description": "Eastern: j, Western: ch"
+		},
+		{
+			"id": "armenian-ra",
+			"order": 28,
+			"character": "ռ",
+			"class": "consonant",
+			"meaning": "rr",
+			"readings": ["rr"]
+		},
+		{
+			"id": "armenian-seh",
+			"order": 29,
+			"character": "ս",
+			"class": "consonant",
+			"meaning": "s",
+			"readings": ["s"]
+		},
+		{
+			"id": "armenian-vev",
+			"order": 30,
+			"character": "վ",
+			"class": "consonant",
+			"meaning": "v",
+			"readings": ["v"]
+		},
+		{
+			"id": "armenian-tiwn",
+			"order": 31,
+			"character": "տ",
+			"class": "consonant",
+			"meaning": "t",
+			"readings": ["t", "d"],
+			"description": "Eastern: t, Western: d"
+		},
+		{
+			"id": "armenian-reh",
+			"order": 32,
+			"character": "ր",
+			"class": "consonant",
+			"meaning": "r",
+			"readings": ["r"]
+		},
+		{
+			"id": "armenian-co",
+			"order": 33,
+			"character": "ց",
+			"class": "consonant",
+			"meaning": "tsʰ",
+			"readings": ["tsʰ"]
+		},
+		{
+			"id": "armenian-yu",
+			"order": 34,
+			"character": "ու",
+			"class": "vowel",
+			"meaning": "u",
+			"readings": ["u"]
+		},
+		{
+			"id": "armenian-piwr",
+			"order": 35,
+			"character": "փ",
+			"class": "consonant",
+			"meaning": "pʰ",
+			"readings": ["pʰ"]
+		},
+		{
+			"id": "armenian-ke",
+			"order": 36,
+			"character": "ք",
+			"class": "consonant",
+			"meaning": "kʰ",
+			"readings": ["kʰ"]
+		},
+		{
+			"id": "armenian-oh",
+			"order": 37,
+			"character": "օ",
+			"class": "vowel",
+			"meaning": "o",
+			"readings": ["o"]
+		},
+		{
+			"id": "armenian-feh",
+			"order": 38,
+			"character": "ֆ",
+			"class": "consonant",
+			"meaning": "f",
+			"readings": ["f"]
+		}
+	],
+	"course": {
+		"phases": [
+			{
+				"id": "armenian-phase-1",
+				"title": "Phase 1",
+				"characterIds": [
+					"armenian-ayb",
+					"armenian-ben",
+					"armenian-gim",
+					"armenian-da",
+					"armenian-yeh",
+					"armenian-za",
+					"armenian-eh",
+					"armenian-et",
+					"armenian-zhe",
+					"armenian-ini",
+					"armenian-liwn",
+					"armenian-men",
+					"armenian-now",
+					"armenian-sha",
+					"armenian-vo",
+					"armenian-yu",
+					"armenian-seh",
+					"armenian-vev",
+					"armenian-reh"
+				]
+			},
+			{
+				"id": "armenian-phase-2",
+				"title": "Phase 2",
+				"characterIds": [
+					"armenian-to",
+					"armenian-xeh",
+					"armenian-ca",
+					"armenian-ken",
+					"armenian-ho",
+					"armenian-ja",
+					"armenian-ghad",
+					"armenian-che",
+					"armenian-yi",
+					"armenian-cha",
+					"armenian-peh",
+					"armenian-jheh",
+					"armenian-ra",
+					"armenian-tiwn",
+					"armenian-co",
+					"armenian-piwr",
+					"armenian-ke",
+					"armenian-oh",
+					"armenian-feh"
+				]
+			}
+		]
+	}
+}

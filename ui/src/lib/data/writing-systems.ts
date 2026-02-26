@@ -45,8 +45,8 @@ export const writingSystems: WritingSystem[] = [
 			{ value: 27, label: "syllable combos" },
 		],
 		studyPlan: {
-			beginner: { perDay: 6, coreIn: "4 days" },
-			intensive: { perDay: 12, coreIn: "2 days" },
+			beginner: { perDay: 5, coreIn: "8 days" },
+			intensive: { perDay: 10, coreIn: "4 days" },
 			recommended: "intensive",
 		},
 		approach: {
@@ -119,6 +119,38 @@ export const writingSystems: WritingSystem[] = [
 					icon: "ص",
 					title: "Arabic loanword letters",
 					description: "Six letters borrowed from Arabic that share their sound with a letter you already know: ث، ح، ص، ض، ط، ظ. They appear mainly in Arabic loanwords and formal vocabulary.",
+				},
+			],
+		},
+	},
+	{
+		slug: "armenian",
+		title: "Armenian alphabet",
+		description: "The Armenian script. 38 unique letters used exclusively for Armenian.",
+		longDescription: "The Armenian alphabet was created in 405 AD by the scholar Mesrop Mashtots and has remained virtually unchanged since. Its 38 letters are used exclusively for Armenian and are found nowhere else — making recognition a matter of pure memorisation. Eastern and Western Armenian differ in how voiced and voiceless consonants are pronounced, a distinction noted for each affected letter.",
+		picture: "/images/writing-systems/hayastan.png",
+		stats: [
+			{ value: 38, label: "letters" },
+			{ value: 2, label: "dialects" },
+		],
+		studyPlan: {
+			beginner: { perDay: 5, coreIn: "8 days" },
+			intensive: { perDay: 10, coreIn: "4 days" },
+			recommended: "beginner",
+		},
+		approach: {
+			title: "A structured approach to the Armenian alphabet",
+			description: "Two phases introduce the script systematically — common letters first, then aspirates and affricates. Dialect differences are noted throughout so you learn both Eastern and Western from the start.",
+			phases: [
+				{
+					icon: "Ա",
+					title: "Vowels & common consonants",
+					description: "Start with all 8 vowels and the most frequent consonants. These letters cover the backbone of everyday Armenian text.",
+				},
+				{
+					icon: "Թ",
+					title: "Aspirates & affricates",
+					description: "The 10 aspirated and affricate consonants — including the letters that differ most between Eastern and Western Armenian. With these you can read the full alphabet.",
 				},
 			],
 		},
